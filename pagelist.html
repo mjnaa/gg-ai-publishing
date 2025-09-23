@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <title>경기도 생성형 AI 플랫폼 퍼블리싱 리스트</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+  <style>
+    body {
+      font-family: 'Segoe UI', 'Noto Sans KR', sans-serif;
+      background:#2C2D30;
+      color:#f0f0f0;
+      padding:30px 40px;
+    }
+    h1 { font-size:20px; margin-bottom:8px; }
+    p { margin-bottom:24px; color:#bbb; }
+    table { width:100%; border-collapse:collapse; font-size:14px; }
+    th, td {
+      padding:12px 10px;
+      border:1px solid #555;
+      text-align:left;
+    }
+    th {
+      background:#656565;
+      border:1px solid #8a8a8a;
+      font-weight:500;
+      color:#fff;
+    }
+    .border-bold{border-bottom:4px double #555;}
+    a { color:#d5d5d5; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .acenter {text-align:center;}
+    .status-done { color:#4ade80; font-weight:600; }   /* 완료 */
+    .status-ing { color:#facc15; font-weight:600; }    /* 진행중 */
+    .status-todo { color:#f87171; font-weight:600; }   /* 미작업 */
+  </style>
+</head>
+<body>
+  <h1>경기도 생성형 AI 플랫폼 퍼블리싱 리스트</h1>
+  <p>파일명을 클릭하면 해당 퍼블리싱 화면으로 이동합니다.</p>
+
+  <table>
+    <colgroup>
+      <col style="width:10%;" />
+      <col style="width:25%;" />
+      <col style="width:30%;" />
+      <col style="width:70px;" />
+      <col />
+      <col />
+    </colgroup>
+    <thead>
+      <tr>
+        <th>서비스</th>
+        <th>기능</th>
+        <th>파일명(클릭)</th>
+        <th>진행상태</th>
+        <th>비고</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 공통 -->
+      <tr>
+        <td rowspan="3">공통</td>
+        <td>공통 레이아웃</td>
+        <td><a href="./common/00-layout.html">common/00-layout.html</a></td>
+        <td class="status-ing acenter">진행중</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>공통 팝업</td>
+        <td><a href="./common/01-popup.html">common/01-popup.html</a></td>
+        <td class="status-todo acenter">미작업</td>
+        <td></td>
+      </tr>
+      <tr class="border-bold">
+        <td>풀스크린 로딩</td>
+        <td><a href="./common/02-loading.html">common/02-loading.html</a></td>
+        <td class="status-todo acenter">미작업</td>
+        <td></td>
+      </tr>
+
+      <!-- AI 업무지원 -->
+      <tr>
+        <td rowspan="12">AI 업무지원</td>
+        <td>새 채팅</td>
+        <td><a href="./work/10-chat-new.html">work/10-chat-new.html</a></td>
+        <td class="status-todo acenter">미작업</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>채팅중 / 채팅버블</td>
+        <td><a href="./work/11-chat-bubble.html">work/11-chat-bubble.html</a></td>
+        <td class="status-todo acenter">미작업</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>채팅중 / 답변 / 로딩</td>
+        <td><a href="./work/12-chat-answer--loading.html">work/12-chat-answer--loading.html</a></td>
+        <td class="status-todo acenter">미작업</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>채팅중 / 답변 / list 유형</td>
+        <td><a href="./work/13-chat-answer--list.html">work/13-chat-answer--list.html</a></td>
+        <td class="status-todo acenter">미작업</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>채팅중 / 답변 / table 유형</td>
+        <td><a href="./work/14-chat-answer--table.html">work/14-chat-answer--table.html</a></td>
+        <td class="status-todo acenter">미작업</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>채팅중 / 답변 / 코드블록, 인용문 유형</td>
+        <td><a href="./work/15-chat-answer--code-quote.html">work/15-chat-answer--code-quote.html</a></td>
+        <td class="status-todo acenter">미작업</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>채팅중 / 팝업</td>
+        <td><a href="./work/16-chat-popup.html">work/16-chat-popup.html</a></td>
+        <td class="status-todo acenter">미작업</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>폴더 메인</td>
+        <td><a href="./work/20-folder-main.html">work/20-folder-main.html</a></td>
+        <td class="status-todo acenter">미작업</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>프롬프트 라이브러리 / 저장된 프롬프트 없는 경우</td>
+        <td><a href="./work/30-prompt-empty.html">work/30-prompt-empty.html</a></td>
+        <td class="status-todo acenter">미작업</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>프롬프트 라이브러리 / 저장된 프롬프트 있는 경우</td>
+        <td><a href="./work/31-prompt-list.html">work/31-prompt-list.html</a></td>
+        <td class="status-todo acenter">미작업</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>프롬프트 라이브러리 / 팝업</td>
+        <td><a href="./work/32-prompt-popup.html">work/32-prompt-popup.html</a></td>
+        <td class="status-todo acenter">미작업</td>
+        <td></td>
+      </tr>
+      <tr class="border-bold">
+        <td>도움말</td>
+        <td><a href="./work/40-help.html">work/40-help.html</a></td>
+        <td class="status-todo acenter">미작업</td>
+        <td></td>
+      </tr>
+
+      <!-- AI 법률 -->
+      <tr>
+        <td rowspan="8">AI 법률</td>
+        <td>새 채팅</td>
+        <td><a href="./legal/10-chat-new.html">legal/10-chat-new.html</a></td>
+        <td class="status-todo acenter">미작업</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>채팅중 / 채팅버블</td>
+        <td><a href="./legal/11-chat-bubble.html">legal/11-chat-bubble.html</a></td>
+        <td class="status-todo acenter">미작업</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>채팅중 / 답변 / 로딩</td>
+        <td><a href="./legal/12-chat-answer--loading.html">legal/12-chat-answer--loading.html</a></td>
+        <td class="status-todo acenter">미작업</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>채팅중 / 답변 / list 유형</td>
+        <td><a href="./legal/13-chat-answer--list.html">legal/13-chat-answer--list.html</a></td>
+        <td class="status-todo acenter">미작업</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>채팅중 / 답변 / table 유형</td>
+        <td><a href="./legal/14-chat-answer--table.html">legal/14-chat-answer--table.html</a></td>
+        <td class="status-todo acenter">미작업</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>채팅중 / 답변 / 코드블록, 인용문 유형</td>
+        <td><a href="./legal/15-chat-answer--code-quote.html">legal/15-chat-answer--code-quote.html</a></td>
+        <td class="status-todo acenter">미작업</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>채팅중 / 팝업</td>
+        <td><a href="./legal/16-chat-popup.html">legal/16-chat-popup.html</a></td>
+        <td class="status-todo acenter">미작업</td>
+        <td></td>
+      </tr>
+      <tr class="border-bold">
+        <td>폴더 메인</td>
+        <td><a href="./legal/20-folder-main.html">legal/20-folder-main.html</a></td>
+        <td class="status-todo acenter">미작업</td>
+        <td></td>
+      </tr>
+
+      <!-- AI 행정심판 -->
+      <tr>
+        <td rowspan="8">AI 행정심판</td>
+        <td>새 채팅</td>
+        <td><a href="./appeal/10-chat-new.html">appeal/10-chat-new.html</a></td>
+        <td class="status-todo acenter">미작업</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>채팅중 / 채팅버블</td>
+        <td><a href="./appeal/11-chat-bubble.html">appeal/11-chat-bubble.html</a></td>
+        <td class="status-todo acenter">미작업</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>채팅중 / 답변 / 로딩</td>
+        <td><a href="./appeal/12-chat-answer--loading.html">appeal/12-chat-answer--loading.html</a></td>
+        <td class="status-todo acenter">미작업</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>채팅중 / 답변 / list 유형</td>
+        <td><a href="./appeal/13-chat-answer--list.html">appeal/13-chat-answer--list.html</a></td>
+        <td class="status-todo acenter">미작업</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>채팅중 / 답변 / table 유형</td>
+        <td><a href="./appeal/14-chat-answer--table.html">appeal/14-chat-answer--table.html</a></td>
+        <td class="status-todo acenter">미작업</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>채팅중 / 답변 / 코드블록, 인용문 유형</td>
+        <td><a href="./appeal/15-chat-answer--code-quote.html">appeal/15-chat-answer--code-quote.html</a></td>
+        <td class="status-todo acenter">미작업</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>채팅중 / 팝업</td>
+        <td><a href="./appeal/16-chat-popup.html">appeal/16-chat-popup.html</a></td>
+        <td class="status-todo acenter">미작업</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>폴더 메인</td>
+        <td><a href="./appeal/20-folder-main.html">appeal/20-folder-main.html</a></td>
+        <td class="status-todo acenter">미작업</td>
+        <td></td>
+      </tr>
+
+
+    </tbody>
+  </table>
+</body>
+</html>
