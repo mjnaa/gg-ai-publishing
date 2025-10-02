@@ -1,0 +1,34 @@
+/* Works with file:// (no server) */
+:root {
+  --color-icon-primary: #1976d2;
+  --color-icon-danger:  #e53935;
+  --color-icon-gray:    #6b7280;
+}
+
+.icon {
+  --icon-size: 24px;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  display: inline-block;
+  background-color: var(--icon-color, var(--color-icon-primary));
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+          mask-repeat: no-repeat;
+          mask-position: center;
+          mask-size: contain;
+}
+
+/* 예시: add.svg */
+.icon--add {
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg …>…</svg>");
+          mask-image: url("data:image/svg+xml;utf8,<svg …>…</svg>");
+}
+
+/* 예시: arrow-left.svg */
+.icon--arrow-left {
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg …>…</svg>");
+          mask-image: url("data:image/svg+xml;utf8,<svg …>…</svg>");
+}
+
+/* 이런 식으로 아이콘 파일마다 .icon--파일명 클래스가 자동 생성됨 */

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+
+<head>
+  <title>경기도 생성형 AI 플랫폼</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="경기도 생성형 AI 플랫폼" />
+  <!-- style sheets -->
+  <link href="../assets/css/tokens.css" rel="stylesheet">
+  <link href="../assets/css/font.css" rel="stylesheet">
+  <link href="../assets/css/base.css" rel="stylesheet">
+  <link href="../assets/css/layout.css" rel="stylesheet">
+  <link href="../assets/css/components.css" rel="stylesheet">
+  <link href="../assets/css/mask_datauri.css" rel="stylesheet">
+  <!-- favicon -->
+  <link rel="icon" href="../assets/img/favicon.ico" type="image/x-icon">
+  
+</head>
+
+<body>
+  <div class="viewport-scale">
+    <div class="viewport-inner">
+    <div class="layout-overlay" aria-hidden="true"></div>
+    
+    <div style="padding:24px; display:flex; justify-content:center; gap:12px;">
+      <button class="btn-soild-primary-m" data-modal-target="#modal-1">1. 새 폴더</button>
+      <button class="btn-soild-primary-m" data-modal-target="#modal-2">2. 폴더 이름 변경</button>
+      <button class="btn-soild-primary-m" data-modal-target="#modal-3">3. 채팅 이름 변경</button>
+      <button class="btn-soild-primary-m" data-modal-target="#modal-4">4. 폴더 삭제</button>
+      <button class="btn-soild-primary-m" data-modal-target="#modal-5">5. 채팅 삭제 </button>
+      <button class="btn-soild-primary-m" data-modal-target="#modal-6">6. 로그아웃 </button>
+      <button class="btn-soild-primary-m" data-modal-target="#modal-7">7. 채팅 안내</button>
+      <button class="btn-soild-primary-m" data-modal-target="#modal-8">8. 계정 설정</button>
+    </div>
+
+    <!-- 1. 새 폴더 생성 -->
+    <div class="modal-basic" id="modal-1" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-basic-title" data-modal>
+      <div class="modal-panel" tabindex="-1" data-modal-panel>
+        <div class="modal-head" id="modal-basic-title">
+          <h5>새 폴더 생성</h5>
+          <button class="btn-aside-close btn-icon-normal-m" type="button" aria-label="모달 닫기" data-modal-close>
+            <span class="icon20 icon--close icon--basic"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-field">
+            <label class="form-label">폴더이름</label>
+            <input type="text" class="form-input" placeholder="예 : 출장보고서 작성">
+          </div>
+          <div class="info-box">
+            <span class="icon18 icon--info-fill icon--info"></span>
+            <div class="info-box-content">
+              <strong class="info-box-title">폴더란?</strong>
+              <p class="info-box-desc">
+                관련된 항목들을 한데 모아 정리할 수 있는 공간입니다. <br>작업을 체계적으로 정리하는 데 유용합니다.
+              </p>
+            </div>
+          </div>      
+        </div>
+        <div class="modal-foot">
+          <button class="btn-outline-gray-l" data-modal-close>취소</button>
+          <button class="btn-soild-primary-l" data-modal-close>생성</button>
+        </div>
+      </div>
+    </div> 
+
+    <!-- 2. 폴더 이름 변경 -->
+    <div class="modal-basic" id="modal-2" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-basic-title" data-modal>
+      <div class="modal-panel" tabindex="-1" data-modal-panel>
+        <div class="modal-head" id="modal-basic-title">
+          <h5>폴더 이름 변경</h5>
+          <button class="btn-aside-close btn-icon-normal-m" type="button" aria-label="모달 닫기" data-modal-close>
+            <span class="icon20 icon--close icon--basic"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-field">
+            <label class="form-label">폴더이름</label>
+            <input type="text" class="form-input" value="기존 폴더명">
+          </div>
+        </div>
+        <div class="modal-foot">
+          <button class="btn-outline-gray-l" data-modal-close>취소</button>
+          <button class="btn-soild-primary-l" data-modal-close>저장</button>
+        </div>
+      </div>
+    </div> 
+
+    <!-- 3. 채팅 이름 변경 -->
+    <div class="modal-basic" id="modal-3" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-basic-title" data-modal>
+      <div class="modal-panel" tabindex="-1" data-modal-panel>
+        <div class="modal-head" id="modal-basic-title">
+          <h5>채팅 이름 변경</h5>
+          <button class="btn-aside-close btn-icon-normal-m" type="button" aria-label="모달 닫기" data-modal-close>
+            <span class="icon20 icon--close icon--basic"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-field">
+            <label class="form-label">채팅이름</label>
+            <input type="text" class="form-input" value="기존 채팅명">
+          </div>
+        </div>
+        <div class="modal-foot">
+          <button class="btn-outline-gray-l" data-modal-close>취소</button>
+          <button class="btn-soild-primary-l" data-modal-close>저장</button>
+        </div>
+      </div>
+    </div> 
+
+    <!-- 4. 폴더 삭제 -->
+    <div class="modal-basic" id="modal-4" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-basic-title" data-modal>
+      <div class="modal-panel" tabindex="-1" data-modal-panel>
+        <div class="modal-head" id="modal-basic-title">
+          <h5>폴더를 삭제할까요?</h5>
+          <button class="btn-aside-close btn-icon-normal-m" type="button" aria-label="모달 닫기" data-modal-close>
+            <span class="icon20 icon--close icon--basic"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            모든 폴더파일과 폴더에 속한 채팅이 영구적으로 삭제됩니다.<br>채팅을 보존하려면 삭제 전에 채팅 목록으로<br>이동하거나 다른 폴더로 옮겨주세요.
+          </p>
+        </div>
+        <div class="modal-foot">
+          <button class="btn-outline-gray-l" data-modal-close>취소</button>
+          <button class="btn-soild-danger-l" data-modal-target="#modal-inner">삭제</button>
+        </div>
+      </div>
+    </div> 
+
+    <!-- 5. 채팅 삭제 -->
+    <div class="modal-basic" id="modal-5" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-basic-title" data-modal>
+      <div class="modal-panel" tabindex="-1" data-modal-panel>
+        <div class="modal-head" id="modal-basic-title">
+          <h5>채팅를 삭제할까요?</h5>
+          <button class="btn-aside-close btn-icon-normal-m" type="button" aria-label="모달 닫기" data-modal-close>
+            <span class="icon20 icon--close icon--basic"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            <strong>채팅명</strong>이 삭제됩니다.
+          </p>
+        </div>
+        <div class="modal-foot">
+          <button class="btn-outline-gray-l" data-modal-close>취소</button>
+          <button class="btn-soild-danger-l" data-modal-target="#modal-inner">삭제</button>
+        </div>
+      </div>
+    </div> 
+
+    <!-- 6. 로그아웃 -->
+    <div class="modal-basic" id="modal-6" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-basic-title" data-modal>
+      <div class="modal-panel" tabindex="-1" data-modal-panel>
+        <div class="modal-head" id="modal-basic-title">
+          <h5>로그아웃</h5>
+          <button class="btn-aside-close btn-icon-normal-m" type="button" aria-label="모달 닫기" data-modal-close>
+            <span class="icon20 icon--close icon--basic"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            경기 생성형 AI 플랫폼에서 로그아웃 하시겠습니까?
+          </p>
+        </div>
+        <div class="modal-foot">
+          <button class="btn-outline-gray-l" data-modal-close>취소</button>
+          <button class="btn-soild-primary-l" data-modal-close>로그아웃</button>
+        </div>
+      </div>
+    </div> 
+
+    <!-- 7. 채팅 안내 -->
+    <div class="modal-basic" id="modal-7" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-basic-title" data-modal>
+      <div class="modal-panel" tabindex="-1" data-modal-panel>
+        <div class="modal-head" id="modal-basic-title">
+          <h5>채팅 삭제 예정</h5>
+          <button class="btn-aside-close btn-icon-normal-m" type="button" aria-label="모달 닫기" data-modal-close>
+            <span class="icon20 icon--close icon--basic"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            채팅 기록은 시간이 지나거나 저장 공간이<br>부족해지면 오래된 것부터 자동으로 삭제됩니다.<br>삭제를 원치 않으시면 폴더로 옮겨주세요.
+          </p>
+        </div>
+        <div class="modal-foot">
+          <button class="btn-soild-primary-l" data-modal-close>확인</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 8. 계정 설정 -->
+    <div class="modal-list" id="modal-8" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-basic-title" data-modal>
+      <div class="modal-panel" tabindex="-1" data-modal-panel>
+        <div class="modal-head" id="modal-basic-title">
+          <h5>설정</h5>
+          <button class="btn-aside-close btn-icon-normal-m" type="button" aria-label="모달 닫기" data-modal-close>
+            <span class="icon20 icon--close icon--basic"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <ul class="mlist" role="list">
+            <li class="mlist-item">
+              <span class="mlist-label">테마</span>
+              
+              <!-- 테마변경 드롭다운메뉴(단일선택메뉴ver) -->
+              <div class="dd-choice">
+                <button type="button" class="dd-choice-toggle" aria-haspopup="listbox" aria-expanded="false">
+                  <div class="dd-title xs-size">
+                    <span class="txt">시스템</span>
+                  </div>
+                  <span class="icon22 icon--arrow-down icon--basic"></span>
+                </button>
+                <ul class="dd-choice-list left" role="listbox">
+                  <li>
+                    <button type="button" onclick="" class="dd-choice-item active" role="option">
+                      <div class="dd-name">
+                    <span class="txt">시스템</span>
+                      </div>
+                      <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
+                    </button>
+                  </li>
+                  <li>
+                    <button type="button" class="dd-choice-item" role="option">
+                      <div class="dd-name">
+                    <span class="txt">다크모드</span>
+                      </div>
+                      <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
+                    </button>
+                  </li>
+                  <li>
+                    <button type="button" class="dd-choice-item" role="option">
+                      <div class="dd-name">
+                    <span class="txt">라이트모드</span>
+                      </div>
+                      <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
+                    </button>
+                  </li>                  
+                </ul>
+              </div>
+            </li>
+
+            <li class="mlist-divider" role="separator"></li>
+
+            <li class="mlist-item">
+              <span class="mlist-label">폰트사이즈</span>
+              
+              <!-- 폰트크기설정 드롭다운메뉴(단일선택메뉴ver) -->
+              <div class="dd-choice">
+                <button type="button" class="dd-choice-toggle" aria-haspopup="listbox" aria-expanded="false">
+                  <div class="dd-title xs-size">
+                    <span class="txt">보통</span>
+                  </div>
+                  <span class="icon22 icon--arrow-down icon--basic"></span>
+                </button>
+                <ul class="dd-choice-list left" role="listbox">
+                  <li>
+                  <button type="button" onclick="setUiScale(0.95)" class="dd-choice-item" role="option">
+                    <div class="dd-name">
+                      <span class="txt">작게</span>
+                    </div>
+                    <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" onclick="setUiScale(1.0)" class="dd-choice-item active" role="option">
+                    <div class="dd-name">
+                      <span class="txt">보통</span>
+                    </div>
+                    <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" onclick="setUiScale(1.05)" class="dd-choice-item" role="option">
+                    <div class="dd-name">
+                      <span class="txt">크게</span>
+                    </div>
+                    <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" onclick="setUiScale(1.1)" class="dd-choice-item" role="option">
+                    <div class="dd-name">
+                      <span class="txt">더 크게</span>
+                    </div>
+                    <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
+                  </button>
+                </li>                   
+                </ul>
+              </div>
+            </li>
+
+            <li class="mlist-divider" role="separator"></li>
+
+            <li class="mlist-item">
+              <span class="mlist-label">모든 채팅 삭제</span>
+              <button class="btn-outline-danger-s" data-modal-target="#modal-9" >모두 삭제</button>
+            </li>
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. 계정 설정 / 모든 채팅 삭제 -->
+    <div class="modal-basic" id="modal-9" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-basic-title" data-modal>
+      <div class="modal-panel" tabindex="-1" data-modal-panel>
+        <div class="modal-head" id="modal-basic-title">
+          <h5>모든 채팅 삭제</h5>
+          <button class="btn-aside-close btn-icon-normal-m" type="button" aria-label="모달 닫기" data-modal-close>
+            <span class="icon20 icon--close icon--basic"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            모든 채팅 기록을 지우시겠습니까?<br>(단, 폴더에 있는 채팅은 삭제되지 않습니다)
+          </p>
+        </div>
+        <div class="modal-foot">
+          <button class="btn-outline-gray-l" data-modal-close>취소</button>
+          <button class="btn-soild-danger-l" data-modal-target="#modal-inner">모두 삭제</button>
+        </div>
+      </div>
+    </div> 
+    
+    </div>
+  </div>
+
+
+  <!-- JS -->
+  <script src="../assets/js/layout.js"></script>
+  <script src="../assets/js/dropdown-choice.js"></script>
+  <script src="../assets/js/modal-popup.js"></script>
+
+</body>
+</html>

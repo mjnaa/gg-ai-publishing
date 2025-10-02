@@ -1,0 +1,907 @@
+@charset "utf-8";
+
+/*--------------------
+컴포넌트
+----------------------*/
+
+/* 버튼 */
+.btn-soild-primary-l {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: var(--color-button-soild-primary);
+  color: var(--color-text-btn-soild);
+  line-height: 150%;
+  letter-spacing: 0;
+  font-weight: 500;
+  font-size: 1.6rem;
+  gap: 8px;
+  height: 46px;
+  width: 100%;
+}
+.btn-soild-primary-m {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: var(--color-button-soild-primary);
+  color: var(--color-text-btn-soild);
+  line-height: 150%;
+  letter-spacing: 0;
+  font-weight: 500;
+  font-size: 1.4rem;
+  gap: 4px;
+  height: 34px;
+  padding: 0px 10px 0px 10px;
+}
+.btn-soild-primary-s {
+  display: flex;    
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: var(--color-button-soild-primary);
+  color: var(--color-text-btn-soild);
+  line-height: 150%;
+  letter-spacing: 0;
+  font-weight: 500;
+  font-size: 1.3rem;
+  gap: 4px;
+  height: 26px;
+  padding: 0px 10px 0px 10px;
+}
+.btn-soild-gray-l {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: var(--color-button-soild-gray);
+  color: var(--color-text-muted);
+  line-height: 150%;
+  letter-spacing: 0;
+  font-weight: 500;
+  font-size: 1.6rem;
+  gap: 8px;
+  height: 46px;
+  width: 100%;
+}
+.btn-soild-gray-m {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: var(--color-button-soild-gray);
+  color: var(--color-text-muted);
+  line-height: 150%;
+  letter-spacing: 0;
+  font-weight: 500;
+  font-size: 1.4rem;
+  gap: 4px;
+  height: 34px;
+  padding: 0px 10px 0px 10px;
+}
+.btn-soild-gray-s {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: var(--color-button-soild-gray);
+  color: var(--color-text-muted);
+  line-height: 150%;
+  letter-spacing: 0;
+  font-weight: 500;
+  font-size: 1.3rem;
+  gap: 4px;
+  height: 26px;
+  padding: 0px 10px 0px 10px;
+}
+.btn-soild-danger-l {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: var(--color-button-danger);
+  color: var(--color-text-inverse);
+  line-height: 150%;
+  letter-spacing: 0;
+  font-weight: 500;
+  font-size: 1.6rem;
+  gap: 8px;
+  height: 46px;
+  width: 100%;
+}
+.btn-soild-danger-m {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: var(--color-button-danger);
+  color: var(--color-text-inverse);
+  line-height: 150%;
+  letter-spacing: 0;
+  font-weight: 500;
+  font-size: 1.4rem;
+  gap: 4px;
+  height: 34px;
+  padding: 0px 10px 0px 10px;
+}
+.btn-soild-danger-s {
+  display: flex;    
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: var(--color-button-danger);
+  color: var(--color-text-inverse );
+  line-height: 150%;
+  letter-spacing: 0;
+  font-weight: 500;
+  font-size: 1.3rem;
+  gap: 4px;
+  height: 26px;
+  padding: 0px 10px 0px 10px;
+}
+.btn-outline-gray-l {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid var(--color-button-outline-gray);
+  background: var( --color-button-outline-gray-bg);
+  color: var(--color-text-base);
+  line-height: 150%;
+  letter-spacing: 0;
+  font-weight: 500;
+  font-size: 1.6rem;
+  gap: 8px;
+  height: 46px;
+  width: 100%;
+}
+.btn-outline-gray-m {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid var(--color-button-outline-gray);
+  background: var( --color-button-outline-gray-bg);
+  color: var(--color-text-subtle);
+  line-height: 150%;
+  letter-spacing: 0;
+  font-weight: 500;
+  font-size: 1.4rem;
+  gap: 4px;
+  height: 34px;
+  padding: 0px 10px 0px 10px;
+}
+.btn-outline-gray-s {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  border: 1px solid var(--color-button-outline-gray);
+  background: var( --color-button-outline-gray-bg);
+  color: var(--color-text-subtle);
+  line-height: 150%;
+  letter-spacing: 0;
+  font-weight: 500;
+  font-size: 1.3rem;
+  gap: 4px;
+  height: 26px;
+  padding: 0px 10px 0px 10px;
+}
+.btn-outline-darkgray-l {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid var(--color-button-outline-darkgray);
+  background: var( --color-button-outline-darkgray-bg);
+  color: var(--color-text-base);
+  line-height: 150%;
+  letter-spacing: 0;
+  font-weight: 500;
+  font-size: 1.6rem;
+  gap: 8px;
+  height: 46px;
+  width: 100%;
+}
+.btn-outline-darkgray-m {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid var(--color-button-outline-darkgray);
+  background: var( --color-button-outline-darkgray-bg);
+  color: var(--color-text-subtle);
+  line-height: 150%;
+  letter-spacing: 0;
+  font-weight: 500;
+  font-size: 1.4rem;
+  gap: 4px;
+  height: 34px;
+  padding: 0px 10px 0px 10px;
+}
+.btn-outline-darkgray-s {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  border: 1px solid var(--color-button-outline-darkgray);
+  background: var( --color-button-outline-darkgray-bg);
+  color: var(--color-text-subtle);
+  line-height: 150%;
+  letter-spacing: 0;
+  font-weight: 500;
+  font-size: 1.3rem;
+  gap: 4px;
+  height: 26px;
+  padding: 0px 10px 0px 10px;
+}
+.btn-outline-danger-l {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid var(--color-button-danger);
+  background: var( --color-button-outline-darkgray-bg);
+  color: var(--color-text-danger);
+  line-height: 150%; 
+  letter-spacing: 0;
+  font-weight: 500;
+  font-size: 1.6rem;
+  gap: 8px;
+  height: 46px;
+  width: 100%;
+}
+.btn-outline-danger-m {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid var(--color-button-danger);
+  background: var( --color-button-outline-darkgray-bg);
+  color: var(--color-text-danger);
+  line-height: 150%;
+  letter-spacing: 0;
+  font-weight: 500;
+  font-size: 1.4rem;
+  gap: 4px;
+  height: 34px;
+  padding: 0px 10px 0px 10px;
+}
+.btn-outline-danger-s {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  border: 1px solid var(--color-button-danger);
+  background: var( --color-button-outline-darkgray-bg);
+  color: var(--color-text-danger );
+  line-height: 1;
+  letter-spacing: 0;
+  font-weight: 500;
+  font-size: 1.4rem;
+  gap: 4px;
+  height: 26px;
+  padding: 0px 8px 0px 8px;
+}
+.btn-icon-outline-m {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  width : 34px;
+  border-radius: 8px;
+  border: 1px solid var(--color-button-outline-gray);
+  background: var(--color-background-subtle);
+}
+.btn-icon-soild-m {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  width : 34px;
+  border-radius: 8px;
+  background: var(--color-button-soild-gray);
+}
+.btn-icon-normal-m {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  width : 34px;
+}
+.btn-icon-normal-s {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 26px;
+  width : 26px;
+}
+
+
+/* 드롭다운메뉴 / 다중옵션목록 */
+.dd-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+.dd{
+  position: fixed;
+  pointer-events: auto;
+  list-style: none;
+  min-width: 170px;
+  padding: 6px;
+  margin: 0;
+  background: var(--color-background-subtle);
+  border: 1px solid var(--color-border-basic);
+  border-radius: 10px;
+  color: var(--color-text-basic);
+  font-weight: 500;
+  line-height: 150%;
+  font-size: 1.5rem; 
+}
+.dd-sub {
+  position: fixed;
+  pointer-events: auto;
+  list-style: none;
+  min-width: 170px;
+  padding: 6px;
+  margin: 0;
+  background: var(--color-background-subtle);
+  border: 1px solid var(--color-border-basic);
+  border-radius: 10px;
+  color: var(--color-text-basic);
+  font-weight: 500;
+  line-height: 150%;
+  pointer-events: auto;
+  z-index: 10000;
+  font-size: 1.5rem; 
+}
+.dd button,
+.dd-sub button {  
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  text-align: left;
+  padding: 6px 8px 6px 10px;
+  border-radius: 8px; 
+}
+.dd button:hover,
+.dd-sub button:hover{
+  background: var(--color-background-menu-hover);
+  outline: none;
+}
+.dd .dd-right-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dd .dd-right-btn > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dd .dd-sep,
+.dd-sub .dd-sep {
+  height: 1px;
+  margin: 6px 0;
+  background: var(--color-border-strong);
+}
+.dd .dd-date {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  padding: 6px 12px;
+  color: var(--color-text-muted);
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+.dd .danger {
+  color: var(--color-text-danger);
+}
+
+/* 드롭다운메뉴 / 단일선택메뉴 */
+.dd-choice {
+  position: relative;
+  overflow: visible; 
+}
+.dd-choice-toggle {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+.dd-choice-toggle > div {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.dd-choice-toggle .dd-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 150%;
+}
+.dd-choice-toggle .dd-title.xs-size {
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 150%;
+  color: var(--color-text-subtle);
+}
+.dd-choice-toggle .dd-title >.icon20 {
+  background-color: var(--color-icon-primary) !important;  
+}
+.dd-choice-list.left {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  transform: translateY(8px);  
+  z-index: 1000;     
+  pointer-events: auto;
+  list-style: none;
+  min-width: 170px;
+  padding: 6px;
+  margin: 0;
+  background: var(--color-background-subtle);
+  border: 1px solid var(--color-border-basic);
+  border-radius: 10px;
+  color: var(--color-text-basic);
+  font-weight: 500;
+  line-height: 150%;
+  font-size: 1.5rem; 
+}
+.dd-choice-list.right {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  transform: translateY(8px);  
+  z-index: 1000;     
+  pointer-events: auto;
+  list-style: none;
+  min-width: 160px;
+  padding: 6px;
+  margin: 0;
+  background: var(--color-background-subtle);
+  border: 1px solid var(--color-border-basic);
+  border-radius: 10px;
+  color: var(--color-text-basic);
+  font-weight: 500;
+  line-height: 150%;
+  font-size: 1.5rem; 
+}
+.dd-choice-list .dd-choice-item {  
+  display: flex;
+  align-items: center;  
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  text-align: left;
+  padding: 6px 8px 6px 10px;
+  border-radius: 8px; 
+}
+.dd-choice-list .dd-choice-item > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dd-choice-list .dd-choice-item > .check {
+  visibility: hidden;
+}
+.dd-choice-list .dd-choice-item.active {
+  background: var(--color-background-menu-hover);
+}
+.dd-choice-list .dd-choice-item.active div .icon20 {
+  background-color: var(--color-icon-primary);
+}
+.dd-choice-list .dd-choice-item.active > .check {
+  visibility: visible;
+}
+
+
+/* 툴팁 */
+.ui-tip {
+  position: fixed;  
+  z-index: 99999;
+  pointer-events: none;
+  white-space: nowrap;
+  font-size: 1.2rem;
+  line-height: 1;
+  padding: 4px 6px;
+  border-radius: 6px;
+  background: var(--color-background-primary);
+  color: var(--color-text-inverse);
+}
+.ui-tip-arrow {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  transform: rotate(45deg);
+  background: var(--color-background-primary);
+}
+
+
+/* ======= 모달 팝업 ======= */
+/* 공통 요소 : 백드롭, 컨테이너 */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
+  z-index: var(--z-backdrop);
+}
+.modal-backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-basic,
+.modal-expand,
+.modal-list {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  pointer-events: none;
+  z-index: var(--z-modal);
+  transition: opacity 0.18s ease;
+}
+.modal-basic.is-open,
+.modal-expand.is-open,
+.modal-list.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* modal-basic 기본타입 : 안내 모달, 입력 모달  */
+.modal-basic .modal-panel {
+  min-width: 320px;
+  max-width: min(90vw, 640px);
+  background: var(--color-background-subtle);
+  border-radius: 10px;
+  /*box-shadow: 0 6px 24px rgba(0,0,0,.2);*/
+  outline: none;
+}
+.modal-basic .modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 150%;
+  letter-spacing: 0;
+  padding: 16px 14px 0px 24px;
+}
+.modal-basic .modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 150%; 
+  letter-spacing: 0;
+  padding: 12px 24px 18px 24px;
+}
+.modal-basic .modal-foot {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 0px 24px 20px 24px;
+}
+.modal-basic .form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* modal-expand 확장타입 : 프롬프트 생성, 조례안 작성 등 */
+.modal-expand .modal-panel {
+  min-width: 320px;
+  max-width: min(90vw, 640px);
+  background: var(--color-background-subtle);
+  border-radius: 10px;
+  /*box-shadow: 0 6px 24px rgba(0,0,0,.2);*/
+  outline: none;
+}
+.modal-expand .modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 150%;
+  letter-spacing: 0;
+  padding: 16px 14px 0px 24px;
+}
+.modal-expand .modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 150%; 
+  letter-spacing: 0;
+  padding: 12px 24px 18px 24px;
+}
+.modal-expand .modal-foot {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 0px 24px 20px 24px;
+}
+.modal-expand .form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* modal-list 리스트타입 : 설정  */
+.modal-list .modal-panel {
+  min-width: 260px;
+  max-width: min(90vw, 640px);
+  background: var(--color-background-subtle);
+  border-radius: 10px;
+  outline: none;
+}
+.modal-list .modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 150%;
+  letter-spacing: 0;
+  padding: 16px 14px 0px 24px;
+}
+.modal-list .modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 150%; 
+  letter-spacing: 0;
+  padding: 12px 24px 18px 24px;
+}
+.modal-list .modal-body .mlist {
+  list-style: none;
+}
+.modal-list .modal-body .mlist-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+}
+.modal-list .modal-body .mlist-item .mlist-label {  
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 150%; 
+  letter-spacing: 0;
+  color: var(--color-text-subtle);
+}
+.modal-list .modal-body .mlist-divider {
+  height: 1px;
+  margin: 0;
+  background: var(--color-border-popup);
+}
+
+
+/* 레이블 */
+.form-label {
+  color: var(--color-text-subtle);
+  font-size: 1.4rem; 
+  line-height: 150%; 
+  letter-spacing: 0;
+  font-weight: 500;
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  align-items: center;
+}
+.form-checkbox-label {
+  color: var(--color-text-subtle);
+  font-size: 1.4rem; 
+  line-height: 1; 
+  letter-spacing: 0;
+  font-weight: 500;
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  align-items: center;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-drag: none; 
+}
+
+/* 입력 필드 : input[type="text"] */
+.form-input {
+  width: 100%;
+  height: 44px; 
+  padding: 0 14px;
+  border: 1px solid var(--color-input-border);
+  border-radius:10px;
+  background: var(--color-input-surface);
+  color: var(--color-text-basic);
+  font-size: 1.6rem; 
+  line-height: 170%; 
+  letter-spacing: 0;
+  font-weight: 400;
+  outline: none;
+}
+.form-input::placeholder {
+  color: var(--color-text-disabled);
+}
+.form-input:focus {
+  border: 1px solid var(--color-input-border-focus);
+}
+.form-input:disabled {
+  background: var(--color-input-surface-disabled);
+  color: var(--color-text-disabled);
+  cursor: default;
+}
+
+/* 셀렉트 박스 : 기본 화살표 제거 + 커스텀 화살표 */
+.form-select {
+  width: 100%;
+  height: 44px; 
+  padding: 0 10px 0 14px;
+  border: 1px solid var(--color-input-border);
+  border-radius:10px;
+  background: var(--color-input-surface)
+    url("../img/icon/arrow_down.svg") no-repeat right 12px center / 24px 24px;
+  color: var(--color-text-basic);
+  font-size: 1.6rem; 
+  line-height: 170%; 
+  letter-spacing: 0;
+  font-weight: 400;
+  outline: none;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none;
+}
+.form-select::placeholder {
+  color: var(--color-text-disabled);
+}
+.form-select:focus {
+  border: 1px solid var(--color-input-border-focus);
+}
+.form-select:disabled {
+  background: var(--color-input-surface-disabled);
+  color: var(--color-text-disabled);
+  cursor: default;
+}
+
+/* textarea */
+/*  <div class="form-field">
+      <label class="form-label">내용</label>
+      <div class="textarea-wrap">
+        <textarea class="form-textarea" placeholder="내용을 입력하세요"></textarea>
+        <span class="textarea-counter">0/1000</span>
+      </div>
+     </div>
+*/
+.form-textarea{
+  display: block;
+  width: 100%;
+  min-height: 120px;
+  padding: 10px 14px;
+  border: 1px solid var(--color-input-border);
+  border-radius:10px;
+  background: var(--color-input-surface);
+  color: var(--color-text-basic);
+  font-size: 1.6rem; 
+  line-height: 170%; 
+  letter-spacing: 0;
+  font-weight: 400;
+  outline: none;
+  resize: none;
+}
+.form-textarea::placeholder {
+  color: var(--color-text-disabled);
+}
+.form-textarea:focus {
+  border: 1px solid var(--color-input-border-focus);
+}
+.form-textarea:disabled {
+  background: var(--color-input-surface-disabled);
+  color: var(--color-text-disabled);
+  cursor: default;
+}
+.form-textarea::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.form-textarea::-webkit-scrollbar-track {
+  background: transparent; 
+  margin: 6px; 
+}
+.form-textarea::-webkit-scrollbar-thumb {
+  background-color: var(--color-background-scroll-bar);
+  border-radius: 6px;
+}
+/* 카운터 배치용 : 텍스트에어리어를 감싸는 래퍼 */
+.textarea-wrap {
+  position: relative;
+}
+.textarea-counter {
+  position: absolute;
+  right: 10px;
+  bottom: 6px;
+  padding: 0 2px;
+  color: var(--color-text-muted);
+  background-color: var(--color-background-subtle);
+  border-radius: 6px;
+  font-size: 1.3rem; 
+  line-height: 150%; 
+  letter-spacing: 0;
+  font-weight: 400;
+  pointer-events:none;
+  user-select:none;
+}
+
+/* 체크박스 : input[type="checkbox"] */
+/*  <div class="form-field">
+      <label class="form-checkbox-label">
+        <input type="checkbox" class="form-checkbox">다시보지 않기
+      </label>
+    </div>  
+*/
+.form-checkbox{
+  inline-size: 16px;
+  block-size: 16px;
+  border-radius: 4px;
+  border: 1px solid var(--color-input-checkbox-border);
+  background: var(--color-input-surface);
+  display: inline-block;
+  vertical-align: middle;
+  appearance: none;
+  -webkit-appearance: none; 
+  -moz-appearance: none;
+  outline: none; 
+  cursor: pointer;
+}
+.form-checkbox:checked,
+.form-checkbox.is-checked {
+  border: 1px solid var(--color-border-primary);
+  background: var(--color-background-primary);
+  background-image: url("../img/icon/check-w.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px 16px;
+}
+.form-checkbox:focus-visible {
+  box-shadow: 0 0 0 1px var(--color-border-primary);
+}
+
+/* 인포 박스 */
+.info-box {
+  display: flex;
+  gap: 6px;
+  padding: 10px 14px 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--color-border-information);
+  background: var(--color-background-information);
+}
+.info-box .icon18 {
+  margin-top: 1px;
+}
+.info-box-title {
+  display: block;
+  font-size: 1.5rem;
+  line-height: 150%;
+  letter-spacing: 0;
+  font-weight: 600;
+  color: var(--color-text-information);
+  margin-bottom: 2px;
+}
+.info-box-desc {
+  font-size: 1.4rem;
+  line-height: 150%;
+  letter-spacing: 0;
+  font-weight: 400;
+  color: var(--color-text-basic);
+}

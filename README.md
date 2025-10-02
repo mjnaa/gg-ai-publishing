@@ -13,8 +13,7 @@
 - 상태/유형은 `--`(더블 하이픈)으로 구분: `--loading`, `--list`, `--table`, `--code-quote` 등.
 - 번호 대역
   - `00~09` 공통(레이아웃/팝업/로딩)
-  - `10~29` 서비스 공통(채팅/폴더)
-  - `30~39` **업무지원 전용**(프롬프트/도움말)
+  - `10~39` 서비스(채팅/폴더/프롬프트/도움말)
   - `40~99` 예비(확장)
 - 서비스 폴더: `work`, `legal`, `appeal`  
   - 동일 기능은 세 서비스가 같은 번호를 사용합니다(예: 모두 `10-chat-new.html`).
@@ -27,11 +26,20 @@
 publishing/
  ├─ assets/
  │  ├─ css/
+ │  │  ├─ tokens.css
+ │  │  ├─ font.css
  │  │  ├─ base.css
  │  │  ├─ layout.css
  │  │  ├─ components.css
+ │  │  ├─ mask_datauri.css
  │  │  └─ font/                # 폰트 리소스
  │  ├─ js/
+ │  │  ├─ layout.js
+ │  │  ├─ tooltip.js
+ │  │  ├─ dropdown.js
+ │  │  ├─ dropdown-choice.js
+ │  │  ├─ loader.js
+ │  │  ├─ modal-popup.js
  │  └─ img/
  │     └─ icon/                # 아이콘만 보관
  ├─ common/
