@@ -1,11 +1,22 @@
-/* 모달 팝업 
-  - 트리거: [data-modal-target="#modal-id"]
-  - 닫기 버튼: [data-modal-close]
-  - 모달: [data-modal]
-    · data-modal-backdrop-close="false"  → 백드롭/오버레이 클릭해도 닫히지 않음 (기본 true)
-    · data-modal-esc="false"             → ESC로 닫기 비활성 (기본 true)
-  - 기능: ESC 닫기, 백드롭/오버레이 클릭 닫기(옵션), 포커스 트랩/반환, 중첩 모달, 스크롤 잠금
-*/
+/*
+ * ============================================================================
+ * 모달 팝업
+ * 1) 트리거  
+ *    - data-modal-target="#modal-id"
+ * 2) 닫기 버튼  
+ *    - data-modal-close
+ * 3) 모달 속성  
+ *    - data-modal  
+ *      · data-modal-backdrop-close="false" → 백드롭 클릭 시 닫힘 비활성 (기본 true)  
+ *      · data-modal-esc="false" → ESC 닫기 비활성 (기본 true)
+ * 4) 기능  
+ *    - ESC 닫기 처리  
+ *    - 백드롭/오버레이 클릭 닫기(옵션)  
+ *    - 포커스 트랩 및 반환  
+ *    - 중첩 모달 관리  
+ *    - 스크롤 잠금 처리
+ * ============================================================================
+ */
 
 
 (function () {

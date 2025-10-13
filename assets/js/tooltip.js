@@ -1,14 +1,23 @@
-/* 툴팁
-  - 대상 버튼: [class="tip-toggle"]
-    · data-tip-pos="bottom"    → 위치 (기본 right, bottom 지원)
-    · data-tip-offset-x="숫자" → X축 오프셋
-    · data-tip-offset-y="숫자" → Y축 오프셋
-    · data-tip-open="문구"     → 열렸을 때 문구
-    · data-tip-closed="문구"   → 닫혔을 때 문구 (없으면 open 문구로 대체)
-    · data-tip-when="mini"     → body.is-nav-mini 상태에서만 노출
-    · data-icon-open / data-icon-closed → 아이콘 교체 클래스
-  - 기능: hover/focus 시 툴팁 표시, click 시 상태 전환 및 aria-label 갱신, 네이티브 title 제거
-*/
+/*
+ * ============================================================================
+ * 툴팁
+ * 1) 대상  
+ *    - .tip-toggle
+ * 2) 옵션  
+ *    - data-tip-pos="bottom" → 위치 지정 (기본 right, bottom 지원)  
+ *    - data-tip-offset-x="숫자" → X축 오프셋  
+ *    - data-tip-offset-y="숫자" → Y축 오프셋  
+ *    - data-tip-open="문구" → 열림 상태 문구  
+ *    - data-tip-closed="문구" → 닫힘 상태 문구 (없을 시 open 문구 사용)  
+ *    - data-tip-when="mini" → body.is-nav-mini 상태에서만 표시  
+ *    - data-icon-open / data-icon-closed → 아이콘 교체 클래스
+ * 3) 기능  
+ *    - hover / focus 시 툴팁 표시  
+ *    - click 시 상태 전환 및 aria-label 갱신  
+ *    - 기본 title 속성 제거
+ * ============================================================================
+ */
+
 
 (function () {
   'use strict';
