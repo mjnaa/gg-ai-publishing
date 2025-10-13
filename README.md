@@ -32,20 +32,24 @@ publishing/
  │  │  ├─ layout.css
  │  │  ├─ components.css
  │  │  ├─ mask_datauri.css
- │  │  └─ font/                # 폰트 리소스
+ │  │  └─ font/                     # 폰트 리소스
  │  ├─ js/
- │  │  ├─ layout.js
- │  │  ├─ tooltip.js
- │  │  ├─ dropdown.js
- │  │  ├─ dropdown-choice.js
- │  │  ├─ loader.js
- │  │  ├─ modal-popup.js
+ │  │  ├─ layout.js                 # 공통 레이아웃
+ │  │  ├─ tooltip.js                # 툴팁
+ │  │  ├─ dropdown.js               # 드롭다운 메뉴 (다중옵션목록)
+ │  │  ├─ dropdown-choice.js        # 드롭다운 메뉴 (단일선택메뉴)
+ │  │  ├─ loader.js                 # 풀스크린 로딩
+ │  │  ├─ modal-popup.js            # 모달 팝업
+ │  │  ├─ chat-smart.js             # 스마트 도우미
+ │  │  ├─ chat-file-uploader.js     # 파일 첨부 칩
+ │  │  ├─ chat-textarea.js          # 채팅 입력창 자동 높이
+ │  │  ├─ chat-bubble-actions.js    # 채팅 버블 액션 제어
  │  └─ img/
- │     └─ icon/                # 아이콘만 보관
+ │     └─ icon/                     # 아이콘만 보관
  ├─ common/
- │  ├─ 00-layout.html          # 공통 레이아웃
- │  ├─ 01-popup.html           # 공통 팝업
- │  └─ 02-loading.html         # 풀스크린 로딩
+ │  ├─ 00-layout.html               # 공통 레이아웃
+ │  ├─ 01-popup.html                # 공통 팝업
+ │  └─ 02-loading.html              # 풀스크린 로딩
  ├─ work/
  │  ├─ 10-chat-new.html
  │  ├─ 11-chat-bubble.html
@@ -77,7 +81,7 @@ publishing/
  │  ├─ 15-chat-answer--code-quote.html
  │  ├─ 16-chat-popup.html
  │  └─ 20-folder-main.html
- └─ pagelist.html                 # 통합 리스트 허브
+ └─ pagelist.html                    # 통합 리스트 허브
 ```
 
 ---

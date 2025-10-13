@@ -19,20 +19,11 @@
 </head>
 
 <body>
-
-  <!-- 풀스크린 로딩 -->
-  <div id="appLoader" class="app-loader" hidden aria-hidden="true" aria-live="polite">
-    <div class="uiverse-loader" aria-hidden="true"></div>
-    <p class="loader-text" role="status">처리 중입니다.</p>
-  </div>
-
   <div class="viewport-scale">
     <div class="viewport-inner">
     <div class="layout-overlay" aria-hidden="true"></div>
     
     <div class="layout">
-
-
 
       <!------ 좌측 네비게이션 ------>
       <aside class="layout-nav" aria-label="사이드 네비게이션바">
@@ -156,7 +147,7 @@
         <div class="bottom-area">
           <ul class="llm-list">
             <!-- 현재 서비스에 li class="active" -->
-            <li class="llm-item active tip-toggle" data-tip-pos="right" data-tip-when="mini" aria-expanded="true" data-tip-open="AI 업무지원">
+            <li class="llm-item tip-toggle" data-tip-pos="right" data-tip-when="mini" aria-expanded="true" data-tip-open="AI 업무지원">
               <a href="#">
                 <span class="icon20 icon--llm-01 icon--basic"></span>
                 <span class="label">AI 업무지원</span>
@@ -168,7 +159,7 @@
                 <span class="label">AI 법률</span>
               </a>
             </li>
-            <li class="llm-item tip-toggle" data-tip-pos="right" data-tip-when="mini" aria-expanded="true" data-tip-open="AI 행정심판">
+            <li class="llm-item active tip-toggle" data-tip-pos="right" data-tip-when="mini" aria-expanded="true" data-tip-open="AI 행정심판">
               <a href="#">
                 <span class="icon20 icon--llm-03 icon--basic"></span>
                 <span class="label">AI 행정심판</span>
@@ -203,14 +194,14 @@
             <div class="dd-choice" data-choice="llm">
               <button type="button" class="dd-choice-toggle" aria-haspopup="listbox" aria-expanded="false">
                 <div class="dd-title">
-                  <span class="icon20 icon--llm-01 icon--primary"></span>
-                  <span class="txt">AI 업무지원</span>
+                  <span class="icon20 icon--llm-03 icon--primary"></span>
+                  <span class="txt">AI 행정심판</span>
                 </div>
                 <span class="icon22 icon--arrow-down icon--basic"></span>
               </button>
               <ul class="dd-choice-list left" role="listbox">
                 <li>
-                  <button type="button" class="dd-choice-item active" role="option">
+                  <button type="button" class="dd-choice-item" role="option">
                     <div class="dd-name">
                       <span class="icon20 icon--llm-01 icon--basic"></span>
                       <span class="txt">AI 업무지원</span>
@@ -228,7 +219,7 @@
                   </button>
                 </li>
                 <li>
-                  <button type="button" class="dd-choice-item" role="option">
+                  <button type="button" class="dd-choice-item active" role="option">
                     <div class="dd-name">
                       <span class="icon20 icon--llm-03 icon--basic"></span>
                       <span class="txt">AI 행정심판</span>
@@ -248,7 +239,7 @@
           <div class="header-actions">
 
             <!-- 폰트크기 설정 드롭다운메뉴(단일선택메뉴ver) -->
-            <div class="dd-choice" data-choice="ui-scale">
+            <div class="dd-choice">
               <button type="button" class="dd-choice-toggle btn-icon-normal-m" aria-haspopup="listbox" aria-expanded="false" aria-label="폰트크기 설정">
                 <span class="icon20 icon--txtsize icon--basic"></span>
               </button>
@@ -299,14 +290,87 @@
 
 
 
-        <!------ 콘텐츠 영역 ------>
+        <!------ 콘텐츠(채팅) 영역 ------>
         <section class="layout-main-body" aria-label="채팅/콘텐츠">
-          <p>채팅/콘텐츠가 들어갑니다.</p>
+          <div class="new-chat">
+            <h2>안녕하세요. 오늘은 무엇을 도와드릴까요?</h2>
+            <div class="start-area">
+              <!-- 채팅창 -->
+              <form action="" method="post" enctype="multipart/form-data">
+                <div class="chat-l">
+                  <div class="input-area">
+                    <!-- 첨부파일 목록 -->
+                    <div class="file-list">
+                      <!--
+                        ※ 파일 첨부 목록 영역 (chat-file-uploader.js)
+                        - 일반 첨부파일 (.file-item)
+                          <div class="file-item">
+                            <div class="file-thumb file-thumb-hwp">
+                              <span>HWPX</span> 
+                            </div>
+                            <div class="file-info">
+                              <p class="file-name">파일명.확장자</p>
+                              <span class="file-type">한글문서</span>
+                            </div>
+                            <button class="file-remove btn-icon-normal-m" type="button" aria-label="첨부파일 삭제">
+                              <span class="icon20 icon--close icon--basic"></span>
+                            </button>
+                          </div>
+
+                        - 이미지 첨부파일 (.file-item-image)
+                          <div class="file-item-image">
+                            <img src="첨부 이미지 경로" alt="첨부 이미지">
+                            <button class="file-remove btn-icon-normal-m" type="button" aria-label="첨부파일 삭제">
+                              <span class="icon20 icon--close icon--basic"></span>
+                            </button>
+                          </div>
+                      -->
+                    </div>
+
+                    <div class="chat-input-wrap">
+                      <!-- 채팅 입력 : 입력시 자동 높이 조절 (chat-textarea.js) -->
+                      <textarea id="chat-input" class="chat-textarea" name="comment" aria-label="채팅 입력창" placeholder="법률 업무에 대해 물어보세요." rows="1" maxlength="2000" minlength="1" required></textarea>
+                    </div>
+                  </div>
+                  
+                  <!-- 버튼 -->
+                  <div class="btn-area">
+                    <div class="left-area">
+                      <!-- 파일첨부 버튼 : 실제 file input은 화면에서 숨기고, 버튼으로 트리거 -->
+                      <label for="file-upload" class="btn-icon-solid-m tip-toggle" type="button" aria-label="파일첨부" data-tip-pos="bottom" aria-expanded="true" data-tip-open="파일추가">
+                        <span class="icon20 icon--add icon--basic"></span>
+                      </label>
+                      <input type="file" id="file-upload" name="attachment" style="display:none;">
+
+                      <!-- 심의안 버튼 -->
+                      <button class="btn-solid-gray-m" type="button" aria-label="심의안">
+                        <span class="icon20 icon--library-appeal icon--basic"></span>
+                        <span>심의안</span>
+                      </button>
+
+                    </div>
+                    <div class="right-area">
+                      <!-- 텍스트 카운터 -->
+                      <span class="textarea-counter">0/2000</span>
+
+                      <!-- 전송 버튼-->
+                      <button class="btn-icon-solid-m" type="submit" aria-label="전송">
+                        <span class="icon20 icon--near icon--basic"></span>
+                      </button>
+                    </div>
+                  </div>
+
+                </div>
+              </form>
+
+            </div>
+          </div>
         </section>
 
 
-        
 
+
+        
       </main>
 
       <!------ 우측 보조패널 ------>
@@ -339,7 +403,10 @@
         <!------ 하단 버튼 영역 ------>
         <div class="bottom-area">
           <div class="button-area">
-            <button class="btn-solid-primary-l" type="button">버튼</button>
+            <button class="btn-solid-primary-l" type="button">
+              <span class="icon20 icon--add icon--btn-solid"></span>
+              <span class="label">버튼</span>
+            </button>
           </div>
         </div>
       </aside>
@@ -535,12 +602,16 @@
   </div>
 
 
-  <!-- JS -->
+  <!-- 공통 JS -->
   <script src="../assets/js/layout.js"></script>
   <script src="../assets/js/tooltip.js"></script>
   <script src="../assets/js/dropdown.js"></script>
   <script src="../assets/js/dropdown-choice.js"></script>
-  <script src="../assets/js/loader.js"></script>
+
+  <!-- 페이지 전용 JS -->
+  <script src="../assets/js/chat-file-uploader.js"></script>
+  <script src="../assets/js/chat-textarea.js"></script>
+
 
 </body>
 </html>

@@ -118,17 +118,17 @@ MODE
   --color-text-subtle: var(--c-gray-70);
   --color-text-muted: var(--c-gray-50);
   --color-text-inverse: var(--c-gray-5);
-  --color-text-btn-soild: var(--c-gray-5);
+  --color-text-btn-solid: var(--c-gray-5);
   --color-text-strong: var(--c-gray-95);
   --color-text-disabled: var(--c-gray-30);
   --color-text-danger: var(--c-red-80);
   --color-text-warning: var(--c-orange-70);
   --color-text-success: var(--c-green-80);
   --color-text-information: var(--c-blue-70);
-  --color-button-soild-primary: var(--c-gray-90);
-  --color-button-soild-primary-hover: var(--c-gray-95);
-  --color-button-soild-gray: var(--c-gray-5);
-  --color-button-soild-gray-hover: var(--c-gray-5);
+  --color-button-solid-primary: var(--c-gray-90);
+  --color-button-solid-primary-hover: var(--c-gray-95);
+  --color-button-solid-gray: var(--c-gray-5);
+  --color-button-solid-gray-hover: var(--c-gray-5);
   --color-button-outline-gray: var(--c-gray-10);
   --color-button-outline-gray-bg: var(--c-gray-0);
   --color-button-outline-gray-hover: var(--c-gray-10);
@@ -148,7 +148,7 @@ MODE
   --color-icon-basic: var(--c-gray-50);
   --color-icon-nav: var(--c-gray-50);
   --color-icon-inverse: var(--c-gray-10);
-  --color-icon-btn-soild: var(--c-gray-10);
+  --color-icon-btn-solid: var(--c-gray-5);
   --color-icon-disabled: var(--c-gray-30);
   --color-icon-primary: var(--c-gray-90);
   --color-icon-danger: var(--c-red-80);
@@ -192,17 +192,17 @@ MODE
   --color-text-subtle: var(--c-gray-30);
   --color-text-muted: var(--c-gray-50);
   --color-text-inverse: var(--c-gray-95);
-  --color-text-btn-soild: var(--c-gray-5);
+  --color-text-btn-solid: var(--c-gray-5);
   --color-text-strong: var(--c-gray-5);
   --color-text-disabled: var(--c-gray-60);
   --color-text-danger: var(--c-red-40);
   --color-text-warning: var(--c-orange-30);
   --color-text-success: var(--c-green-30);
   --color-text-information: var(--c-blue-30);
-  --color-button-soild-primary: var(--c-gray-80);
-  --color-button-soild-primary-hover: var(--c-gray-80);
-  --color-button-soild-gray: var(--c-gray-95);
-  --color-button-soild-gray-hover: var(--c-gray-95);
+  --color-button-solid-primary: var(--c-gray-80);
+  --color-button-solid-primary-hover: var(--c-gray-80);
+  --color-button-solid-gray: var(--c-gray-95);
+  --color-button-solid-gray-hover: var(--c-gray-95);
   --color-button-outline-gray: var(--c-gray-70);
   --color-button-outline-gray-bg: var(--c-gray-90);
   --color-button-outline-gray-hover: var(--c-gray-70);
@@ -222,7 +222,7 @@ MODE
   --color-icon-basic: var(--c-gray-40);
   --color-icon-nav: var(--c-gray-40);
   --color-icon-inverse: var(--c-gray-90);
-  --color-icon-btn-soild: var(--c-gray-10);
+  --color-icon-btn-solid: var(--c-gray-10);
   --color-icon-disabled: var(--c-gray-60);
   --color-icon-primary: var(--c-gray-10);
   --color-icon-danger: var(--c-red-40);
@@ -266,17 +266,17 @@ MODE
   --color-text-subtle: var(--c-gray-70);
   --color-text-muted: var(--c-gray-50);
   --color-text-inverse: var(--c-gray-5);
-  --color-text-btn-soild: var(--c-gray-5);
+  --color-text-btn-solid: var(--c-gray-5);
   --color-text-strong: var(--c-gray-95);
   --color-text-disabled: var(--c-gray-30);
   --color-text-danger: var(--c-red-80);
   --color-text-warning: var(--c-orange-70);
   --color-text-success: var(--c-green-80);
   --color-text-information: var(--c-blue-70);
-  --color-button-soild-primary: var(--c-gray-90);
-  --color-button-soild-primary-hover: var(--c-gray-80);
-  --color-button-soild-gray: var(--c-gray-5);
-  --color-button-soild-gray-hover: var(--c-gray-5);
+  --color-button-solid-primary: var(--c-gray-90);
+  --color-button-solid-primary-hover: var(--c-gray-80);
+  --color-button-solid-gray: var(--c-gray-5);
+  --color-button-solid-gray-hover: var(--c-gray-5);
   --color-button-outline-gray: var(--c-gray-10);
   --color-button-outline-gray-bg: var(--c-gray-0);
   --color-button-outline-gray-hover: var(--c-gray-10);
@@ -296,7 +296,7 @@ MODE
   --color-icon-basic: var(--c-gray-50);
   --color-icon-nav: var(--c-gray-50);
   --color-icon-inverse: var(--c-gray-10);
-  --color-icon-btn-soild: var(--c-gray-10);
+  --color-icon-btn-solid: var(--c-gray-10);
   --color-icon-disabled: var(--c-gray-30);
   --color-icon-primary: var(--c-gray-90);
   --color-icon-danger: var(--c-red-80);
@@ -324,6 +324,7 @@ MODE
 .icon--basic     { --icon-color: var(--color-icon-basic); }
 .icon--nav       { --icon-color: var(--color-icon-nav); }
 .icon--inverse   { --icon-color: var(--color-icon-inverse); }
+.icon--btn-solid { --icon-color: var(--color-icon-btn-solid); }
 .icon--disabled  { --icon-color: var(--color-icon-disabled); }
 .icon--primary   { --icon-color: var(--color-icon-primary); }
 .icon--danger    { --icon-color: var(--color-icon-danger); }
