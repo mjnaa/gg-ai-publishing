@@ -360,73 +360,45 @@
                   <div class="msg-row">
                     <div class="msg-main">
                       
-                      <!-- AI 답변 : 리스트 유형 데모 -->
+                      <!-- AI 답변 : 코드블록/인용문 유형 데모 -->
                       <div class="msg-bubble">
                         <p class="bold">20초동안 생각함 :</p>
-                        <p>리스트 유형 답변입니다.</p>
+                        <p>코드블록/인용문 유형 답변입니다.</p>
                         <hr class="divider" />
 
-                        <!-- 1) 순서 없는 리스트 -->
-                        <h4>순서 없는 리스트</h4>
-                        <ul>
-                          <li>
-                            <p>첫 번째 항목 </p>
-                          </li>
-                          <li>
-                            <p>두 번째 항목</p>
-                          </li>
-                          <li>
-                            <p>세 번째 항목</p>
-                          </li>
-                        </ul>
+                        <h4>코드블록 예시</h4>
+                        <!-- 코드블록 -->
+                        <div class="code-block" aria-label="코드블록">
+                          <div class="code-header">
+                            <span class="code-lang">css</span>
+                            <button type="button" class="btn-msg tip-toggle" aria-label="코드 복사" data-tip-pos="bottom" aria-expanded="true" data-tip-open="코드 복사">
+                              <span class="icon18 icon--select icon--basic"></span>
+                            </button>
+                          </div>
+
+                          <div class="code-body">
+<code>/* Caption */
+.caption1 { font-size: 1.4rem; line-height: 150%; letter-spacing: 0; }
+.caption2 { font-size: 1.3rem; line-height: 150%; letter-spacing: 0; }</code>
+                          </div>
+                        </div>
+                        <p>텍스트 <span class="txt-inline-code">인라인 코드</span>, <span class="txt-inline-code">inline code</span> 예시 입니다.</p>
+
 
                         <hr class="divider" />
-                        
-                        <!-- 2) 순서 있는 리스트 -->
-                        <h4>순서 있는 리스트</h4>
-                        <ol>
-                          <li>
-                            <p>첫 번째 항목</p>
-                          </li>
-                          <li>
-                            <p>두 번째 항목</p>
-                          </li>
-                          <li>
-                            <p>세 번째 항목</p>
-                          </li>
-                        </ol>
-                        
-                        <hr class="divider" />
-                        
-                        <!-- 3) 혼합 리스트 -->
-                        <h4>혼합 리스트</h4>
-                        <ol>
-                          <li>
-                            <p class="bold">첫 번째 항목</p>
-                            <ul>
-                              <li>
-                                <p>첫 번째 항목</p>
-                              </li>
-                              <li>
-                                <p>두 번째 항목</p>
-                              </li>
-                            </ul>
-                          </li>
-                          <li>
-                            <p class="bold">두 번째 항목</p>
-                            <ul>
-                              <li>
-                                <p>첫 번째 항목</p>
-                              </li>
-                              <li>
-                                <p>두 번째 항목</p>
-                              </li>
-                            </ul>
-                          </li>
-                        </ol>
 
+
+                        <h4>인용문 예시</h4>
+                        <!-- 인용문 -->
+                        <div class="quote-block" aria-label="인용문">
+                          <div class="quote-content">
+                            <p>인용문 예시 텍스트 입니다. 인용문 예시 텍스트 입니다. 인용문 예시 텍스트 입니다. 인용문 예시 텍스트 입니다. 인용문 예시 텍스트 입니다. 인용문 예시 텍스트 입니다. 인용문 예시 텍스트 입니다. 인용문 예시 텍스트 입니다.</p>
+                          </div>
+                        </div>
+
+                        
                       </div>
-
+                      
 
                       <!-- 액션 버튼 영역 -->
                       <div class="msg-actions">

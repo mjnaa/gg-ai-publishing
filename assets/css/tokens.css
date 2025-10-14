@@ -104,6 +104,7 @@ MODE
   --color-background-scroll-bar: var(--c-gray-30);
   --color-background-information: var(--c-blue-5);
   --color-background-dim: var(--c-gray-10);
+  --color-background-code: var(--c-gray-10);
   --color-border-strong: var(--c-gray-30);
   --color-border-basic: var(--c-gray-10);
   --color-border-subtle: var(--c-gray-5);
@@ -178,6 +179,7 @@ MODE
   --color-background-scroll-bar: var(--c-gray-50);
   --color-background-information: var(--c-gray-80);
   --color-background-dim: var(--c-gray-80);
+  --color-background-code: var(--c-gray-90);
   --color-border-strong: var(--c-gray-70);
   --color-border-basic: var(--c-gray-90);
   --color-border-subtle: var(--c-gray-95);
@@ -252,6 +254,7 @@ MODE
   --color-background-scroll-bar: var(--c-gray-30);
   --color-background-information: var(--c-blue-5);
   --color-background-dim: var(--c-gray-10);
+  --color-background-code: var(--c-gray-10);
   --color-border-strong: var(--c-gray-30);
   --color-border-basic: var(--c-gray-10);
   --color-border-subtle: var(--c-gray-5);

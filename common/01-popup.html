@@ -141,7 +141,7 @@
         </div>
         <div class="modal-body">
           <p>
-            <strong>채팅명</strong>이 삭제됩니다.
+            <strong>채팅명</strong>이(가) 삭제됩니다.
           </p>
         </div>
         <div class="modal-foot">
@@ -216,7 +216,7 @@
                 </button>
                 <ul class="dd-choice-list left" role="listbox">
                   <li>
-                    <button type="button" onclick="" class="dd-choice-item active" role="option">
+                    <button type="button" onclick="" class="dd-choice-item active" role="option" data-theme="auto">
                       <div class="dd-name">
                     <span class="txt">시스템</span>
                       </div>
@@ -224,21 +224,29 @@
                     </button>
                   </li>
                   <li>
-                    <button type="button" class="dd-choice-item" role="option">
+                    <button type="button" class="dd-choice-item" role="option" data-theme="dark">
                       <div class="dd-name">
-                    <span class="txt">다크모드</span>
+                        <span class="txt">다크모드</span>
                       </div>
                       <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
                     </button>
                   </li>
                   <li>
-                    <button type="button" class="dd-choice-item" role="option">
+                    <button type="button" class="dd-choice-item" role="option" data-theme="light">
                       <div class="dd-name">
-                    <span class="txt">라이트모드</span>
+                        <span class="txt">라이트모드</span>
                       </div>
                       <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
                     </button>
-                  </li>                  
+                  </li>   
+                  <li>
+                    <button type="button" class="dd-choice-item" role="option" data-theme="light">
+                      <div class="dd-name">
+                        <span class="txt">경기모드</span>
+                      </div>
+                      <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
+                    </button>
+                  </li>                
                 </ul>
               </div>
             </li>
@@ -335,6 +343,7 @@
   <script src="../assets/js/layout.js"></script>
   <script src="../assets/js/dropdown-choice.js"></script>
   <script src="../assets/js/modal-popup.js"></script>
+  <script src="../assets/js/theme-toggle.js"></script>
 
 </body>
 </html>

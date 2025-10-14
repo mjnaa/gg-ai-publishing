@@ -54,6 +54,9 @@ body.is-nav-mini .layout {
   -ms-user-select: none;
   -webkit-user-drag: none; 
 }
+body.is-nav-mini .layout-nav {
+  cursor: pointer;
+}
 .layout-nav .top-area {
   padding: 12px;
   display: flex;
@@ -459,6 +462,17 @@ body.is-nav-mini .layout-nav .info-area:hover{
   padding: 0 0 100px 0;
   width: 100%;
 }
+.new-chat.work {
+  margin-top: inherit;
+  margin-bottom: inherit;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  gap: 26px;
+  padding: 100px 0 100px 0;
+  width: 100%;
+}
 .new-chat .start-area{
   display: flex;
   justify-content: center;
@@ -542,7 +556,7 @@ body.is-nav-mini .layout-nav .info-area:hover{
   margin: 12px 0px 12px 5px;
 }
 .chat-thread .msg:last-of-type {
-  margin-bottom: 100px;
+  margin-bottom: 80px;
 }
 .chat-thread .msg-row { 
   display: flex; 
@@ -662,23 +676,6 @@ body.is-nav-mini .layout-nav .info-area:hover{
   max-width: min(100%, 782px);
   padding-left: 4px;
   width: 100%;
-}
-.msg.is-bot .msg-bubble .bold {
-  font-weight: 600;
-}
-.msg.is-bot .msg-bubble .divider {
-  display: block;
-  width: 100%;
-  height: 1px;
-  border: none;
-  background-color: var(--color-border-basic);
-  margin: 20px 0;
-}
-.msg.is-bot .msg-bubble p {
-  margin-bottom: 0.6em;
-}
-.msg.is-bot .msg-bubble p:last-child {
-  margin-bottom: 0;
 }
 
 /* AI 버블 로딩 */
@@ -864,6 +861,9 @@ body.is-nav-mini .layout-nav .info-area:hover{
   gap: 10px;
   flex: 1 1 240px; 
 }
+.chat-smart .smart-item.hidden {
+  display: none;
+}
 
 
 /* ======= 우측 패널: 기본 닫힘 ======= */
@@ -945,6 +945,8 @@ body.is-nav-mini .layout-nav .info-area:hover{
     display: none;
   }
 }
+
+
 
 
 /* ======= 태블릿 : 미니가 디폴트, 우측 패널 숨김 ======= */

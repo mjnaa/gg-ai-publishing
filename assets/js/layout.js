@@ -167,10 +167,22 @@
     // 처리: 오버레이 닫기 / 폴더 토글 / 로고 확장 / 네비 토글 / 햄버거 / 보조패널(도킹/플로팅/닫기)
     const t = e.target.closest('button, a');
 
+    // 오버레이 클릭 → 닫기
     if (e.target.closest && e.target.closest('.layout-overlay')) {
       closeMobileNav();
       closeAside();
       return;
+    }
+
+    // 미니 네비에서 빈 공간 클릭하면 확장
+    // 인터랙티브 요소(button, a, form 요소, [role], [data-dd], [data-choice])는 제외
+    if (($body.classList.contains('is-nav-mini')) && (isDesktop() || isTablet())) {
+      const inNav = e.target.closest('.layout-nav'); 
+      const onInteractive = e.target.closest('button, a, input, select, textarea, [role], [data-dd], [data-choice]');
+      if (inNav && !onInteractive) {
+        $body.classList.remove('is-nav-mini');
+        return;
+      }
     }
 
     if (!t) return;
@@ -236,6 +248,7 @@
       return;
     }
   });
+
 
   /* ===== UI 스케일 제어 (zoom 대체) ===== */
   function setUiScale(scale) {

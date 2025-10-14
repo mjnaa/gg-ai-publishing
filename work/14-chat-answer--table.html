@@ -360,73 +360,53 @@
                   <div class="msg-row">
                     <div class="msg-main">
                       
-                      <!-- AI 답변 : 리스트 유형 데모 -->
+                      <!-- AI 답변 : 테이블 유형 데모 -->
                       <div class="msg-bubble">
                         <p class="bold">20초동안 생각함 :</p>
-                        <p>리스트 유형 답변입니다.</p>
+                        <p>테이블 유형 답변입니다.</p>
                         <hr class="divider" />
 
-                        <!-- 1) 순서 없는 리스트 -->
-                        <h4>순서 없는 리스트</h4>
-                        <ul>
-                          <li>
-                            <p>첫 번째 항목 </p>
-                          </li>
-                          <li>
-                            <p>두 번째 항목</p>
-                          </li>
-                          <li>
-                            <p>세 번째 항목</p>
-                          </li>
-                        </ul>
-
-                        <hr class="divider" />
+                        <h4>테이블 예시</h4>
+                        <!-------------------------------------------
+                        1. 헤더는 줄 바꿈 방지
+                        2. 특정 셀만 줄바꿈 방지 하고 싶을 때 <class="nowrap">
+                        --------------------------------------------->
+                        <div class="table-wrap">
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>구분</th>
+                                <th>주요 내용</th>
+                                <th>비고</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td class="nowrap">필요성 검토</td>
+                                <td>법령 개정, 행정 수요, 정책 변화 등에 따른 조례·규칙 제·개정 필요성 검토 조례·규칙 제·개정 필요성 검토</td>
+                                <td>관련 법령·상위 규정 확인</td>
+                              </tr>
+                              <tr>
+                                <td class="nowrap">입안 계획 수립</td>
+                                <td>제정·개정 목적, 주요 내용, 일정, 영향 분석</td>
+                                <td>규제 영향평가, 비용·편익 검토 포함</td>
+                              </tr>
+                              <tr>
+                                <td class="nowrap">관계부서 협의</td>
+                                <td>타 부서 및 유관기관 의견 수렴</td>
+                                <td>이해관계 조정</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          
+                          <!-- 테이블 복사 버튼-->
+                          <button type="button" class="btn-msg tip-toggle" aria-label="표 복사" data-tip-pos="bottom" aria-expanded="true" data-tip-open="표 복사">
+                            <span class="icon18 icon--select icon--basic"></span>
+                          </button>
+                        </div>
                         
-                        <!-- 2) 순서 있는 리스트 -->
-                        <h4>순서 있는 리스트</h4>
-                        <ol>
-                          <li>
-                            <p>첫 번째 항목</p>
-                          </li>
-                          <li>
-                            <p>두 번째 항목</p>
-                          </li>
-                          <li>
-                            <p>세 번째 항목</p>
-                          </li>
-                        </ol>
-                        
-                        <hr class="divider" />
-                        
-                        <!-- 3) 혼합 리스트 -->
-                        <h4>혼합 리스트</h4>
-                        <ol>
-                          <li>
-                            <p class="bold">첫 번째 항목</p>
-                            <ul>
-                              <li>
-                                <p>첫 번째 항목</p>
-                              </li>
-                              <li>
-                                <p>두 번째 항목</p>
-                              </li>
-                            </ul>
-                          </li>
-                          <li>
-                            <p class="bold">두 번째 항목</p>
-                            <ul>
-                              <li>
-                                <p>첫 번째 항목</p>
-                              </li>
-                              <li>
-                                <p>두 번째 항목</p>
-                              </li>
-                            </ul>
-                          </li>
-                        </ol>
-
                       </div>
-
+                      
 
                       <!-- 액션 버튼 영역 -->
                       <div class="msg-actions">

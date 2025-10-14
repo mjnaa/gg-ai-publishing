@@ -40,10 +40,12 @@ publishing/
  │  │  ├─ dropdown-choice.js        # 드롭다운 메뉴 (단일선택메뉴)
  │  │  ├─ loader.js                 # 풀스크린 로딩
  │  │  ├─ modal-popup.js            # 모달 팝업
+ │  │  ├─ theme-toggle.js           # 테마 변경
+ │  │  ├─ file-uploader.js          # 파일 업로드
  │  │  ├─ chat-smart.js             # 스마트 도우미
  │  │  ├─ chat-file-uploader.js     # 파일 첨부 칩
  │  │  ├─ chat-textarea.js          # 채팅 입력창 자동 높이
- │  │  ├─ chat-bubble-actions.js    # 채팅 버블 액션 제어
+ │  │  └─ chat-bubble-actions.js    # 채팅 버블 액션 제어
  │  └─ img/
  │     └─ icon/                     # 아이콘만 보관
  ├─ common/
