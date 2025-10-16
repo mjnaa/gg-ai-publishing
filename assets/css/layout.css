@@ -215,22 +215,64 @@ body.is-nav-mini .layout-nav {
   display: flex;
   align-items: center;
 }
-.layout-nav .folder-head .btn-more,
-.layout-nav .chat-item .btn-more,
-.layout-nav .chat-subitem .btn-more {
+
+/* 채팅 더보기 버튼 */
+.layout-nav .chat-item .btn-more .icon--keep,
+.layout-nav .chat-subitem .btn-more .icon--keep {
+  display: none;
+}
+.layout-nav .chat-item .btn-more .icon--more-horiz,
+.layout-nav .chat-subitem .btn-more .icon--more-horiz {
+  display: none;
+}
+
+/* 채팅 상단고정 상태일 때 핀아이콘 노출 (.is-pinned) */
+.layout-nav .chat-item.is-pinned .btn-more .icon--keep,
+.layout-nav .chat-subitem.is-pinned .btn-more .icon--keep {
+  display: inline-block;
+}
+
+/* 마우스 오버 시 핀아이콘 숨기고 더보기아이콘 노출*/
+.layout-nav .chat-item.is-pinned:hover .btn-more .icon--keep,
+.layout-nav .chat-subitem.is-pinned:hover .btn-more .icon--keep {
+  display: none;
+}
+.layout-nav .chat-item:hover .btn-more .icon--more-horiz,
+.layout-nav .chat-subitem:hover .btn-more .icon--more-horiz {
+  display: inline-block;
+}
+
+/* 더보기 메뉴 오픈 시 핀아이콘 숨김 */
+.layout-nav .chat-item .btn-more[aria-expanded="true"] .icon--keep, 
+.layout-nav .chat-subitem .btn-more[aria-expanded="true"] .icon--keep {
+  display: none;
+}
+.layout-nav .chat-item.is-pinned .btn-more[aria-expanded="true"] .icon--keep, 
+.layout-nav .chat-subitem.is-pinned .btn-more[aria-expanded="true"] .icon--keep {
+  display: none;
+}
+
+/* 더보기 메뉴 오픈 시 더보기아이콘 노출 */
+.layout-nav .chat-item .btn-more[aria-expanded="true"] .icon--more-horiz, 
+.layout-nav .chat-subitem .btn-more[aria-expanded="true"] .icon--more-horiz {
+  display: inline-block;
+}
+
+
+/* 폴더 더보기 버튼 */
+.layout-nav .folder-head .btn-more {
   display: flex;
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
   transition: opacity .15s ease;
 }
-.layout-nav .folder-head:hover .btn-more,
-.layout-nav .chat-item:hover .btn-more,
-.layout-nav .chat-subitem:hover .btn-more {
+.layout-nav .folder-head:hover .btn-more {
   visibility: visible;
   opacity: 1;
   pointer-events: auto;
 }
+
 li.is-dd-open > .btn-more {
   opacity: 1 !important;
   visibility: visible !important;
