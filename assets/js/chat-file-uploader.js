@@ -20,126 +20,135 @@
 (function () {
   'use strict';
 
-  var input = document.getElementById('file-upload');
-  if (!input) return;
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 
-  var form = input.closest('form');
-  if (!form) return;
+  function init() {
 
-  var fileListEl = form.querySelector('.file-list');
-  if (!fileListEl) return;
+    var input = document.getElementById('file-upload');
+    if (!input) return;
 
-  // 내부 상태 (미리보기용) 
-  var filesState = [];
+    var form = input.closest('form');
+    if (!form) return;
 
-  // 확장자 → 썸네일 클래스 매핑
-  var EXT_TO_THUMB = {
-    // 주요 확장자 
-    'hwp': 'file-thumb-hwp', 'hwpx': 'file-thumb-hwp',
-    'doc': 'file-thumb-doc', 'docx': 'file-thumb-doc',
-    'xls': 'file-thumb-xls', 'xlsx': 'file-thumb-xls',
-    'ppt': 'file-thumb-ppt', 'pptx': 'file-thumb-ppt',
-    'pdf': 'file-thumb-pdf'
-  };
+    var fileListEl = form.querySelector('.file-list');
+    if (!fileListEl) return;
 
-  // 확장자 → 타입 라벨 매핑
-  var EXT_TO_LABEL = {
-    'hwp': '한글문서', 'hwpx': '한글문서',
-    'doc': 'Word 문서', 'docx': 'Word 문서',
-    'xls': 'Excel 문서', 'xlsx': 'Excel 문서',
-    'ppt': 'PPT 문서',  'pptx': 'PPT 문서',
-    'pdf': 'PDF',
-    'txt': '텍스트',
-    'zip': '압축파일',
-    'png': '이미지', 'jpg': '이미지', 'jpeg': '이미지', 'gif': '이미지', 'webp': '이미지', 'svg': '이미지'
-  };
+    // 내부 상태 (미리보기용) 
+    var filesState = [];
 
-  // 파일 선택 이벤트
-  input.addEventListener('change', function (e) {
-    var list = Array.from(e.target.files || []);
-    if (!list.length) return;
+    // 확장자 → 썸네일 클래스 매핑
+    var EXT_TO_THUMB = {
+      // 주요 확장자 
+      'hwp': 'file-thumb-hwp', 'hwpx': 'file-thumb-hwp',
+      'doc': 'file-thumb-doc', 'docx': 'file-thumb-doc',
+      'xls': 'file-thumb-xls', 'xlsx': 'file-thumb-xls',
+      'ppt': 'file-thumb-ppt', 'pptx': 'file-thumb-ppt',
+      'pdf': 'file-thumb-pdf'
+    };
 
-    list.forEach(function (f) { filesState.push(f); });
+    // 확장자 → 타입 라벨 매핑
+    var EXT_TO_LABEL = {
+      'hwp': '한글문서', 'hwpx': '한글문서',
+      'doc': 'Word 문서', 'docx': 'Word 문서',
+      'xls': 'Excel 문서', 'xlsx': 'Excel 문서',
+      'ppt': 'PPT 문서',  'pptx': 'PPT 문서',
+      'pdf': 'PDF',
+      'txt': '텍스트',
+      'zip': '압축파일',
+      'png': '이미지', 'jpg': '이미지', 'jpeg': '이미지', 'gif': '이미지', 'webp': '이미지', 'svg': '이미지'
+    };
+
+    // 파일 선택 이벤트
+    input.addEventListener('change', function (e) {
+      var list = Array.from(e.target.files || []);
+      if (!list.length) return;
+
+      list.forEach(function (f) { filesState.push(f); });
 
 
-    render();
-  });
-
-  // 삭제 버튼
-  fileListEl.addEventListener('click', function (e) {
-    var btn = e.target.closest('.file-remove');
-    if (!btn) return;
-
-    var idx = btn.getAttribute('data-remove-index');
-    if (idx == null) return;
-
-    idx = Number(idx);
-    if (Number.isNaN(idx)) return;
-
-    var removed = filesState.splice(idx, 1);
-    input.value = ''; 
-
-    render();
-  });
-
-  function render() {
-    fileListEl.innerHTML = '';
-
-    filesState.forEach(function (f, i) {
-      var ext = getExt(f.name);
-      var isImage = /^image\//.test(f.type) || ['png','jpg','jpeg','gif','webp','svg'].includes(ext);
-      var removeBtnHtml =
-        '<button class="file-remove btn-icon-normal-m" type="button" aria-label="첨부파일 삭제" data-remove-index="' + i + '">' +
-          '<span class="icon20 icon--close icon--basic"></span>' +
-        '</button>';
-
-      if (isImage) {
-        // 이미지 미리보기
-        var url = URL.createObjectURL(f);
-        var imageItem = document.createElement('div');
-        imageItem.className = 'file-item-image';
-        imageItem.innerHTML =
-          '<img src="' + esc(url) + '" alt="첨부 이미지">' +
-          removeBtnHtml;
-
-        imageItem.querySelector('.file-remove').addEventListener('click', function () {
-          URL.revokeObjectURL(url);
-        }, { once: true });
-
-        fileListEl.appendChild(imageItem);
-      } else {
-        // 일반 문서 칩
-        var thumbClass = EXT_TO_THUMB[ext] || 'file-thumb-etc';
-        var typeLabel = EXT_TO_LABEL[ext] || (f.type || '파일');
-        var extText = ext ? ext.toUpperCase() : 'FILE';
-
-        var item = document.createElement('div');
-        item.className = 'file-item';
-        item.innerHTML =
-          '<div class="file-thumb ' + thumbClass + '"><span>' + esc(extText) + '</span></div>' +
-          '<div class="file-info">' +
-            '<p class="file-name" title="' + esc(f.name) + '">' + esc(f.name) + '</p>' +
-            '<span class="file-type">' + esc(typeLabel) + '</span>' +
-          '</div>' +
-          removeBtnHtml;
-
-        fileListEl.appendChild(item);
-      }
+      render();
     });
-  }
 
-  // 확장자 추출
-  function getExt(name) {
-    var n = String(name || '');
-    var idx = n.lastIndexOf('.');
-    return idx > -1 ? n.slice(idx + 1).toLowerCase() : '';
-  }
+    // 삭제 버튼
+    fileListEl.addEventListener('click', function (e) {
+      var btn = e.target.closest('.file-remove');
+      if (!btn) return;
 
-  // HTML 이스케이프
-  function esc(str) {
-    return String(str).replace(/[&<>"']/g, function (m) {
-      return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]);
+      var idx = btn.getAttribute('data-remove-index');
+      if (idx == null) return;
+
+      idx = Number(idx);
+      if (Number.isNaN(idx)) return;
+
+      var removed = filesState.splice(idx, 1);
+      input.value = ''; 
+
+      render();
     });
-  }
 
+    function render() {
+      fileListEl.innerHTML = '';
+
+      filesState.forEach(function (f, i) {
+        var ext = getExt(f.name);
+        var isImage = /^image\//.test(f.type) || ['png','jpg','jpeg','gif','webp','svg'].includes(ext);
+        var removeBtnHtml =
+          '<button class="file-remove btn-icon-normal-m" type="button" aria-label="첨부파일 삭제" data-remove-index="' + i + '">' +
+            '<span class="icon20 icon--close icon--basic"></span>' +
+          '</button>';
+
+        if (isImage) {
+          // 이미지 미리보기
+          var url = URL.createObjectURL(f);
+          var imageItem = document.createElement('div');
+          imageItem.className = 'file-item-image';
+          imageItem.innerHTML =
+            '<img src="' + esc(url) + '" alt="첨부 이미지">' +
+            removeBtnHtml;
+
+          imageItem.querySelector('.file-remove').addEventListener('click', function () {
+            URL.revokeObjectURL(url);
+          }, { once: true });
+
+          fileListEl.appendChild(imageItem);
+        } else {
+          // 일반 문서 칩
+          var thumbClass = EXT_TO_THUMB[ext] || 'file-thumb-etc';
+          var typeLabel = EXT_TO_LABEL[ext] || (f.type || '파일');
+          var extText = ext ? ext.toUpperCase() : 'FILE';
+
+          var item = document.createElement('div');
+          item.className = 'file-item';
+          item.innerHTML =
+            '<div class="file-thumb ' + thumbClass + '"><span>' + esc(extText) + '</span></div>' +
+            '<div class="file-info">' +
+              '<p class="file-name" title="' + esc(f.name) + '">' + esc(f.name) + '</p>' +
+              '<span class="file-type">' + esc(typeLabel) + '</span>' +
+            '</div>' +
+            removeBtnHtml;
+
+          fileListEl.appendChild(item);
+        }
+      });
+    }
+
+    // 확장자 추출
+    function getExt(name) {
+      var n = String(name || '');
+      var idx = n.lastIndexOf('.');
+      return idx > -1 ? n.slice(idx + 1).toLowerCase() : '';
+    }
+
+    // HTML 이스케이프
+    function esc(str) {
+      return String(str).replace(/[&<>"']/g, function (m) {
+        return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]);
+      });
+    }
+  }
+  
 })();

@@ -8,8 +8,9 @@
  *    - 상위 메뉴 클릭 시 연결된 하위 메뉴 열림 (다른 하위 메뉴는 자동 닫힘)  
  *      · 하위 패널이 없으면 모든 하위 패널 숨김 + 안내문구 출력
  *    - 하위 메뉴 클릭 시 단일 선택 상태 유지 (라디오형 동작)  
- *      · 선택 버튼에만 .is-active 클래스 부여
- *      · 안내문구는 #chat-guide 내 p.guide-em에 출력, #chat-input 포커스 이동
+ *      · 선택 버튼에만 .is-active / aria-pressed="true"
+ *      · 안내문구는 #chat-guide 내 p.guide-em에 출력, #chat-input 포커스
+ *    - '업무담당자'는 가이드 문구를 '다음 업무담당자를 찾아드립니다 : ' 로 출력
  * ============================================================================
  */
 
@@ -34,8 +35,18 @@
     topBtns.forEach(function (b) { b.setAttribute('aria-expanded', 'false'); });
   }
 
+  // 추가: 모든 하위 버튼의 활성 상태(.is-active/aria-pressed) 전역 초기화
+  function clearAllActiveSubs() {
+    var actives = root.querySelectorAll('.smart-sub-btn.is-active');
+    actives.forEach(function (b) {
+      b.classList.remove('is-active');
+      b.setAttribute('aria-pressed', 'false');
+    });
+  }
+
   function openSubById(panelId, triggerBtn) {
     // 항상 전환. 다른 패널 닫고 대상만 표시
+    clearAllActiveSubs(); 
     closeAllSubs();
     var panel = panelId ? document.getElementById(panelId) : null;
     if (panel) {
@@ -63,26 +74,18 @@
     if (textareaEl) textareaEl.focus();
   }
 
+  // 추가:: '업무담당자' 카테고리 전용 문구 처리
   function buildPrompt(label, dataPrompt) {
     if (dataPrompt && dataPrompt.trim()) return dataPrompt.trim();
+
+    var normalized = (label || '').replace(/\s+/g, '');
+    if (normalized.includes('업무담당자')) {
+      return '다음 업무담당자를 찾아드립니다 : ';
+    }
     return '다음을 ' + label + '에 맞춰 작성합니다 : ';
   }
 
-  function setActiveSubBtn(targetBtn) {
-    var list = targetBtn.closest('.smart-sub-list') || targetBtn.parentElement;
-    if (!list) return;
-
-    var all = list.querySelectorAll('.smart-sub-btn');
-    all.forEach(function (b) {
-      b.classList.remove('is-active'); 
-      b.setAttribute('aria-pressed', 'false');
-    });
-
-    targetBtn.classList.add('is-active');
-    targetBtn.setAttribute('aria-pressed', 'true');
-  }
-
-  /* ===== 이벤트: 상위 카드 클릭  ===== */
+  /* ===== 이벤트: 상위 카드 클릭 ===== */
   topList.addEventListener('click', function (e) {
     var btn = e.target.closest('.smart-card-btn');
     if (!btn) return;
@@ -90,9 +93,10 @@
     var panelId = btn.getAttribute('aria-controls');
     var panel   = panelId ? document.getElementById(panelId) : null;
 
-    // 하위 패널이 없으면 안내문구 즉시 출력 + 다른 하위 패널 숨김
+    // 하위 패널이 없으면: 전역 초기화 + 패널 닫기 + 가이드 출력
     if (!panel) {
-      closeAllSubs();
+      clearAllActiveSubs(); 
+      closeAllSubs(); 
       btn.setAttribute('aria-expanded', 'false');
 
       var label   = getTopLabelFromCardBtn(btn);
@@ -121,5 +125,19 @@
     renderGuide(prompt);
     focusTextarea();
   });
+
+  function setActiveSubBtn(targetBtn) {
+    var list = targetBtn.closest('.smart-sub-list') || targetBtn.parentElement;
+    if (!list) return;
+
+    var all = list.querySelectorAll('.smart-sub-btn');
+    all.forEach(function (b) {
+      b.classList.remove('is-active');
+      b.setAttribute('aria-pressed', 'false');
+    });
+
+    targetBtn.classList.add('is-active');
+    targetBtn.setAttribute('aria-pressed', 'true');
+  }
 
 })();

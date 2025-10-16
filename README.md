@@ -13,8 +13,8 @@
 - 상태/유형은 `--`(더블 하이픈)으로 구분: `--loading`, `--list`, `--table`, `--code-quote` 등.
 - 번호 대역
   - `00~09` 공통(레이아웃/팝업/로딩)
-  - `10~39` 서비스(채팅/폴더/프롬프트/도움말)
-  - `40~99` 예비(확장)
+  - `10~59` 서비스(채팅/폴더/프롬프트/도움말/문서생성이력)
+  - `60~99` 예비(확장)
 - 서비스 폴더: `work`, `legal`, `appeal`  
   - 동일 기능은 세 서비스가 같은 번호를 사용합니다(예: 모두 `10-chat-new.html`).
 
@@ -73,7 +73,8 @@ publishing/
  │  ├─ 14-chat-answer--table.html
  │  ├─ 15-chat-answer--code-quote.html
  │  ├─ 16-chat-popup.html
- │  └─ 20-folder-main.html
+ │  ├─ 20-folder-main.html
+ │  └─ 50-doc-history.html
  ├─ appeal/
  │  ├─ 10-chat-new.html
  │  ├─ 11-chat-bubble.html
@@ -82,7 +83,8 @@ publishing/
  │  ├─ 14-chat-answer--table.html
  │  ├─ 15-chat-answer--code-quote.html
  │  ├─ 16-chat-popup.html
- │  └─ 20-folder-main.html
+ │  ├─ 20-folder-main.html
+ │  └─ 50-doc-history.html
  └─ pagelist.html                    # 통합 리스트 허브
 ```
 

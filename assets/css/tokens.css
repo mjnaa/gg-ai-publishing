@@ -6,6 +6,7 @@ PRIMITIVES
 :root {
   /* gray */
   --c-gray-0: #ffffff;
+  --c-gray-2: #FCFCFD;
   --c-gray-5: #f4f5f6;
   --c-gray-10: #dee0e3;
   --c-gray-20: #cdd1d5;
@@ -57,7 +58,7 @@ PRIMITIVES
   --c-red-60: #ea4d48;
   --c-red-70: #e5201a;
   --c-red-80: #b71a15;
-  --c-red-90: #77110d;
+  --c-red-90: #820703;
   --c-red-95: #530c09;
   --c-red-100: #2e0605;
   /* orange */
@@ -127,17 +128,20 @@ MODE
   --color-text-success: var(--c-green-80);
   --color-text-information: var(--c-blue-70);
   --color-button-solid-primary: var(--c-gray-90);
-  --color-button-solid-primary-hover: var(--c-gray-95);
+  --color-button-solid-primary-hover: var(--c-gray-100);
   --color-button-solid-gray: var(--c-gray-5);
   --color-button-solid-gray-hover: var(--c-gray-5);
   --color-button-outline-gray: var(--c-gray-10);
   --color-button-outline-gray-bg: var(--c-gray-0);
-  --color-button-outline-gray-hover: var(--c-gray-10);
+  --color-button-outline-gray-hover: var(--c-gray-5);
   --color-button-outline-darkgray: var(--c-gray-10);
   --color-button-outline-darkgray-bg: var(--c-gray-0);
-  --color-button-outline-darkgray-hover: var(--c-gray-10);
-  --color-button-danger: var(--c-red-80);
-  --color-button-danger-hover: var(--c-red-80);
+  --color-button-outline-darkgray-hover: var(--c-gray-2);
+  --color-button-outline-danger: var(--c-red-80);
+  --color-button-outline-danger-bg: var(--c-gray-0);
+  --color-button-outline-danger-hover: var(--c-red-80);
+  --color-button-solid-danger: var(--c-red-80);
+  --color-button-solid-danger-hover: var(--c-red-90);
   --color-button-disabled: var(--c-gray-5);
   --color-input-surface: var(--c-gray-0);
   --color-input-surface-disabled: var(--c-gray-5);
@@ -202,7 +206,7 @@ MODE
   --color-text-success: var(--c-green-30);
   --color-text-information: var(--c-blue-30);
   --color-button-solid-primary: var(--c-gray-80);
-  --color-button-solid-primary-hover: var(--c-gray-80);
+  --color-button-solid-primary-hover: var(--c-gray-70);
   --color-button-solid-gray: var(--c-gray-95);
   --color-button-solid-gray-hover: var(--c-gray-95);
   --color-button-outline-gray: var(--c-gray-70);
@@ -210,9 +214,12 @@ MODE
   --color-button-outline-gray-hover: var(--c-gray-70);
   --color-button-outline-darkgray: var(--c-gray-90);
   --color-button-outline-darkgray-bg: var(--c-gray-90);
-  --color-button-outline-darkgray-hover: var(--c-gray-90);
-  --color-button-danger: var(--c-red-40);
-  --color-button-danger-hover: var(--c-red-40);
+  --color-button-outline-darkgray-hover: var(--c-gray-80);
+  --color-button-outline-danger: var(--c-red-60);
+  --color-button-outline-danger-bg: var(--c-gray-90);
+  --color-button-outline-danger-hover: var(--c-red-80);
+  --color-button-solid-danger: var(--c-red-80);
+  --color-button-solid-danger-hover: var(--c-red-90);
   --color-button-disabled: var(--c-gray-90);
   --color-input-surface: var(--c-gray-90);
   --color-input-surface-disabled: var(--c-gray-80);
@@ -277,18 +284,21 @@ MODE
   --color-text-success: var(--c-green-80);
   --color-text-information: var(--c-blue-70);
   --color-button-solid-primary: var(--c-gray-90);
-  --color-button-solid-primary-hover: var(--c-gray-80);
+  --color-button-solid-primary-hover: var(--c-gray-100);
   --color-button-solid-gray: var(--c-gray-5);
   --color-button-solid-gray-hover: var(--c-gray-5);
   --color-button-outline-gray: var(--c-gray-10);
   --color-button-outline-gray-bg: var(--c-gray-0);
-  --color-button-outline-gray-hover: var(--c-gray-10);
+  --color-button-outline-gray-hover: var(--c-gray-5);
   --color-button-outline-darkgray: var(--c-gray-10);
   --color-button-outline-darkgray-bg: var(--c-gray-0);
-  --color-button-outline-darkgray-hover: var(--c-gray-10);
-  --color-button-danger: var(--c-red-80);
-  --color-button-danger-hover: var(--c-red-80);
-  --color-button-disabled: var(--c-gray-30);
+  --color-button-outline-darkgray-hover: var(--c-gray-2);
+  --color-button-outline-danger: var(--c-red-80);
+  --color-button-outline-danger-bg: var(--c-gray-0);
+  --color-button-outline-danger-hover: var(--c-red-80);
+  --color-button-solid-danger: var(--c-red-80);
+  --color-button-solid-danger-hover: var(--c-red-90);
+  --color-button-disabled: var(--c-gray-5);
   --color-input-surface: var(--c-gray-0);
   --color-input-surface-disabled: var(--c-gray-10);
   --color-input-border: var(--c-gray-10);

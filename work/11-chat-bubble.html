@@ -306,7 +306,7 @@
                       <!-- 첨부파일 : 첨부한 파일이 있을때만 노출-->
                       <div class="msg-attachments" aria-label="첨부파일 목록">
                         <!-- 일반 첨부파일 -->
-                        <div class="file-item">
+                        <div class="file-item tip-toggle" data-tip-pos="top" aria-expanded="true" data-tip-open="파일명.확장자">
                           <div class="file-thumb file-thumb-hwp">
                             <span>HWPX</span> 
                           </div>
@@ -466,6 +466,11 @@
                           </li>
 
                         </ul>
+
+                        <!-- 출처 닫기 버튼 -->
+                        <button type="button" class="source-close" aria-label="출처 닫기">
+                          <span>출처 닫기</span>
+                        </button>
                       </div>
 
                     </div>
@@ -836,6 +841,7 @@
   <script src="../assets/js/tooltip.js"></script>
   <script src="../assets/js/dropdown.js"></script>
   <script src="../assets/js/dropdown-choice.js"></script>
+  <script src="../assets/js/theme-toggle.js"></script>
 
   <!-- 페이지 전용 JS -->
   <script src="../assets/js/chat-file-uploader.js"></script>

@@ -14,6 +14,7 @@
  *    - 메뉴/서브메뉴 뷰포트 보정 처리  
  *    - 서브메뉴 hover 시 열림, 마우스 아웃 시 지연 닫힘  
  *    - 스크롤/리사이즈 발생 시 위치 자동 재계산
+ *    - 열렸을때 상위 li/div에 .id-dd-hover 추가
  * ============================================================================
  */
 
@@ -197,6 +198,14 @@
   const hoverTimers = new Map();
   let subOpenLock = false;
 
+  let openBgTarget = null;
+
+  function findBgTarget(trigger){
+    const p = trigger.parentElement;
+    if (p && (p.tagName === 'LI' || p.tagName === 'DIV')) return p;
+    return trigger.closest('li, div');
+  }
+
   /* ===== 열기/닫기 ===== */
   function close(){
     if (!openMenu) return;
@@ -205,6 +214,12 @@
       openTrigger.setAttribute('aria-expanded','false');
       openTrigger.classList.remove('dd-trigger-open');
     }
+
+    if (openBgTarget){
+      openBgTarget.classList.remove('is-dd-hover');
+      openBgTarget = null;
+    }
+
     openMenu = null; openTrigger = null;
     openSub = null; openSubParent = null;
     hoverTimers.forEach(t=>clearTimeout(t));
@@ -221,6 +236,11 @@
 
     trigger.setAttribute('aria-expanded','true');
     trigger.classList.add('dd-trigger-open');
+
+    openBgTarget = findBgTarget(trigger);
+    if (openBgTarget){
+      openBgTarget.classList.add('is-dd-hover');
+    }
 
     qsa('.has-submenu', menu).forEach(li=>{
       const btn = li.querySelector('[role="menuitem"]');
@@ -259,12 +279,11 @@
     openSubParent = li;
     btn && btn.setAttribute('aria-expanded','true');
 
-    
     /* 상단바에서 연 서브메뉴 식별 플래그 */
     if (openTrigger && openTrigger.dataset.dd === 'header-menu-chat') {
       subMenu.dataset.origin = 'header';
     }
-subMenu.addEventListener('mouseenter', ()=>clearCloseTimer(li));
+    subMenu.addEventListener('mouseenter', ()=>clearCloseTimer(li));
     subMenu.addEventListener('mouseleave', ()=>scheduleCloseSub(li));
 
     placeSub(li, subMenu);

@@ -81,7 +81,7 @@
   // 드롭다운 클릭 이벤트
   document.addEventListener('click', function (e) {
     var btn = e.target.closest('[data-theme]');
-    if (!btn) return;
+    if (!btn || btn === document.documentElement) return;
     e.preventDefault();
 
     var val = normalizeTheme(btn.dataset.theme);

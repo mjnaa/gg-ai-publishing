@@ -4,10 +4,12 @@
  * 1) 트리거
  *    - 복사: .msg-actions .btn-msg[aria-label="복사"]
  *    - 출처 토글: .msg-actions .source-toggle[aria-controls="<panelId>"]
+ *    - 출처 닫기: .msg-sources .source-close 
  *    - 좋아요/별로에요: .msg.is-bot .msg-actions .btn-msg[aria-label="좋아요" | "별로에요"]
  * 2) 기능
  *    - 복사 클릭 → 3초간 체크아이콘 표시 후 원복 + 버블 텍스트 클립보드 복사
  *    - 출처 토글 클릭 → 대상 패널 show/hide, 아이콘 토글, 라벨 "출처 n개" ↔ "출처 닫기"
+ *    - 출처 닫기 클릭 → 패널 hide, 상단 토글 버튼 아이콘/라벨/aria-expanded 동기화
  *    - 좋아요/별로에요 → 클릭한 쪽 아이콘 fill 버전으로 전환
  * 3) 대상 DOM
  *    - 복사 대상 텍스트: 근접한 .msg-bubble 내부 p/코드/텍스트
@@ -30,7 +32,7 @@
     DISLIKE_FILL: 'icon--thumb-down-fill'
   };
 
-
+  
   function findIconSpan(btn) {
     return btn ? (btn.querySelector('span[class*="icon--"], span[class^="icon"]') || null) : null;
   }
@@ -64,7 +66,12 @@
     return (bubble.textContent || '').trim();
   }
 
-  // 클립보드 복사
+  function setHidden(el, shouldHide) {
+    if (!el) return;
+    if ('hidden' in el) el.hidden = !!shouldHide;
+  }
+
+  /* ===== 복사 버튼 ===== */
   function copyToClipboard(text) {
     if (!text) return Promise.resolve();
     if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -83,20 +90,12 @@
     });
   }
 
-  // hidden 토글
-  function setHidden(el, shouldHide) {
-    if (!el) return;
-    if ('hidden' in el) el.hidden = !!shouldHide;
-  }
-
-  /* ===== 복사 버튼 ===== */
   function handleCopyClick(e) {
     var btn = e.currentTarget;
     var icon = findIconSpan(btn);
     if (!icon) return;
     if (btn.dataset.copyBusy === '1') return;
 
-    // 최초 1회만 원본 아이콘 저장
     if (!btn.dataset.originalIcon) {
       var origin = Array.from(icon.classList).find(function (c) { return c.indexOf('icon--') === 0; }) || '';
       btn.dataset.originalIcon = origin;
@@ -104,21 +103,12 @@
     var originalIcon = btn.dataset.originalIcon;
     var originalAria = btn.getAttribute('aria-label') || '복사';
 
-    // 체크 상태면 원복
-    if (icon.classList.contains(ICON.CHECK)) {
-      setIcon(icon, originalIcon);
-    }
-
     var text = getNearestBubbleText(btn);
     copyToClipboard(text).then(function () {
       btn.dataset.copyBusy = '1';
       btn.setAttribute('aria-label', '복사됨');
-
-      // 체크 아이콘으로 전환
       setIcon(icon, ICON.CHECK);
-
-      // 3초 후 원복
-      window.setTimeout(function () {
+      setTimeout(function () {
         setIcon(icon, originalIcon);
         btn.setAttribute('aria-label', originalAria);
         btn.dataset.copyBusy = '0';
@@ -152,24 +142,19 @@
     setHidden(panel, !willOpen);
     btn.setAttribute('aria-expanded', String(willOpen));
 
-    // 아이콘 화살표 토글
     var arrow = btn.querySelector('span.' + ICON.ARROW_DOWN + ', span.' + ICON.ARROW_UP);
     if (arrow) {
       arrow.classList.remove(ICON.ARROW_DOWN, ICON.ARROW_UP);
       arrow.classList.add(willOpen ? ICON.ARROW_UP : ICON.ARROW_DOWN);
     }
 
-    // 라벨 토글: 클래스 없는 span을 라벨로 가정
     var labelSpan = btn.querySelector('span:not([class])');
     if (labelSpan) {
       if (willOpen) {
         labelSpan.textContent = '출처 닫기';
       } else {
-        var n = btn.dataset.sourceCount;
-        if (!n) {
-          n = String(countSources(panel));
-          btn.dataset.sourceCount = n;
-        }
+        var n = btn.dataset.sourceCount || String(countSources(panel));
+        btn.dataset.sourceCount = n;
         labelSpan.textContent = '출처 ' + n + '개';
       }
     }
@@ -184,7 +169,6 @@
         var hiddenNow = panel.hasAttribute('hidden') ? panel.hidden : panel.classList.contains('is-hidden');
         t.setAttribute('aria-expanded', String(!hiddenNow));
 
-        // 초기 라벨 세팅 (닫혀 있으면 "출처 n개")
         var labelSpan = t.querySelector('span:not([class])');
         if (labelSpan && hiddenNow) {
           var n = String(countSources(panel));
@@ -192,7 +176,6 @@
           labelSpan.textContent = '출처 ' + n + '개';
         }
 
-        // 초기 화살표 세팅
         var arrow = t.querySelector('span.' + ICON.ARROW_DOWN + ', span.' + ICON.ARROW_UP);
         if (arrow) {
           arrow.classList.remove(ICON.ARROW_DOWN, ICON.ARROW_UP);
@@ -204,7 +187,40 @@
     });
   }
 
-  /* ===== 좋아요/별로에요 아이콘 fill 토글 ===== */
+  /* ===== 출처 닫기 버튼 ===== */
+  function handleSourceCloseClick(e) {
+    var btn = e.currentTarget;
+    var panel = btn.closest('.msg-sources');
+    if (!panel) return;
+    setHidden(panel, true);
+
+    var panelId = panel.id;
+    var toggle = document.querySelector('.source-toggle[aria-controls="' + panelId + '"]');
+    if (toggle) {
+      toggle.setAttribute('aria-expanded', 'false');
+
+      var arrow = toggle.querySelector('span.' + ICON.ARROW_UP + ', span.' + ICON.ARROW_DOWN);
+      if (arrow) {
+        arrow.classList.remove(ICON.ARROW_UP, ICON.ARROW_DOWN);
+        arrow.classList.add(ICON.ARROW_DOWN);
+      }
+
+      var n = toggle.dataset.sourceCount || String(countSources(panel));
+      toggle.dataset.sourceCount = n;
+      var labelSpan = toggle.querySelector('span:not([class])');
+      if (labelSpan) labelSpan.textContent = '출처 ' + n + '개';
+    }
+  }
+
+  function bindSourceCloseButtons(root) {
+    var closes = (root || document).querySelectorAll('.msg-sources .source-close');
+    closes.forEach(function (btn) {
+      btn.removeEventListener('click', handleSourceCloseClick);
+      btn.addEventListener('click', handleSourceCloseClick);
+    });
+  }
+
+  /* ===== 좋아요/별로에요 ===== */
   function setThumbIconFilled(iconEl, isLike, makeFill) {
     if (!iconEl) return;
     setIcon(iconEl, makeFill ? (isLike ? ICON.LIKE_FILL : ICON.DISLIKE_FILL)
@@ -222,7 +238,6 @@
     if (!likeBtn || !dislikeBtn) return;
 
     var isActive = btn.dataset.active === '1';
-
     if (isActive) {
       btn.dataset.active = '0';
       setThumbIconFilled(findIconSpan(btn), isLike, false);
@@ -256,6 +271,7 @@
     bindCopyButtons(document);
     bindSourceToggles(document);
     bindThumbButtons(document);
+    bindSourceCloseButtons(document); // 추가됨
   }
 
   if (document.readyState === 'loading') {

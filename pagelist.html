@@ -62,7 +62,8 @@
         <td>공통 레이아웃</td>
         <td><a href="./common/00-layout.html" target="_blank">common/00-layout.html</a></td>
         <td class="status-done ">작업완료</td>
-        <td>피드백 반영_251014<br>- 좌측 미니바 : 빈공간 클릭시 열리도록 수정<br>- 폴더 더보기 : 주석으로 표시. 공통 레이아웃 파일에서만 노출시켜둠<br>- 폴더 내 채팅 : '폴더에서 제거'->'(폴더명)에서 제거'로 수정
+        <td>피드백 반영_251014<br>- 좌측 미니바 : 빈공간 클릭시 열리도록 수정<br>- 폴더 더보기 : 주석으로 표시. 공통 레이아웃 파일에서만 노출시켜둠<br>- 폴더 내 채팅 : '폴더에서 제거'->'(폴더명)에서 제거'로 수정<br><br>
+        피드백 반영_251016<br>- 우측 상단 옵션 메뉴 : ‘(폴더명)에서 제거’ 추가 (폴더 내 채팅에서만 노출)<br>- 좌측 네비바 : 옵션 메뉴 노출시, 해당 채팅(혹은 폴더)에 포커스 유지<br>- 공통 버튼 : 마우스오버 css 추가
         </td>
       </tr>
       <tr>
@@ -84,13 +85,16 @@
         <td>새 채팅</td>
         <td><a href="./work/10-chat-new.html" target="_blank">work/10-chat-new.html</a></td>
         <td class="status-done ">작업완료</td>
-        <td>피드백 반영_251014<br>- 채팅창 위치 고정<br>- 카테고리 재 선택시 하위버튼 없어지는 인터랙션 제거 (토글제거)<br>- 하위 카테고리 active 디자인 변경 : 체크아이콘->폰트컬러 <br>- 하위 카테고리 중 <요약-의도주제파악> : 텍스트 수정<br>- 1차 오픈시 <표준문서작성>, <업무담당자>, <요약> li는 hidden</td>
+        <td>피드백 반영_251014<br>- 채팅창 위치 고정<br>- 카테고리 재 선택시 하위버튼 없어지는 인터랙션 제거 (토글제거)<br>- 하위 카테고리 active 디자인 변경 : 체크아이콘->폰트컬러 <br>- 하위 카테고리 중 <요약-의도주제파악> : 텍스트 수정<br>- 1차 오픈시 <표준문서작성>, <업무담당자>, <번역> li는 hidden<br><br>
+        피드백 반영_251016<br>- 채팅도우미 <업무담당자> : 텍스트 수정<br>- 파일 업로드(chat-file-uploader.js)와 테마 변경(theme-toggle.js) 충돌 수정</td>
       </tr>
       <tr>
         <td>채팅중 / 채팅버블</td>
         <td><a href="./work/11-chat-bubble.html" target="_blank">work/11-chat-bubble.html</a></td>
         <td class="status-done ">작업완료</td>
-        <td>피드백 반영_251014<br>- 출처 리스트 : 마우스오버 스타일 추가</td>
+        <td>피드백 반영_251014<br>- 출처 리스트 : 마우스오버 스타일 추가<br><br>
+        피드백 반영_251016<br>- 출처 리스트 : 하단에 출처닫기 버튼 추가<br>- 채팅 버블 : 업로드된 파일에 툴팁 추가
+        </td>
       </tr>
       <tr>
         <td>채팅중 / 답변 / 로딩</td>
@@ -108,7 +112,7 @@
         <td>채팅중 / 답변 / table 유형</td>
         <td><a href="./work/14-chat-answer--table.html" target="_blank">work/14-chat-answer--table.html</a></td>
         <td class="status-done  ">작업완료</td>
-        <td></td>
+        <td>피드백 반영_251016<br>- table을 div로 감싸지 않아도 레이아웃 유지되도록 css 수정</td>
       </tr>
       <tr>
         <td>채팅중 / 답변 / 코드블록, 인용문 유형</td>
@@ -155,7 +159,7 @@
 
       <!-- AI 법률 -->
       <tr>
-        <td rowspan="8">AI 법률</td>
+        <td rowspan="9">AI 법률</td>
         <td>새 채팅</td>
         <td><a href="./legal/10-chat-new.html" target="_blank">legal/10-chat-new.html</a></td>
         <td class="status-done ">작업완료</td>
@@ -197,16 +201,22 @@
         <td class="status-done  ">작업완료</td>
         <td></td>
       </tr>
-      <tr class="border-bold">
+      <tr>
         <td>폴더 메인</td>
         <td><a href="./legal/20-folder-main.html" target="_blank">legal/20-folder-main.html</a></td>
+        <td class="status-todo  ">미작업</td>
+        <td></td>
+      </tr>
+      <tr class="border-bold">
+        <td>문서 생성 이력</td>
+        <td><a href="./legal/50-doc-history.html" target="_blank">legal/50-doc-history.html</a></td>
         <td class="status-todo  ">미작업</td>
         <td></td>
       </tr>
 
       <!-- AI 행정심판 -->
       <tr>
-        <td rowspan="8">AI 행정심판</td>
+        <td rowspan="9">AI 행정심판</td>
         <td>새 채팅</td>
         <td><a href="./appeal/10-chat-new.html" target="_blank">appeal/10-chat-new.html</a></td>
         <td class="status-done ">작업완료</td>
@@ -251,6 +261,12 @@
       <tr>
         <td>폴더 메인</td>
         <td><a href="./appeal/20-folder-main.html" target="_blank">appeal/20-folder-main.html</a></td>
+        <td class="status-todo  ">미작업</td>
+        <td></td>
+      </tr>
+      <tr class="border-bold">
+        <td>문서 생성 이력</td>
+        <td><a href="./appeal/50-doc-history.html" target="_blank">appeal/50-doc-history.html</a></td>
         <td class="status-todo  ">미작업</td>
         <td></td>
       </tr>
