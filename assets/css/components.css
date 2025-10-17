@@ -450,6 +450,11 @@ button {
   gap: 30px;
   transform: translate(0, 0);
 }
+/* 카드 2개 이하일 때 */
+.smart-list:not(:has(> .smart-item:nth-child(3))) .smart-card-btn {
+  flex-direction: row ;
+  gap: 14px ;
+}
 .smart-card-btn .smart-icon {
   width: 28px;
   height: 28px;
@@ -508,13 +513,54 @@ button {
   color: var(--color-text-subtle);
 }
 .smart-sub-btn.is-active {
-  color: var(--color-text-information);
+  color: var(--color-text-strong);
   font-weight: 500; 
 }
 .smart-sub-btn:hover {
-  color: var(--color-text-information);
+  color: var(--color-text-strong);
   font-weight: 500; 
 }
+.prompt-btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  border-radius: 8px;
+  border: 1px solid var(--color-button-outline-darkgray);
+  background: var(--color-button-outline-darkgray-bg);
+  height: 34px;
+  padding: 0 14px;
+  font-size: 1.4rem;
+  letter-spacing: 0;
+  font-weight: 400;
+  color: var(--color-text-subtle);
+  width: 100%;
+  min-width: 0; 
+  overflow: hidden; 
+  text-align: left;
+}
+.prompt-btn .btn-text {
+  display: block;
+  flex: 1 1 auto;
+  min-width: 0; 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.prompt-btn.is-active {
+  color: var(--color-text-strong);
+}
+.prompt-btn:hover {
+  color: var(--color-text-strong);
+}
+.prompt-btn .prompt-tag {
+  font-weight: 500; 
+  color: var(--color-text-information);
+}
+
+
 .smart-card-btn {
   transform: rotate(0deg);
   transform-origin: 60% 60%;
@@ -788,7 +834,8 @@ button {
 .modal-basic,
 .modal-expand-ver1,
 .modal-expand-ver2,
-.modal-list {
+.modal-list,
+.modal-help {
   position: fixed;
   inset: 0;
   display: grid;
@@ -801,7 +848,8 @@ button {
 .modal-basic.is-open,
 .modal-expand-ver1.is-open,
 .modal-expand-ver2.is-open,
-.modal-list.is-open {
+.modal-list.is-open,
+.modal-help.is-open {
   opacity: 1;
   pointer-events: auto;
 }
@@ -867,6 +915,125 @@ button {
 .modal-doc .modal-panel{
   width: 520px;
 }
+
+/* 도움말 */
+.modal-help .modal-panel {
+  width: 854px;
+  max-width: min(90vw, 854px);
+  background: var(--color-background-subtle);
+  border-radius: 10px;
+  outline: none;
+}
+.modal-help .modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 14px 20px 20px;
+  border-bottom: 1px solid var(--color-border-popup);
+}
+.modal-help .modal-head-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+}
+.modal-help .modal-body {
+  padding: 8px 18px 14px 20px;
+  max-height: 600px;
+  overflow-y: scroll;
+}
+.modal-help .acc-item .acc-head {
+  border-bottom: 1px solid var(--color-border-file-item);
+}
+.modal-help .acc-item:last-child .acc-head {
+  border-bottom: 0px;
+}
+.modal-help .acc-head .acc-btn:hover {
+  background: var(--color-background-basic);
+}
+.modal-help .acc-head .acc-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 14px 0 18px;
+  height: 64px;
+  border-radius: 6px;
+}
+.modal-help .acc-head .acc-label{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.7rem; 
+  line-height: 150%; 
+  letter-spacing: 0;
+}
+.modal-help .acc-head .acc-no{
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+.modal-help .acc-head .acc-title{
+  color: var(--color-text-basic);
+  font-weight: 500;
+}
+.modal-help .is-open .acc-panel {
+  display: block; 
+}
+.modal-help .acc-panel {
+  display: none; 
+  padding: 20px;
+  background: var(--color-background-basic);
+  border-bottom: 1px solid var(--color-border-file-item);
+}
+
+
+.modal-help .acc-panel .acc-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  font-size: 1.6rem; 
+  line-height: 170%; 
+  letter-spacing: 0;
+  font-weight: 400;
+  color: var(--color-text-basic);
+}
+.modal-help .acc-panel .acc-inner:has(.help-figure > img) {
+  gap: 18px !important;
+}
+.modal-help .acc-panel .acc-inner strong{
+  font-weight: 600;
+  color: var(--color-text-information);
+}
+.modal-help .acc-panel .help-figure {
+  width: 100%;
+}
+.modal-help .acc-panel hr {
+  display: block;
+  width: 100%;
+  border: none;
+  border-top: 1px dashed var(--color-border-strong);
+  margin: 20px 0;
+}
+.modal-help .acc-panel .dot-list {
+  list-style: initial;
+  list-style-type: disc;
+  padding-left: 20px;
+}
+.modal-help .acc-panel .dot-list li {
+  margin: 4px 0;
+}
+.modal-help .acc-panel .dot-list li::marker {
+  color: var(--color-text-information);
+  font-weight: 600;
+}
+
+.acc-item .acc-head .icon24 { 
+  transition: transform 0.5s ease; 
+}
+.acc-item.is-open .acc-head .icon24 { 
+  transform: rotate(180deg); 
+}
+
 
 /* modal-expand-ver1 확장타입 : 프롬프트 생성(AI 업무지원) */
 /* modal-expand-ver2 확장타입 : 문서 작성(AI 법률, 행정심판) */
@@ -1693,7 +1860,6 @@ button {
   border-collapse: collapse;
   table-layout: auto;
 }
-
 /* 테이블과 복사버튼을 div로 감싸지 않았을 때를 위한 css */
 .msg.is-bot .msg-bubble caption .btn-msg {
   position: absolute;

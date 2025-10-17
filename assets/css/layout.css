@@ -517,6 +517,7 @@ body.is-nav-mini .layout-nav .info-area:hover{
   padding: 0 0 100px 0;
   width: 100%;
 }
+/* 업무지원 서비스용 */
 .new-chat.work {
   margin-top: inherit;
   margin-bottom: inherit;
@@ -528,6 +529,27 @@ body.is-nav-mini .layout-nav .info-area:hover{
   padding: 100px 0 100px 0;
   width: 100%;
 }
+/* 업무지원 시연용(캐릭터+추천프롬프트 추가) */
+.new-chat.work-demo {
+  margin-top: inherit;
+  margin-bottom: inherit;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+  padding: 150px 0 60px 0;
+  width: 100%;
+}
+.new-chat.work-demo h2{
+  margin-left: 94px;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-drag: none; 
+}
+
 .new-chat .start-area{
   display: flex;
   justify-content: center;
@@ -535,6 +557,8 @@ body.is-nav-mini .layout-nav .info-area:hover{
   flex-direction: column;
   gap: 18px;
   width: 100%;
+  position: relative;
+  z-index: 2;      
 }
 .new-chat .start-area form {
   width: 100%;
@@ -547,6 +571,8 @@ body.is-nav-mini .layout-nav .info-area:hover{
   border-radius: 10px;
   border: 1px solid var(--color-border-basic);
   background: var(--color-background-subtle);
+  position: relative;
+  z-index: 2;
 }
 .new-chat .start-area .chat-l .input-area {
   display: flex;
@@ -587,6 +613,38 @@ body.is-nav-mini .layout-nav .info-area:hover{
   gap: 10px;
 }
 
+/* 봉공이 캐릭터 */
+.bonggong-img {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  top: -180px;
+  left: calc(50% - 408px);
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-drag: none; 
+}
+.bonggong-img img {
+  width: 220px; 
+  height: auto;
+}
+@media (max-width: 850px) {
+  .bonggong-img {
+    display: none;
+  }
+  .bonggong-img img {
+    display: none;
+  }
+.new-chat.work-demo h2{
+  margin-left: 0px;
+}
+}
+
+
+
+
 
 /* ======= 채팅 중 ======= */
 .chat {
@@ -612,6 +670,12 @@ body.is-nav-mini .layout-nav .info-area:hover{
 }
 .chat-thread .msg:last-of-type {
   margin-bottom: 80px;
+}
+.chat-thread .msg.is-user { 
+  padding-top: 30px;
+}
+.chat-thread .msg.is-user:first-child{ 
+  padding-top: 0px;
 }
 .chat-thread .msg-row { 
   display: flex; 
@@ -774,6 +838,37 @@ body.is-nav-mini .layout-nav .info-area:hover{
     }
 }
 
+/* AI 버블 로딩 - 봉공이 캐릭터 버전 */
+.loading-bonggong {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+  height: 60px;
+}
+.loading-bonggong p{
+  position: absolute;
+  left: 64px;
+  top: 40px;
+}
+.bonggong-area {
+  position: absolute;
+  left: -20px;
+  top: -32px;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-drag: none; 
+}
+.bonggong-area img {
+  width: 100px; 
+  height: auto;
+}
+
 /* 출처 영역 */
 .msg-sources { 
   width: 100%;
@@ -920,6 +1015,24 @@ body.is-nav-mini .layout-nav .info-area:hover{
   display: none;
 }
 
+/* ======= 추천 프롬프트 ======= */
+.prompt-suggestions {
+  width: 100%;
+}
+.prompt-suggestions-inner {
+  max-width: 782px;
+  margin: 0 auto;
+}
+.prompt-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 10px;
+  flex: 1 1 240px; 
+}
+.prompt-list > li {
+  min-width: 0;
+}
 
 /* ======= 우측 패널: 기본 닫힘 ======= */
 .layout-aside {
