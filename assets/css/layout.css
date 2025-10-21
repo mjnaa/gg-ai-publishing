@@ -55,7 +55,7 @@ body.is-nav-mini .layout {
   -webkit-user-drag: none; 
 }
 body.is-nav-mini .layout-nav {
-  cursor: pointer;
+  cursor: e-resize;
 }
 .layout-nav .top-area {
   padding: 12px;
@@ -87,6 +87,12 @@ body.is-nav-mini .layout-nav {
   width: auto; 
   object-fit: contain;
   padding-left: 10px;
+}
+.layout-nav .nav-title .btn-nav-toggle {
+  cursor: e-resize;
+}
+.is-nav-mini .layout-nav .nav-title .logo > img {
+  cursor: e-resize;
 }
 
 
@@ -404,11 +410,38 @@ body.is-nav-mini .layout-nav .scroll-area {
 body.is-nav-mini .layout-nav .top-area {
   padding: 10px 12px;
 }
+body.is-nav-mini .layout-nav .nav-title {
+  position: relative;
+}
 body.is-nav-mini .layout-nav .nav-title .logo {
   justify-content: center;
 }
 body.is-nav-mini .layout-nav .nav-title .logo > img {
   padding: 0 !important;
+}
+body.is-nav-mini .layout-nav .nav-title:hover .logo {
+  opacity: 0;
+}
+body.is-nav-mini .layout-nav .btn-nav-toggle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 8px;
+  border: 1px solid var(--color-button-outline-darkgray);
+  background: var(--color-button-outline-darkgray-bg);
+  color: var(--color-text-base);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+body.is-nav-mini .layout-nav .nav-title:hover .btn-nav-toggle {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+body.is-nav-mini .layout-nav .btn-nav-toggle span {
+  --icon-color: var(--color-icon-strong);
 }
 body.is-nav-mini .layout-nav .btn-newchat {
   height: 34px;
@@ -450,6 +483,8 @@ body.is-nav-mini .layout-nav .llm-list .llm-item:hover {
 body.is-nav-mini .layout-nav .info-area:hover{
   background: var(--color-background-basic);
 }
+
+
 
 
 
@@ -597,9 +632,10 @@ body.is-nav-mini .layout-nav .info-area:hover{
   display: flex;
   flex-direction: column;
 }
-.chat-input-wrap:has(.chat-guide > .guide-em) {
+.chat-input-wrap:has(.chat-guide > .guide-em:not(:empty)) {
   gap: 10px !important;
 }
+
 .new-chat .start-area .chat-l .btn-area {
   display: flex;
   align-items: center;
@@ -1137,9 +1173,6 @@ body.is-nav-mini .layout-nav .info-area:hover{
   body.is-nav-mini .layout-nav .info-area {
       justify-content: center;
   }
-  body.is-nav-mini .layout-nav .btn-nav-toggle {
-      display: none !important;
-  }
 }
 
 
@@ -1153,9 +1186,6 @@ body.is-nav-mini .layout-nav .info-area:hover{
   }
   body.is-aside-open:not(.is-aside-floating) .layout-aside {
     display: flex
-  }
-  body.is-nav-mini .layout-nav .btn-nav-toggle {
-    display: none !important;
   }
 }
 

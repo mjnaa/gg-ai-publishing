@@ -52,13 +52,35 @@
   const getViewportKind = () => (isMobile() ? 'mobile' : (isTablet() ? 'tablet' : 'desktop'));
   let __prevViewport = null; 
 
+  /* ===== (추가) 사이드바 토글 버튼 툴팁/라벨 동기화 ===== */
+  function syncNavToggleTip() {
+    const btn = document.querySelector('.btn-nav-toggle'); // HTML: .btn-nav-toggle.tip-toggle
+    if (!btn) return;
+
+    // 바디 클래스만 보고 열림 여부 판별
+    // - 모바일: .is-mobile-nav-open 이 있으면 열림(true)
+    // - 데/태: .is-nav-mini 가 있으면 닫힘(false), 없으면 열림(true)
+    let expanded;
+    if ($body.classList.contains('is-mobile-nav-open')) {
+      expanded = true;
+    } else if ($body.classList.contains('is-nav-mini')) {
+      expanded = false;
+    } else {
+      expanded = true;
+    }
+
+    btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+
+    const openTxt   = btn.getAttribute('data-tip-open')   || '';
+    const closedTxt = btn.getAttribute('data-tip-closed') || openTxt;
+    btn.setAttribute('aria-label', expanded ? openTxt : closedTxt);
+  }
+
   /* ===== 오버레이 제어 ===== */
   function syncOverlay() {
     // 요약: 모바일 네비 열림 OR (보조패널 열림 AND (모바일/태블릿 OR 데스크탑-플로팅)) → is-overlay 추가
     const needOverlay =
-      // 모바일 네비 슬라이드 열림
       $body.classList.contains('is-mobile-nav-open') ||
-      // 보조패널이 열려있고 (모바일/태블릿 이거나 데스크탑 플로팅)
       ($body.classList.contains('is-aside-open') &&
         (isMobile() || isTablet() || $body.classList.contains('is-aside-floating')));
 
@@ -109,16 +131,19 @@
       $body.classList.toggle('is-mobile-nav-open');
     }
     syncOverlay();
+    syncNavToggleTip(); // 상태 변경 직후 툴팁/aria 동기화
   }
 
   function openMobileNav() {
     $body.classList.add('is-mobile-nav-open');
     syncOverlay();
+    syncNavToggleTip(); 
   }
 
   function closeMobileNav() {
     $body.classList.remove('is-mobile-nav-open');
     syncOverlay();
+    syncNavToggleTip();
   }
 
   /* ===== 반응형: 뷰포트 전환 시 기본 상태 적용 ===== */
@@ -128,6 +153,7 @@
       $body.classList.remove('is-mobile-nav-open');
       $body.classList.remove('is-nav-mini');
       syncOverlay();
+      syncNavToggleTip(); // 리사이즈로 기본 상태 바뀔 때도 동기화
       return;
     }
     // Tablet 기본: 미니 
@@ -135,6 +161,7 @@
       $body.classList.remove('is-mobile-nav-open');
       $body.classList.add('is-nav-mini');
       syncOverlay();
+      syncNavToggleTip(); 
       return;
     }
     // Mobile 기본: 닫힘
@@ -142,12 +169,13 @@
     $body.classList.remove('is-nav-mini');
     $body.classList.remove('is-mobile-nav-open');
     syncOverlay();
+    syncNavToggleTip(); 
   }
 
   function syncOnResize() {
     const now = getViewportKind();
     if (__prevViewport === null || __prevViewport !== now) {
-      applyDefaultsFor(now);    // 전환 시에만 기본값 강제
+      applyDefaultsFor(now);    // 전환 시에만 기본값 강제 
     } else {
       syncOverlay();            // 동일 뷰포트 내에선 오버레이만 동기화
     }
@@ -169,7 +197,7 @@
 
     // 오버레이 클릭 → 닫기
     if (e.target.closest && e.target.closest('.layout-overlay')) {
-      closeMobileNav();
+      closeMobileNav(); 
       closeAside();
       return;
     }
@@ -181,6 +209,7 @@
       const onInteractive = e.target.closest('button, a, input, select, textarea, [role], [data-dd], [data-choice]');
       if (inNav && !onInteractive) {
         $body.classList.remove('is-nav-mini');
+        syncNavToggleTip(); // 버튼 없이 확장된 경우 동기화
         return;
       }
     }
@@ -209,6 +238,7 @@
       if ((isDesktop() || isTablet()) && $body.classList.contains('is-nav-mini')) {
         e.preventDefault();
         $body.classList.remove('is-nav-mini'); // 미니 → 풀
+        syncNavToggleTip(); // 버튼 없이 확장된 경우 동기화
         return;
       }
     }
@@ -223,7 +253,7 @@
     // 모바일 햄버거
     if (t.matches('.btn-hamburger')) {
       e.preventDefault();
-      openMobileNav();
+      openMobileNav(); 
       return;
     }
 
@@ -281,7 +311,7 @@
 
     // 초기 뷰포트 기본 적용
     __prevViewport = getViewportKind();
-    applyDefaultsFor(__prevViewport);
+    applyDefaultsFor(__prevViewport); 
   });
 
   // 리사이즈

@@ -111,7 +111,7 @@ MODE
   --color-border-subtle: var(--c-gray-5);
   --color-border-hover: var(--c-gray-10);
   --color-border-primary: var(--c-gray-90);
-  --color-border-danger: var(--c-gray-10);
+  --color-border-danger: var(--c-red-60);
   --color-border-success: var(--c-gray-10);
   --color-border-information: var(--c-blue-10);
   --color-border-file-item: var(--c-gray-10);
@@ -119,6 +119,7 @@ MODE
   --color-text-basic: var(--c-gray-90);
   --color-text-subtle: var(--c-gray-70);
   --color-text-muted: var(--c-gray-50);
+  --color-text-primary: var(--c-gray-90);
   --color-text-inverse: var(--c-gray-5);
   --color-text-btn-solid: var(--c-gray-5);
   --color-text-strong: var(--c-gray-95);
@@ -189,7 +190,7 @@ MODE
   --color-border-subtle: var(--c-gray-95);
   --color-border-hover: var(--c-gray-80);
   --color-border-primary: var(--c-gray-10);
-  --color-border-danger: var(--c-gray-80);
+  --color-border-danger: var(--c-red-30);
   --color-border-success: var(--c-gray-80);
   --color-border-information: var(--c-gray-80);
   --color-border-file-item: var(--c-gray-80);
@@ -197,6 +198,7 @@ MODE
   --color-text-basic: var(--c-gray-10);
   --color-text-subtle: var(--c-gray-30);
   --color-text-muted: var(--c-gray-50);
+  --color-text-primary: var(--c-gray-10);
   --color-text-inverse: var(--c-gray-95);
   --color-text-btn-solid: var(--c-gray-5);
   --color-text-strong: var(--c-gray-5);
@@ -267,7 +269,7 @@ MODE
   --color-border-subtle: var(--c-gray-5);
   --color-border-hover: var(--c-gray-10);
   --color-border-primary: var(--c-gray-90);
-  --color-border-danger: var(--c-gray-10);
+  --color-border-danger: var(--c-red-60);
   --color-border-success: var(--c-gray-10);
   --color-border-information: var(--c-blue-10);
   --color-border-file-item: var(--c-gray-10);
@@ -275,6 +277,7 @@ MODE
   --color-text-basic: var(--c-gray-90);
   --color-text-subtle: var(--c-gray-70);
   --color-text-muted: var(--c-gray-50);
+  --color-text-primary: var(--c-blue-80);
   --color-text-inverse: var(--c-gray-5);
   --color-text-btn-solid: var(--c-gray-5);
   --color-text-strong: var(--c-gray-95);
@@ -283,8 +286,8 @@ MODE
   --color-text-warning: var(--c-orange-70);
   --color-text-success: var(--c-green-80);
   --color-text-information: var(--c-blue-70);
-  --color-button-solid-primary: var(--c-gray-90);
-  --color-button-solid-primary-hover: var(--c-gray-100);
+  --color-button-solid-primary: var(--c-blue-80);
+  --color-button-solid-primary-hover: var(--c-blue-90);
   --color-button-solid-gray: var(--c-gray-5);
   --color-button-solid-gray-hover: var(--c-gray-5);
   --color-button-outline-gray: var(--c-gray-10);
@@ -311,7 +314,7 @@ MODE
   --color-icon-inverse: var(--c-gray-10);
   --color-icon-btn-solid: var(--c-gray-10);
   --color-icon-disabled: var(--c-gray-30);
-  --color-icon-primary: var(--c-gray-90);
+  --color-icon-primary: var(--c-blue-70);
   --color-icon-danger: var(--c-red-80);
   --color-icon-warning: var(--c-orange-70);
   --color-icon-success: var(--c-green-80);

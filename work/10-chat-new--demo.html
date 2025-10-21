@@ -339,7 +339,12 @@
 
                     <div class="chat-input-wrap">
                       <!-- 스마트 도우미 선택 시 노출되는 안내 문구 -->
-                      <p id="chat-guide" class="chat-guide" aria-live="polite"></p>
+                      <div id="chat-guide" class="chat-guide" aria-live="polite">
+                        <p class="guide-em"></p>
+                        <button class="btn-aside-close btn-icon-normal-s" type="button" aria-label="스마트도우미 지우기">
+                          <span class="icon20 icon--close icon--basic"></span>
+                        </button>
+                      </div>
 
                       <!-- 채팅 입력 : 입력시 자동 높이 조절 (chat-textarea.js) -->
                       <textarea id="chat-input" class="chat-textarea" name="comment" aria-label="채팅 입력창" placeholder="무엇이든 물어보세요." rows="1" maxlength="2000" minlength="1" required></textarea>

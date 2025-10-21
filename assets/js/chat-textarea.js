@@ -1,14 +1,20 @@
 /*
  * ============================================================================
- * 채팅 입력창 자동 높이
- * 1) 대상  
- *    - #chat-input textarea  
- *    - (선택) .chat-m: 2줄 이상 시 .is-multi 토글
- * 2) 기능  
- *    - 입력 시 textarea 높이 자동 조절 (max-height까지 확장)  
- *    - 붙여넣기 / 잘라내기 / 리사이즈 / 로드시 자동 반영  
- *    - 줄 수 1줄 → 기본, 2줄 이상 → .is-multi 클래스 토글
- * 3) 비고  
+ * 채팅 입력 모듈 (자동 높이 + 전송 버튼 상태)
+ * 1) 대상
+ *    - 입력창: #chat-input (textarea)
+ *    - 컨테이너(선택): .chat-m → 2줄 이상 시 .is-multi 토글
+ *    - 전송 버튼: .btn-send (button)
+ * 2) 기능
+ *    - 자동 높이
+ *       · 입력 시 textarea 높이 자동 조절 (max-height까지 확장) 
+ *       · 붙여넣기 / 잘라내기 / 리사이즈 / 로드시 자동 반영
+ *       · 줄 수 1줄 → 기본, 2줄 이상 → .is-multi 클래스 토글
+ *    - 전송 버튼 상태
+ *       · 입력값 공백 제외 0자 ⇒ disabled = true
+ *       · 1자 이상 ⇒ disabled = false
+ *       · 초기 로드 시 상태 1회 동기화
+ * 3) 비고
  *    - 오프스크린 미러 textarea 생성 후 scrollHeight 측정  
  *    - CSS max-height 재조회 후 높이 클램프 적용
  * ============================================================================
@@ -101,4 +107,22 @@
 
   // 초기 1회
   window.addEventListener('load', updateHeight);
+})();
+
+
+/* ===== 전송 버튼 활성/비활성 ===== */
+(function () {
+  'use strict';
+
+  var textarea = document.getElementById('chat-input');
+  var sendBtn = document.querySelector('.right-area .btn-icon-solid-m[aria-label="전송"]');
+  if (!textarea || !sendBtn) return;
+
+  function toggleButton() {
+    var hasValue = textarea.value.trim().length > 0;
+    sendBtn.disabled = !hasValue;
+  }
+
+  textarea.addEventListener('input', toggleButton);
+  window.addEventListener('load', toggleButton);
 })();

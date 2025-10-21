@@ -10,6 +10,8 @@
  *    - 하위 메뉴 클릭 시 단일 선택 상태 유지 (라디오형 동작)  
  *      · 선택 버튼에만 .is-active / aria-pressed="true"
  *      · 안내문구는 #chat-guide 내 p.guide-em에 출력, #chat-input 포커스
+ *      · 안내문구 .sub-text 내용(예: 괄호 예시)은 제외
+ *      · 안내문구 닫기 버튼 클릭 시 문구 초기화 및 .is-active 해제
  *    - '업무담당자'는 가이드 문구를 '다음 업무담당자를 찾아드립니다 : ' 로 출력
  * ============================================================================
  */
@@ -25,7 +27,7 @@
   var textareaEl   = document.getElementById('chat-input');
   var subContainer = subWrap || root;
 
-  if (!topList) return;
+  if (!topList) return; 
 
   function closeAllSubs() {
     var subs = root.querySelectorAll('.smart-sub');
@@ -46,12 +48,10 @@
 
   function openSubById(panelId, triggerBtn) {
     // 항상 전환. 다른 패널 닫고 대상만 표시
-    clearAllActiveSubs(); 
+    clearAllActiveSubs();
     closeAllSubs();
     var panel = panelId ? document.getElementById(panelId) : null;
-    if (panel) {
-      panel.removeAttribute('hidden');
-    }
+    if (panel) panel.removeAttribute('hidden');
     if (triggerBtn) triggerBtn.setAttribute('aria-expanded', 'true');
   }
 
@@ -60,18 +60,27 @@
     return t && t.textContent ? t.textContent.trim() : (cardBtn.textContent || '').trim();
   }
 
-  function getLabelFromSubBtn(btn) {
+  // 하위 메뉴 버튼의 괄호 부분(.sub-text)은 제외하고 가이드 문구 노출
+  function getGuideLabelFromSubBtn(btn) {
+    var guideAttr = btn.getAttribute('data-guide-label');
+    if (guideAttr && guideAttr.trim()) return guideAttr.trim();
+
     var custom = btn.getAttribute('data-label');
-    return custom && custom.trim() ? custom.trim() : (btn.textContent || '').trim();
+    if (custom && custom.trim()) return stripTrailingParen(custom.trim());
+
+    var clone = btn.cloneNode(true);
+    var extras = clone.querySelectorAll('.sub-text');
+    extras.forEach(function (el) { el.remove(); });
+
+    var txt = (clone.textContent || '').trim().replace(/\s+/g, ' ');
+    if (txt) return stripTrailingParen(txt);
+
+    var fallback = (btn.textContent || '').trim().replace(/\s+/g, ' ');
+    return stripTrailingParen(fallback);
   }
 
-  function renderGuide(str) {
-    if (!guideEl) return;
-    guideEl.innerHTML = '<p class="guide-em">' + str + '</p>';
-  }
-
-  function focusTextarea() {
-    if (textareaEl) textareaEl.focus();
+  function stripTrailingParen(str) {
+    return str.replace(/\([^)]*\)\s*$/, '').trim();
   }
 
   // 추가:: '업무담당자' 카테고리 전용 문구 처리
@@ -85,6 +94,22 @@
     return '다음을 ' + label + '에 맞춰 작성합니다 : ';
   }
 
+  function renderGuide(str) {
+    if (!guideEl) return;
+    var p = guideEl.querySelector('.guide-em');
+    if (p) p.textContent = str;
+  }
+
+  function clearGuide() {
+    if (!guideEl) return;
+    var p = guideEl.querySelector('.guide-em');
+    if (p) p.textContent = ''; 
+  }
+
+  function focusTextarea() {
+    if (textareaEl) textareaEl.focus();
+  }
+
   /* ===== 이벤트: 상위 카드 클릭 ===== */
   topList.addEventListener('click', function (e) {
     var btn = e.target.closest('.smart-card-btn');
@@ -95,8 +120,8 @@
 
     // 하위 패널이 없으면: 전역 초기화 + 패널 닫기 + 가이드 출력
     if (!panel) {
-      clearAllActiveSubs(); 
-      closeAllSubs(); 
+      clearAllActiveSubs();
+      closeAllSubs();
       btn.setAttribute('aria-expanded', 'false');
 
       var label   = getTopLabelFromCardBtn(btn);
@@ -118,9 +143,10 @@
 
     setActiveSubBtn(subBtn);
 
-    var label   = getLabelFromSubBtn(subBtn);
-    var custom  = subBtn.getAttribute('data-prompt');
-    var prompt  = buildPrompt(label, custom);
+    // 가이드용 라벨은 .sub-text 제외
+    var labelForGuide = getGuideLabelFromSubBtn(subBtn);
+    var custom        = subBtn.getAttribute('data-prompt');
+    var prompt        = buildPrompt(labelForGuide, custom);
 
     renderGuide(prompt);
     focusTextarea();
@@ -138,6 +164,16 @@
 
     targetBtn.classList.add('is-active');
     targetBtn.setAttribute('aria-pressed', 'true');
+  }
+
+  /* ===== 이벤트: 안내문구 닫기(X) 버튼 ===== */
+  if (guideEl) {
+    guideEl.addEventListener('click', function (e) {
+      var btn = e.target.closest('.btn-aside-close');
+      if (!btn) return;
+      clearGuide();         
+      clearAllActiveSubs(); 
+    });
   }
 
 })();

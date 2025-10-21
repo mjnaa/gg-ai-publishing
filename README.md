@@ -44,8 +44,9 @@ publishing/
  │  │  ├─ file-uploader.js          # 파일 업로드
  │  │  ├─ chat-smart.js             # 스마트 도우미
  │  │  ├─ chat-file-uploader.js     # 파일 첨부 칩
- │  │  ├─ chat-textarea.js          # 채팅 입력창 자동 높이
- │  │  └─ chat-bubble-actions.js    # 채팅 버블 액션 제어
+ │  │  ├─ chat-textarea.js          # 채팅 입력 모듈 (자동 높이 + 전송 버튼 상태)
+ │  │  ├─ chat-bubble-actions.js    # 채팅 버블 액션 제어
+ │  │  └─ accordion-help.js         # 아코디언 메뉴 (도움말)
  │  └─ img/
  │     └─ icon/                     # 아이콘만 보관
  ├─ common/

@@ -104,7 +104,7 @@
 .btn-solid-gray-l:hover,
 .btn-solid-gray-m:hover,
 .btn-solid-gray-s:hover {  
-  color: var(--color-text-basic);
+  color: var(--color-text-primary);
 }
 .btn-solid-gray-l:hover .icon20,
 .btn-solid-gray-m:hover .icon20,
@@ -392,12 +392,15 @@ button {
   -ms-user-select: none;
   -webkit-user-drag: none; 
 }
-
 .btn-icon-solid-m:hover .icon20 {
   background: var(--color-icon-primary);
 }
-.btn-icon-solid-m[disabled]:hover .icon20 {
+.btn-icon-solid-m[disabled] {
+  cursor: default;
+}
+.btn-icon-solid-m[disabled] .icon20 {
   background: var(--color-icon-basic);
+  opacity: 0.5;
 }
 
 /* 플로팅 버튼 */
@@ -969,12 +972,14 @@ button {
   letter-spacing: 0;
 }
 .modal-help .acc-head .acc-no{
+  /*display: none;*/
   color: var(--color-text-muted);
   font-weight: 600;
 }
 .modal-help .acc-head .acc-title{
   color: var(--color-text-basic);
   font-weight: 500;
+  text-align: left;
 }
 .modal-help .is-open .acc-panel {
   display: block; 
@@ -1442,12 +1447,23 @@ button {
 }
 
 /* 스마트 도우미 안내 문구 */
+.chat-guide {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
 .chat-guide .guide-em {
   font-size: 1.7rem; 
   line-height: 170%; 
   letter-spacing: 0;
   color: var(--color-text-information); 
   font-weight: 500;
+}
+.chat-guide .btn-aside-close {
+  display: none;
+}
+.chat-guide:has(.guide-em:not(:empty)) .btn-aside-close {
+  display: flex;
 }
 
 /* 카운터 배치용 : 텍스트에어리어를 감싸는 래퍼 */
@@ -1491,8 +1507,7 @@ button {
   outline: none; 
   cursor: pointer;
 }
-.form-checkbox:checked,
-.form-checkbox.is-checked {
+.form-checkbox:checked {
   border: 1px solid var(--color-border-primary);
   background: var(--color-background-primary);
   background-image: url("../img/icon/check-w.svg");
@@ -1553,6 +1568,7 @@ button {
 }
 .file-item-image {  
   position: relative;
+  overflow: hidden;
   width: 60px;
   height: 60px;
   display: flex;
@@ -1565,7 +1581,7 @@ button {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  -webkit-user-drag: none; 
+  -webkit-user-drag: none;
 }
 .file-item-image img {  
   width: 100%;
@@ -1574,6 +1590,8 @@ button {
   border-radius: 10px;
 }
 .file-thumb {
+  position: relative;
+  overflow: hidden;
   width: 36px;
   height: 36px;
   border-radius: 8px;
@@ -1585,6 +1603,20 @@ button {
   align-items: center;
   justify-content: center;  
   cursor: default;
+}
+.file-item.is-uploading {
+  opacity: 0.7;
+}
+.file-item.is-complete {
+  opacity: 1;
+}
+.file-item.is-error {
+  opacity: 0.5;
+  border: 1px solid var(--color-border-danger);
+}
+.file-item.is-error .file-name,
+ .file-item.is-error .file-type {
+  color: var(--color-text-danger);
 }
 .file-thumb-hwp {
   background: #037DCD;
@@ -1631,7 +1663,6 @@ button {
   font-weight: 400;
   color: var(--color-text-muted);
 }
-
 .file-remove {
   width: 20px;
   height: 20px;
@@ -1639,6 +1670,37 @@ button {
   right: 6px;
   top: 6px;
 }
+
+/* 로딩 스피너 */
+.file-spinner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2; 
+  pointer-events: none;
+}
+.file-spinner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.6); 
+}
+[data-theme="dark"] .file-spinner::after {
+  background: rgba(0, 0, 0, 0.4);
+}
+.file-spinner::before {
+  content: "";
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--color-border-basic);
+  border-top-color: var(--color-icon-primary);
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
 
 /* 출처 토글 */
 .source-toggle {
