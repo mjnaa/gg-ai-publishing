@@ -40,10 +40,12 @@ publishing/
  │  │  ├─ dropdown-choice.js        # 드롭다운 메뉴 (단일선택메뉴)
  │  │  ├─ loader.js                 # 풀스크린 로딩
  │  │  ├─ modal-popup.js            # 모달 팝업
+ │  │  ├─ toast.js                  # 토스트 팝업
+ │  │  ├─ inline-alert.js           # 인라인 알럿
  │  │  ├─ theme-toggle.js           # 테마 변경
  │  │  ├─ file-uploader.js          # 파일 업로드
- │  │  ├─ chat-smart.js             # 스마트 도우미
  │  │  ├─ chat-file-uploader.js     # 파일 첨부 칩
+ │  │  ├─ chat-smart.js             # 스마트 도우미
  │  │  ├─ chat-textarea.js          # 채팅 입력 모듈 (자동 높이 + 전송 버튼 상태)
  │  │  ├─ chat-bubble-actions.js    # 채팅 버블 액션 제어
  │  │  └─ accordion-help.js         # 아코디언 메뉴 (도움말)
@@ -51,8 +53,10 @@ publishing/
  │     └─ icon/                     # 아이콘만 보관
  ├─ common/
  │  ├─ 00-layout.html               # 공통 레이아웃
- │  ├─ 01-popup.html                # 공통 팝업
- │  └─ 02-loading.html              # 풀스크린 로딩
+ │  ├─ 01-popup.html                # 공통 팝업 (모달)
+ │  ├─ 02-loading.html              # 풀스크린 로딩
+ │  ├─ 03-toast.html                # 공통 팝업 (토스트)
+ │  └─ 04-inlinealert.html          # 공통 팝업 (인라인알럿)
  ├─ work/
  │  ├─ 10-chat-new.html
  │  ├─ 11-chat-bubble.html

@@ -140,3 +140,5 @@ h5 {
 .medium  { font-weight: 500; }
 .bold    { font-weight: 600; }
 strong   { font-weight: 600; }
+
+.danger { color: var(--color-text-danger); }

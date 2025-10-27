@@ -404,6 +404,13 @@ li.is-dd-open > .btn-more {
 
 
 /* ======= 좌측 네비 : 미니 상태 ======= */
+body.is-nav-mini .layout-nav:hover .logo {
+  opacity: 0;
+}
+body.is-nav-mini .layout-nav:hover .btn-nav-toggle {
+  opacity: 1;
+  pointer-events: auto;
+}
 body.is-nav-mini .layout-nav .scroll-area {
   display: none
 }
@@ -439,7 +446,6 @@ body.is-nav-mini .layout-nav .nav-title:hover .btn-nav-toggle {
   opacity: 1;
   pointer-events: auto;
 }
-
 body.is-nav-mini .layout-nav .btn-nav-toggle span {
   --icon-color: var(--color-icon-strong);
 }
@@ -486,13 +492,12 @@ body.is-nav-mini .layout-nav .info-area:hover{
 
 
 
-
-
 /* ======= 중앙 레이아웃 ======= */
 .layout-main {
   display: flex;
   flex-direction: column;
-  min-width: 0
+  min-width: 0;
+  position: relative;
 }
 .layout-main-header {
   display: flex;
@@ -538,6 +543,39 @@ body.is-nav-mini .layout-nav .info-area:hover{
   align-items: center;
   justify-content: flex-start;
 }
+/* 드래그앤드롭 화이트 딤 */
+.layout-main .drag-overlay {
+  position: absolute; 
+  inset: 0; 
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(1px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 11; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity .12s ease;
+  pointer-events: none; 
+}
+.layout-main .drag-overlay .drag-overlay-inner {
+  border: 2px dashed var(--color-border-basic);
+  border-radius: 10px;
+  padding: 22px 38px 30px 38px;
+  background: var(--color-background-subtle);
+  text-align: center;
+}
+.layout-main .drag-overlay .txt {
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-align: center;
+  color: var(--color-text-subtle);
+}
+body.is-dragging-files .layout-main .drag-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 
 
 /* ======= 새 채팅 ======= */

@@ -14,6 +14,7 @@
  *    - X 버튼 클릭 시 개별 삭제 (input.value 초기화로 동일 파일 재선택 가능)
  *    - 접근성: .file-list는 시각적 역할만, 실제 업로드는 숨겨진 input이 담당
  *    - 업로드 완료 시: .is-complete, 실패 시: .is-error
+ *    - 드래그앤드롭: 화면 중앙 콘텐츠(.layout-main) 위에서 파일 드래그 시 화이트 딤 표시
  * ============================================================================
  */
 
@@ -90,9 +91,8 @@
       idx = Number(idx);
       if (Number.isNaN(idx)) return;
 
-      var removed = filesState.splice(idx, 1);
-      input.value = ''; 
-
+      filesState.splice(idx, 1);
+      input.value = ''; // 동일 파일 재선택 허용
       render();
     });
 
@@ -101,7 +101,7 @@
 
       filesState.forEach(function (f, i) {
         var ext = getExt(f.name);
-        var isImage = /^image\//.test(f.type) || ['png','jpg','jpeg','gif','webp','svg'].includes(ext);
+        var isImage = /^image\//.test(f.type) || ['png','jpg','jpeg','gif','webp','svg'].indexOf(ext) !== -1;
         var removeBtnHtml =
           '<button class="file-remove btn-icon-normal-m" type="button" aria-label="첨부파일 삭제" data-remove-index="' + i + '">' +
             '<span class="icon20 icon--close icon--basic"></span>' +
@@ -120,6 +120,15 @@
             URL.revokeObjectURL(url);
           }, { once: true });
 
+          // 업로딩 스피너 표시
+          imageItem.classList.add('is-uploading');
+          if (!imageItem.querySelector('.file-spinner')) {
+            var sp = document.createElement('span');
+            sp.className = 'file-spinner';
+            sp.setAttribute('aria-hidden', 'true');
+            imageItem.appendChild(sp);
+          }
+
           fileListEl.appendChild(imageItem);
         } else {
           // 일반 문서 칩
@@ -136,6 +145,16 @@
               '<span class="file-type">' + esc(typeLabel) + '</span>' +
             '</div>' +
             removeBtnHtml;
+
+          // 업로딩 스피너 표시
+          item.classList.add('is-uploading');
+          var thumb = item.querySelector('.file-thumb');
+          if (thumb && !thumb.querySelector('.file-spinner')) {
+            var sp2 = document.createElement('span');
+            sp2.className = 'file-spinner';
+            sp2.setAttribute('aria-hidden', 'true');
+            thumb.appendChild(sp2);
+          }
 
           fileListEl.appendChild(item);
         }
@@ -157,7 +176,7 @@
     }
 
 
-    /* ===== 로딩 스피너  ===== */
+    /* ===== 로딩 스피너 / 업로드 데모 ===== */
     function startUploadsFrom(startIdx) {
       for (var i = startIdx; i < filesState.length; i++) {
         attachSpinner(i);     // 스피너/업로딩 상태 부여
@@ -170,7 +189,6 @@
       if (!row) return;
 
       if (row.classList.contains('file-item-image')) {
-        // 이미지형: 썸네일 위에 오버레이 스피너 삽입
         row.classList.add('is-uploading'); 
         if (!row.querySelector('.file-spinner')) {
           var sp = document.createElement('span');
@@ -179,7 +197,6 @@
           row.appendChild(sp);
         }
       } else if (row.classList.contains('file-item')) {
-        // 문서형: .file-thumb 내부에 스피너 삽입
         row.classList.add('is-uploading'); 
         var thumb = row.querySelector('.file-thumb');
         if (thumb && !thumb.querySelector('.file-spinner')) {
@@ -240,3 +257,164 @@
   }
   
 })();
+
+
+/* ===== 드래그앤드롭 ===== */
+(function () {
+  'use strict';
+
+  var input = document.getElementById('file-upload');
+  if (!input) return;
+
+  var dragDepth   = 0;          // 중첩 dragenter 보정
+  var overlayEl   = null;       // 생성된 오버레이 캐시
+  var hideTimer   = null;       // 지연 숨김 타이머
+  var hbTimer     = null;       // 이벤트 끊김 감시
+  var lastInside  = false;      // 직전 포인터가 .layout-main 내부였는지
+  var lastOverTS  = 0;          // 마지막 dragover 타임스탬프
+  var HB_TIMEOUT  = 300;        // dragover 무응답 허용 시간
+  var HIDE_DELAY  = 120;        // 경계 지연 숨김
+
+  function ensureOverlay() {
+    if (overlayEl) return overlayEl;
+    var main = document.querySelector('.layout-main');
+    if (!main) return null;
+    overlayEl = document.createElement('div');
+    overlayEl.className = 'drag-overlay';
+    overlayEl.innerHTML =
+      '<div class="drag-overlay-inner" role="status" aria-live="polite">' +
+        '<span class="icon36 icon--upload icon--basic" aria-hidden="true"></span>' +
+        '<p class="txt">대화에 추가하려면<br>파일을 드래그해서 이곳에 놓아주세요.</p>' +
+      '</div>';
+    // 깜빡임 방지
+    overlayEl.style.pointerEvents = 'none';
+    main.appendChild(overlayEl);
+    return overlayEl;
+  }
+
+  function isFileDrag(e) {
+    var dt = e.dataTransfer;
+    if (!dt) return false;
+    var types = dt.types || [];
+    return Array.prototype.indexOf.call(types, 'Files') !== -1;
+  }
+
+  function isPointerInsideMain(e) {
+    var main = document.querySelector('.layout-main');
+    if (!main) return false;
+    var r = main.getBoundingClientRect();
+    var x = e.clientX, y = e.clientY;
+    return x >= r.left && x <= r.right && y >= r.top && y <= r.bottom;
+  }
+
+  function startHeartbeat() {
+    stopHeartbeat();
+    lastOverTS = Date.now();
+    hbTimer = setInterval(function () {
+      if (Date.now() - lastOverTS > HB_TIMEOUT) {
+        hideOverlay();
+      }
+    }, HB_TIMEOUT);
+  }
+  function stopHeartbeat() {
+    if (hbTimer) { clearInterval(hbTimer); hbTimer = null; }
+  }
+
+  function showOverlay() {
+    if (!ensureOverlay()) return;
+    if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
+    document.body.classList.add('is-dragging-files');
+    startHeartbeat();
+  }
+
+  function hideOverlay() {
+    dragDepth  = 0;
+    lastInside = false;
+    if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
+    stopHeartbeat();
+    document.body.classList.remove('is-dragging-files');
+  }
+
+  function onDragEnter(e) {
+    if (!isFileDrag(e)) return;
+    e.preventDefault();
+    dragDepth++;
+    lastInside = isPointerInsideMain(e);
+    if (lastInside) showOverlay();
+  }
+
+  function onDragOver(e) {
+    if (!isFileDrag(e)) return;
+    e.preventDefault();
+    lastOverTS = Date.now();
+    var inside = isPointerInsideMain(e);
+    lastInside = inside;
+    if (inside) {
+      showOverlay();
+    } else {
+      if (!hideTimer) {
+        hideTimer = setTimeout(function () {
+          if (!lastInside) hideOverlay();
+        }, HIDE_DELAY);
+      }
+    }
+  }
+
+  function onDragLeave(/* e */) {
+    dragDepth = Math.max(0, dragDepth - 1);
+    if (dragDepth === 0 && !hideTimer) {
+      hideTimer = setTimeout(function () {
+        if (!lastInside) hideOverlay();
+      }, HIDE_DELAY);
+    }
+  }
+
+  function onDrop(e) {
+    if (!isFileDrag(e)) return;
+    e.preventDefault();
+
+    var insideMain = isPointerInsideMain(e);
+    hideOverlay();
+
+    if (!insideMain) return;
+
+    var files = Array.from(e.dataTransfer.files || []);
+    if (!files.length) return;
+
+    try {
+      var dt = new DataTransfer();
+      files.forEach(function (f) { dt.items.add(f); });
+      input.files = dt.files;
+    } catch (err) {
+    }
+
+    input.dispatchEvent(new Event('change', { bubbles: true }));
+  }
+
+  window.addEventListener('dragenter', onDragEnter);
+  window.addEventListener('dragover',  onDragOver,  { passive: false });
+  window.addEventListener('dragleave', onDragLeave);
+  window.addEventListener('drop',      onDrop,      { passive: false });
+  window.addEventListener('dragend',   hideOverlay);
+
+  window.addEventListener('blur',      hideOverlay);
+  window.addEventListener('pagehide',  hideOverlay);
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) hideOverlay();
+  });
+
+  window.addEventListener('mouseout', function (e) {
+    if (!e.relatedTarget) {
+      if (!hideTimer) {
+        hideTimer = setTimeout(function () {
+          hideOverlay();
+        }, HIDE_DELAY);
+      }
+    }
+  });
+
+})();
+
+
+
+
