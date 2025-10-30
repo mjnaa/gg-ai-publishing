@@ -60,6 +60,18 @@
     mask-position: center;
     mask-size: contain;
 }
+.icon32 {
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    background-color: var(--icon-color, var(--color-icon-basic, #6d7882));
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+}
 .icon36 {
     width: 36px;
     height: 36px;

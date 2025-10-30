@@ -32,11 +32,10 @@
           <!------ 상단 고정 영역 ------>
           <div class="nav-head">
             <div class="nav-title">              
-              <!-- 미니 사이드바일 경우 로고 클릭으로 사이드바 열림 -->
-              <a class="logo tip-toggle" href="#" aria-label="홈으로" data-tip-pos="right" data-tip-when="mini" aria-expanded="true" data-tip-open="사이드바 열기">
+              <a class="logo" href="#" aria-label="홈으로">
                 <img src="../assets/img/logo.png" />
               </a>
-              <button class="btn-nav-toggle btn-icon-normal-m tip-toggle" type="button" aria-label="사이드바 닫기" data-tip-pos="bottom" aria-expanded="true" data-tip-open="사이드바 닫기" >
+              <button class="btn-nav-toggle btn-icon-normal-m tip-toggle" type="button" aria-label="사이드바 닫기" data-tip-pos="right" aria-expanded="true" data-tip-open="사이드바 닫기" data-tip-closed="사이드바 열기">
                 <span class="icon20 icon--thumbnail-bar icon--basic"></span>
               </button>
             </div>
@@ -83,6 +82,7 @@
                     <a href="#"><span class="label">폴더 내 채팅명</span></a>
                     <!-- 채팅 설정 버튼 : 마우스 오버시에만 노출-->
                     <button class="btn-more" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-folder-chat" data-dd-pos="right-start">
+                      <span class="icon20 icon--keep-fill icon--basic"></span>
                       <span class="icon20 icon--more-horiz icon--basic"></span>
                     </button>
                   </li>
@@ -92,6 +92,7 @@
                     <a href="#"><span class="label">폴더 내 채팅명이 길어도 들어갑니다</span></a>
                     <!-- 채팅 설정 버튼 : 마우스 오버시에만 노출-->
                     <button class="btn-more" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-folder-chat" data-dd-pos="right-start">
+                      <span class="icon20 icon--keep-fill icon--basic"></span>
                       <span class="icon20 icon--more-horiz icon--basic"></span>
                     </button>
                   </li>
@@ -103,14 +104,26 @@
               </li>
 
               <!-- 더보기 : 폴더가 6개 이상일 때 노출 -->
-              <!--<li class="folder-item more">
+              <li class="folder-item more">
                 <div class="folder-head">
                   <button class="btn-folder" type="button" aria-haspopup="menu" aria-expanded="false" data-dd="menu-folder-more" data-dd-pos="right-start">
                     <span class="icon20 icon--more-horiz icon--basic"></span>
                     <span class="label">더보기</span>
                   </button>
                 </div>
-              </li>-->
+              </li>
+            </ul>
+
+            <!-- 문서생성이력 -->
+            <ul class="chat-list">
+              <li class="list-title">
+                <div>
+                  <p>문서생성이력</p>
+                </div>
+              </li>
+              <li class="chat-item">
+                <a href="#"><span class="label">문서생성이력</span></a>
+              </li>
             </ul>
 
             <!-- 채팅 리스트 -->
@@ -118,16 +131,18 @@
               <li class="list-title">
                 <div>
                   <p>채팅</p>
-                  <button class="btn-help" type="button" aria-label="설명 보기">
+                  <button class="btn-help tip-toggle" type="button" aria-label="채팅 삭제 안내" data-tip-pos="right" aria-expanded="true" data-tip-open="채팅 삭제 안내">
                     <span class="icon16 icon--information icon--basic"></span>
                   </button>
                 </div>
               </li>
 
-              <li class="chat-item">
-                <a href="#"><span class="label">채팅명</span></a>
+              <!-- 상단고정된 채팅에 .is-pinned 추가 -->
+              <li class="chat-item is-pinned">
+                <a href="#"><span class="label">상단고정된 채팅명</span></a>
                 <!-- 채팅 설정 버튼 : 마우스 오버시에만 노출-->
                 <button class="btn-more" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-chat" data-dd-pos="right-start">
+                  <span class="icon20 icon--keep-fill icon--basic"></span>
                   <span class="icon20 icon--more-horiz icon--basic"></span>
                 </button>
               </li>
@@ -136,6 +151,7 @@
                 <a href="#"><span class="label">채팅명</span></a>
                 <!-- 채팅 설정 버튼 : 마우스 오버시에만 노출-->
                 <button class="btn-more" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-chat" data-dd-pos="right-start">
+                  <span class="icon20 icon--keep-fill icon--basic"></span>
                   <span class="icon20 icon--more-horiz icon--basic"></span>
                 </button>
               </li>
@@ -168,7 +184,7 @@
           </ul>
           <button class="info-area" aria-label="계정 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-info" data-dd-pos="right-end">
             <div class="profile-initial" aria-label="프로필 이미지" aria-hidden="true">
-              <span>김</span>
+              <span>경</span>
             </div>
             <div class="info-text">
               <p class="name">김경기님</p>
@@ -662,6 +678,13 @@
         </li>
         <li role="none">
           <button role="menuitem">
+            <!-- 상단 고정 일 경우 -->
+            <span class="icon20 icon--keep-fill icon--basic"></span>
+            <span class="dd-name">고정 해제</span>
+          </button>
+        </li>
+        <li role="none">
+          <button role="menuitem">
             <span class="icon20 icon--edit2 icon--basic"></span>
             <span class="dd-name">채팅 이름 변경</span>
           </button>
@@ -678,7 +701,7 @@
         <li role="none">
           <button role="menuitem">
             <span class="icon20 icon--forward-media icon--basic"></span>
-            <span class="dd-name">폴더에서 제거</span>
+            <span class="dd-name">(폴더명)에서 제거</span>
           </button>
         </li>
         <li role="none">
@@ -700,6 +723,13 @@
           <button role="menuitem">
             <span class="icon20 icon--keep icon--basic"></span>
             <span class="dd-name">상단 고정</span>
+          </button>
+        </li>
+        <li role="none">
+          <button role="menuitem">
+            <!-- 상단 고정 일 경우 -->
+            <span class="icon20 icon--keep-fill icon--basic"></span>
+            <span class="dd-name">고정 해제</span>
           </button>
         </li>
         <li role="none">
@@ -739,6 +769,13 @@
               <span class="dd-name">폴더에 추가</span>
             </div>
             <span class="icon20 icon--arrow-right icon--basic"></span>
+          </button>
+        </li>
+        <!-- 폴더 내 채팅일 경우만 노출 -->
+        <li role="none">
+          <button role="menuitem">
+            <span class="icon20 icon--forward-media icon--basic"></span>
+            <span class="dd-name">(폴더명)에서 제거</span>
           </button>
         </li>
         <li role="none">

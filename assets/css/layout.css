@@ -223,8 +223,8 @@ body.is-nav-mini .layout-nav {
 }
 
 /* 채팅 더보기 버튼 */
-.layout-nav .chat-item .btn-more .icon--keep,
-.layout-nav .chat-subitem .btn-more .icon--keep {
+.layout-nav .chat-item .btn-more .icon--keep-fill,
+.layout-nav .chat-subitem .btn-more .icon--keep-fill {
   display: none;
 }
 .layout-nav .chat-item .btn-more .icon--more-horiz,
@@ -233,14 +233,14 @@ body.is-nav-mini .layout-nav {
 }
 
 /* 채팅 상단고정 상태일 때 핀아이콘 노출 (.is-pinned) */
-.layout-nav .chat-item.is-pinned .btn-more .icon--keep,
-.layout-nav .chat-subitem.is-pinned .btn-more .icon--keep {
+.layout-nav .chat-item.is-pinned .btn-more .icon--keep-fill,
+.layout-nav .chat-subitem.is-pinned .btn-more .icon--keep-fill {
   display: inline-block;
 }
 
 /* 마우스 오버 시 핀아이콘 숨기고 더보기아이콘 노출*/
-.layout-nav .chat-item.is-pinned:hover .btn-more .icon--keep,
-.layout-nav .chat-subitem.is-pinned:hover .btn-more .icon--keep {
+.layout-nav .chat-item.is-pinned:hover .btn-more .icon--keep-fill,
+.layout-nav .chat-subitem.is-pinned:hover .btn-more .icon--keep-fill {
   display: none;
 }
 .layout-nav .chat-item:hover .btn-more .icon--more-horiz,
@@ -249,12 +249,12 @@ body.is-nav-mini .layout-nav {
 }
 
 /* 더보기 메뉴 오픈 시 핀아이콘 숨김 */
-.layout-nav .chat-item .btn-more[aria-expanded="true"] .icon--keep, 
-.layout-nav .chat-subitem .btn-more[aria-expanded="true"] .icon--keep {
+.layout-nav .chat-item .btn-more[aria-expanded="true"] .icon--keep-fill, 
+.layout-nav .chat-subitem .btn-more[aria-expanded="true"] .icon--keep-fill {
   display: none;
 }
-.layout-nav .chat-item.is-pinned .btn-more[aria-expanded="true"] .icon--keep, 
-.layout-nav .chat-subitem.is-pinned .btn-more[aria-expanded="true"] .icon--keep {
+.layout-nav .chat-item.is-pinned .btn-more[aria-expanded="true"] .icon--keep-fill, 
+.layout-nav .chat-subitem.is-pinned .btn-more[aria-expanded="true"] .icon--keep-fill {
   display: none;
 }
 
@@ -313,6 +313,12 @@ li.is-dd-open > .btn-more {
 .folder-head .left a {
   display: flex;
   align-items: center;
+}
+.folder-new.active,
+.folder-head.active,
+.chat-subitem.active,
+.chat-item.active {
+  background: var(--color-background-hover);
 }
 
 
@@ -534,14 +540,14 @@ body.is-nav-mini .layout-nav .info-area:hover{
   display: none;
 }
 .layout-main-body {
+  display: block;
+  overflow-y: auto;
+  scrollbar-gutter: stable both-edges;
+  background: var(--color-background-basic);
   min-height: 0;
-  overflow: auto;
   padding: 0 24px;
   height: 100%;
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
 }
 /* 드래그앤드롭 화이트 딤 */
 .layout-main .drag-overlay {
@@ -589,6 +595,7 @@ body.is-dragging-files .layout-main .drag-overlay {
   gap: 26px;
   padding: 0 0 100px 0;
   width: 100%;
+  height: 100%;
 }
 /* 업무지원 서비스용 */
 .new-chat.work {
@@ -623,7 +630,7 @@ body.is-dragging-files .layout-main .drag-overlay {
   -webkit-user-drag: none; 
 }
 
-.new-chat .start-area{
+.start-area{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -633,10 +640,10 @@ body.is-dragging-files .layout-main .drag-overlay {
   position: relative;
   z-index: 2;      
 }
-.new-chat .start-area form {
+.start-area form {
   width: 100%;
 }
-.new-chat .start-area .chat-l {
+.start-area .chat-l {
   display: flex;
   flex-direction: column;
   max-width: 782px;
@@ -647,7 +654,7 @@ body.is-dragging-files .layout-main .drag-overlay {
   position: relative;
   z-index: 2;
 }
-.new-chat .start-area .chat-l .input-area {
+.start-area .chat-l .input-area {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -658,14 +665,14 @@ body.is-dragging-files .layout-main .drag-overlay {
 .input-area:has(.file-list > .file-item-image) {
   gap: 20px !important;
 }
-.new-chat .start-area .chat-l .input-area .file-list{
+.start-area .chat-l .input-area .file-list{
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
   max-height: 140px;
   overflow-y: auto;
 }
-.new-chat .start-area .chat-l .input-area .chat-input-wrap{
+.start-area .chat-l .input-area .chat-input-wrap{
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -674,14 +681,14 @@ body.is-dragging-files .layout-main .drag-overlay {
   gap: 10px !important;
 }
 
-.new-chat .start-area .chat-l .btn-area {
+.start-area .chat-l .btn-area {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 20px 24px;
 }
-.new-chat .start-area .btn-area .left-area,
-.new-chat .start-area .btn-area .right-area {
+.start-area .btn-area .left-area,
+.start-area .btn-area .right-area {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -717,6 +724,278 @@ body.is-dragging-files .layout-main .drag-overlay {
 }
 
 
+/* ======= 폴더 메인 ======= */
+.folder {
+  margin-top: inherit;
+  margin-bottom: inherit;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 18px;
+  padding: 0 0 100px 0;
+  width: 100%;
+  --folder-sticky-top: 0px;
+}
+.folder-sticky-head{
+  width: 100%;
+  position: sticky;
+  top: var(--folder-sticky-top);   /* 폴더 상단 패딩 만큼 띄워 고정 */
+  z-index: 3; 
+  background: var(--color-background-basic);
+}
+.folder .folder-title-area {
+  width: 100%;
+  margin: 30px 0 14px 0;
+}
+.folder .folder-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 782px;
+  margin: 0 auto;
+}
+.folder .folder-chat-area {
+  width: 100%;
+}
+.folder .empty-state {
+  padding-top: 140px;
+  max-width: 782px;
+  margin: 0 auto;
+}
+.folder .empty-state p{
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 1.5rem;
+  line-height: 170%;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+.folder .empty-state .title{
+  text-align: center;
+  color: var(--color-text-basic);
+  font-size: 1.7rem;
+  line-height: 170%;
+  letter-spacing: 0;
+  font-weight: 500;
+}
+.folder .folder-chat-list {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0px;
+  max-width: 782px;
+  margin: 0 auto;
+}
+.folder .folder-chat-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 16px;
+  border-radius: 0px;
+  border-bottom: 1px solid var(--color-border-file-item);
+  min-width: 0;
+  cursor: pointer;
+}
+.folder .folder-chat-item:last-child {
+  border-bottom: 0px solid var(--color-border-file-item);
+}
+.folder .folder-chat-item:hover {
+  border-radius: 10px;
+  background: var(--color-background-hover);
+}
+.folder .folder-chat-item:has(.btn-more[aria-expanded="true"]) {
+  border-radius: 10px;
+  background: var(--color-background-hover);
+}
+.folder .folder-chat-item:hover .btn-more {
+  display: flex;
+  align-items: center;
+}
+.folder .folder-chat-item:hover .chat-date {
+  display: none;
+}
+.folder .folder-chat-item .btn-more[aria-expanded="true"] ~ .chat-date {
+  display: none;
+}
+.folder .folder-chat-item .btn-more[aria-expanded="true"] {
+  display: flex;
+}
+
+.folder .folder-chat-item .icon--keep-fill {
+  display: none;
+}
+.folder .folder-chat-item.is-pinned .icon--keep-fill {
+  display: inline-block;
+}
+.folder .folder-chat-item:hover .chat-date {
+  display: none;
+}
+.folder .folder-chat-link {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0; 
+}
+.folder .folder-chat-main {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+.folder .chat-title {
+  font-size: 1.7rem; 
+  line-height: 150%; 
+  letter-spacing: 0;
+  font-weight: 600;
+  color: var(--color-text-basic);
+}
+.folder .chat-preview {
+  font-size: 1.5rem; 
+  line-height: 150%; 
+  letter-spacing: 0;
+  font-weight: 400;
+  color: var(--color-text-subtle);
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.folder .folder-chat-meta {
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.folder .chat-date {
+  font-size: 1.4rem; 
+  line-height: 150%; 
+  letter-spacing: 0;
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+.folder .btn-more {
+  display: none;
+}
+
+
+/* ======= 문서생성이력 ======= */
+.doc-history {
+  margin-top: auto;
+  margin-bottom: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 18px;
+  padding: 0 0 100px 0;
+  width: 100%;
+  height: 100%;
+}
+.doc-history-head{
+  width: 100%;
+}
+.doc-history .doc-history-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 782px;
+  margin: 0 auto;
+}
+.doc-history .doc-history-area {
+  width: 100%;
+}
+.doc-history .doc-history-list {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0px;
+  max-width: 782px;
+  margin: 0 auto;
+}
+.doc-history .doc-history-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 16px;
+  border-radius: 0px;
+  border-bottom: 1px solid var(--color-border-file-item);
+  min-width: 0;
+  cursor: pointer;
+}
+.doc-history .doc-history-item:last-child {
+  border-bottom: 0px solid var(--color-border-file-item);
+}
+.doc-history .doc-history-item:hover {
+  border-radius: 10px;
+  background: var(--color-background-hover);
+}
+.doc-history .doc-history-item:has(.btn-more[aria-expanded="true"]) {
+  border-radius: 10px;
+  background: var(--color-background-hover);
+}
+.doc-history .doc-history-item:hover .btn-more {
+  display: flex;
+  align-items: center;
+}
+.doc-history .doc-history-item:hover .doc-history-date {
+  display: none;
+}
+.doc-history .doc-history-item .btn-more[aria-expanded="true"] ~ .doc-history-date {
+  display: none;
+}
+.doc-history .doc-history-item .btn-more[aria-expanded="true"] {
+  display: flex;
+}
+.doc-history .doc-history-item:hover .doc-history-date {
+  display: none;
+}
+.doc-history .doc-history-link {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0; 
+}
+.doc-history .doc-history-name {
+  font-size: 1.7rem; 
+  line-height: 150%; 
+  letter-spacing: 0;
+  font-weight: 600;
+  color: var(--color-text-basic);
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.doc-history .doc-history-preview {
+  font-size: 1.5rem; 
+  line-height: 150%; 
+  letter-spacing: 0;
+  font-weight: 400;
+  color: var(--color-text-subtle);
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.doc-history .doc-history-meta {
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.doc-history .doc-history-date {
+  font-size: 1.4rem; 
+  line-height: 150%; 
+  letter-spacing: 0;
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+.doc-history .btn-more {
+  display: none;
+}
 
 
 
@@ -724,8 +1003,10 @@ body.is-dragging-files .layout-main .drag-overlay {
 .chat {
   display: flex;
   flex-direction: column;
+  min-block-size: 100%;
   min-height: 100%;
   width: 100%;
+  --folder-sticky-bottom: 0px;
 }
 .chat .thread-area{
   flex: 1 1 auto;
@@ -955,7 +1236,9 @@ body.is-dragging-files .layout-main .drag-overlay {
 
 /* 채팅창 하단 고정 영역 */
 .chat .composer-wrap{
-  position: relative; 
+  position: sticky;
+  bottom: var(--folder-sticky-bottom);
+  z-index: 3;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -963,6 +1246,7 @@ body.is-dragging-files .layout-main .drag-overlay {
   gap: 8px;
   width: 100%;
   padding-bottom: 16px;
+  background: var(--color-background-basic);
 }
 .chat .composer-wrap .chat-disclaimer{
   font-size: 1.3rem; 
@@ -1117,15 +1401,17 @@ body.is-dragging-files .layout-main .drag-overlay {
   background: var(--color-background-subtle);
 }
 .layout-aside .top-area {
-  padding: 0 14px;
   background: var(--color-background-subtle);
-  height: 118px;
 }
 .layout-aside .aside-head {
+  padding: 0 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 62px;
+  height: 60px;
+}
+.layout-aside .tab-bar-area {
+  padding: 0 15px 12px 15px;
 }
 .layout-aside .aside-head .aside-title {
   display: flex;
@@ -1135,16 +1421,79 @@ body.is-dragging-files .layout-main .drag-overlay {
 .layout-aside .aside-head .aside-title p{
   font-size: 1.6rem;
   font-weight: 500;
+  margin-top: 1px;
+}
+.layout-aside .btn-aside-float .icon--arrow-right2 {
+  display: none;
+}
+.layout-aside .btn-aside-float .icon--arrow-left2 {
+  display: inline-block;
+}
+body.is-aside-floating .layout-aside .btn-aside-float .icon--arrow-right2 {
+  display: inline-block;
+}
+body.is-aside-floating .layout-aside .btn-aside-float .icon--arrow-left2 {
+  display: none;
 }
 .layout-aside .aside-body {
   min-height: 0;
   overflow: auto;
-  padding: 0 16px;
+  padding: 0 10px;
+  overflow-y: auto;
+  scrollbar-gutter: stable both-edges;
 }
 .layout-aside .bottom-area {
   margin-top: auto;
   padding: 18px 16px;
   background: var(--color-background-subtle);
+}
+
+/* ======= 우측 패널: 프롬프트 라이브러리 ======= */
+.prompt-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+body.is-aside-floating .prompt-list {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 12px;
+}
+.prompt-item {
+  position: relative;
+}
+.prompt-empty-state {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding-top: 220px;
+}
+.prompt-empty-state .empty-desc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.prompt-empty-state .empty-desc .empty-title {
+  font-size: 1.7rem;
+  line-height: 150%;
+  letter-spacing: 0;
+  font-weight: 500; 
+  color: var(--color-text-basic);
+  text-align: center;
+}
+.prompt-empty-state .empty-desc .empty-text {
+  font-size: 1.5rem;
+  line-height: 150%;
+  letter-spacing: 0;
+  font-weight: 500; 
+  color: var(--color-text-muted);
+  text-align: center;
 }
 
 
@@ -1186,6 +1535,12 @@ body.is-dragging-files .layout-main .drag-overlay {
   .smart-text .smart-desc {
     display: none;
   }
+  body.is-aside-floating .prompt-list {
+    grid-template-columns: repeat(2,1fr);
+  }
+  body.is-aside-floating .btn-aside-float {
+    display: none;
+  }
 }
 
 
@@ -1210,6 +1565,9 @@ body.is-dragging-files .layout-main .drag-overlay {
   }
   body.is-nav-mini .layout-nav .info-area {
       justify-content: center;
+  }
+  body.is-aside-floating .btn-aside-float {
+    display: none;
   }
 }
 
@@ -1249,9 +1607,6 @@ body.is-aside-floating .layout-aside {
 }
 body.is-aside-floating.is-aside-open .layout-aside {
   transform: translateX(0)
-}
-body.is-aside-floating .btn-aside-float {
-  display: none !important;
 }
 body.is-aside-floating .aside-head .aside-title {
   margin-left: 6px;

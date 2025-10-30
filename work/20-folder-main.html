@@ -32,11 +32,10 @@
           <!------ 상단 고정 영역 ------>
           <div class="nav-head">
             <div class="nav-title">              
-              <!-- 미니 사이드바일 경우 로고 클릭으로 사이드바 열림 -->
-              <a class="logo tip-toggle" href="#" aria-label="홈으로" data-tip-pos="right" data-tip-when="mini" aria-expanded="true" data-tip-open="사이드바 열기">
+              <a class="logo" href="#" aria-label="홈으로">
                 <img src="../assets/img/logo.png" />
               </a>
-              <button class="btn-nav-toggle btn-icon-normal-m tip-toggle" type="button" aria-label="사이드바 닫기" data-tip-pos="bottom" aria-expanded="true" data-tip-open="사이드바 닫기" >
+              <button class="btn-nav-toggle btn-icon-normal-m tip-toggle" type="button" aria-label="사이드바 닫기" data-tip-pos="right" aria-expanded="true" data-tip-open="사이드바 닫기" data-tip-closed="사이드바 열기">
                 <span class="icon20 icon--thumbnail-bar icon--basic"></span>
               </button>
             </div>
@@ -61,7 +60,7 @@
 
               <!-- 폴더 -->
               <li class="folder-item">
-                <div class="folder-head">
+                <div class="folder-head active">
                   <div class="left">
                     <!-- 폴더 여닫는 버튼-->
                     <button class="btn-folder tip-toggle" type="button" data-tip-pos="bottom" aria-expanded="false" data-tip-open="채팅 숨기기" data-tip-closed="채팅 표시" data-tip-offset-x="6" >
@@ -83,6 +82,7 @@
                     <a href="#"><span class="label">폴더 내 채팅명</span></a>
                     <!-- 채팅 설정 버튼 : 마우스 오버시에만 노출-->
                     <button class="btn-more" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-folder-chat" data-dd-pos="right-start">
+                      <span class="icon20 icon--keep-fill icon--basic"></span>
                       <span class="icon20 icon--more-horiz icon--basic"></span>
                     </button>
                   </li>
@@ -92,6 +92,7 @@
                     <a href="#"><span class="label">폴더 내 채팅명이 길어도 들어갑니다</span></a>
                     <!-- 채팅 설정 버튼 : 마우스 오버시에만 노출-->
                     <button class="btn-more" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-folder-chat" data-dd-pos="right-start">
+                      <span class="icon20 icon--keep-fill icon--basic"></span>
                       <span class="icon20 icon--more-horiz icon--basic"></span>
                     </button>
                   </li>
@@ -103,14 +104,14 @@
               </li>
 
               <!-- 더보기 : 폴더가 6개 이상일 때 노출 -->
-              <!--<li class="folder-item more">
+              <li class="folder-item more">
                 <div class="folder-head">
                   <button class="btn-folder" type="button" aria-haspopup="menu" aria-expanded="false" data-dd="menu-folder-more" data-dd-pos="right-start">
                     <span class="icon20 icon--more-horiz icon--basic"></span>
                     <span class="label">더보기</span>
                   </button>
                 </div>
-              </li>-->
+              </li>
             </ul>
 
             <!-- 채팅 리스트 -->
@@ -118,16 +119,18 @@
               <li class="list-title">
                 <div>
                   <p>채팅</p>
-                  <button class="btn-help" type="button" aria-label="설명 보기">
+                  <button class="btn-help tip-toggle" type="button" aria-label="채팅 삭제 안내" data-tip-pos="right" aria-expanded="true" data-tip-open="채팅 삭제 안내">
                     <span class="icon16 icon--information icon--basic"></span>
                   </button>
                 </div>
               </li>
 
-              <li class="chat-item">
-                <a href="#"><span class="label">채팅명</span></a>
+              <!-- 상단고정된 채팅에 .is-pinned 추가 -->
+              <li class="chat-item is-pinned">
+                <a href="#"><span class="label">상단고정된 채팅명</span></a>
                 <!-- 채팅 설정 버튼 : 마우스 오버시에만 노출-->
                 <button class="btn-more" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-chat" data-dd-pos="right-start">
+                  <span class="icon20 icon--keep-fill icon--basic"></span>
                   <span class="icon20 icon--more-horiz icon--basic"></span>
                 </button>
               </li>
@@ -136,6 +139,7 @@
                 <a href="#"><span class="label">채팅명</span></a>
                 <!-- 채팅 설정 버튼 : 마우스 오버시에만 노출-->
                 <button class="btn-more" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-chat" data-dd-pos="right-start">
+                  <span class="icon20 icon--keep-fill icon--basic"></span>
                   <span class="icon20 icon--more-horiz icon--basic"></span>
                 </button>
               </li>
@@ -168,7 +172,7 @@
           </ul>
           <button class="info-area" aria-label="계정 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-info" data-dd-pos="right-end">
             <div class="profile-initial" aria-label="프로필 이미지" aria-hidden="true">
-              <span>김</span>
+              <span>경</span>
             </div>
             <div class="info-text">
               <p class="name">김경기님</p>
@@ -280,7 +284,7 @@
             </div>
 
             <!-- 채팅 설정 드롭다운메뉴(다중옵션목록ver) -->
-            <button class="btn-more btn-icon-normal-m" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="header-menu-chat" data-dd-pos="bottom-end">
+            <button class="btn-more btn-icon-normal-m" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-folder-head" data-dd-pos="bottom-end">
                 <span class="icon20 icon--more-horiz icon--basic"></span>
             </button>
           </div>
@@ -292,8 +296,214 @@
 
         <!------ 콘텐츠(폴더) 영역 ------>
         <section class="layout-main-body" aria-label="채팅/콘텐츠">
-          <div class="">
+          <div class="folder">
+            <div class="folder-sticky-head">
+              <!-- 타이틀 -->
+              <div class="folder-title-area">
+                <div class="folder-title">
+                  <span class="icon32 icon--folder-open icon--basic"></span>
+                  <h3>폴더명</h3>
+                </div>
+              </div>
 
+              <!-- 채팅창 -->
+              <div class="start-area">
+                <form action="" method="post" enctype="multipart/form-data">
+                  <div class="chat-l">
+                    <div class="input-area">
+                      <!-- 첨부파일 목록 -->
+                      <div class="file-list">
+                      </div>
+
+                      <div class="chat-input-wrap">
+                        <!-- 스마트 도우미 선택 시 노출되는 안내 문구 -->
+                        <div id="chat-guide" class="chat-guide" aria-live="polite">
+                          <p class="guide-em"></p>
+                          <button class="btn-aside-close btn-icon-normal-s" type="button" aria-label="스마트도우미 지우기">
+                            <span class="icon20 icon--close icon--basic"></span>
+                          </button>
+                        </div>
+
+                        <!-- 채팅 입력 : 입력시 자동 높이 조절 (chat-textarea.js) -->
+                        <textarea id="chat-input" class="chat-textarea" name="comment" aria-label="채팅 입력창" placeholder="(폴더명)에서 새 채팅" rows="1" maxlength="2000" minlength="1" required></textarea>
+                      </div>
+                    </div>
+                    
+                    <!-- 버튼 -->
+                    <div class="btn-area">
+                      <div class="left-area">
+                        <!-- 파일첨부 버튼 : 실제 file input은 화면에서 숨기고, 버튼으로 트리거 -->
+                        <label for="file-upload" class="btn-icon-solid-m tip-toggle" type="button" aria-label="파일첨부" data-tip-pos="bottom" aria-expanded="true" data-tip-open="파일추가">
+                          <span class="icon20 icon--add icon--basic"></span>
+                        </label>
+                        <input type="file" id="file-upload" name="attachment" style="display:none;">
+
+                        <!-- 라이브러리 버튼 -->
+                        <button class="btn-aside-toggle btn-solid-gray-m" type="button" aria-label="프롬프트 라이브러리">
+                          <span class="icon20 icon--library icon--basic"></span>
+                          <span>라이브러리</span>
+                        </button>
+
+                      </div>
+                      <div class="right-area">
+                        <!-- 텍스트 카운터 -->
+                        <!-- 최대 글자수 도달 시 <span class="danger"> -->
+                        <span class="textarea-counter"><span>0</span>/2000</span>
+
+                        <!-- 전송 버튼-->
+                        <button class="btn-send btn-icon-solid-m" type="submit" aria-label="전송">
+                          <span class="icon20 icon--near icon--primary"></span>
+                        </button>
+                      </div>
+                    </div>
+
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <!-- 폴더 내 채팅 리스트 -->
+            <div class="folder-chat-area">
+              <ul class="folder-chat-list">
+                <!-- 고정된 채팅에 class="is-pinned" -->
+                <li class="folder-chat-item is-pinned">
+                  <a class="folder-chat-link" href="#">
+                    <div class="folder-chat-main">
+                      <p class="chat-title">폴더 내의 채팅명이 들어갑니다.</p>
+                      <span class="icon20 icon--keep-fill icon--basic"></span>
+                    </div>
+                    <p class="chat-preview">제일 최근에 입력한 채팅 버블창의 내용이 한줄로 들어갑니다. 제일 최근에 입력한 채팅 버블창의 내용이 한줄로 들어갑니다. 제일 최근에 입력한 채팅 버블창</p>
+                  </a>
+
+                  <div class="folder-chat-meta">
+                    <button class="btn-more" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-folder-chat" data-dd-pos="right-start">
+                      <span class="icon20 icon--more-horiz icon--basic"></span>
+                    </button>
+                    <p class="chat-date">8월 19일</p>
+                  </div>
+                </li>
+
+                <li class="folder-chat-item">
+                  <a class="folder-chat-link" href="#">
+                    <div class="folder-chat-main">
+                      <p class="chat-title">폴더 내의 채팅명이 들어갑니다.</p>
+                      <span class="icon20 icon--keep-fill icon--basic"></span>
+                    </div>
+                    <p class="chat-preview">제일 최근에 입력한 채팅 버블창의 내용이 한줄로 들어갑니다. 제일 최근에 입력한 채팅 버블창의 내용이 한줄로 들어갑니다. 제일 최근에 입력한 채팅 버블창</p>
+                  </a>
+
+                  <div class="folder-chat-meta">
+                    <button class="btn-more" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-folder-chat" data-dd-pos="right-start">
+                      <span class="icon20 icon--more-horiz icon--basic"></span>
+                    </button>
+                    <p class="chat-date">8월 19일</p>
+                  </div>
+                </li>
+
+                <li class="folder-chat-item">
+                  <a class="folder-chat-link" href="#">
+                    <div class="folder-chat-main">
+                      <p class="chat-title">폴더 내의 채팅명이 들어갑니다.</p>
+                      <span class="icon20 icon--keep-fill icon--basic"></span>
+                    </div>
+                    <p class="chat-preview">제일 최근에 입력한 채팅 버블창의 내용이 한줄로 들어갑니다. 제일 최근에 입력한 채팅 버블창의 내용이 한줄로 들어갑니다. 제일 최근에 입력한 채팅 버블창</p>
+                  </a>
+
+                  <div class="folder-chat-meta">
+                    <button class="btn-more" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-folder-chat" data-dd-pos="right-start">
+                      <span class="icon20 icon--more-horiz icon--basic"></span>
+                    </button>
+                    <p class="chat-date">8월 19일</p>
+                  </div>
+                </li>
+
+                <li class="folder-chat-item">
+                  <a class="folder-chat-link" href="#">
+                    <div class="folder-chat-main">
+                      <p class="chat-title">폴더 내의 채팅명이 들어갑니다.</p>
+                      <span class="icon20 icon--keep-fill icon--basic"></span>
+                    </div>
+                    <p class="chat-preview">제일 최근에 입력한 채팅 버블창의 내용이 한줄로 들어갑니다. 제일 최근에 입력한 채팅 버블창의 내용이 한줄로 들어갑니다. 제일 최근에 입력한 채팅 버블창</p>
+                  </a>
+
+                  <div class="folder-chat-meta">
+                    <button class="btn-more" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-folder-chat" data-dd-pos="right-start">
+                      <span class="icon20 icon--more-horiz icon--basic"></span>
+                    </button>
+                    <p class="chat-date">8월 19일</p>
+                  </div>
+                </li>
+
+                <li class="folder-chat-item">
+                  <a class="folder-chat-link" href="#">
+                    <div class="folder-chat-main">
+                      <p class="chat-title">폴더 내의 채팅명이 들어갑니다.</p>
+                      <span class="icon20 icon--keep-fill icon--basic"></span>
+                    </div>
+                    <p class="chat-preview">제일 최근에 입력한 채팅 버블창의 내용이 한줄로 들어갑니다. 제일 최근에 입력한 채팅 버블창의 내용이 한줄로 들어갑니다. 제일 최근에 입력한 채팅 버블창</p>
+                  </a>
+
+                  <div class="folder-chat-meta">
+                    <button class="btn-more" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-folder-chat" data-dd-pos="right-start">
+                      <span class="icon20 icon--more-horiz icon--basic"></span>
+                    </button>
+                    <p class="chat-date">8월 19일</p>
+                  </div>
+                </li>
+
+                <li class="folder-chat-item">
+                  <a class="folder-chat-link" href="#">
+                    <div class="folder-chat-main">
+                      <p class="chat-title">폴더 내의 채팅명이 들어갑니다.</p>
+                      <span class="icon20 icon--keep-fill icon--basic"></span>
+                    </div>
+                    <p class="chat-preview">제일 최근에 입력한 채팅 버블창의 내용이 한줄로 들어갑니다. 제일 최근에 입력한 채팅 버블창의 내용이 한줄로 들어갑니다. 제일 최근에 입력한 채팅 버블창</p>
+                  </a>
+
+                  <div class="folder-chat-meta">
+                    <button class="btn-more" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-folder-chat" data-dd-pos="right-start">
+                      <span class="icon20 icon--more-horiz icon--basic"></span>
+                    </button>
+                    <p class="chat-date">8월 19일</p>
+                  </div>
+                </li>
+
+                <li class="folder-chat-item">
+                  <a class="folder-chat-link" href="#">
+                    <div class="folder-chat-main">
+                      <p class="chat-title">폴더 내의 채팅명이 들어갑니다.</p>
+                      <span class="icon20 icon--keep-fill icon--basic"></span>
+                    </div>
+                    <p class="chat-preview">제일 최근에 입력한 채팅 버블창의 내용이 한줄로 들어갑니다. 제일 최근에 입력한 채팅 버블창의 내용이 한줄로 들어갑니다. 제일 최근에 입력한 채팅 버블창</p>
+                  </a>
+
+                  <div class="folder-chat-meta">
+                    <button class="btn-more" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-folder-chat" data-dd-pos="right-start">
+                      <span class="icon20 icon--more-horiz icon--basic"></span>
+                    </button>
+                    <p class="chat-date">8월 19일</p>
+                  </div>
+                </li>
+
+                <li class="folder-chat-item">
+                  <a class="folder-chat-link" href="#">
+                    <div class="folder-chat-main">
+                      <p class="chat-title">폴더 내의 채팅명이 들어갑니다.</p>
+                      <span class="icon20 icon--keep-fill icon--basic"></span>
+                    </div>
+                    <p class="chat-preview">제일 최근에 입력한 채팅 버블창의 내용이 한줄로 들어갑니다. 제일 최근에 입력한 채팅 버블창의 내용이 한줄로 들어갑니다. 제일 최근에 입력한 채팅 버블창</p>
+                  </a>
+
+                  <div class="folder-chat-meta">
+                    <button class="btn-more" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-folder-chat" data-dd-pos="right-start">
+                      <span class="icon20 icon--more-horiz icon--basic"></span>
+                    </button>
+                    <p class="chat-date">8월 19일</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            
           </div>
         </section>
 
@@ -311,6 +521,7 @@
             <div class="aside-title">
               <button class="btn-aside-float btn-icon-normal-m" type="button" aria-label="우측 패널 플로팅">
                 <span class="icon20 icon--arrow-left2 icon--basic"></span>
+                <span class="icon20 icon--arrow-right2 icon--basic"></span>
               </button>
               <p>프롬프트 라이브러리</p>
             </div>
@@ -373,6 +584,13 @@
         </li>
         <li role="none">
           <button role="menuitem">
+            <!-- 상단 고정 일 경우 -->
+            <span class="icon20 icon--keep-fill icon--basic"></span>
+            <span class="dd-name">고정 해제</span>
+          </button>
+        </li>
+        <li role="none">
+          <button role="menuitem">
             <span class="icon20 icon--edit2 icon--basic"></span>
             <span class="dd-name">채팅 이름 변경</span>
           </button>
@@ -411,6 +629,13 @@
           <button role="menuitem">
             <span class="icon20 icon--keep icon--basic"></span>
             <span class="dd-name">상단 고정</span>
+          </button>
+        </li>
+        <li role="none">
+          <button role="menuitem">
+            <!-- 상단 고정 일 경우 -->
+            <span class="icon20 icon--keep-fill icon--basic"></span>
+            <span class="dd-name">고정 해제</span>
           </button>
         </li>
         <li role="none">
@@ -542,7 +767,6 @@
   <!-- 페이지 전용 JS -->
   <script src="../assets/js/chat-file-uploader.js"></script>
   <script src="../assets/js/chat-textarea.js"></script>
-  <script src="../assets/js/chat-smart.js"></script>
 
 
 </body>

@@ -171,8 +171,10 @@
     guideEl.addEventListener('click', function (e) {
       var btn = e.target.closest('.btn-aside-close');
       if (!btn) return;
-      clearGuide();         
-      clearAllActiveSubs(); 
+      e.preventDefault();
+      e.stopPropagation();
+      clearGuide();
+      clearAllActiveSubs();
     });
   }
 

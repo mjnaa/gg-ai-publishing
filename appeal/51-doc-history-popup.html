@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+
+<head>
+  <title>경기도 생성형 AI 플랫폼</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="경기도 생성형 AI 플랫폼" />
+  <!-- style sheets -->
+  <link href="../assets/css/tokens.css" rel="stylesheet">
+  <link href="../assets/css/font.css" rel="stylesheet">
+  <link href="../assets/css/base.css" rel="stylesheet">
+  <link href="../assets/css/layout.css" rel="stylesheet">
+  <link href="../assets/css/components.css" rel="stylesheet">
+  <link href="../assets/css/mask_datauri.css" rel="stylesheet">
+  <!-- favicon -->
+  <link rel="icon" href="../assets/img/favicon.ico" type="image/x-icon">
+  
+</head>
+
+<body>
+  <div class="viewport-scale">
+    <div class="viewport-inner">
+    <div class="layout-overlay" aria-hidden="true"></div>
+    
+    <div style="padding:24px; display:flex; justify-content:center; gap:12px;">
+      <button class="btn-solid-primary-m" data-modal-target="#modal-1">1. 미리보기</button>
+      <button class="btn-solid-primary-m" data-modal-target="#modal-2">2. 삭제</button>
+    </div>
+
+    <!-- 1. 문서 미리보기 -->
+    <div class="modal-basic modal-doc" id="modal-1" role="dialog" aria-modal="true" aria-hidden="true" data-modal>
+      <div class="modal-panel" tabindex="-1" data-modal-panel>
+        <div class="modal-body">
+          <div class="doc">
+            <!-- 문서 뷰어 위치 -->
+          </div>
+        </div>
+
+        <div class="modal-foot">
+          <button class="btn-outline-gray-l" data-modal-close>취소</button>
+          <button class="btn-solid-primary-l">저장</button>
+          <button class="btn-solid-primary-l">저장 후 열기</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. 문서 삭제 -->
+    <div class="modal-basic" id="modal-2" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-basic-title" data-modal>
+      <div class="modal-panel" tabindex="-1" data-modal-panel>
+        <div class="modal-head" id="modal-basic-title">
+          <h5>생성 문서 삭제</h5>
+          <button class="btn-aside-close btn-icon-normal-m" type="button" aria-label="모달 닫기" data-modal-close>
+            <span class="icon20 icon--close icon--basic"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            상수도원인자부담금 부과처분 무효확인 청구 초안.hwpx<br>
+            파일을 <strong class="danger">삭제</strong>하시겠습니까?
+          </p>
+        </div>
+        <div class="modal-foot">
+          <button class="btn-outline-gray-l" data-modal-close>취소</button>
+          <button class="btn-solid-danger-l" data-modal-target="#modal-inner">삭제</button>
+        </div>
+      </div>
+    </div>  
+    
+    
+    </div>
+  </div>
+
+
+  <!-- JS -->
+  <script src="../assets/js/layout.js"></script>
+  <script src="../assets/js/modal-popup.js"></script>
+
+</body>
+</html>

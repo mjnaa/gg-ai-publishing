@@ -48,7 +48,9 @@ publishing/
  │  │  ├─ chat-smart.js             # 스마트 도우미
  │  │  ├─ chat-textarea.js          # 채팅 입력 모듈 (자동 높이 + 전송 버튼 상태)
  │  │  ├─ chat-bubble-actions.js    # 채팅 버블 액션 제어
- │  │  └─ accordion-help.js         # 아코디언 메뉴 (도움말)
+ │  │  ├─ accordion-help.js         # 아코디언 메뉴 (도움말)
+ │  │  ├─ tab-bar.js                # 탭바
+ │  │  └─ prompt-library.js         # 프롬프트 라이브러리
  │  └─ img/
  │     └─ icon/                     # 아이콘만 보관
  ├─ common/
@@ -66,8 +68,8 @@ publishing/
  │  ├─ 15-chat-answer--code-quote.html
  │  ├─ 16-chat-popup.html
  │  ├─ 20-folder-main.html
- │  ├─ 30-prompt-empty.html
- │  ├─ 31-prompt-list.html
+ │  ├─ 21-folder-main--empty.html
+ │  ├─ 30-prompt.html
  │  ├─ 32-prompt-popup.html
  │  └─ 40-help.html
  ├─ legal/
@@ -79,7 +81,9 @@ publishing/
  │  ├─ 15-chat-answer--code-quote.html
  │  ├─ 16-chat-popup.html
  │  ├─ 20-folder-main.html
- │  └─ 50-doc-history.html
+ │  ├─ 21-folder-main--empty.html
+ │  ├─ 50-doc-history.html
+ │  └─ 51-doc-history-popup.html
  ├─ appeal/
  │  ├─ 10-chat-new.html
  │  ├─ 11-chat-bubble.html
@@ -89,7 +93,9 @@ publishing/
  │  ├─ 15-chat-answer--code-quote.html
  │  ├─ 16-chat-popup.html
  │  ├─ 20-folder-main.html
- │  └─ 50-doc-history.html
+ │  ├─ 21-folder-main--empty.html
+ │  ├─ 50-doc-history.html
+ │  └─ 51-doc-history-popup.html
  └─ pagelist.html                    # 통합 리스트 허브
 ```
 

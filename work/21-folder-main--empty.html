@@ -60,7 +60,7 @@
 
               <!-- 폴더 -->
               <li class="folder-item">
-                <div class="folder-head">
+                <div class="folder-head active">
                   <div class="left">
                     <!-- 폴더 여닫는 버튼-->
                     <button class="btn-folder tip-toggle" type="button" data-tip-pos="bottom" aria-expanded="false" data-tip-open="채팅 숨기기" data-tip-closed="채팅 표시" data-tip-offset-x="6" >
@@ -114,18 +114,6 @@
               </li>
             </ul>
 
-            <!-- 문서생성이력 -->
-            <ul class="chat-list">
-              <li class="list-title">
-                <div>
-                  <p>문서생성이력</p>
-                </div>
-              </li>
-              <li class="chat-item">
-                <a href="#"><span class="label">문서생성이력</span></a>
-              </li>
-            </ul>
-
             <!-- 채팅 리스트 -->
             <ul class="chat-list">
               <li class="list-title">
@@ -163,13 +151,13 @@
         <div class="bottom-area">
           <ul class="llm-list">
             <!-- 현재 서비스에 li class="active" -->
-            <li class="llm-item tip-toggle" data-tip-pos="right" data-tip-when="mini" aria-expanded="true" data-tip-open="AI 업무지원">
+            <li class="llm-item active tip-toggle" data-tip-pos="right" data-tip-when="mini" aria-expanded="true" data-tip-open="AI 업무지원">
               <a href="#">
                 <span class="icon20 icon--llm-01 icon--basic"></span>
                 <span class="label">AI 업무지원</span>
               </a>
             </li>
-            <li class="llm-item active tip-toggle" data-tip-pos="right" data-tip-when="mini" aria-expanded="true" data-tip-open="AI 법률">
+            <li class="llm-item tip-toggle" data-tip-pos="right" data-tip-when="mini" aria-expanded="true" data-tip-open="AI 법률">
               <a href="#">
                 <span class="icon20 icon--llm-02 icon--basic"></span>
                 <span class="label">AI 법률</span>
@@ -210,14 +198,14 @@
             <div class="dd-choice" data-choice="llm">
               <button type="button" class="dd-choice-toggle" aria-haspopup="listbox" aria-expanded="false">
                 <div class="dd-title">
-                  <span class="icon20 icon--llm-02 icon--primary"></span>
-                  <span class="txt">AI 법률</span>
+                  <span class="icon20 icon--llm-01 icon--primary"></span>
+                  <span class="txt">AI 업무지원</span>
                 </div>
                 <span class="icon22 icon--arrow-down icon--basic"></span>
               </button>
               <ul class="dd-choice-list left" role="listbox">
                 <li>
-                  <button type="button" class="dd-choice-item" role="option">
+                  <button type="button" class="dd-choice-item active" role="option">
                     <div class="dd-name">
                       <span class="icon20 icon--llm-01 icon--basic"></span>
                       <span class="txt">AI 업무지원</span>
@@ -226,7 +214,7 @@
                   </button>
                 </li>
                 <li>
-                  <button type="button" class="dd-choice-item active" role="option">
+                  <button type="button" class="dd-choice-item" role="option">
                     <div class="dd-name">
                       <span class="icon20 icon--llm-02 icon--basic"></span>
                       <span class="txt">AI 법률</span>
@@ -296,7 +284,7 @@
             </div>
 
             <!-- 채팅 설정 드롭다운메뉴(다중옵션목록ver) -->
-            <button class="btn-more btn-icon-normal-m" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="header-menu-chat" data-dd-pos="bottom-end">
+            <button class="btn-more btn-icon-normal-m" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-folder-head" data-dd-pos="bottom-end">
                 <span class="icon20 icon--more-horiz icon--basic"></span>
             </button>
           </div>
@@ -306,270 +294,82 @@
 
 
 
-        <!------ 콘텐츠(채팅) 영역 ------>
+        <!------ 콘텐츠(폴더) 영역 ------>
         <section class="layout-main-body" aria-label="채팅/콘텐츠">
-          <div class="chat">
-            <!-- 채팅 중 화면 -->
-            <div class="thread-area">
-              <div class="chat-thread">
-
-                <!-- 사용자 메시지 영역 -->
-                <div class="msg is-user" aria-label="사용자 메시지">
-                  <div class="msg-row">
-                    <div class="msg-main"> 
-
-                      <!-- 첨부파일 : 첨부한 파일이 있을때만 노출-->
-                      <!--<div class="msg-attachments" aria-label="첨부파일 목록">
-                        - 일반 첨부파일
-                        <div class="file-item">
-                          <div class="file-thumb file-thumb-hwp">
-                            <span>HWPX</span> 
-                          </div>
-                          <div class="file-info">
-                            <p class="file-name">파일명.확장자</p>
-                            <span class="file-type">한글문서</span>
-                          </div>
-                        </div>
-
-                        - 이미지파일
-                        <div class="file-item-image">
-                          <img src="../assets/img/thumb.png" alt="첨부 이미지">
-                        </div>
-                      </div>-->
-
-                      <!-- 사용자 메시지 -->
-                      <div class="msg-bubble">
-                        <p>사용자 메세지 버블입니다.</p>
-                      </div>
-
-                      <!-- 액션 버튼 영역 -->
-                      <div class="msg-actions">
-                        <button type="button" class="btn-msg tip-toggle" aria-label="복사" data-tip-pos="bottom" aria-expanded="true" data-tip-open="복사">
-                          <span class="icon18 icon--select icon--basic"></span>
-                        </button>
-                        <button type="button" class="btn-msg tip-toggle" aria-label="편집" data-tip-pos="bottom" aria-expanded="true" data-tip-open="메시지 편집">
-                          <span class="icon18 icon--edit icon--basic"></span>
-                        </button>
-                        <!-- 페이지네이션 : 메시지 편집후에만 노출 -->
-                        <!--<div class="msg-indicator">
-                          <button type="button" class="btn-prev btn-msg tip-toggle" aria-label="이전 메시지" data-tip-pos="bottom" aria-expanded="true" data-tip-open="이전 메시지">
-                            <span class="icon20 icon--arrow-left icon--basic"></span>
-                          </button>
-                          <span class="msg-count">2/2</span>
-                          <button type="button" class="btn-next btn-msg tip-toggle" aria-label="다음 메시지" data-tip-pos="bottom" aria-expanded="true" data-tip-open="다음 메시지">
-                            <span class="icon20 icon--arrow-right icon--basic"></span>
-                          </button>
-                        </div> -->
-                      </div>
-
-                    </div>
-                  </div>
+          <div class="folder">
+            <div class="folder-sticky-head">
+              <!-- 타이틀 -->
+              <div class="folder-title-area">
+                <div class="folder-title">
+                  <span class="icon32 icon--folder-open icon--basic"></span>
+                  <h3>폴더명</h3>
                 </div>
+              </div>
 
-                
-                <!-- AI 답변 영역 -->
-                <div class="msg is-bot" aria-label="AI 메시지">
-                  <div class="msg-row">
-                    <div class="msg-main">
-                      
-                      <!-- AI 답변 : 코드블록/인용문 유형 데모 -->
-                      <div class="msg-bubble">
-                        <p class="bold">20초동안 생각함 :</p>
-                        <p>코드블록/인용문 유형 답변입니다.</p>
-                        <hr class="divider" />
+              <!-- 채팅창 -->
+              <div class="start-area">
+                <form action="" method="post" enctype="multipart/form-data">
+                  <div class="chat-l">
+                    <div class="input-area">
+                      <!-- 첨부파일 목록 -->
+                      <div class="file-list">
+                      </div>
 
-                        <h4>코드블록 예시</h4>
-                        <!-- 코드블록 -->
-                        <div class="code-block" aria-label="코드블록">
-                          <div class="code-header">
-                            <span class="code-lang">css</span>
-                            <button type="button" class="btn-msg tip-toggle" aria-label="코드 복사" data-tip-pos="bottom" aria-expanded="true" data-tip-open="코드 복사">
-                              <span class="icon18 icon--select icon--basic"></span>
-                            </button>
-                          </div>
-
-                          <div class="code-body">
-<code>/* Caption */
-.caption1 { font-size: 1.4rem; line-height: 150%; letter-spacing: 0; }
-.caption2 { font-size: 1.3rem; line-height: 150%; letter-spacing: 0; }</code>
-                          </div>
-                        </div>
-                        <p>텍스트 <span class="txt-inline-code">인라인 코드</span>, <span class="txt-inline-code">inline code</span> 예시 입니다.</p>
-
-
-                        <hr class="divider" />
-
-
-                        <h4>인용문 예시</h4>
-                        <!-- 인용문 -->
-                        <div class="quote-block" aria-label="인용문">
-                          <div class="quote-content">
-                            <p>인용문 예시 텍스트 입니다. 인용문 예시 텍스트 입니다. 인용문 예시 텍스트 입니다. 인용문 예시 텍스트 입니다. 인용문 예시 텍스트 입니다. 인용문 예시 텍스트 입니다. 인용문 예시 텍스트 입니다. 인용문 예시 텍스트 입니다.</p>
-                          </div>
+                      <div class="chat-input-wrap">
+                        <!-- 스마트 도우미 선택 시 노출되는 안내 문구 -->
+                        <div id="chat-guide" class="chat-guide" aria-live="polite">
+                          <p class="guide-em"></p>
+                          <button class="btn-aside-close btn-icon-normal-s" type="button" aria-label="스마트도우미 지우기">
+                            <span class="icon20 icon--close icon--basic"></span>
+                          </button>
                         </div>
 
-                        
+                        <!-- 채팅 입력 : 입력시 자동 높이 조절 (chat-textarea.js) -->
+                        <textarea id="chat-input" class="chat-textarea" name="comment" aria-label="채팅 입력창" placeholder="(폴더명)에서 새 채팅" rows="1" maxlength="2000" minlength="1" required></textarea>
                       </div>
-
-                      <!-- 액션 버튼 영역 -->
-                      <div class="msg-actions">
-                        <button type="button" class="btn-msg tip-toggle" aria-label="복사" data-tip-pos="bottom" aria-expanded="true" data-tip-open="복사">
-                          <span class="icon18 icon--select icon--basic"></span>
-                        </button>
-                        <button type="button" class="btn-msg tip-toggle" aria-label="좋아요" data-tip-pos="bottom" aria-expanded="true" data-tip-open="좋아요">
-                          <span class="icon18 icon--thumb-up icon--basic"></span>
-                        </button>
-                        <button type="button" class="btn-msg tip-toggle" aria-label="별로에요" data-tip-pos="bottom" aria-expanded="true" data-tip-open="별로에요">
-                          <span class="icon18 icon--thumb-down icon--basic"></span>
-                        </button>
-                        <button type="button" class="btn-msg tip-toggle" aria-label="문서생성" data-tip-pos="bottom" aria-expanded="true" data-tip-open="문서생성" aria-haspopup="menu" data-dd="msg-docs" data-dd-pos="bottom-start">
-                          <span class="icon20 icon--docs icon--basic"></span>
-                        </button>
-
-                        <!-- 출처 토글 -->
-                        <button type="button" class="source-toggle" aria-expanded="false" aria-controls="source-list-001">
-                          <img src="../assets/img/logo.png" class="source-logo" alt="경기도 로고"/>
-                          <span>출처 2개</span>
-                          <span class="icon20 icon--arrow-down icon--basic"></span>
-                        </button>
-                      </div>
-
-                      <!-- 출처 리스트: 토글 대상 -->
-                      <div class="msg-sources" id="source-list-001" hidden>
-                        <ul class="source-list">
-
-                          <li class="source-item">
-                              <div class="source-head">
-                                <div class="source-head-left">
-                                  <!-- 내부 출처인 경우 : 경기도 로고 표시 -->
-                                  <img src="../assets/img/logo.png" class="source-logo" alt="경기도 로고"/>
-
-                                  <!-- 외부 출처인 경우 : 아이콘 표시 -->
-                                  <!--<span class="icon20 icon--attach-file icon--basic"></span> -->
-                                  
-                                  <span class="source-domain">gg.go.kr</span>
-                                </div>
-                                <div class="source-head-right">
-                                  <a href="#">새창으로 열기</a>
-                                </div>
-                              </div>
-                              <div class="source-body">
-                                <p class="source-title">출처 제목이 한 줄로 들어갑니다. 출처 제목이 한 줄로 들어갑니다. 출처 제목이 한 줄로 들어갑니다. 출처 제목이 한 줄로 들어갑니다. 출처 제목이 한 줄로 들어갑니다.</p>
-                                <p class="source-desc">출처 내용이 두 줄로 들어갑니다. 출처 내용이 두 줄로 들어갑니다. 출처 내용이 두 줄로 들어갑니다. 출처 내용이 두 줄로 들어갑니다. 출처 내용이 두 줄로 들어갑니다. 출처 내용이 두 줄로 들어갑니다. 출처 내용이 두 줄로 들어갑니다. 출처 내용이 두 줄로 들어갑니다. </p>
-                              </div>
-                          </li>
-
-                          <li class="source-item">
-                              <div class="source-head">
-                                <div class="source-head-left">
-                                  <!-- 내부 출처인 경우 : 경기도 로고 표시 -->
-                                  <!--<img src="../assets/img/logo.png" class="source-logo" alt="경기도 로고"/> -->
-
-                                  <!-- 외부 출처인 경우 : 아이콘 표시 -->
-                                  <span class="icon20 icon--attach-file icon--basic"></span>
-                                  
-                                  <span class="source-domain">gg.go.kr</span>
-                                </div>
-                                <div class="source-head-right">
-                                  <a href="#">새창으로 열기</a>
-                                </div>
-                              </div>
-                              <div class="source-body">
-                                <p class="source-title">출처 제목이 한 줄로 들어갑니다. 출처 제목이 한 줄로 들어갑니다. 출처 제목이 한 줄로 들어갑니다. 출처 제목이 한 줄로 들어갑니다. 출처 제목이 한 줄로 들어갑니다.</p>
-                                <p class="source-desc">출처 내용이 두 줄로 들어갑니다. 출처 내용이 두 줄로 들어갑니다. 출처 내용이 두 줄로 들어갑니다. 출처 내용이 두 줄로 들어갑니다. 출처 내용이 두 줄로 들어갑니다. 출처 내용이 두 줄로 들어갑니다. 출처 내용이 두 줄로 들어갑니다. 출처 내용이 두 줄로 들어갑니다. </p>
-                              </div>
-                          </li>
-
-                        </ul>
-                      </div>
-
                     </div>
-                  </div>
-                </div>
+                    
+                    <!-- 버튼 -->
+                    <div class="btn-area">
+                      <div class="left-area">
+                        <!-- 파일첨부 버튼 : 실제 file input은 화면에서 숨기고, 버튼으로 트리거 -->
+                        <label for="file-upload" class="btn-icon-solid-m tip-toggle" type="button" aria-label="파일첨부" data-tip-pos="bottom" aria-expanded="true" data-tip-open="파일추가">
+                          <span class="icon20 icon--add icon--basic"></span>
+                        </label>
+                        <input type="file" id="file-upload" name="attachment" style="display:none;">
 
+                        <!-- 라이브러리 버튼 -->
+                        <button class="btn-aside-toggle btn-solid-gray-m" type="button" aria-label="프롬프트 라이브러리">
+                          <span class="icon20 icon--library icon--basic"></span>
+                          <span>라이브러리</span>
+                        </button>
+
+                      </div>
+                      <div class="right-area">
+                        <!-- 텍스트 카운터 -->
+                        <!-- 최대 글자수 도달 시 <span class="danger"> -->
+                        <span class="textarea-counter"><span>0</span>/2000</span>
+
+                        <!-- 전송 버튼-->
+                        <button class="btn-send btn-icon-solid-m" type="submit" aria-label="전송">
+                          <span class="icon20 icon--near icon--primary"></span>
+                        </button>
+                      </div>
+                    </div>
+
+                  </div>
+                </form>
               </div>
             </div>
 
-            
-            <!-- 하단 채팅창 고정 영역 -->
-            <div class="composer-wrap">
-
-              <!-- 채팅창 -->
-              <form action="" method="post" enctype="multipart/form-data">
-                <div class="chat-m">
-                  <!-- 첨부파일 목록 -->
-                  <div class="file-area">
-                    <!-- 첨부파일 목록 -->
-                    <div class="file-list">
-                      <!--
-                        ※ 파일 첨부 목록 영역 (chat-file-uploader.js)
-                        - 일반 첨부파일 (.file-item)
-                          <div class="file-item">
-                            <div class="file-thumb file-thumb-hwp">
-                              <span>HWPX</span> 
-                            </div>
-                            <div class="file-info">
-                              <p class="file-name">파일명.확장자</p>
-                              <span class="file-type">한글문서</span>
-                            </div>
-                            <button class="file-remove btn-icon-normal-m" type="button" aria-label="첨부파일 삭제">
-                              <span class="icon20 icon--close icon--basic"></span>
-                            </button>
-                          </div>
-
-                        - 이미지 첨부파일 (.file-item-image)
-                          <div class="file-item-image">
-                            <img src="첨부 이미지 경로" alt="첨부 이미지">
-                            <button class="file-remove btn-icon-normal-m" type="button" aria-label="첨부파일 삭제">
-                              <span class="icon20 icon--close icon--basic"></span>
-                            </button>
-                          </div>
-                      -->
-                    </div>
-                  </div>
-                  
-                  <!-- 입력바 -->
-                  <div class="composer-row">
-                    <!-- 좌측 영역 -->
-                    <div class="left-area">
-                      <!-- 파일첨부 버튼 : 실제 file input은 화면에서 숨기고, 버튼으로 트리거 -->
-                      <label for="file-upload" class="btn-icon-solid-m tip-toggle" type="button" aria-label="파일첨부" data-tip-pos="bottom" aria-expanded="true" data-tip-open="파일추가">
-                        <span class="icon20 icon--add icon--basic"></span>
-                      </label>
-                      <input type="file" id="file-upload" name="attachment" style="display:none;">
-                    </div>
-
-                    <!-- 입력 영역 -->
-                    <div class="input-area">
-                      <textarea id="chat-input" class="chat-textarea" name="comment"
-                        aria-label="채팅 입력창" placeholder="무엇이든 물어보세요."
-                        rows="1" maxlength="2000" minlength="1" required></textarea>
-                    </div>
-
-                    <!-- 우측 영역 -->
-                    <div class="right-area">
-                      <!-- 텍스트 카운터 -->
-                      <span class="textarea-counter">0/2000</span>
-
-                      <!-- 전송 버튼-->
-                      <button class="btn-icon-solid-m" type="submit" aria-label="전송">
-                        <span class="icon20 icon--near icon--basic"></span>
-                      </button>
-                    </div>
-                  </div>
-                  
-                </div>
-              </form>
-
-              <!-- 안내 문구-->
-              <p class="chat-disclaimer">AI 법률은 참고용입니다. 중요한 정보는 반드시 추가 확인해 주세요.</p>     
-
-              <!-- 플로팅 버튼 -->
-              <button type="button" class="btn-floating-bottom btn-icon-outline-m" aria-label="맨 아래로 이동">
-                <span class="icon20 icon--south"></span>
-              </button>
-
+            <!-- 폴더 내 채팅 리스트 -->
+            <div class="folder-chat-area">
+              <!-- 폴더 내 채팅이 없을 때 -->
+              <div class="empty-state">
+                <p><span class="title">폴더 내 채팅이 없습니다.</span><br>위 채팅창에서 첫 채팅을 시작하세요.</p>
+              </div>
             </div>
+            
           </div>
         </section>
 
@@ -587,8 +387,9 @@
             <div class="aside-title">
               <button class="btn-aside-float btn-icon-normal-m" type="button" aria-label="우측 패널 플로팅">
                 <span class="icon20 icon--arrow-left2 icon--basic"></span>
+                <span class="icon20 icon--arrow-right2 icon--basic"></span>
               </button>
-              <p>보조패널 타이틀</p>
+              <p>프롬프트 라이브러리</p>
             </div>
             
             <button class="btn-aside-close btn-icon-normal-m" type="button" aria-label="우측 닫기">
@@ -611,7 +412,7 @@
           <div class="button-area">
             <button class="btn-solid-primary-l" type="button">
               <span class="icon20 icon--add icon--btn-solid"></span>
-              <span class="label">버튼</span>
+              <span class="label">프롬프트 생성</span>
             </button>
           </div>
         </div>
@@ -619,30 +420,6 @@
     </div>
 
 
-    
-    <!-- 드롭다운 메뉴 : AI 답변 / 문서생성 -->
-    <template id="msg-docs">
-      <ul class="dd" role="menu" aria-label="문서생성">      
-        <li role="none">
-          <button role="menuitem">
-            <span class="icon20 icon--docs icon--basic"></span>
-            <span class="dd-name">제정안</span>
-          </button>
-        </li>     
-        <li role="none">
-          <button role="menuitem">
-            <span class="icon20 icon--docs icon--basic"></span>
-            <span class="dd-name">개정안</span>
-          </button>
-        </li>     
-        <li role="none">
-          <button role="menuitem">
-            <span class="icon20 icon--docs icon--basic"></span>
-            <span class="dd-name">폐지안</span>
-          </button>
-        </li>
-      </ul> 
-    </template>
 
     <!-- 드롭다운 메뉴 : 폴더 설정 -->
     <template id="menu-folder-head">
@@ -673,13 +450,6 @@
         </li>
         <li role="none">
           <button role="menuitem">
-            <!-- 상단 고정 일 경우 -->
-            <span class="icon20 icon--keep-fill icon--basic"></span>
-            <span class="dd-name">고정 해제</span>
-          </button>
-        </li>
-        <li role="none">
-          <button role="menuitem">
             <span class="icon20 icon--edit2 icon--basic"></span>
             <span class="dd-name">채팅 이름 변경</span>
           </button>
@@ -696,7 +466,7 @@
         <li role="none">
           <button role="menuitem">
             <span class="icon20 icon--forward-media icon--basic"></span>
-            <span class="dd-name">(폴더명)에서 제거</span>
+            <span class="dd-name">폴더에서 제거</span>
           </button>
         </li>
         <li role="none">
@@ -718,13 +488,6 @@
           <button role="menuitem">
             <span class="icon20 icon--keep icon--basic"></span>
             <span class="dd-name">상단 고정</span>
-          </button>
-        </li>
-        <li role="none">
-          <button role="menuitem">
-            <!-- 상단 고정 일 경우 -->
-            <span class="icon20 icon--keep-fill icon--basic"></span>
-            <span class="dd-name">고정 해제</span>
           </button>
         </li>
         <li role="none">
@@ -764,13 +527,6 @@
               <span class="dd-name">폴더에 추가</span>
             </div>
             <span class="icon20 icon--arrow-right icon--basic"></span>
-          </button>
-        </li>
-        <!-- 폴더 내 채팅일 경우만 노출 -->
-        <li role="none">
-          <button role="menuitem">
-            <span class="icon20 icon--forward-media icon--basic"></span>
-            <span class="dd-name">(폴더명)에서 제거</span>
           </button>
         </li>
         <li role="none">
@@ -857,12 +613,13 @@
   <script src="../assets/js/layout.js"></script>
   <script src="../assets/js/tooltip.js"></script>
   <script src="../assets/js/dropdown.js"></script>
-  <script src="../assets/js/dropdown-choice.js"></script>
+  <script src="../assets/js/dropdown-choice.js"></script>  
+  <script src="../assets/js/theme-toggle.js"></script>
 
   <!-- 페이지 전용 JS -->
   <script src="../assets/js/chat-file-uploader.js"></script>
   <script src="../assets/js/chat-textarea.js"></script>
-  <script src="../assets/js/chat-bubble-actions.js"></script>
+
 
 </body>
 </html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+
+<head>
+  <title>경기도 생성형 AI 플랫폼</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="경기도 생성형 AI 플랫폼" />
+  <!-- style sheets -->
+  <link href="../assets/css/tokens.css" rel="stylesheet">
+  <link href="../assets/css/font.css" rel="stylesheet">
+  <link href="../assets/css/base.css" rel="stylesheet">
+  <link href="../assets/css/layout.css" rel="stylesheet">
+  <link href="../assets/css/components.css" rel="stylesheet">
+  <link href="../assets/css/mask_datauri.css" rel="stylesheet">
+  <!-- favicon -->
+  <link rel="icon" href="../assets/img/favicon.ico" type="image/x-icon">
+  
+</head>
+
+<body>
+  <div class="viewport-scale">
+    <div class="viewport-inner">
+    <div class="layout-overlay" aria-hidden="true"></div>
+    
+    <div style="padding:24px; display:flex; justify-content:center; gap:12px;">
+      <button class="btn-solid-primary-m" data-modal-target="#modal-1">1. 프롬프트 생성</button>
+      <button class="btn-solid-primary-m" data-modal-target="#modal-2">2. 프롬프트 보기(수정 권한X)</button>
+      <button class="btn-solid-primary-m" data-modal-target="#modal-3">3. 프롬프트 보기(수정 권한O)</button>
+    </div>
+
+    <!-- 1. 프롬프트 생성 -->
+    <div class="modal-expand-ver1" id="modal-1" role="dialog" aria-modal="true" aria-hidden="true" data-modal>
+      <div class="modal-panel" tabindex="-1" data-modal-panel>
+        <div class="modal-head">
+          <div class="modal-head-info">
+            <div class="modal-head-icon">
+              <span class="icon24 icon--library icon--inverse"></span>
+            </div>
+            <button class="btn-aside-close btn-icon-normal-m" type="button" aria-label="모달 닫기" data-modal-close>
+              <span class="icon20 icon--close icon--basic"></span>
+            </button>
+          </div>
+          <div class="modal-head-text">
+            <h5 class="modal-head-title">프롬프트 생성</h5>
+            <div class="modal-head-meta">
+              <span class="meta-name">김경기님</span>
+              <span class="meta-dept">OOO과</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-body">
+          <div class="form-field">
+            <label class="form-label">프롬프트 제목</label>
+            <input type="text" class="form-input" placeholder="내용을 입력하세요">
+          </div>
+          <div class="form-field">
+            <label class="form-label">프롬프트 상세</label>
+            <div class="textarea-wrap">
+              <textarea class="form-textarea" placeholder="내용을 입력하세요"></textarea>
+              <span class="textarea-counter">0/1000</span>
+            </div>
+          </div>
+          <div class="form-field">
+            <label class="form-label">제공범위</label>
+            <div class="form-checkbox-wrap">
+              <label class="form-checkbox-label">
+                <input type="checkbox" class="form-checkbox">MY
+              </label>
+              <label class="form-checkbox-label">
+                <input type="checkbox" class="form-checkbox">부서
+              </label>
+              <label class="form-checkbox-label">
+                <input type="checkbox" class="form-checkbox">실/국
+              </label>
+              <label class="form-checkbox-label">
+                <input type="checkbox" class="form-checkbox">전체
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-foot">
+          <div class="modal-foot-left">
+          </div>
+          <div class="modal-foot-right">
+            <button class="btn-outline-gray-l" data-modal-close>취소</button>
+            <button class="btn-solid-primary-l">저장</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. 프롬프트 보기(수정 권한X) -->
+    <div class="modal-expand-ver1" id="modal-2" role="dialog" aria-modal="true" aria-hidden="true" data-modal>
+      <div class="modal-panel" tabindex="-1" data-modal-panel>
+        <div class="modal-head">
+          <div class="modal-head-info">
+            <div class="modal-head-icon">
+              <span class="icon24 icon--library icon--inverse"></span>
+            </div>
+            <button class="btn-aside-close btn-icon-normal-m" type="button" aria-label="모달 닫기" data-modal-close>
+              <span class="icon20 icon--close icon--basic"></span>
+            </button>
+          </div>
+          <div class="modal-head-text">
+            <h5 class="modal-head-title">프롬프트 상세</h5>
+            <div class="modal-head-meta">
+              <span class="meta-name">김경기님</span>
+              <span class="meta-dept">OOO과</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-body">
+          <div class="form-field">
+            <label class="form-label">프롬프트 제목</label>
+            <input type="text" class="form-input" value="정책 관련 프롬프트" disabled>
+          </div>
+          <div class="form-field">
+            <label class="form-label">프롬프트 상세</label>
+            <div class="textarea-wrap">
+              <textarea class="form-textarea" disabled>정책의 핵심 목표, 추진 배경, 주요 사업 내용 및 관련 수치(예산, 수혜 인원, 일정 등)를 중심으로 요약해줘</textarea>
+              <span class="textarea-counter">0/1000</span>
+            </div>
+          </div>
+          <div class="form-field">
+            <label class="form-label">제공범위</label>
+            <div class="form-checkbox-wrap">
+              <label class="form-checkbox-label">
+                <input type="checkbox" class="form-checkbox" disabled>MY
+              </label>
+              <label class="form-checkbox-label">
+                <input type="checkbox" class="form-checkbox" checked disabled>부서
+              </label>
+              <label class="form-checkbox-label">
+                <input type="checkbox" class="form-checkbox" disabled>실/국
+              </label>
+              <label class="form-checkbox-label">
+                <input type="checkbox" class="form-checkbox" disabled>전체
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-foot">
+          <div class="modal-foot-left">
+          </div>
+          <div class="modal-foot-right">
+            <button class="btn-solid-primary-l">닫기</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. 프롬프트 보기(수정 권한O) -->
+    <div class="modal-expand-ver1" id="modal-3" role="dialog" aria-modal="true" aria-hidden="true" data-modal>
+      <div class="modal-panel" tabindex="-1" data-modal-panel>
+        <div class="modal-head">
+          <div class="modal-head-info">
+            <div class="modal-head-icon">
+              <span class="icon24 icon--library icon--inverse"></span>
+            </div>
+            <button class="btn-aside-close btn-icon-normal-m" type="button" aria-label="모달 닫기" data-modal-close>
+              <span class="icon20 icon--close icon--basic"></span>
+            </button>
+          </div>
+          <div class="modal-head-text">
+            <h5 class="modal-head-title">프롬프트 상세</h5>
+            <div class="modal-head-meta">
+              <span class="meta-name">김경기님</span>
+              <span class="meta-dept">OOO과</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-body">
+          <div class="form-field">
+            <label class="form-label">프롬프트 제목</label>
+            <input type="text" class="form-input" value="정책 관련 프롬프트">
+          </div>
+          <div class="form-field">
+            <label class="form-label">프롬프트 상세</label>
+            <div class="textarea-wrap">
+              <textarea class="form-textarea">정책의 핵심 목표, 추진 배경, 주요 사업 내용 및 관련 수치(예산, 수혜 인원, 일정 등)를 중심으로 요약해줘</textarea>
+              <span class="textarea-counter">0/1000</span>
+            </div>
+          </div>
+          <div class="form-field">
+            <label class="form-label">제공범위</label>
+            <div class="form-checkbox-wrap">
+              <label class="form-checkbox-label">
+                <input type="checkbox" class="form-checkbox">MY
+              </label>
+              <label class="form-checkbox-label">
+                <input type="checkbox" class="form-checkbox" checked>부서
+              </label>
+              <label class="form-checkbox-label">
+                <input type="checkbox" class="form-checkbox">실/국
+              </label>
+              <label class="form-checkbox-label">
+                <input type="checkbox" class="form-checkbox">전체
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-foot">
+          <div class="modal-foot-left">
+            <button class="btn-solid-danger-l">삭제</button>
+          </div>
+          <div class="modal-foot-right">
+            <button class="btn-outline-gray-l" data-modal-close>취소</button>
+            <button class="btn-solid-primary-l">수정</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    </div>
+  </div>
+
+
+  <!-- JS -->
+  <script src="../assets/js/layout.js"></script>
+  <script src="../assets/js/modal-popup.js"></script>
+  <script src="../assets/js/theme-toggle.js"></script>
+
+</body>
+</html>
