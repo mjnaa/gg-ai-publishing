@@ -102,10 +102,18 @@
       if (!modal || isOpen(modal)) return;
 
       var panel = modal.querySelector('[data-modal-panel]') || modal;
-
+    
       // 오프너 저장 (닫을 때 포커스 복귀)
       var opener = document.activeElement;
       modal.__opener = (opener instanceof HTMLElement) ? opener : null;
+
+      var wrongBtns = modal.querySelectorAll('.btn-aside-close');
+      wrongBtns.forEach(function (btn) {
+        btn.classList.remove('btn-aside-close')
+        if (!btn.hasAttribute('data-modal-close')) {
+          btn.setAttribute('data-modal-close', '');
+        }
+      });
 
       // 모달을 body로
       portalToBody(modal);
@@ -190,10 +198,19 @@
     // 2) 닫기 버튼
     var closer = e.target.closest && e.target.closest('[data-modal-close]');
     if (closer) {
+      if (closer.classList && closer.classList.contains('btn-aside-close')) {
+        closer.classList.remove('btn-aside-close');
+      }
+
       var hostModal = closer.closest('[data-modal]');
-      if (hostModal) { e.preventDefault(); Modal.close(hostModal); }
+      if (hostModal) {
+        e.preventDefault();
+        e.stopPropagation();
+        Modal.close(hostModal);
+      }
       return;
     }
+
 
     // 3) 백드롭 클릭
     if (e.target.classList && e.target.classList.contains('modal-backdrop')) {

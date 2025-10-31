@@ -86,9 +86,16 @@
     // 닫기 버튼
     var closeBtn = el.querySelector('.btn-aside-close');
     if (closeBtn && !closeBtn._bound) {
-      closeBtn.addEventListener('click', hideAlert);
+      closeBtn.classList.remove('btn-aside-close');
+
+      closeBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation(); 
+        hideAlert();
+      }, true);
       closeBtn._bound = true;
     }
+
   }
 
   function hideAlert(){
