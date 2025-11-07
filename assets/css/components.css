@@ -217,7 +217,7 @@ body.is-aside-open button[aria-label="프롬프트"] > .icon--library {
   font-size: 1.3rem;
   gap: 4px;
   height: 26px;
-  padding: 0px 10px 0px 10px;
+  padding: 0px 8px 0px 8px;
 }
 .btn-outline-gray-l:hover,
 .btn-outline-gray-m:hover,
@@ -271,7 +271,7 @@ body.is-aside-open button[aria-label="프롬프트"] > .icon--library {
   font-size: 1.3rem;
   gap: 4px;
   height: 26px;
-  padding: 0px 10px 0px 10px;
+  padding: 0px 8px 0px 8px;
 }
 .btn-outline-darkgray-l:hover,
 .btn-outline-darkgray-m:hover,
