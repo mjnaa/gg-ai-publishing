@@ -693,6 +693,17 @@ body.is-dragging-files .layout-main .drag-overlay {
   align-items: center;
   gap: 10px;
 }
+.chat-footer {
+  position: absolute;
+  z-index: 3;
+  background: var(--color-background-basic);
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px 20px;
+  box-sizing: border-box;
+}
+
 
 /* 봉공이 캐릭터 */
 .bonggong-img {
@@ -1256,7 +1267,8 @@ body.is-dragging-files .layout-main .drag-overlay {
   color: var(--color-text-muted);
   margin-top: 4px;
 }
-.chat .composer-wrap .chat-contact{
+.chat .composer-wrap .chat-contact,
+.chat-footer .chat-contact {
   font-size: 1.3rem; 
   line-height: 150%; 
   letter-spacing: 0;
