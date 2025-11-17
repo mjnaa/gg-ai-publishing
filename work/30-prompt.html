@@ -551,7 +551,7 @@
           <!-- 1. MY 탭 -->
           <div class="tab-panel" id="tab-my">
             <!-- 저장된 프롬프트가 없는 경우 -->
-            <div class="prompt-empty-state">
+            <!--<div class="prompt-empty-state">
               <div class="empty-desc">
                 <p class="empty-title">프롬프트 라이브러리란?</p>
                 <p class="empty-text">자주 사용하는 프롬프트를<br>저장해서 꺼내 쓸 수 있는 기능</p>
@@ -560,7 +560,69 @@
                   도움말 바로가기
                 </button>
               </div>
-            </div>
+            </div>-->
+
+            <!-- 저장된 프롬프트가 있는 경우 -->
+            <ul class="prompt-list">
+              <!-- 카드 1 : 고정된 카드에 class="is-pinned" -->
+              <li class="prompt-item is-pinned">
+                <div class="prompt-card">
+                  <div class="prompt-card-head">
+                    <span class="prompt-card-title">프롬프트 제목이 들어갑니다.</span>
+                    <span class="icon18 icon--keep-fill icon--basic"></span>
+                  </div>
+                  <div class="prompt-card-content">
+                    <p class="prompt-card-desc">프롬프트 상세 내용이 들어갑니다. 프롬프트 상세 내용이 들어갑니다.</p>
+                    <!-- 제공범위 칩 : MY 탭에서만 노출 -->
+                    <span class="prompt-card-chip">MY</span>
+                  </div>
+                </div>
+
+                <!-- 마우스오버시 노출되는 버튼 -->
+                <div class="card-actions" role="group" aria-label="카드 작업">
+                  <button type="button" class="btn-chip action-apply">
+                    <span class="icon16 icon--library icon--basic"></span>적용
+                  </button>
+                  <button type="button" class="btn-chip action-preview">
+                    <span class="icon16 icon--visibility icon--basic"></span>보기
+                  </button>
+                  <button type="button" class="btn-chip action-pin">
+                    <!-- 상단고정(.is-pinned)일 때 자동으로 icon--keep-fill로 변경됨 -->
+                    <span class="icon16 icon--keep icon--basic"></span>고정
+                  </button>
+                </div>
+              </li>
+
+              
+              <!-- 카드 2 -->
+              <li class="prompt-item">
+                <div class="prompt-card">
+                  <div class="prompt-card-head">
+                    <span class="prompt-card-title">프롬프트 제목이 들어갑니다.</span>
+                    <span class="icon18 icon--keep-fill icon--basic"></span>
+                  </div>
+                  <div class="prompt-card-content">
+                    <p class="prompt-card-desc">프롬프트 상세 내용이 들어갑니다. 프롬프트 상세 내용이 들어갑니다.</p>
+                    <!-- 제공범위 칩 : MY 탭에서만 노출 -->
+                    <span class="prompt-card-chip">부서</span>
+                  </div>
+                </div>
+
+                <!-- 마우스오버시 노출되는 버튼 -->
+                <div class="card-actions" role="group" aria-label="카드 작업">
+                  <button type="button" class="btn-chip action-apply">
+                    <span class="icon16 icon--library icon--basic"></span>적용
+                  </button>
+                  <button type="button" class="btn-chip action-preview">
+                    <span class="icon16 icon--visibility icon--basic"></span>보기
+                  </button>
+                  <button type="button" class="btn-chip action-pin">
+                    <!-- 상단고정(.is-pinned)일 때 자동으로 icon--keep-fill로 변경됨 -->
+                    <span class="icon16 icon--keep icon--basic"></span>고정
+                  </button>
+                </div>
+              </li>
+            </ul>
           </div>
 
           <!-- 2. 부서 탭 -->
@@ -573,7 +635,11 @@
                     <span class="prompt-card-title">프롬프트 제목이 들어갑니다.</span>
                     <span class="icon18 icon--keep-fill icon--basic"></span>
                   </div>
-                  <p class="prompt-card-desc">프롬프트 첫번째 상세 내용이 들어갑니다. 프롬프트 상세 내용이 들어갑니다.</p>
+                  <div class="prompt-card-content">
+                    <p class="prompt-card-desc">프롬프트 첫번째 상세 내용이 들어갑니다. 프롬프트 상세 내용이 들어갑니다.</p>
+                    <!-- 제공범위 칩 : MY 탭에서만 노출 -->
+                    <!--<span class="prompt-card-chip">부서</span>-->
+                  </div>
                 </div>
 
                 <!-- 마우스오버시 노출되는 버튼 -->
@@ -598,7 +664,11 @@
                     <span class="prompt-card-title">프롬프트 제목이 들어갑니다.</span>
                     <span class="icon18 icon--keep-fill icon--basic"></span>
                   </div>
-                  <p class="prompt-card-desc">프롬프트 두번째 상세 내용이 들어갑니다. 프롬프트 상세 내용이 들어갑니다.</p>
+                  <div class="prompt-card-content">
+                    <p class="prompt-card-desc">프롬프트 두번째 상세 내용이 들어갑니다. 프롬프트 상세 내용이 들어갑니다.</p>
+                    <!-- 제공범위 칩 : MY 탭에서만 노출 -->
+                    <!--<span class="prompt-card-chip">부서</span>-->
+                  </div>
                 </div>
 
                 <!-- 마우스오버시 노출되는 버튼 -->
@@ -623,7 +693,11 @@
                     <span class="prompt-card-title">프롬프트 제목이 들어갑니다.</span>
                     <span class="icon18 icon--keep-fill icon--basic"></span>
                   </div>
-                  <p class="prompt-card-desc">프롬프트 상세 내용이 들어갑니다. 프롬프트 상세 내용이 들어갑니다.</p>
+                  <div class="prompt-card-content">
+                    <p class="prompt-card-desc">프롬프트 상세 내용이 들어갑니다. 프롬프트 상세 내용이 들어갑니다.</p>
+                    <!-- 제공범위 칩 : MY 탭에서만 노출 -->
+                    <!--<span class="prompt-card-chip">부서</span>-->
+                  </div>
                 </div>
 
                 <!-- 마우스오버시 노출되는 버튼 -->
@@ -648,7 +722,11 @@
                     <span class="prompt-card-title">프롬프트 제목이 들어갑니다.</span>
                     <span class="icon18 icon--keep-fill icon--basic"></span>
                   </div>
-                  <p class="prompt-card-desc">프롬프트 상세 내용이 들어갑니다. 프롬프트 상세 내용이 들어갑니다.</p>
+                  <div class="prompt-card-content">
+                    <p class="prompt-card-desc">프롬프트 상세 내용이 들어갑니다. 프롬프트 상세 내용이 들어갑니다.</p>
+                    <!-- 제공범위 칩 : MY 탭에서만 노출 -->
+                    <!--<span class="prompt-card-chip">부서</span>-->
+                  </div>
                 </div>
 
                 <!-- 마우스오버시 노출되는 버튼 -->
@@ -673,7 +751,11 @@
                     <span class="prompt-card-title">프롬프트 제목이 들어갑니다.</span>
                     <span class="icon18 icon--keep-fill icon--basic"></span>
                   </div>
-                  <p class="prompt-card-desc">프롬프트 상세 내용이 들어갑니다. 프롬프트 상세 내용이 들어갑니다.</p>
+                  <div class="prompt-card-content">
+                    <p class="prompt-card-desc">프롬프트 상세 내용이 들어갑니다. 프롬프트 상세 내용이 들어갑니다.</p>
+                    <!-- 제공범위 칩 : MY 탭에서만 노출 -->
+                    <!--<span class="prompt-card-chip">부서</span>-->
+                  </div>
                 </div>
 
                 <!-- 마우스오버시 노출되는 버튼 -->
@@ -698,7 +780,11 @@
                     <span class="prompt-card-title">프롬프트 제목이 들어갑니다.</span>
                     <span class="icon18 icon--keep-fill icon--basic"></span>
                   </div>
-                  <p class="prompt-card-desc">프롬프트 상세 내용이 들어갑니다. 프롬프트 상세 내용이 들어갑니다.</p>
+                  <div class="prompt-card-content">
+                    <p class="prompt-card-desc">프롬프트 상세 내용이 들어갑니다. 프롬프트 상세 내용이 들어갑니다.</p>
+                    <!-- 제공범위 칩 : MY 탭에서만 노출 -->
+                    <!--<span class="prompt-card-chip">부서</span>-->
+                  </div>
                 </div>
 
                 <!-- 마우스오버시 노출되는 버튼 -->
@@ -723,7 +809,11 @@
                     <span class="prompt-card-title">프롬프트 제목이 들어갑니다.</span>
                     <span class="icon18 icon--keep-fill icon--basic"></span>
                   </div>
-                  <p class="prompt-card-desc">프롬프트 상세 내용이 들어갑니다. 프롬프트 상세 내용이 들어갑니다.</p>
+                  <div class="prompt-card-content">
+                    <p class="prompt-card-desc">프롬프트 상세 내용이 들어갑니다. 프롬프트 상세 내용이 들어갑니다.</p>
+                    <!-- 제공범위 칩 : MY 탭에서만 노출 -->
+                    <!--<span class="prompt-card-chip">부서</span>-->
+                  </div>
                 </div>
 
                 <!-- 마우스오버시 노출되는 버튼 -->
@@ -748,7 +838,11 @@
                     <span class="prompt-card-title">프롬프트 제목이 들어갑니다.</span>
                     <span class="icon18 icon--keep-fill icon--basic"></span>
                   </div>
-                  <p class="prompt-card-desc">프롬프트 상세 내용이 들어갑니다. 프롬프트 상세 내용이 들어갑니다.</p>
+                  <div class="prompt-card-content">
+                    <p class="prompt-card-desc">프롬프트 상세 내용이 들어갑니다. 프롬프트 상세 내용이 들어갑니다.</p>
+                    <!-- 제공범위 칩 : MY 탭에서만 노출 -->
+                    <!--<span class="prompt-card-chip">부서</span>-->
+                  </div>
                 </div>
 
                 <!-- 마우스오버시 노출되는 버튼 -->
@@ -773,7 +867,11 @@
                     <span class="prompt-card-title">프롬프트 제목이 들어갑니다.</span>
                     <span class="icon18 icon--keep-fill icon--basic"></span>
                   </div>
-                  <p class="prompt-card-desc">프롬프트 상세 내용이 들어갑니다. 프롬프트 상세 내용이 들어갑니다.</p>
+                  <div class="prompt-card-content">
+                    <p class="prompt-card-desc">프롬프트 상세 내용이 들어갑니다. 프롬프트 상세 내용이 들어갑니다.</p>
+                    <!-- 제공범위 칩 : MY 탭에서만 노출 -->
+                    <!--<span class="prompt-card-chip">부서</span>-->
+                  </div>
                 </div>
 
                 <!-- 마우스오버시 노출되는 버튼 -->
@@ -798,7 +896,11 @@
                     <span class="prompt-card-title">프롬프트 제목이 들어갑니다.</span>
                     <span class="icon18 icon--keep-fill icon--basic"></span>
                   </div>
-                  <p class="prompt-card-desc">프롬프트 상세 내용이 들어갑니다. 프롬프트 상세 내용이 들어갑니다.</p>
+                  <div class="prompt-card-content">
+                    <p class="prompt-card-desc">프롬프트 상세 내용이 들어갑니다. 프롬프트 상세 내용이 들어갑니다.</p>
+                    <!-- 제공범위 칩 : MY 탭에서만 노출 -->
+                    <!--<span class="prompt-card-chip">부서</span>-->
+                  </div>
                 </div>
 
                 <!-- 마우스오버시 노출되는 버튼 -->
@@ -829,7 +931,11 @@
                     <span class="prompt-card-title">프롬프트 제목이 들어갑니다.</span>
                     <span class="icon18 icon--keep-fill icon--basic"></span>
                   </div>
-                  <p class="prompt-card-desc">프롬프트 상세 내용이 들어갑니다. 프롬프트 상세 내용이 들어갑니다.</p>
+                  <div class="prompt-card-content">
+                    <p class="prompt-card-desc">프롬프트 상세 내용이 들어갑니다. 프롬프트 상세 내용이 들어갑니다.</p>
+                    <!-- 제공범위 칩 : MY 탭에서만 노출 -->
+                    <!--<span class="prompt-card-chip">부서</span>-->
+                  </div>
                 </div>
 
                 <!-- 마우스오버시 노출되는 버튼 -->
@@ -860,7 +966,11 @@
                     <span class="prompt-card-title">프롬프트 제목이 들어갑니다.</span>
                     <span class="icon18 icon--keep-fill icon--basic"></span>
                   </div>
-                  <p class="prompt-card-desc">프롬프트 상세 내용이 들어갑니다. 프롬프트 상세 내용이 들어갑니다.</p>
+                  <div class="prompt-card-content">
+                    <p class="prompt-card-desc">프롬프트 상세 내용이 들어갑니다. 프롬프트 상세 내용이 들어갑니다.</p>
+                    <!-- 제공범위 칩 : MY 탭에서만 노출 -->
+                    <!--<span class="prompt-card-chip">부서</span>-->
+                  </div>
                 </div>
 
                 <!-- 마우스오버시 노출되는 버튼 -->

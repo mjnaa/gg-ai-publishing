@@ -1057,7 +1057,7 @@ button {
   letter-spacing: 0;
   padding: 18px 24px 18px 24px;
 }
-.modal-expand-ver1 .form-checkbox-wrap {
+.modal-expand-ver1 .form-radio-wrap {
   display: flex;
   flex-direction: row;
   gap: 12px;
@@ -1069,13 +1069,9 @@ button {
   gap: 10px;
   padding: 0px 24px 20px 24px;
 }
-.modal-expand-ver1 .modal-foot-left,
-.modal-expand-ver1 .modal-foot-right {
-  display: flex;
-  gap: 10px;
-}
-.modal-expand-ver1 .modal-foot button{
-  width: 120px;
+.modal-expand-ver1 .modal-foot .btn-outline-gray-l,
+.modal-expand-ver1 .modal-foot .btn-solid-danger-l {
+  width: 166px;
 }
 .modal-expand-ver1 .form-field {
   display: flex;
@@ -1538,6 +1534,7 @@ button {
   opacity: 0.9; 
 }
 
+
 /* 입력 필드 : input[type="text"] */
 .form-input {
   width: 100%;
@@ -1855,6 +1852,72 @@ button {
 }
 .form-checkbox:focus-visible {
   box-shadow: 0 0 0 1px var(--color-border-primary);
+}
+
+/* 라디오 버튼 : 커스텀 */
+.form-radio {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.form-radio-label {
+  color: var(--color-text-muted);
+  font-size: 1.4rem; 
+  line-height: 1; 
+  letter-spacing: 0;
+  font-weight: 500;
+  display: inline-flex;
+  flex-direction: row;
+  gap: 6px;
+  align-items: center;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-drag: none; 
+  cursor: pointer;
+  position: relative;
+}
+.form-radio-label:has(input:disabled) {
+  cursor: default;
+  opacity: 0.9; 
+}
+.form-radio-label span::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+  border-radius: 50%;
+  border: 1px solid var(--color-input-border-disabled);
+  background-color: var(--color-input-surface);
+  box-sizing: border-box;
+  vertical-align: bottom;
+}
+.form-radio:checked + span::before {
+  border-color: var(--color-input-border-disabled);
+  background-color: var(--color-input-surface);
+}
+.form-radio:checked + span::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-icon-primary);
+  border-radius: 50%;
+}
+.form-radio:disabled + span::before {
+  border-color: var(--color-input-border-disabled);
+  background-color: var(--color-input-surface);
+}
+.form-radio:disabled:checked + span::after {
+  background-color: var(--color-icon-basic);
+}
+.form-radio-label.is-disabled {
+  cursor: default;
+  opacity: 0.6;
 }
 
 /* 인포 박스 */
@@ -2389,7 +2452,6 @@ button {
 .prompt-card {
   width: 100%;
   display: block;
-  gap: 2px;
   text-align: left;
   padding: 12px 14px;
   border-radius: 10px;
@@ -2406,12 +2468,14 @@ button {
   justify-content: space-between;
   align-items: center;
   gap: 2px;
+  margin-bottom: 2px;
 }
 .prompt-card-head .icon--keep-fill {
   display: none;
 }
 .prompt-item.is-pinned .prompt-card-head .icon--keep-fill {
   display: inline-block;
+  margin-bottom: 4px;
 }
 .prompt-card-title {
   font-size: 1.5rem;
@@ -2424,6 +2488,12 @@ button {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+.prompt-card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2px;
+}
 .prompt-card-desc {
   font-size: 1.3rem;
   line-height: 150%;
@@ -2434,6 +2504,16 @@ button {
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+.prompt-card-chip {
+  font-size: 1.3rem;
+  line-height: 1;
+  font-weight: 500;
+  color: var(--color-text-subtle);
+  border-radius: 4px;
+  background: var(--color-background-muted);
+  padding: 3px 5px;
+  white-space: nowrap;
 }
 .card-actions {
   width: 100%;

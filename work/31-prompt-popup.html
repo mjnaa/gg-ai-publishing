@@ -25,8 +25,9 @@
     
     <div style="padding:24px; display:flex; justify-content:center; gap:12px;">
       <button class="btn-solid-primary-m" data-modal-target="#modal-1">1. 프롬프트 생성</button>
-      <button class="btn-solid-primary-m" data-modal-target="#modal-2">2. 프롬프트 보기(수정 권한X)</button>
-      <button class="btn-solid-primary-m" data-modal-target="#modal-3">3. 프롬프트 보기(수정 권한O)</button>
+      <button class="btn-solid-primary-m" data-modal-target="#modal-2">2. 프롬프트 보기</button>
+      <button class="btn-solid-primary-m" data-modal-target="#modal-3">3. 프롬프트 보기(작성자)</button>
+      <button class="btn-solid-primary-m" data-modal-target="#modal-4">4. 프롬프트 수정(작성자)</button>
     </div>
 
     <!-- 1. 프롬프트 생성 -->
@@ -64,36 +65,72 @@
           </div>
           <div class="form-field">
             <label class="form-label">제공범위</label>
-            <div class="form-checkbox-wrap">
-              <label class="form-checkbox-label">
-                <input type="checkbox" class="form-checkbox">MY
+            <div class="form-radio-wrap">
+              <label class="form-radio-label">
+                <input type="radio" name="scope" class="form-radio" value="my" checked><span>MY</span>
               </label>
-              <label class="form-checkbox-label">
-                <input type="checkbox" class="form-checkbox">부서
+              <label class="form-radio-label">
+                <input type="radio" name="scope" class="form-radio" value="부서"><span>부서</span>
               </label>
-              <label class="form-checkbox-label">
-                <input type="checkbox" class="form-checkbox">실/국
+              <label class="form-radio-label">
+                <input type="radio" name="scope" class="form-radio" value="실/국"><span>실/국</span>
               </label>
-              <label class="form-checkbox-label">
-                <input type="checkbox" class="form-checkbox">전체
+              <label class="form-radio-label">
+                <input type="radio" name="scope" class="form-radio" value="전체"><span>전체</span>
               </label>
             </div>
           </div>
         </div>
 
         <div class="modal-foot">
-          <div class="modal-foot-left">
-          </div>
-          <div class="modal-foot-right">
-            <button class="btn-outline-gray-l" data-modal-close>취소</button>
-            <button class="btn-solid-primary-l">저장</button>
-          </div>
+          <button class="btn-solid-primary-l">저장</button>
         </div>
       </div>
     </div>
 
-    <!-- 2. 프롬프트 보기(수정 권한X) -->
+    <!-- 2. 프롬프트 보기 -->
     <div class="modal-expand-ver1" id="modal-2" role="dialog" aria-modal="true" aria-hidden="true" data-modal>
+      <div class="modal-panel" tabindex="-1" data-modal-panel>
+        <div class="modal-head">
+          <div class="modal-head-info">
+            <div class="modal-head-icon">
+              <span class="icon24 icon--library icon--inverse"></span>
+            </div>
+            <button class="btn-aside-close btn-icon-normal-m" type="button" aria-label="모달 닫기" data-modal-close>
+              <span class="icon20 icon--close icon--basic"></span>
+            </button>
+          </div>
+          <div class="modal-head-text">
+            <h5 class="modal-head-title">프롬프트 상세</h5>
+            <div class="modal-head-meta">
+              <span class="meta-name">김경기님</span>
+              <span class="meta-dept">OOO과</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-body">
+          <div class="form-field">
+            <label class="form-label">프롬프트 제목</label>
+            <input type="text" class="form-input" value="정책 관련 프롬프트" disabled>
+          </div>
+          <div class="form-field">
+            <label class="form-label">프롬프트 상세</label>
+            <div class="textarea-wrap">
+              <textarea class="form-textarea" disabled>정책의 핵심 목표, 추진 배경, 주요 사업 내용 및 관련 수치(예산, 수혜 인원, 일정 등)를 중심으로 요약해줘</textarea>
+              <span class="textarea-counter">0/1000</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-foot">
+          <button class="btn-solid-primary-l">적용</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. 프롬프트 보기(작성자) -->
+    <div class="modal-expand-ver1" id="modal-3" role="dialog" aria-modal="true" aria-hidden="true" data-modal>
       <div class="modal-panel" tabindex="-1" data-modal-panel>
         <div class="modal-head">
           <div class="modal-head-info">
@@ -127,35 +164,33 @@
           </div>
           <div class="form-field">
             <label class="form-label">제공범위</label>
-            <div class="form-checkbox-wrap">
-              <label class="form-checkbox-label">
-                <input type="checkbox" class="form-checkbox" disabled>MY
+            <div class="form-radio-wrap">
+              <label class="form-radio-label">
+                <input type="radio" name="scope3" class="form-radio" value="my" checked disabled><span>MY</span>
               </label>
-              <label class="form-checkbox-label">
-                <input type="checkbox" class="form-checkbox" checked disabled>부서
+              <label class="form-radio-label">
+                <input type="radio" name="scope3" class="form-radio" value="부서" disabled><span>부서</span>
               </label>
-              <label class="form-checkbox-label">
-                <input type="checkbox" class="form-checkbox" disabled>실/국
+              <label class="form-radio-label">
+                <input type="radio" name="scope3" class="form-radio" value="실/국" disabled><span>실/국</span>
               </label>
-              <label class="form-checkbox-label">
-                <input type="checkbox" class="form-checkbox" disabled>전체
+              <label class="form-radio-label">
+                <input type="radio" name="scope3" class="form-radio" value="전체" disabled><span>전체</span>
               </label>
             </div>
           </div>
         </div>
 
         <div class="modal-foot">
-          <div class="modal-foot-left">
-          </div>
-          <div class="modal-foot-right">
-            <button class="btn-solid-primary-l">닫기</button>
-          </div>
+          <button class="btn-solid-danger-l">삭제</button>
+          <button class="btn-outline-gray-l">수정</button>
+          <button class="btn-solid-primary-l">적용</button>
         </div>
       </div>
     </div>
 
-    <!-- 3. 프롬프트 보기(수정 권한O) -->
-    <div class="modal-expand-ver1" id="modal-3" role="dialog" aria-modal="true" aria-hidden="true" data-modal>
+    <!-- 4. 프롬프트 수정(작성자) -->
+    <div class="modal-expand-ver1" id="modal-4" role="dialog" aria-modal="true" aria-hidden="true" data-modal>
       <div class="modal-panel" tabindex="-1" data-modal-panel>
         <div class="modal-head">
           <div class="modal-head-info">
@@ -189,31 +224,26 @@
           </div>
           <div class="form-field">
             <label class="form-label">제공범위</label>
-            <div class="form-checkbox-wrap">
-              <label class="form-checkbox-label">
-                <input type="checkbox" class="form-checkbox">MY
+            <div class="form-radio-wrap">
+              <label class="form-radio-label">
+                <input type="radio" name="scope4" class="form-radio" value="my" checked><span>MY</span>
               </label>
-              <label class="form-checkbox-label">
-                <input type="checkbox" class="form-checkbox" checked>부서
+              <label class="form-radio-label">
+                <input type="radio" name="scope4" class="form-radio" value="부서"><span>부서</span>
               </label>
-              <label class="form-checkbox-label">
-                <input type="checkbox" class="form-checkbox">실/국
+              <label class="form-radio-label">
+                <input type="radio" name="scope4" class="form-radio" value="실/국"><span>실/국</span>
               </label>
-              <label class="form-checkbox-label">
-                <input type="checkbox" class="form-checkbox">전체
+              <label class="form-radio-label">
+                <input type="radio" name="scope4" class="form-radio" value="전체"><span>전체</span>
               </label>
             </div>
           </div>
         </div>
 
         <div class="modal-foot">
-          <div class="modal-foot-left">
-            <button class="btn-solid-danger-l">삭제</button>
-          </div>
-          <div class="modal-foot-right">
-            <button class="btn-outline-gray-l" data-modal-close>취소</button>
-            <button class="btn-solid-primary-l">수정</button>
-          </div>
+          <button class="btn-outline-gray-l" data-modal-close>취소</button>
+          <button class="btn-solid-primary-l">저장</button>
         </div>
       </div>
     </div>
