@@ -906,6 +906,7 @@ button {
   pointer-events: auto;
 }
 .modal-basic,
+.modal-notice,
 .modal-expand-ver1,
 .modal-expand-ver2,
 .modal-list,
@@ -920,6 +921,7 @@ button {
   transition: opacity 0.18s ease;
 }
 .modal-basic.is-open,
+.modal-notice.is-open,
 .modal-expand-ver1.is-open,
 .modal-expand-ver2.is-open,
 .modal-list.is-open,
@@ -928,7 +930,7 @@ button {
   pointer-events: auto;
 }
 
-/* modal-basic 기본타입 : 안내 모달, 입력 모달  */
+/* modal-basic 기본타입 : 확인 모달, 입력 모달  */
 .modal-basic .modal-panel {
   min-width: 320px;
   max-width: min(90vw, 640px);
@@ -989,6 +991,66 @@ button {
 .modal-doc .modal-panel{
   width: 520px;
 }
+
+
+/* modal-notice 공지타입 : 안내 모달  */
+.modal-notice .modal-panel {
+  min-width: 424px;
+  max-width: min(90vw, 640px);
+  background: var(--color-background-subtle);
+  border-radius: 10px;
+  outline: none;
+}
+.modal-notice .modal-head {
+  position: relative;
+  font-size: 2.4rem;
+  font-weight: 600;
+  line-height: 140%;
+  padding: 30px 28px 0px 28px;
+}
+.modal-notice .modal-head h3 {
+  line-height: 140%;
+}
+.modal-notice .modal-head .btn-icon-normal-m {
+  position: absolute;
+  top: 18px;
+  right: 16px;
+}
+.modal-notice .modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  color: var(--color-text-subtle);
+  font-size: 1.5rem;
+  font-weight: 400;
+  padding: 16px 26px 12px 26px;
+}
+.modal-notice .modal-body p {
+  margin: 0px 2px;
+}
+.modal-notice .modal-body .info-block {
+  border-radius: 10px;
+  background: var(--color-background-basic);
+  padding: 16px 18px;
+}
+.modal-notice .modal-body .info-label {
+  font-size: 1.4rem;
+  line-height: 150%;
+  color: var(--color-text-subtle);
+  margin-bottom: 4px;
+}
+.modal-notice .modal-body .info-value {
+  font-size: 1.5rem;
+  line-height: 150%;
+  color: var(--color-text-basic);
+}
+.modal-notice .modal-foot {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 0px 24px 20px 24px;
+}
+
 
 /* modal-expand-ver1 확장타입 : 프롬프트 생성(AI 업무지원) */
 .modal-expand-ver1 .modal-panel {
