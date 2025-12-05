@@ -142,3 +142,4 @@ h5 {
 strong   { font-weight: 600; }
 
 .danger { color: var(--color-text-danger); }
+.emphasis { color: var(--color-text-information); }

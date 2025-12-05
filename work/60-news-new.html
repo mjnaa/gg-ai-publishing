@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+
+<head>
+  <title>경기도 생성형 AI 플랫폼</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="경기도 생성형 AI 플랫폼" />
+  <!-- style sheets -->
+  <link href="../assets/css/tokens.css" rel="stylesheet">
+  <link href="../assets/css/font.css" rel="stylesheet">
+  <link href="../assets/css/base.css" rel="stylesheet">
+  <link href="../assets/css/layout.css" rel="stylesheet">
+  <link href="../assets/css/components.css" rel="stylesheet">
+  <link href="../assets/css/mask_datauri.css" rel="stylesheet">
+  <!-- favicon -->
+  <link rel="icon" href="../assets/img/favicon.ico" type="image/x-icon">
+  
+</head>
+
+<body class="is-aside-open">
+  <div class="viewport-scale">
+    <div class="viewport-inner">
+    <div class="layout-overlay" aria-hidden="true"></div>
+    
+    <div class="layout">
+
+      <!------ 좌측 네비게이션 ------>
+      <aside class="layout-nav" aria-label="사이드 네비게이션바">
+        <div class="top-area"> 
+
+          <!------ 상단 고정 영역 ------>
+          <div class="nav-head">
+            <div class="nav-title">              
+              <a class="logo" href="#" aria-label="홈으로">
+                <img src="../assets/img/logo.png" />
+              </a>
+              <button class="btn-nav-toggle btn-icon-normal-m tip-toggle" type="button" aria-label="사이드바 닫기" data-tip-pos="right" aria-expanded="true" data-tip-open="사이드바 닫기" data-tip-closed="사이드바 열기">
+                <span class="icon20 icon--thumbnail-bar icon--basic"></span>
+              </button>
+            </div>
+            
+            <!-- 새 채팅 -->
+            <button class="btn-newchat btn-outline-darkgray-l tip-toggle" type="button"  data-tip-pos="right" data-tip-when="mini" aria-expanded="true" data-tip-open="새 채팅">
+              <span class="icon20 icon--edit icon--strong"></span>
+              <span class="label">새 채팅</span>
+            </button>
+          </div>
+
+          <!------ 폴더/채팅 스크롤 영역  ------>
+          <div class="scroll-area" aria-label="폴더와 채팅 목록">
+            <ul class="folder-list">
+              <!-- 새 폴더 -->
+              <li class="folder-new">
+                <button class="btn-folder-new" type="button">
+                  <span class="icon20 icon--folder-add icon--basic"></span>
+                  <span class="label">새 폴더</span>
+                </button>
+              </li>
+
+              <!-- 폴더 -->
+              <li class="folder-item">
+                <div class="folder-head">
+                  <div class="left">
+                    <!-- 폴더 여닫는 버튼-->
+                    <button class="btn-folder tip-toggle" type="button" data-tip-pos="bottom" aria-expanded="false" data-tip-open="채팅 숨기기" data-tip-closed="채팅 표시" data-tip-offset-x="6" >
+                      <span class="icon20 icon--folder icon--basic"></span>
+                    </button>
+                    <!-- 폴더 이동 버튼-->
+                    <a href="#"><span class="label">폴더명</span></a>
+                  </div>
+                  <!-- 폴더 설정 버튼 : 마우스 오버시에만 노출-->
+                  <button class="btn-more" type="button" aria-label="폴더 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-folder-head" data-dd-pos="right-start">
+                    <span class="icon20 icon--more-horiz icon--basic"></span>
+                  </button>
+                </div>
+
+                <!-- 폴더 안 채팅 리스트 -->
+                <ul class="chat-sublist">
+                  <!-- 폴더 안 채팅 -->
+                  <li class="chat-subitem">
+                    <a href="#"><span class="label">폴더 내 채팅명</span></a>
+                    <!-- 채팅 설정 버튼 : 마우스 오버시에만 노출-->
+                    <button class="btn-more" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-folder-chat" data-dd-pos="right-start">
+                      <span class="icon20 icon--keep-fill icon--basic"></span>
+                      <span class="icon20 icon--more-horiz icon--basic"></span>
+                    </button>
+                  </li>
+
+                  <!-- 폴더 안 채팅 -->
+                  <li class="chat-subitem">
+                    <a href="#"><span class="label">폴더 내 채팅명이 길어도 들어갑니다</span></a>
+                    <!-- 채팅 설정 버튼 : 마우스 오버시에만 노출-->
+                    <button class="btn-more" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-folder-chat" data-dd-pos="right-start">
+                      <span class="icon20 icon--keep-fill icon--basic"></span>
+                      <span class="icon20 icon--more-horiz icon--basic"></span>
+                    </button>
+                  </li>
+                  <!-- 모두보기 : 채팅이 6개 이상일 때 노출 -->
+                  <!--<li class="chat-subitem">
+                    <a href="#"><span class="label">모두보기</span></a>
+                  </li>-->
+                </ul>
+              </li>
+
+              <!-- 더보기 : 폴더가 6개 이상일 때 노출 -->
+              <li class="folder-item more">
+                <div class="folder-head">
+                  <button class="btn-folder" type="button" aria-haspopup="menu" aria-expanded="false" data-dd="menu-folder-more" data-dd-pos="right-start">
+                    <span class="icon20 icon--more-horiz icon--basic"></span>
+                    <span class="label">더보기</span>
+                  </button>
+                </div>
+              </li>
+            </ul>
+
+            <!-- 채팅 리스트 -->
+            <ul class="chat-list">
+              <li class="list-title">
+                <div>
+                  <p>채팅</p>
+                  <button class="btn-help tip-toggle" type="button" aria-label="채팅 삭제 안내" data-tip-pos="right" aria-expanded="true" data-tip-open="채팅 삭제 안내">
+                    <span class="icon16 icon--information icon--basic"></span>
+                  </button>
+                </div>
+              </li>
+
+              <!-- 상단고정된 채팅에 .is-pinned 추가 -->
+              <li class="chat-item is-pinned">
+                <a href="#"><span class="label">상단고정된 채팅명</span></a>
+                <!-- 채팅 설정 버튼 : 마우스 오버시에만 노출-->
+                <button class="btn-more" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-chat" data-dd-pos="right-start">
+                  <span class="icon20 icon--keep-fill icon--basic"></span>
+                  <span class="icon20 icon--more-horiz icon--basic"></span>
+                </button>
+              </li>
+
+              <li class="chat-item">
+                <a href="#"><span class="label">채팅명</span></a>
+                <!-- 채팅 설정 버튼 : 마우스 오버시에만 노출-->
+                <button class="btn-more" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-chat" data-dd-pos="right-start">
+                  <span class="icon20 icon--keep-fill icon--basic"></span>
+                  <span class="icon20 icon--more-horiz icon--basic"></span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!------ 하단 고정 영역 ------>
+        <div class="bottom-area">
+          <ul class="llm-list">
+            <!-- 현재 서비스에 li class="active" -->
+            <li class="llm-item active tip-toggle" data-tip-pos="right" data-tip-when="mini" aria-expanded="true" data-tip-open="AI 업무지원">
+              <a href="#">
+                <span class="icon20 icon--llm-01 icon--basic"></span>
+                <span class="label">AI 업무지원</span>
+              </a>
+            </li>
+            <li class="llm-item tip-toggle" data-tip-pos="right" data-tip-when="mini" aria-expanded="true" data-tip-open="AI 법률">
+              <a href="#">
+                <span class="icon20 icon--llm-02 icon--basic"></span>
+                <span class="label">AI 법률</span>
+              </a>
+            </li>
+            <li class="llm-item tip-toggle" data-tip-pos="right" data-tip-when="mini" aria-expanded="true" data-tip-open="AI 행정심판">
+              <a href="#">
+                <span class="icon20 icon--llm-03 icon--basic"></span>
+                <span class="label">AI 행정심판</span>
+              </a>
+            </li>
+          </ul>
+          <button class="info-area" aria-label="계정 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-info" data-dd-pos="right-end">
+            <div class="profile-initial" aria-label="프로필 이미지" aria-hidden="true">
+              <span>경</span>
+            </div>
+            <div class="info-text">
+              <p class="name">김경기님</p>
+              <p class="dept">AI 생성형 부서</p>
+            </div>
+          </button>
+        </div>
+      </aside>
+
+
+      <!------ 중앙 메인 ------>
+      <main class="layout-main" aria-label="중앙 콘텐츠">
+
+        <!------ 상단바 ------>
+        <header class="layout-main-header">
+          <div class="header-title">
+            <!-- 모바일 사이즈에서만 보이는 네비게이션 햄버거 버튼 -->
+            <button class="btn-hamburger" type="button" aria-label="네비게이션 열기">
+              <span class="icon20 icon--dehaze icon--basic"></span>
+            </button>
+
+            <!-- LLM 서비스 변경 드롭다운메뉴(단일선택메뉴ver) -->
+            <div class="dd-choice" data-choice="llm">
+              <button type="button" class="dd-choice-toggle" aria-haspopup="listbox" aria-expanded="false">
+                <div class="dd-title">
+                  <span class="icon20 icon--llm-01 icon--primary"></span>
+                  <span class="txt">AI 업무지원</span>
+                </div>
+                <span class="icon22 icon--arrow-down icon--basic"></span>
+              </button>
+              <ul class="dd-choice-list left" role="listbox">
+                <li>
+                  <button type="button" class="dd-choice-item active" role="option">
+                    <div class="dd-name">
+                      <span class="icon20 icon--llm-01 icon--basic"></span>
+                      <span class="txt">AI 업무지원</span>
+                    </div>
+                    <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="dd-choice-item" role="option">
+                    <div class="dd-name">
+                      <span class="icon20 icon--llm-02 icon--basic"></span>
+                      <span class="txt">AI 법률</span>
+                    </div>
+                    <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="dd-choice-item" role="option">
+                    <div class="dd-name">
+                      <span class="icon20 icon--llm-03 icon--basic"></span>
+                      <span class="txt">AI 행정심판</span>
+                    </div>
+                    <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            <!-- 안내메세지 : LLM 서비스 변경시에만 잠깐 노출 -->
+            <span class="page-text llm-01">문서초안 작성, 자료 찾기와 정리 등 AI업무 서비스 지원</span>
+            <span class="page-text llm-02">AI 법률 설명이 들어갑니다</span>
+            <span class="page-text llm-03">AI 행정심판 설명이 들어갑니다</span>
+          </div>
+
+          <div class="header-actions">
+
+            <!-- 폰트크기 설정 드롭다운메뉴(단일선택메뉴ver) -->
+            <div class="dd-choice" data-choice="ui-scale">
+              <button type="button" class="dd-choice-toggle btn-icon-normal-m" aria-haspopup="listbox" aria-expanded="false" aria-label="폰트크기 설정">
+                <span class="icon20 icon--txtsize icon--basic"></span>
+              </button>
+              <ul class="dd-choice-list right" role="listbox">
+                <li>
+                  <button type="button" onclick="setUiScale(0.95)" class="dd-choice-item" role="option">
+                    <div class="dd-name">
+                      <span class="txt">작게</span>
+                    </div>
+                    <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" onclick="setUiScale(1.0)" class="dd-choice-item active" role="option">
+                    <div class="dd-name">
+                      <span class="txt">보통</span>
+                    </div>
+                    <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" onclick="setUiScale(1.05)" class="dd-choice-item" role="option">
+                    <div class="dd-name">
+                      <span class="txt">크게</span>
+                    </div>
+                    <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" onclick="setUiScale(1.1)" class="dd-choice-item" role="option">
+                    <div class="dd-name">
+                      <span class="txt">더 크게</span>
+                    </div>
+                    <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
+                  </button>
+                </li>                
+              </ul>
+            </div>
+
+            <!-- 채팅 설정 드롭다운메뉴(다중옵션목록ver) -->
+            <button class="btn-more btn-icon-normal-m" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="header-menu-chat" data-dd-pos="bottom-end">
+                <span class="icon20 icon--more-horiz icon--basic"></span>
+            </button>
+
+            <!-- 사용자게시판 버튼 -->
+            <button class="btn-outline-darkgray-s" type="button">
+              <span class="icon16 icon--board icon--basic"></span>
+              사용자 게시판
+            </button>
+          </div>
+
+        </header>
+        
+
+
+
+        <!------ 콘텐츠(채팅) 영역 ------>
+        <section class="layout-main-body" aria-label="채팅/콘텐츠">
+          <!-- 업무지원 서비스에만 class="work" 추가 -->
+          <div class="new-chat work">
+            <h2>핫이슈 기사와 정보를 한눈에! 빅카인즈 오늘의 뉴스!</h2>
+            <div class="start-area">
+              
+              <!-- 채팅창 -->
+              <form action="" method="post" enctype="multipart/form-data">
+                <div class="chat-l">
+                  <div class="input-area">
+                    <!-- 첨부파일 목록 -->
+                    <div class="file-list">
+                      <!--
+                        ※ 파일 첨부 목록 영역 (chat-file-uploader.js)
+                        - 일반 첨부파일 (.file-item)
+                          <div class="file-item">
+                            <div class="file-thumb file-thumb-hwp">
+                              <span>HWPX</span> 
+                            </div>
+                            <div class="file-info">
+                              <p class="file-name">파일명.확장자</p>
+                              <span class="file-type">한글문서</span>
+                            </div>
+                            <button class="file-remove btn-icon-normal-m" type="button" aria-label="첨부파일 삭제">
+                              <span class="icon20 icon--close icon--basic"></span>
+                            </button>
+                          </div>
+
+                        - 이미지 첨부파일 (.file-item-image)
+                          <div class="file-item-image">
+                            <img src="첨부 이미지 경로" alt="첨부 이미지">
+                            <button class="file-remove btn-icon-normal-m" type="button" aria-label="첨부파일 삭제">
+                              <span class="icon20 icon--close icon--basic"></span>
+                            </button>
+                          </div>
+                      -->
+                    </div>
+
+                    <div class="chat-input-wrap">
+                      <!-- 스마트 도우미 선택 시 노출되는 안내 문구 -->
+                      <div id="chat-guide" class="chat-guide" aria-live="polite">
+                        <p class="guide-em"></p>
+                        <button class="btn-aside-close btn-icon-normal-s" type="button" aria-label="스마트도우미 지우기">
+                          <span class="icon20 icon--close icon--basic"></span>
+                        </button>
+                      </div>
+
+                      <!-- 채팅 입력 : 입력시 자동 높이 조절 (chat-textarea.js) -->
+                      <textarea id="chat-input" class="chat-textarea" name="comment" aria-label="채팅 입력창" placeholder="뉴스 검색어를 입력해주세요." rows="1" maxlength="2000" minlength="1" required></textarea>
+                    </div>
+                  </div>
+                  
+                  <!-- 버튼 -->
+                  <div class="btn-area">
+                    <div class="left-area">
+                      <!-- 파일첨부 버튼 : 실제 file input은 화면에서 숨기고, 버튼으로 트리거 -->
+                      <label for="file-upload" class="btn-icon-solid-m is-disabled" type="button" aria-label="파일첨부" disabled>
+                        <span class="icon20 icon--add icon--basic"></span>
+                      </label>
+                      <input type="file" id="file-upload" name="attachment" style="display:none;" disabled>
+
+                      <!-- 라이브러리 버튼 -->
+                      <button class="btn-aside-toggle btn-solid-gray-m" type="button" aria-label="프롬프트 라이브러리" disabled>
+                        <span class="icon20 icon--library icon--basic"></span>
+                        <span>라이브러리</span>
+                      </button>
+
+                      <!-- 뉴스검색 버튼 : 뉴스검색 모드일때만 .is-active -->
+                      <button class="btn-solid-gray-m btn-news is-active" type="button" aria-label="뉴스검색">
+                        <span class="icon20 icon--search icon--basic"></span>
+                        <span>뉴스검색</span>
+                        <span class="right-icon icon18 icon--close icon--primary"></span>
+                      </button>
+
+                    </div>
+                    <div class="right-area">
+                      <!-- 텍스트 카운터 -->
+                      <span class="textarea-counter" hidden>0/2000</span>
+
+                      <!-- 전송 버튼-->
+                      <button class="btn-send btn-icon-solid-m" type="submit" aria-label="전송">
+                        <span class="icon20 icon--near icon--primary"></span>
+                      </button>
+                    </div>
+                  </div>
+
+                </div>
+              </form>
+
+
+              <!-- 상세검색 -->
+              <div class="news-filter" aria-label="상세검색">
+                <div class="news-filter-container">
+                  <!-- 탭바 영역 -->
+                  <div class="tab-bar-line-area">
+                    <div class="tab-filter">
+                      <button type="button" class="tab-btn is-active" data-target="news-filter-period">
+                        <span class="tab-label">기간</span>
+                      </button>
+                      <button type="button" class="tab-btn" data-target="news-filter-press">
+                        <span class="tab-label">언론사</span>
+                        <span class="tab-count"></span>
+                      </button>
+                      <button type="button" class="tab-btn" data-target="news-filter-integrated">
+                        <span class="tab-label">통합분류</span>
+                        <span class="tab-count"></span>
+                      </button>
+                      <button type="button" class="tab-btn" data-target="news-filter-incident">
+                        <span class="tab-label">사건사고분류</span>
+                        <span class="tab-count"></span>
+                      </button>
+                      <button type="button" class="tab-btn" data-target="news-filter-advanced">
+                        <span class="tab-label">상세검색</span>
+                      </button>
+                    </div>
+                  </div>
+                  
+
+                  <!------------------------------------------------
+                  언론사 탭은 로고/레이아웃 확인을 위해 전체 항목을 넣었고,
+                  통합분류/사건사고 탭은 UI 확인용으로 샘플 데이터만 작성했습니다.
+
+                  - value: 각 항목의 고유 코드
+                  - data-parent : 상위 카테고리의 value와 일치해야 함
+                  - data-target : 클릭 시 펼쳐질 하위 영역 div의 id (아코디언 동작용)
+                  - data-label: 우측에 생성될 칩(Tag) 텍스트
+                  - data-has-children="true/false"는 하위 메뉴 유무에 따라 아이콘(+, -) 표시를 제어
+                  --------------------------------------------------->
+                  <div class="tab-panels">
+                    <!-- 1. 기간 탭 -->
+                    <div class="tab-panel" id="news-filter-period" aria-label="기간">
+                      <div class="filter-body filter-body-period">
+                        <div class="btn-radio-group" role="radiogroup" aria-label="기간 선택">
+                          <label class="btn-radio">
+                            <input type="radio" name="period-type" value="1d" data-label="1일">
+                            <span>1일</span>
+                          </label>
+                          <label class="btn-radio">
+                            <input type="radio" name="period-type" value="1w" data-label="1주일">
+                            <span>1주일</span>
+                          </label>
+                          <label class="btn-radio">
+                            <input type="radio" name="period-type" value="1m" data-label="1개월">
+                            <span>1개월</span>
+                          </label>
+                          <label class="btn-radio">
+                            <input type="radio" name="period-type" value="3m"  data-label="3개월" checked>
+                            <span>3개월</span>
+                          </label>
+                          <label class="btn-radio">
+                            <input type="radio" name="period-type" value="6m" data-label="6개월">
+                            <span>6개월</span>
+                          </label>
+                          <label class="btn-radio">
+                            <input type="radio" name="period-type" value="1y" data-label="1년">
+                            <span>1년</span>
+                          </label>
+                        </div>
+                        <div class="date-range">
+                          <!-- 시작일 선택 -->
+                          <div class="date-field" aria-label="시작일 선택">
+                            <input type="text" id="date-start" placeholder="YYYY-MM-DD">
+                            <button type="button" class="date-field-icon">
+                              <span class="icon20 icon--calendar icon--basic"></span>
+                            </button>
+                          </div>
+                          <span class="date-separator">~</span>
+                          <!-- 종료일 선택 -->
+                          <div class="date-field" aria-label="종료일 선택">
+                            <input type="text" id="date-end" placeholder="YYYY-MM-DD">
+                            <button type="button" class="date-field-icon">
+                              <span class="icon20 icon--calendar icon--basic"></span>
+                            </button>
+                          </div>
+                        </div> 
+                      </div>
+
+                      <!-- 기간 초기화 버튼 -->
+                      <div class="filter-footer">
+                        <button class="btn-outline-gray-m" type="button" aria-label="기간 초기화" data-reset-type="period">
+                          <span class="icon20 icon--forward-media icon--basic"></span>
+                          <span>기간 초기화</span>
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- 2. 언론사 탭 -->
+                    <div class="tab-panel" id="news-filter-press" aria-label="언론사">
+                      <div class="filter-body filter-body-press">
+                        <!-- 상위 카테고리 체크박스 그룹 -->
+                        <div class="press-category-group" role="group" aria-label="언론사 카테고리 선택">
+                          <label class="press-category">
+                            <input type="checkbox" name="press-category" value="national-daily" data-label="전국일간지">
+                            <span>전국일간지</span>
+                          </label>
+
+                          <label class="press-category">
+                            <input type="checkbox" name="press-category" value="economic-daily" data-label="경제일간지">
+                            <span>경제일간지</span>
+                          </label>
+
+                          <label class="press-category">
+                            <input type="checkbox" name="press-category" value="local-daily" data-label="지역일간지">
+                            <span>지역일간지</span>
+                          </label>
+
+                          <label class="press-category">
+                            <input type="checkbox" name="press-category" value="broadcast" data-label="방송사">
+                            <span>방송사</span>
+                          </label>
+
+                          <label class="press-category">
+                            <input type="checkbox" name="press-category" value="special" data-label="전문지">
+                            <span>전문지</span>
+                          </label>
+
+                          <label class="press-category">
+                            <input type="checkbox" name="press-category" value="sports" data-label="스포츠신문">
+                            <span>스포츠신문</span>
+                          </label>
+
+                          <label class="press-category">
+                            <input type="checkbox" name="press-category" value="internet" data-label="인터넷신문">
+                            <span>인터넷신문</span>
+                          </label>
+                        </div>
+
+                        <!-- 하위 개별 언론사 리스트 -->
+                        <div class="press-list-wrap">
+                          <div class="press-list" aria-label="언론사 선택">
+                            <!-- 전국일간지 -->
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-kyunghyang" value="kyunghyang" data-parent="national-daily" data-label="경향신문">
+                              <label for="press-kyunghyang" class="press-item-label">
+                                <img src="../assets/img/news/news-kyunghyang.png" alt="경향신문">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-kukmin" value="kukmin" data-parent="national-daily" data-label="국민일보">
+                              <label for="press-kukmin" class="press-item-label">
+                                <img src="../assets/img/news/news-kukmin.png" alt="국민일보">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-naeil" value="naeil" data-parent="national-daily" data-label="내일신문">
+                              <label for="press-naeil" class="press-item-label">
+                                <img src="../assets/img/news/news-naeil.png" alt="내일신문">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-donga" value="donga" data-parent="national-daily" data-label="동아일보">
+                              <label for="press-donga" class="press-item-label">
+                                <img src="../assets/img/news/news-donga.png" alt="동아일보">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-munhwa" value="munhwa" data-parent="national-daily" data-label="문화일보">
+                              <label for="press-munhwa" class="press-item-label">
+                                <img src="../assets/img/news/news-munhwa.png" alt="문화일보">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-seoul" value="seoul" data-parent="national-daily" data-label="서울신문">
+                              <label for="press-seoul" class="press-item-label">
+                                <img src="../assets/img/news/news-seoul.png" alt="서울신문">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-segye" value="segye" data-parent="national-daily" data-label="세계일보">
+                              <label for="press-segye" class="press-item-label">
+                                <img src="../assets/img/news/news-segye.png" alt="세계일보">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-asiatoday" value="asiatoday" data-parent="national-daily" data-label="아시아투데이">
+                              <label for="press-asiatoday" class="press-item-label">
+                                <img src="../assets/img/news/news-asiatoday.png" alt="아시아투데이">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-chosun" value="chosun" data-parent="national-daily" data-label="조선일보">
+                              <label for="press-chosun" class="press-item-label">
+                                <img src="../assets/img/news/news-chosun.png" alt="조선일보">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-joongang" value="joongang" data-parent="national-daily" data-label="중앙일보">
+                              <label for="press-joongang" class="press-item-label">
+                                <img src="../assets/img/news/news-joongang.png" alt="중앙일보">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-hani" value="hani" data-parent="national-daily" data-label="한겨레">
+                              <label for="press-hani" class="press-item-label">
+                                <img src="../assets/img/news/news-hani.png" alt="한겨레">
+                              </label>
+                            </div>
+
+                            <!-- 경제일간지 -->
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-daehan" value="daehan" data-parent="economic-daily" data-label="대한경제">
+                              <label for="press-daehan" class="press-item-label">
+                                <img src="../assets/img/news/news-daehan.png" alt="대한경제">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-moneytoday" value="moneytoday" data-parent="economic-daily" data-label="머니투데이">
+                              <label for="press-moneytoday" class="press-item-label">
+                                <img src="../assets/img/news/news-moneytoday.png" alt="머니투데이">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-metro" value="metro" data-parent="economic-daily" data-label="메트로경제">
+                              <label for="press-metro" class="press-item-label">
+                                <img src="../assets/img/news/news-metro.png" alt="메트로경제">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-bridge" value="bridge" data-parent="economic-daily" data-label="브릿지경제">
+                              <label for="press-bridge" class="press-item-label">
+                                <img src="../assets/img/news/news-bridge.png" alt="브릿지경제">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-sedaily" value="sedaily" data-parent="economic-daily" data-label="서울경제">
+                              <label for="press-sedaily" class="press-item-label">
+                                <img src="../assets/img/news/news-sedaily.png" alt="서울경제">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-asiae" value="asiae" data-parent="economic-daily" data-label="아시아경제">
+                              <label for="press-asiae" class="press-item-label">
+                                <img src="../assets/img/news/news-asiae.png" alt="아시아경제">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-ajunews" value="ajunews" data-parent="economic-daily" data-label="아주경제">
+                              <label for="press-ajunews" class="press-item-label">
+                                <img src="../assets/img/news/news-ajunews.png" alt="아주경제">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-edaily" value="edaily" data-parent="economic-daily" data-label="이데일리">
+                              <label for="press-edaily" class="press-item-label">
+                                <img src="../assets/img/news/news-edaily.png" alt="이데일리">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-etoday" value="etoday" data-parent="economic-daily" data-label="이투데이">
+                              <label for="press-etoday" class="press-item-label">
+                                <img src="../assets/img/news/news-etoday.png" alt="이투데이">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-fnnews" value="fnnews" data-parent="economic-daily" data-label="파이낸셜뉴스">
+                              <label for="press-fnnews" class="press-item-label">
+                                <img src="../assets/img/news/news-fnnews.png" alt="파이낸셜뉴스">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-hankyung" value="hankyung" data-parent="economic-daily" data-label="한국경제">
+                              <label for="press-hankyung" class="press-item-label">
+                                <img src="../assets/img/news/news-hankyung.png" alt="한국경제">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-herald" value="herald" data-parent="economic-daily" data-label="헤럴드경제">
+                              <label for="press-herald" class="press-item-label">
+                                <img src="../assets/img/news/news-herald.png" alt="헤럴드경제">
+                              </label>
+                            </div>
+
+                            <!-- 지역일간지 -->
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-ggnews" value="ggnews" data-parent="local-daily" data-label="경기신문">
+                              <label for="press-ggnews" class="press-item-label">
+                                <img src="../assets/img/news/news-ggnews.png" alt="경기신문">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-ggilbo" value="ggilbo" data-parent="local-daily" data-label="경기일보">
+                              <label for="press-ggilbo" class="press-item-label">
+                                <img src="../assets/img/news/news-ggilbo.png" alt="경기일보">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-kyeongin" value="kyeongin" data-parent="local-daily" data-label="경인일보">
+                              <label for="press-kyeongin" class="press-item-label">
+                                <img src="../assets/img/news/news-kyeongin.png" alt="경인일보">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-kiho" value="kiho" data-parent="local-daily" data-label="기호일보">
+                              <label for="press-kiho" class="press-item-label">
+                                <img src="../assets/img/news/news-kiho.png" alt="기호일보">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-maeil" value="maeil" data-parent="local-daily" data-label="매일신문">
+                              <label for="press-maeil" class="press-item-label">
+                                <img src="../assets/img/news/news-maeil.png" alt="매일신문">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-incheonilbo" value="incheonilbo" data-parent="local-daily" data-label="인천일보">
+                              <label for="press-incheonilbo" class="press-item-label">
+                                <img src="../assets/img/news/news-incheonilbo.png" alt="인천일보">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-jungdo" value="jungdo" data-parent="local-daily" data-label="중도일보">
+                              <label for="press-jungdo" class="press-item-label">
+                                <img src="../assets/img/news/news-jungdo.png" alt="중도일보">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-jungbu" value="jungbu" data-parent="local-daily" data-label="중부매일">
+                              <label for="press-jungbu" class="press-item-label">
+                                <img src="../assets/img/news/news-jungbu.png" alt="중부매일">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-jungbuilbo" value="jungbuilbo" data-parent="local-daily" data-label="중부일보">
+                              <label for="press-jungbuilbo" class="press-item-label">
+                                <img src="../assets/img/news/news-jungbuilbo.png" alt="중부일보">
+                              </label>
+                            </div>
+
+                            <!-- 방송사 -->
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-kbs" value="kbs" data-parent="broadcast" data-label="kbs">
+                              <label for="press-kbs" class="press-item-label">
+                                <img src="../assets/img/news/news-kbs.png" alt="kbs">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-mbc" value="mbc" data-parent="broadcast" data-label="mbc">
+                              <label for="press-mbc" class="press-item-label">
+                                <img src="../assets/img/news/news-mbc.png" alt="mbc">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-obs" value="obs" data-parent="broadcast" data-label="obs">
+                              <label for="press-obs" class="press-item-label">
+                                <img src="../assets/img/news/news-obs.png" alt="obs">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-sbs" value="sbs" data-parent="broadcast" data-label="sbs">
+                              <label for="press-sbs" class="press-item-label">
+                                <img src="../assets/img/news/news-sbs.png" alt="sbs">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-ytn" value="ytn" data-parent="broadcast" data-label="ytn">
+                              <label for="press-ytn" class="press-item-label">
+                                <img src="../assets/img/news/news-ytn.png" alt="ytn">
+                              </label>
+                            </div>
+
+                            <!-- 전문지 -->
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-dt" value="dt" data-parent="special" data-label="디지털타임스">
+                              <label for="press-dt" class="press-item-label">
+                                <img src="../assets/img/news/news-dt.png" alt="디지털타임스">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-sisain" value="sisain" data-parent="special" data-label="시사in">
+                              <label for="press-sisain" class="press-item-label">
+                                <img src="../assets/img/news/news-sisain.png" alt="시사in">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-wolyo" value="wolyo" data-parent="special" data-label="일요신문">
+                              <label for="press-wolyo" class="press-item-label">
+                                <img src="../assets/img/news/news-wolyo.png" alt="일요신문">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-etnews" value="etnews" data-parent="special" data-label="전자신문">
+                              <label for="press-etnews" class="press-item-label">
+                                <img src="../assets/img/news/news-etnews.png" alt="전자신문">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-weeklykh" value="weeklykh" data-parent="special" data-label="주간한국">
+                              <label for="press-weeklykh" class="press-item-label">
+                                <img src="../assets/img/news/news-weeklykh.png" alt="주간한국">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-hani21" value="hani21" data-parent="special" data-label="한겨레21">
+                              <label for="press-hani21" class="press-item-label">
+                                <img src="../assets/img/news/news-hani21.png" alt="한겨레21">
+                              </label>
+                            </div>
+
+                            <!-- 스포츠신문 -->
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-sportsseoul" value="sportsseoul" data-parent="sports" data-label="스포츠서울">
+                              <label for="press-sportsseoul" class="press-item-label">
+                                <img src="../assets/img/news/news-sportsseoul.png" alt="스포츠서울">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-sportsworld" value="sportsworld" data-parent="sports" data-label="">
+                              <label for="press-sportsworld" class="press-item-label">
+                                <img src="../assets/img/news/news-sportsworld.png" alt="스포츠월드">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-sportskorea" value="sportskorea" data-parent="sports" data-label="스포츠한국">
+                              <label for="press-sportskorea" class="press-item-label">
+                                <img src="../assets/img/news/news-sportskorea.png" alt="스포츠한국">
+                              </label>
+                            </div>
+
+                            <!-- 인터넷신문 -->
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-newspim" value="newspim" data-parent="internet" data-label="뉴스핌">
+                              <label for="press-newspim" class="press-item-label">
+                                <img src="../assets/img/news/news-newspim.png" alt="뉴스핌">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-dailian" value="dailian" data-parent="internet" data-label="데일리안">
+                              <label for="press-dailian" class="press-item-label">
+                                <img src="../assets/img/news/news-dailian.png" alt="데일리안">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-kukinews" value="kukinews" data-parent="internet" data-label="쿠키뉴스">
+                              <label for="press-kukinews" class="press-item-label">
+                                <img src="../assets/img/news/news-kukinews.png" alt="쿠키뉴스">
+                              </label>
+                            </div>
+                            <div class="press-item">
+                              <input type="checkbox" name="press" id="press-pressian" value="pressian" data-parent="internet" data-label="프레시안">
+                              <label for="press-pressian" class="press-item-label">
+                                <img src="../assets/img/news/news-pressian.png" alt="프레시안">
+                              </label>
+                            </div>
+                            
+
+                          </div>
+                        </div>
+                        
+                      </div>
+
+                      <!-- 언론사 초기화 버튼 -->
+                      <div class="filter-footer">
+                        <button class="btn-outline-gray-m" type="button" aria-label="언론사 초기화" data-reset-type="press">
+                          <span class="icon20 icon--forward-media icon--basic"></span>
+                          <span>언론사 초기화</span>
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- 3. 통합분류 탭-->
+                    <div class="tab-panel" id="news-filter-integrated" aria-label="통합분류">
+                      <div class="filter-body filter-body-integrated">
+
+                        <div class="integrated-layout">
+
+                          <!-- 1뎁스 : 상위 분류 -->
+                          <div class="integrated-main-col">
+                            <div class="integrated-main-group" role="group" aria-label="통합분류 상위 분류 선택">
+
+                              <!-- 1) 정치 -->
+                              <div class="integrated-main-item">
+                                <button type="button" class="integrated-toggle-btn">
+                                  <span class="icon16 icon--add icon--primary"></span>
+                                  <span class="icon16 icon--minus icon--primary"></span>
+                                </button>
+                                <label class="integrated-main-label">
+                                  <input type="checkbox" name="integrated-category" value="politics" data-target="integrated-sub-politics" data-label="정치" class="form-checkbox">
+                                  <span class="integrated-main-text">정치</span>
+                                  <span class="integrated-main-count"></span>
+                                </label>
+                              </div>
+
+                              <!-- 2) 경제 -->
+                              <div class="integrated-main-item">
+                                <button type="button" class="integrated-toggle-btn">
+                                  <span class="icon16 icon--add icon--primary"></span>
+                                  <span class="icon16 icon--minus icon--primary"></span>
+                                </button>
+                                <label class="integrated-main-label">
+                                  <input type="checkbox" name="integrated-category" value="economy" data-target="integrated-sub-economy" data-label="경제" class="form-checkbox">
+                                  <span class="integrated-main-text">경제</span>
+                                  <span class="integrated-main-count"></span>
+                                </label>
+                              </div>
+
+                              <!-- 3) 사회 -->
+                              <div class="integrated-main-item">
+                                <button type="button" class="integrated-toggle-btn">
+                                  <span class="icon16 icon--add icon--primary"></span>
+                                  <span class="icon16 icon--minus icon--primary"></span>
+                                </button>
+                                <label class="integrated-main-label">
+                                  <input type="checkbox" name="integrated-category" value="society" data-target="integrated-sub-society" data-label="사회" class="form-checkbox">
+                                  <span class="integrated-main-text">사회</span>
+                                  <span class="integrated-main-count"></span>
+                                </label>
+                              </div>
+
+                              <!-- 4) 문화 -->
+                              <div class="integrated-main-item">
+                                <button type="button" class="integrated-toggle-btn">
+                                  <span class="icon16 icon--add icon--primary"></span>
+                                  <span class="icon16 icon--minus icon--primary"></span>
+                                </button>
+                                <label class="integrated-main-label">
+                                  <input type="checkbox" name="integrated-category" value="culture" data-target="integrated-sub-culture" data-label="문화" class="form-checkbox">
+                                  <span class="integrated-main-text">문화</span>
+                                  <span class="integrated-main-count"></span>
+                                </label>
+                              </div>
+
+                              <!-- 5) 국제 -->
+                              <div class="integrated-main-item">
+                                <button type="button" class="integrated-toggle-btn">
+                                  <span class="icon16 icon--add icon--primary"></span>
+                                  <span class="icon16 icon--minus icon--primary"></span>
+                                </button>
+                                <label class="integrated-main-label">
+                                  <input type="checkbox" name="integrated-category" value="global" data-target="integrated-sub-global" data-label="국제" class="form-checkbox">
+                                  <span class="integrated-main-text">국제</span>
+                                  <span class="integrated-main-count"></span>
+                                </label>
+                              </div>
+
+                              <!-- 6) 지역 -->
+                              <div class="integrated-main-item">
+                                <button type="button" class="integrated-toggle-btn">
+                                  <span class="icon16 icon--add icon--primary"></span>
+                                  <span class="icon16 icon--minus icon--primary"></span>
+                                </button>
+                                <label class="integrated-main-label">
+                                  <input type="checkbox" name="integrated-category" value="local" data-target="integrated-sub-local" data-label="지역" class="form-checkbox">
+                                  <span class="integrated-main-text">지역</span>
+                                  <span class="integrated-main-count"></span>
+                                </label>
+                              </div>
+
+                              <!-- 7) 스포츠 -->
+                              <div class="integrated-main-item">
+                                <button type="button" class="integrated-toggle-btn">
+                                  <span class="icon16 icon--add icon--primary"></span>
+                                  <span class="icon16 icon--minus icon--primary"></span>
+                                </button>
+                                <label class="integrated-main-label">
+                                  <input type="checkbox" name="integrated-category" value="sports" data-target="integrated-sub-sports" data-label="스포츠" class="form-checkbox">
+                                  <span class="integrated-main-text">스포츠</span>
+                                  <span class="integrated-main-count"></span>
+                                </label>
+                              </div>
+
+                              <!-- 8) IT 과학 -->
+                              <div class="integrated-main-item">
+                                <button type="button" class="integrated-toggle-btn">
+                                  <span class="icon16 icon--add icon--primary"></span>
+                                  <span class="icon16 icon--minus icon--primary"></span>
+                                </button>
+                                <label class="integrated-main-label">
+                                  <input type="checkbox" name="integrated-category" value="science" data-target="integrated-sub-science" data-label="IT 과학" class="form-checkbox">
+                                  <span class="integrated-main-text">IT 과학</span>
+                                  <span class="integrated-main-count"></span>
+                                </label>
+                              </div>
+
+                            </div>
+                          </div>
+
+                          <!-- 2뎁스 + 3뎁스 -->
+                          <div class="integrated-sub-col">
+
+                            <!-- 2뎁스 : 중분류 -->
+                            <div class="integrated-middle-col">
+
+                              <!-- 정치 2뎁스 -->
+                              <div class="integrated-middle-list" id="integrated-sub-politics" aria-label="정치 중분류">
+                                <div class="integrated-middle-item">
+                                  <button type="button" class="integrated-middle-toggle-btn" data-has-children="false">
+                                    <span class="icon16 icon--add icon--primary"></span>
+                                    <span class="icon16 icon--minus icon--primary"></span>
+                                  </button>
+                                  <label class="integrated-middle-label">
+                                    <input type="checkbox" name="integrated-topic" value="politics-admin" data-parent="politics" data-label="행정자치" class="form-checkbox">
+                                    <span>행정자치</span>
+                                  </label>
+                                </div>
+                                <div class="integrated-middle-item">
+                                  <button type="button" class="integrated-middle-toggle-btn" data-has-children="false">
+                                    <span class="icon16 icon--add icon--primary"></span>
+                                    <span class="icon16 icon--minus icon--primary"></span>
+                                  </button>
+                                  <label class="integrated-middle-label">
+                                    <input type="checkbox" name="integrated-topic" value="politics-northkorea" data-parent="politics" data-label="북한" class="form-checkbox">
+                                    <span>북한</span>
+                                  </label>
+                                </div>
+                              </div>
+
+                              <!-- 경제 2뎁스 -->
+                              <div class="integrated-middle-list" id="integrated-sub-economy" aria-label="경제 중분류">
+                                <div class="integrated-middle-item">
+                                  <button type="button" class="integrated-middle-toggle-btn" data-has-children="false">
+                                    <span class="icon16 icon--add icon--primary"></span>
+                                    <span class="icon16 icon--minus icon--primary"></span>
+                                  </button>
+                                  <label class="integrated-middle-label">
+                                    <input type="checkbox" name="integrated-topic" value="economy-resource" data-parent="economy" data-label="자원" class="form-checkbox">
+                                    <span>자원</span>
+                                  </label>
+                                </div>
+                                <div class="integrated-middle-item">
+                                  <button type="button" class="integrated-middle-toggle-btn" data-has-children="false">
+                                    <span class="icon16 icon--add icon--primary"></span>
+                                    <span class="icon16 icon--minus icon--primary"></span>
+                                  </button>
+                                  <label class="integrated-middle-label">
+                                    <input type="checkbox" name="integrated-topic" value="economy-realestate" data-parent="economy" data-label="부동산" class="form-checkbox">
+                                    <span>부동산</span>
+                                  </label>
+                                </div>
+                              </div>
+
+                              <!-- 사회 2뎁스 -->
+                              <div class="integrated-middle-list" id="integrated-sub-society" aria-label="사회 중분류">
+                                <div class="integrated-middle-item">
+                                  <button type="button" class="integrated-middle-toggle-btn" data-has-children="false">
+                                    <span class="icon16 icon--add icon--primary"></span>
+                                    <span class="icon16 icon--minus icon--primary"></span>
+                                  </button>
+                                  <label class="integrated-middle-label">
+                                    <input type="checkbox" name="integrated-topic" value="society-health" data-parent="society" data-label="의료 건강" class="form-checkbox">
+                                    <span>의료 건강</span>
+                                  </label>
+                                </div>
+                                <div class="integrated-middle-item">
+                                  <button type="button" class="integrated-middle-toggle-btn" data-has-children="false">
+                                    <span class="icon16 icon--add icon--primary"></span>
+                                    <span class="icon16 icon--minus icon--primary"></span>
+                                  </button>
+                                  <label class="integrated-middle-label">
+                                    <input type="checkbox" name="integrated-topic" value="society-environment" data-parent="society" data-label="환경" class="form-checkbox">
+                                    <span>환경</span>
+                                  </label>
+                                </div>
+                              </div>
+
+                              <!-- 문화 2뎁스 -->
+                              <div class="integrated-middle-list" id="integrated-sub-culture" aria-label="문화 중분류">
+                                <div class="integrated-middle-item">
+                                  <button type="button" class="integrated-middle-toggle-btn" data-has-children="false">
+                                    <span class="icon16 icon--add icon--primary"></span>
+                                    <span class="icon16 icon--minus icon--primary"></span>
+                                  </button>
+                                  <label class="integrated-middle-label">
+                                    <input type="checkbox" name="integrated-topic" value="culture-movie" data-parent="culture" data-label="영화" class="form-checkbox">
+                                    <span>영화</span>
+                                  </label>
+                                </div>
+                                <div class="integrated-middle-item">
+                                  <button type="button" class="integrated-middle-toggle-btn" data-has-children="false">
+                                    <span class="icon16 icon--add icon--primary"></span>
+                                    <span class="icon16 icon--minus icon--primary"></span>
+                                  </button>
+                                  <label class="integrated-middle-label">
+                                    <input type="checkbox" name="integrated-topic" value="culture-general" data-parent="culture" data-label="문화일반" class="form-checkbox">
+                                    <span>문화일반</span>
+                                  </label>
+                                </div>
+                              </div>
+
+                              <!-- 국제 2뎁스 -->
+                              <div class="integrated-middle-list" id="integrated-sub-global" aria-label="국제 중분류">
+                                <div class="integrated-middle-item">
+                                  <button type="button" class="integrated-middle-toggle-btn" data-has-children="false">
+                                    <span class="icon16 icon--add icon--primary"></span>
+                                    <span class="icon16 icon--minus icon--primary"></span>
+                                  </button>
+                                  <label class="integrated-middle-label">
+                                    <input type="checkbox" name="integrated-topic" value="global-russia" data-parent="global" data-label="러시아" class="form-checkbox">
+                                    <span>러시아</span>
+                                  </label>
+                                </div>
+                                <div class="integrated-middle-item">
+                                  <button type="button" class="integrated-middle-toggle-btn" data-has-children="false">
+                                    <span class="icon16 icon--add icon--primary"></span>
+                                    <span class="icon16 icon--minus icon--primary"></span>
+                                  </button>
+                                  <label class="integrated-middle-label">
+                                    <input type="checkbox" name="integrated-topic" value="global-japan" data-parent="global"  data-label="일본"class="form-checkbox">
+                                    <span>일본</span>
+                                  </label>
+                                </div>
+                              </div>
+
+                              <!-- 지역 2뎁스 -->
+                              <div class="integrated-middle-list" id="integrated-sub-local" aria-label="지역 중분류">
+                                <div class="integrated-middle-item">
+                                  <button type="button" class="integrated-middle-toggle-btn" data-has-children="false">
+                                    <span class="icon16 icon--add icon--primary"></span>
+                                    <span class="icon16 icon--minus icon--primary"></span>
+                                  </button>
+                                  <label class="integrated-middle-label">
+                                    <input type="checkbox" name="integrated-topic" value="local-chungnam" data-parent="local" data-label="충남" class="form-checkbox">
+                                    <span>충남</span>
+                                  </label>
+                                </div>
+                                <div class="integrated-middle-item">
+                                  <button type="button" class="integrated-middle-toggle-btn" data-has-children="false">
+                                    <span class="icon16 icon--add icon--primary"></span>
+                                    <span class="icon16 icon--minus icon--primary"></span>
+                                  </button>
+                                  <label class="integrated-middle-label">
+                                    <input type="checkbox" name="integrated-topic" value="local-daejeon" data-parent="local" data-label="대전" class="form-checkbox">
+                                    <span>대전</span>
+                                  </label>
+                                </div>
+                              </div>
+
+                              <!-- 스포츠 2뎁스 -->
+                              <div class="integrated-middle-list" id="integrated-sub-sports" aria-label="스포츠 중분류">
+                                <div class="integrated-middle-item">
+                                  <button type="button" class="integrated-middle-toggle-btn" data-has-children="true">
+                                    <span class="icon16 icon--add icon--primary"></span>
+                                    <span class="icon16 icon--minus icon--primary"></span>
+                                  </button>
+                                  <label class="integrated-middle-label">
+                                    <input type="checkbox" name="integrated-topic" value="sports-baseball" data-parent="sports" data-target="integrated-detail-sports-baseball" data-label="야구" class="form-checkbox">
+                                    <span>야구</span>
+                                  </label>
+                                </div>
+                                <div class="integrated-middle-item">
+                                  <button type="button" class="integrated-middle-toggle-btn" data-has-children="false">
+                                    <span class="icon16 icon--add icon--primary"></span>
+                                    <span class="icon16 icon--minus icon--primary"></span>
+                                  </button>
+                                  <label class="integrated-middle-label">
+                                    <input type="checkbox" name="integrated-topic" value="sports-general" data-parent="sports" data-label="스포츠일반" class="form-checkbox">
+                                    <span>스포츠일반</span>
+                                  </label>
+                                </div>
+                              </div>
+
+                              <!-- IT 과학 2뎁스 -->
+                              <div class="integrated-middle-list" id="integrated-sub-science" aria-label="IT 과학 중분류">
+                                <div class="integrated-middle-item">
+                                  <button type="button" class="integrated-middle-toggle-btn" data-has-children="false">
+                                    <span class="icon16 icon--add icon--primary"></span>
+                                    <span class="icon16 icon--minus icon--primary"></span>
+                                  </button>
+                                  <label class="integrated-middle-label">
+                                    <input type="checkbox" name="integrated-topic" value="science-internet" data-parent="science" data-label="인터넷" class="form-checkbox">
+                                    <span>인터넷</span>
+                                  </label>
+                                </div>
+                                <div class="integrated-middle-item">
+                                  <button type="button" class="integrated-middle-toggle-btn" data-has-children="false">
+                                    <span class="icon16 icon--add icon--primary"></span>
+                                    <span class="icon16 icon--minus icon--primary"></span>
+                                  </button>
+                                  <label class="integrated-middle-label">
+                                    <input type="checkbox" name="integrated-topic" value="science-science" data-parent="science" data-label="과학" class="form-checkbox">
+                                    <span>과학</span>
+                                  </label>
+                                </div>
+                              </div>
+
+                            </div>
+
+                            <!-- 3뎁스 : 소분류 -->
+                            <div class="integrated-detail-col">
+
+                              <!-- 야구 3뎁스 -->
+                              <div class="integrated-detail-list" id="integrated-detail-sports-baseball" aria-label="야구 소분류">
+                                <label class="integrated-detail-item">
+                                  <input type="checkbox" name="integrated-topic" value="sports-baseball-kbo" data-parent="sports-baseball" data-label="한국프로야구" class="form-checkbox">
+                                  <span>한국프로야구</span>
+                                </label>
+                                <label class="integrated-detail-item">
+                                  <input type="checkbox" name="integrated-topic" value="sports-baseball-mlb" data-parent="sports-baseball" data-label="메이저리그" class="form-checkbox">
+                                  <span>메이저리그</span>
+                                </label>
+                              </div>
+
+                            </div>
+
+                          </div>
+
+                        </div>
+
+                      </div>
+
+                      <!-- 통합분류 초기화 버튼 -->
+                      <div class="filter-footer">
+                        <button class="btn-outline-gray-m" type="button" aria-label="통합분류 초기화" data-reset-type="integrated">
+                          <span class="icon20 icon--forward-media icon--basic"></span>
+                          <span>통합분류 초기화</span>
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- 4. 사건사고분류 탭 -->
+                    <div class="tab-panel" id="news-filter-incident" aria-label="사건사고분류">
+                      <div class="filter-body filter-body-incident">
+                        <div class="incident-layout">
+
+                          <!-- 1뎁스 : 상위 분류 -->
+                          <div class="incident-main-col">
+                            <div class="incident-main-group" role="group" aria-label="사건사고분류 상위 분류 선택">
+
+                              <!-- 1) 범죄 -->
+                              <div class="incident-main-item">
+                                <button type="button" class="incident-toggle-btn">
+                                  <span class="icon16 icon--add icon--primary"></span>
+                                  <span class="icon16 icon--minus icon--primary"></span>
+                                </button>
+                                <label class="incident-main-label">
+                                  <input type="checkbox" name="incident-category" value="crime" data-target="incident-sub-crime" data-label="범죄" class="form-checkbox">
+                                  <span class="incident-main-text">범죄</span>
+                                  <span class="incident-main-count"></span>
+                                </label>
+                              </div>
+
+                              <!-- 2) 사고 -->
+                              <div class="incident-main-item">
+                                <button type="button" class="incident-toggle-btn">
+                                  <span class="icon16 icon--add icon--primary"></span>
+                                  <span class="icon16 icon--minus icon--primary"></span>
+                                </button>
+                                <label class="incident-main-label">
+                                  <input type="checkbox" name="incident-category" value="accident" data-target="incident-sub-accident" data-label="사고" class="form-checkbox">
+                                  <span class="incident-main-text">사고</span>
+                                  <span class="incident-main-count"></span>
+                                </label>
+                              </div>
+
+                              <!-- 3) 재해 -->
+                              <div class="incident-main-item">
+                                <button type="button" class="incident-toggle-btn">
+                                  <span class="icon16 icon--add icon--primary"></span>
+                                  <span class="icon16 icon--minus icon--primary"></span>
+                                </button>
+                                <label class="incident-main-label">
+                                  <input type="checkbox" name="incident-category" value="disaster" data-target="incident-sub-disaster" data-label="재해" class="form-checkbox">
+                                  <span class="incident-main-text">재해</span>
+                                  <span class="incident-main-count"></span>
+                                </label>
+                              </div>
+
+                              <!-- 4) 사회 -->
+                              <div class="incident-main-item">
+                                <button type="button" class="incident-toggle-btn">
+                                  <span class="icon16 icon--add icon--primary"></span>
+                                  <span class="icon16 icon--minus icon--primary"></span>
+                                </button>
+                                <label class="incident-main-label">
+                                  <input type="checkbox" name="incident-category" value="society" data-target="incident-sub-society" data-label="사회" class="form-checkbox">
+                                  <span class="incident-main-text">사회</span>
+                                  <span class="incident-main-count"></span>
+                                </label>
+                              </div>
+
+                            </div>
+                          </div>
+
+                          <!-- 2뎁스 + 3뎁스 -->
+                          <div class="incident-sub-col">
+
+                            <!-- 2뎁스 : 중분류 -->
+                            <div class="incident-middle-col">
+
+                              <!-- 범죄 2뎁스 -->
+                              <div class="incident-middle-list" id="incident-sub-crime" aria-label="범죄 중분류">
+                                <!-- 성범죄 -->
+                                <div class="incident-middle-item">
+                                  <button type="button" class="incident-middle-toggle-btn" data-has-children="true">
+                                    <span class="icon16 icon--add icon--primary"></span>
+                                    <span class="icon16 icon--minus icon--primary"></span>
+                                  </button>
+                                  <label class="incident-middle-label">
+                                    <input type="checkbox" name="incident-topic" value="crime-sex" data-parent="crime" data-target="incident-detail-crime-sex" data-label="성범죄" class="form-checkbox">
+                                    <span>성범죄</span>
+                                  </label>
+                                </div>
+                                <!-- 기업범죄 -->
+                                <div class="incident-middle-item">
+                                  <button type="button" class="incident-middle-toggle-btn" data-has-children="false">
+                                    <span class="icon16 icon--add icon--primary"></span>
+                                    <span class="icon16 icon--minus icon--primary"></span>
+                                  </button>
+                                  <label class="incident-middle-label">
+                                    <input type="checkbox" name="incident-topic" value="crime-corporate" data-parent="crime" data-label="기업범죄" class="form-checkbox">
+                                    <span>기업범죄</span>
+                                  </label>
+                                </div>
+                              </div>
+
+                              <!-- 사고 2뎁스 -->
+                              <div class="incident-middle-list" id="incident-sub-accident" aria-label="사고 중분류">
+                                <!-- 산업사고 -->
+                                <div class="incident-middle-item">
+                                  <button type="button" class="incident-middle-toggle-btn" data-has-children="false">
+                                    <span class="icon16 icon--add icon--primary"></span>
+                                    <span class="icon16 icon--minus icon--primary"></span>
+                                  </button>
+                                  <label class="incident-middle-label">
+                                    <input type="checkbox" name="incident-topic" value="accident-industrial" data-parent="accident" data-label="산업사고" class="form-checkbox">
+                                    <span>산업사고</span>
+                                  </label>
+                                </div>
+                              </div>
+
+                              <!-- 재해 2뎁스 -->
+                              <div class="incident-middle-list" id="incident-sub-disaster" aria-label="재해 중분류">
+                                <!-- 자연재해 -->
+                                <div class="incident-middle-item">
+                                  <button type="button" class="incident-middle-toggle-btn" data-has-children="false">
+                                    <span class="icon16 icon--add icon--primary"></span>
+                                    <span class="icon16 icon--minus icon--primary"></span>
+                                  </button>
+                                  <label class="incident-middle-label">
+                                    <input type="checkbox" name="incident-topic" value="disaster-natural" data-parent="disaster" data-label="자연재해" class="form-checkbox">
+                                    <span>자연재해</span>
+                                  </label>
+                                </div>
+                              </div>
+
+                              <!-- 사회 2뎁스 -->
+                              <div class="incident-middle-list" id="incident-sub-society" aria-label="사회 중분류">
+                                <!-- 사회문제 -->
+                                <div class="incident-middle-item">
+                                  <button type="button" class="incident-middle-toggle-btn" data-has-children="false">
+                                    <span class="icon16 icon--add icon--primary"></span>
+                                    <span class="icon16 icon--minus icon--primary"></span>
+                                  </button>
+                                  <label class="incident-middle-label">
+                                    <input type="checkbox" name="incident-topic" value="society-issue" data-parent="society" data-label="사회문제" class="form-checkbox">
+                                    <span>사회문제</span>
+                                  </label>
+                                </div>
+                              </div>
+
+                            </div>
+
+                            <!-- 3뎁스 : 소분류 (샘플) -->
+                            <div class="incident-detail-col">
+
+                              <!-- 범죄 / 성범죄 3뎁스 -->
+                              <div class="incident-detail-list" id="incident-detail-crime-sex" aria-label="성범죄 소분류">
+                                <label class="incident-detail-item">
+                                  <input type="checkbox" name="incident-topic" value="crime-sex-assault" data-parent="crime-sex" data-label="성폭행" class="form-checkbox">
+                                  <span>성폭행</span>
+                                </label>
+                                <label class="incident-detail-item">
+                                  <input type="checkbox" name="incident-topic" value="crime-sex-harassment" data-parent="crime-sex" data-label="성추행" class="form-checkbox">
+                                  <span>성추행</span>
+                                </label>
+                              </div>
+
+                              <!-- 사고 / 스포츠사고 3뎁스 -->
+                              <div class="incident-detail-list" id="incident-detail-accident-sports" aria-label="스포츠사고 소분류">
+                                <!-- 여기 추가 -->
+                              </div>
+
+                              <!-- 재해 / 자연재해 3뎁스 -->
+                              <div class="incident-detail-list" id="incident-detail-disaster-natural" aria-label="자연재해 소분류">
+                                <!-- 여기 추가 -->
+                              </div>
+
+                              <!-- 사회 / 사회갈등 3뎁스 -->
+                              <div class="incident-detail-list" id="incident-detail-society-conflict" aria-label="사회갈등 소분류">
+                                <!-- 여기 추가 -->
+                              </div>
+
+                            </div>
+
+                          </div>
+
+                        </div>
+                      </div>
+
+                      <!-- 사건사고분류 초기화 버튼 -->
+                      <div class="filter-footer">
+                        <button class="btn-outline-gray-m" type="button" aria-label="사건사고분류 초기화" data-reset-type="incident">
+                          <span class="icon20 icon--forward-media icon--basic"></span>
+                          <span>사건사고분류 초기화</span>
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- 5. 상세검색 탭 -->
+                    <div class="tab-panel" id="news-filter-advanced" aria-label="상세검색">
+                      <div class="filter-body filter-body-advanced">
+                        <div class="advanced-layout">
+
+                          <!-- 상단 : 검색어범위 + 기고자명 -->
+                          <div class="advanced-row">
+                            <!-- 검색어범위 셀렉트 -->
+                            <div class="form-field form-field--horizontal">
+                              <label class="form-label">검색어범위</label>
+                              <select class="form-select" aria-label="검색어범위">
+                                <option value="">제목+본문</option>
+                                <option value="">제목</option>
+                                <option value="">본문</option>
+                              </select>
+                            </div>
+                            <!-- 기고자명 입력 -->
+                            <div class="form-field form-field--horizontal">
+                              <label class="form-label">기고자명</label>
+                              <input type="text" class="form-input" placeholder="기고자명 입력">
+                            </div>
+                          </div>
+
+                          <!-- 하단 : 단어 영역 -->
+                          <div class="advanced-section">
+                            <!-- 단어 중 1개 이상 포함 -->
+                            <div class="form-field form-field--horizontal">
+                              <label class="form-label">단어 중 1개 이상 포함</label>
+                              <input type="text" class="form-input" placeholder="단어 입력 (단어가 여럿일 경우 ‘,’로 분리)">
+                            </div>
+
+                            <!-- 다음단어 모두 포함 -->
+                            <div class="form-field form-field--horizontal">
+                              <label class="form-label">다음단어 모두 포함</label>
+                              <input type="text" class="form-input" placeholder="단어 입력">
+                            </div>
+
+                            <!-- 정확히 일치하는 단어 -->
+                            <div class="form-field form-field--horizontal">
+                              <label class="form-label">정확히 일치하는 단어</label>
+                              <input type="text" class="form-input" placeholder="단어 입력">
+                            </div>
+
+                            <!-- 다음단어 제외 -->
+                            <div class="form-field form-field--horizontal">
+                              <label class="form-label">다음단어 제외</label>
+                              <input type="text" class="form-input" placeholder="단어 입력">
+                            </div>
+
+                          </div>
+
+                        </div>               
+                      </div>
+
+                      <!-- 상세검색 초기화 버튼 -->
+                      <div class="filter-footer">
+                        <button class="btn-outline-gray-m" type="button" aria-label="상세검색 초기화" data-reset-type="advanced">
+                          <span class="icon20 icon--forward-media icon--basic"></span>
+                          <span>상세검색 초기화</span>
+                        </button>
+                      </div>
+
+                    </div>
+    
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+
+
+
+        
+      </main>
+
+      <!------ 우측 보조패널 : 적용된 검색조건 ------>
+      <aside class="layout-aside filter-panel" aria-label="우측 보조패널">
+
+        <div class="top-area">
+          <!------ 타이틀 영역 ------>
+          <div class="aside-head">
+            <p>적용된 검색조건</p>
+            <button class="btn-icon-outline-m" type="button" aria-label="전체 초기화"  data-reset-type="all">
+              <span class="icon20 icon--forward-media icon--basic"></span>
+            </button>
+          </div>
+        </div>
+
+        <!------ 콘텐츠 스크롤 영역 ------>
+        <div class="aside-body">
+          <div class="filter-chip-group">
+            <!-- 적용된 검색 조건 칩 -->
+            <!--<div class="filter-chip">
+              <span class="filter-chip-label">YYYY-MM-DD~YYYY-MM-DD</span>
+              <button type="button" class="filter-chip-remove" aria-label="칩 삭제">
+                <span class="icon16 icon--close icon--basic"></span>
+              </button>
+            </div>-->
+          </div>
+        </div>
+      </aside>
+
+    </div>
+
+
+
+    <!-- 드롭다운 메뉴 : 폴더 설정 -->
+    <template id="menu-folder-head">
+      <ul class="dd" role="menu" aria-label="폴더 설정">      
+        <li role="none">
+          <button role="menuitem">
+            <span class="icon20 icon--edit2 icon--basic"></span>
+            <span class="dd-name">폴더 이름 변경</span>
+          </button>
+        </li>
+        <li role="none">
+          <button role="menuitem" class="danger">
+            <span class="icon20 icon--delete icon--danger"></span>
+            <span class="dd-name">폴더 삭제</span>
+          </button>
+        </li>
+      </ul>
+    </template>
+
+    <!-- 드롭다운 메뉴 : 폴더내 채팅 설정-->
+    <template id="menu-folder-chat">
+      <ul class="dd" role="menu" aria-label="폴더내 채팅 설정">
+        <li role="none">
+          <button role="menuitem">
+            <span class="icon20 icon--keep icon--basic"></span>
+            <span class="dd-name">상단 고정</span>
+          </button>
+        </li>
+        <li role="none">
+          <button role="menuitem">
+            <span class="icon20 icon--edit2 icon--basic"></span>
+            <span class="dd-name">채팅 이름 변경</span>
+          </button>
+        </li>      
+        <li class="has-submenu" role="none" data-submenu="submenu-move" data-dd-pos="right-start">
+          <button role="menuitem" aria-haspopup="menu" aria-expanded="false" class="dd-right-btn">
+            <div>
+              <span class="icon20 icon--folder icon--basic"></span>
+              <span class="dd-name">폴더 이동</span>
+            </div>
+            <span class="icon20 icon--arrow-right icon--basic"></span>
+          </button>
+        </li>
+        <li role="none">
+          <button role="menuitem">
+            <span class="icon20 icon--forward-media icon--basic"></span>
+            <span class="dd-name">폴더에서 제거</span>
+          </button>
+        </li>
+        <li role="none">
+          <button role="menuitem" class="danger">
+            <span class="icon20 icon--delete icon--danger"></span>
+            <span class="dd-name">삭제</span>
+          </button>
+        </li>
+        <li role="none">
+          <span class="dd-date">8월 19일</span>
+        </li>
+      </ul>
+    </template>
+
+    <!-- 드롭다운 메뉴 : 채팅 설정 -->
+    <template id="menu-chat">
+      <ul class="dd" role="menu" aria-label="채팅 설정">
+        <li role="none">
+          <button role="menuitem">
+            <span class="icon20 icon--keep icon--basic"></span>
+            <span class="dd-name">상단 고정</span>
+          </button>
+        </li>
+        <li role="none">
+          <button role="menuitem">
+            <span class="icon20 icon--edit2 icon--basic"></span>
+            <span class="dd-name">채팅 이름 변경</span>
+          </button>
+        </li>      
+        <li class="has-submenu" role="none" data-submenu="submenu-move" data-dd-pos="right-start">
+          <button role="menuitem" aria-haspopup="menu" aria-expanded="false" class="dd-right-btn">
+            <div>
+              <span class="icon20 icon--folder icon--basic"></span>
+              <span class="dd-name">폴더로 이동</span>
+            </div>
+            <span class="icon20 icon--arrow-right icon--basic"></span>
+          </button>
+        </li>
+        <li role="none">
+          <button role="menuitem" class="danger">
+            <span class="icon20 icon--delete icon--danger"></span>
+            <span class="dd-name">삭제</span>
+          </button>
+        </li>
+        <li role="none">
+          <span class="dd-date">8월 19일</span>
+        </li>
+      </ul> 
+    </template>
+
+    <!-- 드롭다운 메뉴 : 채팅중 / 채팅 설정 -->
+    <template id="header-menu-chat">
+      <ul class="dd" role="menu" aria-label="채팅 설정">     
+        <li class="has-submenu" role="none" data-submenu="submenu-move" data-dd-pos="right-start">
+          <button role="menuitem" aria-haspopup="menu" aria-expanded="false" class="dd-right-btn">
+            <div>
+              <span class="icon20 icon--folder icon--basic"></span>
+              <span class="dd-name">폴더에 추가</span>
+            </div>
+            <span class="icon20 icon--arrow-right icon--basic"></span>
+          </button>
+        </li>
+        <li role="none">
+          <button role="menuitem" class="danger">
+            <span class="icon20 icon--delete icon--danger"></span>
+            <span class="dd-name">삭제</span>
+          </button>
+        </li>
+      </ul> 
+    </template>
+
+    <!-- 드롭다운 메뉴 : 폴더 이동 -->
+    <template id="submenu-move">
+      <ul class="dd-sub" role="menu" aria-label="폴더 이동">
+        <li role="none">
+          <button role="menuitem">
+            <span class="icon20 icon--folder-add icon--basic"></span>
+            <span class="dd-name">새 폴더</span>
+          </button>
+        </li>
+        <li role="separator" class="dd-sep"></li>
+        <li role="none">
+          <button role="menuitem">
+            <span class="icon20 icon--folder icon--basic"></span>
+            <span class="dd-name">폴더명</span>
+          </button>
+        </li>
+        <li role="none">
+          <button role="menuitem">
+            <span class="icon20 icon--folder icon--basic"></span>
+            <span class="dd-name">폴더명</span>
+          </button>
+        </li>
+      </ul>
+    </template>
+
+    <!-- 드롭다운 메뉴 : 폴더 더보기 -->
+    <template id="menu-folder-more">
+      <ul class="dd" role="menu" aria-label="폴더 더보기">
+        <li role="none">
+          <button role="menuitem">
+            <span class="icon20 icon--folder icon--basic"></span>
+            <span class="dd-name">숨겨져 있던 폴더</span>
+          </button>
+        </li>
+        <li role="none">
+          <button role="menuitem">
+            <span class="icon20 icon--folder icon--basic"></span>
+            <span class="dd-name">숨겨져 있던 폴더</span>
+          </button>
+        </li>
+      </ul>
+    </template>
+
+    <!-- 드롭다운 메뉴 : 계정 설정 -->
+    <template id="menu-info">
+      <ul class="dd" role="menu" aria-label="계정 설정">
+        <li role="none">
+          <button role="menuitem">
+            <span class="icon20 icon--settings icon--basic"></span>
+            <span class="dd-name">설정</span>
+          </button>
+        </li>
+        <li role="none">
+          <button role="menuitem">
+            <span class="icon20 icon--help icon--basic"></span>
+            <span class="dd-name">도움말</span>
+          </button>
+        </li>
+        <li role="none">
+          <button role="menuitem">
+            <span class="icon20 icon--logout icon--basic"></span>
+            <span class="dd-name">로그아웃</span>
+          </button>
+        </li>
+      </ul>
+    </template>
+
+    </div>
+  </div>
+
+
+  <!-- 공통 JS -->
+  <script src="../assets/js/layout.js"></script>
+  <script src="../assets/js/tooltip.js"></script>
+  <script src="../assets/js/dropdown.js"></script>
+  <script src="../assets/js/dropdown-choice.js"></script>  
+  <script src="../assets/js/theme-toggle.js"></script>
+
+  <!-- 페이지 전용 JS -->
+  <script src="../assets/js/chat-file-uploader.js"></script>
+  <script src="../assets/js/chat-textarea.js"></script>
+  <script src="../assets/js/tab-bar.js"></script>
+  <script src="../assets/js/datepicker.js"></script>
+  <script src="../assets/js/news-filter.js"></script>
+
+
+</body>
+</html>

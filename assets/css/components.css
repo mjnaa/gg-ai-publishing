@@ -9,7 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
+  border-radius: 10px;
   background: var(--color-button-solid-primary);
   color: var(--color-text-btn-solid);
   line-height: 150%;
@@ -54,6 +54,18 @@
 .btn-solid-primary-m:hover,
 .btn-solid-primary-s:hover {
   background: var(--color-button-solid-primary-hover);
+}
+.btn-solid-primary-l:disabled,
+.btn-solid-primary-m:disabled,
+.btn-solid-primary-s:disabled {
+  background: var(--color-button-disabled);
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}
+.btn-solid-primary-l:disabled .icon20,
+.btn-solid-primary-m:disabled .icon20,
+.btn-solid-primary-s:disabled .icon16 {
+  background: var(--color-icon-disabled);
 }
 
 .btn-solid-gray-l {
@@ -108,9 +120,23 @@
 }
 .btn-solid-gray-l:hover .icon20,
 .btn-solid-gray-m:hover .icon20,
-.btn-solid-gray-s:hover .icon20 {
+.btn-solid-gray-m:hover .icon16,
+.btn-solid-gray-s:hover .icon18,
+.btn-solid-gray-s:hover .icon16 {
   background: var(--color-icon-primary);
 }
+.btn-solid-gray-l:disabled,
+.btn-solid-gray-m:disabled,
+.btn-solid-gray-s:disabled {
+  color: var(--color-text-disabled) !important;
+  cursor: not-allowed;
+}
+.btn-solid-gray-l:disabled .icon20,
+.btn-solid-gray-m:disabled .icon20,
+.btn-solid-gray-s:disabled .icon16 {
+  background: var(--color-icon-disabled) !important;
+}
+/*
 body.is-aside-open button[aria-label="프롬프트 라이브러리"],
 body.is-aside-open button[aria-label="프롬프트"] {
   color: var(--color-text-primary);
@@ -118,7 +144,7 @@ body.is-aside-open button[aria-label="프롬프트"] {
 body.is-aside-open button[aria-label="프롬프트 라이브러리"] > .icon--library,
 body.is-aside-open button[aria-label="프롬프트"] > .icon--library {
   background: var(--color-icon-primary);
-}
+}*/
 
 .btn-solid-danger-l {
   display: flex;
@@ -169,6 +195,18 @@ body.is-aside-open button[aria-label="프롬프트"] > .icon--library {
 .btn-solid-danger-m:hover,
 .btn-solid-danger-s:hover {
   background: var(--color-button-solid-danger-hover);
+}
+.btn-solid-danger-l:disabled,
+.btn-solid-danger-m:disabled,
+.btn-solid-danger-s:disabled {
+  background: var(--color-button-disabled);
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}
+.btn-solid-danger-l:disabled .icon20,
+.btn-solid-danger-m:disabled .icon20,
+.btn-solid-danger-s:disabled .icon16 {
+  background: var(--color-icon-disabled);
 }
 
 .btn-outline-gray-l {
@@ -224,6 +262,19 @@ body.is-aside-open button[aria-label="프롬프트"] > .icon--library {
 .btn-outline-gray-s:hover {
   background: var( --color-button-outline-gray-hover);
 }
+.btn-outline-gray-l:disabled,
+.btn-outline-gray-m:disabled,
+.btn-outline-gray-s:disabled {
+  background: var(--color-button-disabled);
+  color: var(--color-text-disabled);
+  border: 0px;
+  cursor: not-allowed;
+}
+.btn-outline-gray-l:disabled .icon20,
+.btn-outline-gray-m:disabled .icon20,
+.btn-outline-gray-s:disabled .icon16 {
+  background: var(--color-icon-disabled);
+}
 
 .btn-outline-darkgray-l {
   display: flex;
@@ -277,6 +328,19 @@ body.is-aside-open button[aria-label="프롬프트"] > .icon--library {
 .btn-outline-darkgray-m:hover,
 .btn-outline-darkgray-s:hover {
   background: var(--color-button-outline-darkgray-hover);
+}
+.btn-outline-darkgray-l:disabled,
+.btn-outline-darkgray-m:disabled,
+.btn-outline-darkgray-s:disabled {
+  background: var(--color-button-disabled);
+  color: var(--color-text-disabled);
+  border: 0px;
+  cursor: not-allowed;
+}
+.btn-outline-darkgray-l:disabled .icon20,
+.btn-outline-darkgray-m:disabled .icon20,
+.btn-outline-darkgray-s:disabled .icon16 {
+  background: var(--color-icon-disabled);
 }
 
 .btn-outline-danger-l {
@@ -334,6 +398,19 @@ body.is-aside-open button[aria-label="프롬프트"] > .icon--library {
   background: var( --color-button-outline-danger-hover);
   color: var(--color-text-btn-solid);
 }
+.btn-outline-danger-l:disabled,
+.btn-outline-danger-m:disabled,
+.btn-outline-danger-s:disabled {
+  background: var(--color-button-disabled);
+  color: var(--color-text-disabled);
+  border: 0px;
+  cursor: not-allowed;
+}
+.btn-outline-danger-l:disabled .icon20,
+.btn-outline-danger-m:disabled .icon20,
+.btn-outline-danger-s:disabled .icon16 {
+  background: var(--color-icon-disabled);
+}
 
 .btn-icon-outline-m {
   display: flex;
@@ -348,6 +425,15 @@ body.is-aside-open button[aria-label="프롬프트"] > .icon--library {
 .btn-icon-outline-m:hover { 
   background: var(--color-button-outline-darkgray-hover);
 }
+.btn-icon-outline-m:disabled {
+  background: var(--color-button-disabled);
+  color: var(--color-text-disabled);
+  border: 0px;
+  cursor: not-allowed;
+}
+.btn-icon-outline-m:disabled .icon20 {
+  background: var(--color-icon-disabled);
+}
 
 .btn-icon-solid-m {
   display: flex;
@@ -358,6 +444,21 @@ body.is-aside-open button[aria-label="프롬프트"] > .icon--library {
   border-radius: 8px;
   background: var(--color-button-solid-gray);
   cursor: pointer;
+}
+.btn-icon-solid-m:hover .icon20 {
+  background: var(--color-icon-primary);
+}
+.btn-icon-solid-m[disabled] .icon20 {
+  background: var(--color-icon-basic);
+  opacity: 0.5;
+}
+.btn-icon-solid-m:disabled {
+  background: var(--color-button-disabled);
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}
+.btn-icon-solid-m:disabled .icon20 {
+  background: var(--color-icon-disabled);
 }
 .btn-icon-normal-m {
   display: flex;
@@ -393,6 +494,20 @@ body.is-aside-open button[aria-label="프롬프트"] > .icon--library {
 .btn-edit-cancel:hover {
   color: var(--color-text-basic);
 }
+.btn-news.is-active {
+  padding-right: 8px;
+  color: var(--color-text-primary);
+}
+.btn-news.is-active .icon20{
+  background: var(--color-icon-primary);
+}
+.btn-news.is-active .right-icon {
+  display: block;
+}
+.btn-news .right-icon {
+  display: none;
+}
+
 button {  
   user-select: none;
   -webkit-user-select: none;
@@ -400,17 +515,9 @@ button {
   -ms-user-select: none;
   -webkit-user-drag: none; 
 }
-.btn-icon-solid-m:hover .icon20 {
-  background: var(--color-icon-primary);
+.is-disabled {
+  cursor: not-allowed;
 }
-.btn-icon-solid-m[disabled] {
-  cursor: default;
-}
-.btn-icon-solid-m[disabled] .icon20 {
-  background: var(--color-icon-basic);
-  opacity: 0.5;
-}
-
 
 /* 플로팅 버튼 */
 .btn-floating-bottom {
@@ -419,7 +526,6 @@ button {
   z-index: 10;
   border: 1px solid var(--color-button-outline-darkgray);
 }
-
 
 /* 액션 버튼 */
 .btn-msg {
@@ -448,9 +554,37 @@ button {
   display: none !important;
 }
 
+/* 필터 칩 */
+.filter-chip {
+  border-radius: 8px;
+  background: var(--color-background-basic);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 30px;
+  padding: 0 6px 0 8px;
+}
+.filter-chip-label {
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--color-text-muted);
+}
+.filter-chip-remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  border-radius: 100px;
+}
+.filter-chip-remove:hover{
+  background-color: var(--color-background-subtle);
+}
 
-/* 탭바 */
-.tab-filter {
+/* 탭바 : pill 스타일  */
+.tab-bar-area .tab-filter {
   display: flex;
   gap: 4px;
   padding: 4px 5px;
@@ -458,7 +592,7 @@ button {
   border-radius: 10px;
   height: 44px;
 }
-.tab-btn {
+.tab-bar-area .tab-filter .tab-btn {
   flex: 1;
   border: 0;
   background: transparent;
@@ -471,15 +605,40 @@ button {
   color: var(--color-text-muted);
   border: 1px solid var(--color-background-basic);
 }
-.tab-btn:hover {
+.tab-bar-area .tab-filter .tab-btn:hover {
   color: var(--color-text-basic);
 }
-.tab-btn.is-active {
+.tab-bar-area .tab-filter .tab-btn.is-active {
   border: 1px solid var(--color-border-basic);
   background: var(--color-background-subtle);
   color: var(--color-text-basic);
 }
 
+/* 탭바 : line 스타일  */
+.tab-bar-line-area .tab-filter {
+  display: flex;
+  gap: 1px;
+  height: 46px;
+  border-bottom: 1px solid var(--color-border-basic);
+}
+.tab-bar-line-area .tab-filter .tab-btn {
+  flex: 1;
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 150%;
+  letter-spacing: 0;
+  font-weight: 500;
+  border-bottom: 2px solid #ffffff00;
+  color: var(--color-text-muted);
+  padding-top: 2px;
+}
+.tab-bar-line-area .tab-filter .tab-btn:hover {
+  color: var(--color-text-basic);
+}
+.tab-bar-line-area .tab-filter .tab-btn.is-active {
+  border-bottom: 2px solid var(--color-border-primary);
+  color: var(--color-text-basic);
+}
 
 /* 스마트도우미 버튼 */
 .smart-card-btn {
@@ -1577,6 +1736,13 @@ button {
   gap: 6px;
   align-items: center;
 }
+.form-field--horizontal .form-label {
+  color: var(--color-text-subtle);
+  font-size: 1.5rem; 
+  line-height: 1; 
+  letter-spacing: 0;
+  font-weight: 500;
+}
 .form-checkbox-label {
   color: var(--color-text-muted);
   font-size: 1.4rem; 
@@ -1597,6 +1763,37 @@ button {
 .form-checkbox-label:has(input:disabled) {
   cursor: default;
   opacity: 0.9; 
+}
+.refine-panel .form-checkbox-label {
+  color: var(--color-text-muted);
+  font-size: 1.5rem; 
+  line-height: 1; 
+  letter-spacing: 0;
+  font-weight: 400;
+  display: inline-flex;
+  flex-direction: row;
+  gap: 6px;
+  align-items: center;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-drag: none; 
+  cursor: pointer;
+}
+
+/* 폼 필드 */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.form-field--horizontal {
+  flex-direction: row;
+  align-items: center;
+}
+.form-field--horizontal .form-label {
+  flex: 0 0 140px; 
 }
 
 
@@ -1713,6 +1910,27 @@ button {
   background: var(--color-input-surface-disabled);
   color: var(--color-text-disabled);
   cursor: default;
+}
+.form-select-s {
+  width: auto; 
+  height: 26px; 
+  padding: 0 22px 0 2px;
+  border-radius: 6px;
+  background: url("../img/icon/arrow_down.svg") no-repeat right 2px center / 18px 18px;
+  color: var(--color-text-muted);
+  line-height: 150%;
+  letter-spacing: 0;
+  font-weight: 500;
+  font-size: 1.3rem;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  text-align: right;
+  cursor: pointer;
+}
+.form-select-s:hover {
+  color: var(--color-text-basic);
 }
 
 /* textarea */
@@ -1984,6 +2202,178 @@ button {
   cursor: default;
   opacity: 0.6;
 }
+
+/* 라디오 버튼 : 버튼 모양으로 커스텀 */
+.btn-radio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 1px solid var(--color-button-outline-gray);
+  background: var( --color-button-outline-gray-bg);
+  color: var(--color-text-muted);
+  line-height: 150%;
+  letter-spacing: 0;
+  font-weight: 400;
+  font-size: 1.6rem;
+  gap: 8px;
+  height: 44px;
+  width: 100%;
+  cursor: pointer;
+}
+.btn-radio > input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.btn-radio > input:checked + span {
+  color: var(--color-text-basic);
+  font-weight: 500;
+}
+.btn-radio > input:checked ~ span,
+.btn-radio > input:checked {
+  border-color: var(--color-border-primary);
+}
+.btn-radio:has(input:checked) {
+  border-color: var(--color-border-primary);
+  color: var(--color-text-basic);
+  background: var( --color-button-outline-gray-bg);
+}
+.btn-radio:hover {
+  background: var( --color-button-outline-gray-hover);
+}
+
+/* 날짜 입력 필드 */
+.date-field {
+  position: relative;
+  width: 100%;
+  height: 44px; 
+}
+.date-field input {
+  width: 100%;
+  height: 100%;
+  padding: 0 48px 0 16px;
+  border-radius: 10px;
+  border: 1px solid var(--color-input-border);
+  background: var(--color-input-surface);
+  color: var(--color-text-basic);
+  font-size: 1.6rem; 
+  line-height: 150%; 
+  letter-spacing: 0;
+  font-weight: 400;
+  z-index: 1;
+}
+.date-field input:focus {
+  outline: none;
+  border: 1px solid var(--color-input-border-focus);
+}
+.date-field.is-focused input {
+  border: 1px solid var(--color-input-border-focus);
+}
+.date-field .date-field-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+/* 캘린더 ui */
+#common-datepicker.calendar-popup {
+  position: absolute;
+  z-index: 9999;
+  width: 280px;
+  padding: 16px;
+  background-color: var(--color-background-subtle);
+  border: 1px solid var(--color-background-basic);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.078);
+  box-sizing: border-box;
+}
+.calendar-popup .calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 6px;
+}
+.calendar-popup .cal-nav-group {
+  display: flex;
+  gap: 2px;
+}
+.calendar-popup .current-ym {
+  font-size: 1.6rem;
+  font-weight: 600; 
+  margin-top: 5px;
+}
+.calendar-popup .cal-nav-btn {
+  padding: 4px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.calendar-popup .weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 8px;
+  text-align: center;
+  font-size: 1.4rem;
+  color: var(--color-text-muted);
+}
+.calendar-popup .days {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(7, 1fr);
+  row-gap: 4px;
+}
+.calendar-popup .day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 30px;
+  font-size: 1.4rem;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  border-radius: 100px;
+}
+.calendar-popup .day.is-selected {
+  background-color: var(--color-background-primary);
+  color: var(--color-text-inverse);
+}
+.calendar-popup .day.is-today {
+  color: var(--color-text-primary);
+  font-weight: 600; 
+}
+.calendar-popup .day.is-selected.is-today {
+  color: var(--color-text-inverse);
+}
+.calendar-popup .day:disabled,
+.calendar-popup .cal-nav-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+.calendar-popup .day.is-sunday,
+.calendar-popup .day.is-saturday {
+  color: var(--color-text-danger); 
+}
+.calendar-popup .day.is-selected.is-sunday,
+.calendar-popup .day.is-selected.is-saturday {
+  color: var(--color-text-inverse);
+}
+.calendar-popup .day:disabled.is-sunday,
+.calendar-popup .day:disabled.is-saturday {
+  opacity: 0.3;
+  color: inherit;
+}
+
+
 
 /* 인포 박스 */
 .info-box {
@@ -2287,6 +2677,7 @@ button {
   margin: 0 6px 0 7px;
   vertical-align: middle;
 }
+
 /* 부서명이 없을 때 불필요한 구분선 제거 */
 .source-org:empty::after {
   display: none;

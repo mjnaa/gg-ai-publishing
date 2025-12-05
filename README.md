@@ -13,8 +13,8 @@
 - 상태/유형은 `--`(더블 하이픈)으로 구분: `--loading`, `--list`, `--table`, `--code-quote` 등.
 - 번호 대역
   - `00~09` 공통(레이아웃/팝업/로딩)
-  - `10~59` 서비스(채팅/폴더/프롬프트/도움말/문서생성이력)
-  - `60~99` 예비(확장)
+  - `10~69` 서비스(채팅/폴더/프롬프트/도움말/문서생성이력/뉴스검색)
+  - `70~99` 예비(확장)
 - 서비스 폴더: `work`, `legal`, `appeal`  
   - 동일 기능은 세 서비스가 같은 번호를 사용합니다(예: 모두 `10-chat-new.html`).
 
@@ -50,7 +50,9 @@ publishing/
  │  │  ├─ chat-bubble-actions.js    # 채팅 버블 액션 제어
  │  │  ├─ accordion-help.js         # 아코디언 메뉴 (도움말)
  │  │  ├─ tab-bar.js                # 탭바
- │  │  └─ prompt-library.js         # 프롬프트 라이브러리
+ │  │  ├─ prompt-library.js         # 프롬프트 라이브러리
+ │  │  ├─ datepicker.js             # 날짜 선택기
+ │  │  └─ news-filter.js            # 뉴스 검색 필터
  │  └─ img/
  │     └─ icon/                     # 아이콘만 보관
  ├─ common/
@@ -71,7 +73,10 @@ publishing/
  │  ├─ 21-folder-main--empty.html
  │  ├─ 30-prompt.html
  │  ├─ 32-prompt-popup.html
- │  └─ 40-help.html
+ │  ├─ 40-help.html
+ │  ├─ 60-news-new.html
+ │  ├─ 61-news-answer--loading.html
+ │  └─ 62-news-answer.html
  ├─ legal/
  │  ├─ 10-chat-new.html
  │  ├─ 11-chat-bubble.html

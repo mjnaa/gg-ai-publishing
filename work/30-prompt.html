@@ -362,6 +362,13 @@
                         <span>라이브러리</span>
                       </button>
 
+                      <!-- 뉴스검색 버튼 : 뉴스검색 페이지에서만 .is-active -->
+                      <button class="btn-solid-gray-m btn-news" type="button" aria-label="뉴스검색">
+                        <span class="icon20 icon--search icon--basic"></span>
+                        <span>뉴스검색</span>
+                        <span class="right-icon icon18 icon--close icon--basic"></span>
+                      </button>
+
                     </div>
                     <div class="right-area">
                       <!-- 텍스트 카운터 -->
@@ -518,6 +525,7 @@
 
       <!------ 우측 보조패널 : 프롬프트 라이브러리 ------>
       <aside class="layout-aside prompt-panel" aria-label="우측 보조패널">
+        
         <div class="top-area">
           <!------ 타이틀 영역 ------>
           <div class="aside-head">
@@ -546,8 +554,8 @@
 
         </div>
 
-        <!------ 콘텐츠 스크롤 영역 ------>
-        <div class="aside-body prompt-body">
+        <!------ 콘텐츠 스크롤 영역 (.tab-panels 추가) ------>
+        <div class="aside-body prompt-body tab-panels">
           <!-- 1. MY 탭 -->
           <div class="tab-panel" id="tab-my">
             <!-- 저장된 프롬프트가 없는 경우 -->

@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+
+<head>
+  <title>경기도 생성형 AI 플랫폼</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="경기도 생성형 AI 플랫폼" />
+  <!-- style sheets -->
+  <link href="../assets/css/tokens.css" rel="stylesheet">
+  <link href="../assets/css/font.css" rel="stylesheet">
+  <link href="../assets/css/base.css" rel="stylesheet">
+  <link href="../assets/css/layout.css" rel="stylesheet">
+  <link href="../assets/css/components.css" rel="stylesheet">
+  <link href="../assets/css/mask_datauri.css" rel="stylesheet">
+  <!-- favicon -->
+  <link rel="icon" href="../assets/img/favicon.ico" type="image/x-icon">
+  
+</head>
+
+<body class="is-aside-open">
+  <div class="viewport-scale">
+    <div class="viewport-inner">
+    <div class="layout-overlay" aria-hidden="true"></div>
+    
+    <div class="layout">
+
+      <!------ 좌측 네비게이션 ------>
+      <aside class="layout-nav" aria-label="사이드 네비게이션바">
+        <div class="top-area"> 
+
+          <!------ 상단 고정 영역 ------>
+          <div class="nav-head">
+            <div class="nav-title">              
+              <a class="logo" href="#" aria-label="홈으로">
+                <img src="../assets/img/logo.png" />
+              </a>
+              <button class="btn-nav-toggle btn-icon-normal-m tip-toggle" type="button" aria-label="사이드바 닫기" data-tip-pos="right" aria-expanded="true" data-tip-open="사이드바 닫기" data-tip-closed="사이드바 열기">
+                <span class="icon20 icon--thumbnail-bar icon--basic"></span>
+              </button>
+            </div>
+            
+            <!-- 새 채팅 -->
+            <button class="btn-newchat btn-outline-darkgray-l tip-toggle" type="button"  data-tip-pos="right" data-tip-when="mini" aria-expanded="true" data-tip-open="새 채팅">
+              <span class="icon20 icon--edit icon--strong"></span>
+              <span class="label">새 채팅</span>
+            </button>
+          </div>
+
+          <!------ 폴더/채팅 스크롤 영역  ------>
+          <div class="scroll-area" aria-label="폴더와 채팅 목록">
+            <ul class="folder-list">
+              <!-- 새 폴더 -->
+              <li class="folder-new">
+                <button class="btn-folder-new" type="button">
+                  <span class="icon20 icon--folder-add icon--basic"></span>
+                  <span class="label">새 폴더</span>
+                </button>
+              </li>
+
+              <!-- 폴더 -->
+              <li class="folder-item">
+                <div class="folder-head">
+                  <div class="left">
+                    <!-- 폴더 여닫는 버튼-->
+                    <button class="btn-folder tip-toggle" type="button" data-tip-pos="bottom" aria-expanded="false" data-tip-open="채팅 숨기기" data-tip-closed="채팅 표시" data-tip-offset-x="6" >
+                      <span class="icon20 icon--folder icon--basic"></span>
+                    </button>
+                    <!-- 폴더 이동 버튼-->
+                    <a href="#"><span class="label">폴더명</span></a>
+                  </div>
+                  <!-- 폴더 설정 버튼 : 마우스 오버시에만 노출-->
+                  <button class="btn-more" type="button" aria-label="폴더 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-folder-head" data-dd-pos="right-start">
+                    <span class="icon20 icon--more-horiz icon--basic"></span>
+                  </button>
+                </div>
+
+                <!-- 폴더 안 채팅 리스트 -->
+                <ul class="chat-sublist">
+                  <!-- 폴더 안 채팅 -->
+                  <li class="chat-subitem">
+                    <a href="#"><span class="label">폴더 내 채팅명</span></a>
+                    <!-- 채팅 설정 버튼 : 마우스 오버시에만 노출-->
+                    <button class="btn-more" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-folder-chat" data-dd-pos="right-start">
+                      <span class="icon20 icon--keep-fill icon--basic"></span>
+                      <span class="icon20 icon--more-horiz icon--basic"></span>
+                    </button>
+                  </li>
+
+                  <!-- 폴더 안 채팅 -->
+                  <li class="chat-subitem">
+                    <a href="#"><span class="label">폴더 내 채팅명이 길어도 들어갑니다</span></a>
+                    <!-- 채팅 설정 버튼 : 마우스 오버시에만 노출-->
+                    <button class="btn-more" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-folder-chat" data-dd-pos="right-start">
+                      <span class="icon20 icon--keep-fill icon--basic"></span>
+                      <span class="icon20 icon--more-horiz icon--basic"></span>
+                    </button>
+                  </li>
+                  <!-- 모두보기 : 채팅이 6개 이상일 때 노출 -->
+                  <!--<li class="chat-subitem">
+                    <a href="#"><span class="label">모두보기</span></a>
+                  </li>-->
+                </ul>
+              </li>
+
+              <!-- 더보기 : 폴더가 6개 이상일 때 노출 -->
+              <li class="folder-item more">
+                <div class="folder-head">
+                  <button class="btn-folder" type="button" aria-haspopup="menu" aria-expanded="false" data-dd="menu-folder-more" data-dd-pos="right-start">
+                    <span class="icon20 icon--more-horiz icon--basic"></span>
+                    <span class="label">더보기</span>
+                  </button>
+                </div>
+              </li>
+            </ul>
+
+            <!-- 채팅 리스트 -->
+            <ul class="chat-list">
+              <li class="list-title">
+                <div>
+                  <p>채팅</p>
+                  <button class="btn-help tip-toggle" type="button" aria-label="채팅 삭제 안내" data-tip-pos="right" aria-expanded="true" data-tip-open="채팅 삭제 안내">
+                    <span class="icon16 icon--information icon--basic"></span>
+                  </button>
+                </div>
+              </li>
+
+              <!-- 상단고정된 채팅에 .is-pinned 추가 -->
+              <li class="chat-item is-pinned">
+                <a href="#"><span class="label">상단고정된 채팅명</span></a>
+                <!-- 채팅 설정 버튼 : 마우스 오버시에만 노출-->
+                <button class="btn-more" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-chat" data-dd-pos="right-start">
+                  <span class="icon20 icon--keep-fill icon--basic"></span>
+                  <span class="icon20 icon--more-horiz icon--basic"></span>
+                </button>
+              </li>
+
+              <li class="chat-item">
+                <a href="#"><span class="label">채팅명</span></a>
+                <!-- 채팅 설정 버튼 : 마우스 오버시에만 노출-->
+                <button class="btn-more" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-chat" data-dd-pos="right-start">
+                  <span class="icon20 icon--keep-fill icon--basic"></span>
+                  <span class="icon20 icon--more-horiz icon--basic"></span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!------ 하단 고정 영역 ------>
+        <div class="bottom-area">
+          <ul class="llm-list">
+            <!-- 현재 서비스에 li class="active" -->
+            <li class="llm-item active tip-toggle" data-tip-pos="right" data-tip-when="mini" aria-expanded="true" data-tip-open="AI 업무지원">
+              <a href="#">
+                <span class="icon20 icon--llm-01 icon--basic"></span>
+                <span class="label">AI 업무지원</span>
+              </a>
+            </li>
+            <li class="llm-item tip-toggle" data-tip-pos="right" data-tip-when="mini" aria-expanded="true" data-tip-open="AI 법률">
+              <a href="#">
+                <span class="icon20 icon--llm-02 icon--basic"></span>
+                <span class="label">AI 법률</span>
+              </a>
+            </li>
+            <li class="llm-item tip-toggle" data-tip-pos="right" data-tip-when="mini" aria-expanded="true" data-tip-open="AI 행정심판">
+              <a href="#">
+                <span class="icon20 icon--llm-03 icon--basic"></span>
+                <span class="label">AI 행정심판</span>
+              </a>
+            </li>
+          </ul>
+          <button class="info-area" aria-label="계정 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-info" data-dd-pos="right-end">
+            <div class="profile-initial" aria-label="프로필 이미지" aria-hidden="true">
+              <span>경</span>
+            </div>
+            <div class="info-text">
+              <p class="name">김경기님</p>
+              <p class="dept">AI 생성형 부서</p>
+            </div>
+          </button>
+        </div>
+      </aside>
+
+
+      <!------ 중앙 메인 ------>
+      <main class="layout-main" aria-label="중앙 콘텐츠">
+
+        <!------ 상단바 ------>
+        <header class="layout-main-header">
+          <div class="header-title">
+            <!-- 모바일 사이즈에서만 보이는 네비게이션 햄버거 버튼 -->
+            <button class="btn-hamburger" type="button" aria-label="네비게이션 열기">
+              <span class="icon20 icon--dehaze icon--basic"></span>
+            </button>
+
+            <!-- LLM 서비스 변경 드롭다운메뉴(단일선택메뉴ver) -->
+            <div class="dd-choice" data-choice="llm">
+              <button type="button" class="dd-choice-toggle" aria-haspopup="listbox" aria-expanded="false">
+                <div class="dd-title">
+                  <span class="icon20 icon--llm-01 icon--primary"></span>
+                  <span class="txt">AI 업무지원</span>
+                </div>
+                <span class="icon22 icon--arrow-down icon--basic"></span>
+              </button>
+              <ul class="dd-choice-list left" role="listbox">
+                <li>
+                  <button type="button" class="dd-choice-item active" role="option">
+                    <div class="dd-name">
+                      <span class="icon20 icon--llm-01 icon--basic"></span>
+                      <span class="txt">AI 업무지원</span>
+                    </div>
+                    <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="dd-choice-item" role="option">
+                    <div class="dd-name">
+                      <span class="icon20 icon--llm-02 icon--basic"></span>
+                      <span class="txt">AI 법률</span>
+                    </div>
+                    <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="dd-choice-item" role="option">
+                    <div class="dd-name">
+                      <span class="icon20 icon--llm-03 icon--basic"></span>
+                      <span class="txt">AI 행정심판</span>
+                    </div>
+                    <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            <!-- 안내메세지 : LLM 서비스 변경시에만 잠깐 노출 -->
+            <span class="page-text llm-01">문서초안 작성, 자료 찾기와 정리 등 AI업무 서비스 지원</span>
+            <span class="page-text llm-02">AI 법률 설명이 들어갑니다</span>
+            <span class="page-text llm-03">AI 행정심판 설명이 들어갑니다</span>
+          </div>
+
+          <div class="header-actions">
+
+            <!-- 폰트크기 설정 드롭다운메뉴(단일선택메뉴ver) -->
+            <div class="dd-choice" data-choice="ui-scale">
+              <button type="button" class="dd-choice-toggle btn-icon-normal-m" aria-haspopup="listbox" aria-expanded="false" aria-label="폰트크기 설정">
+                <span class="icon20 icon--txtsize icon--basic"></span>
+              </button>
+              <ul class="dd-choice-list right" role="listbox">
+                <li>
+                  <button type="button" onclick="setUiScale(0.95)" class="dd-choice-item" role="option">
+                    <div class="dd-name">
+                      <span class="txt">작게</span>
+                    </div>
+                    <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" onclick="setUiScale(1.0)" class="dd-choice-item active" role="option">
+                    <div class="dd-name">
+                      <span class="txt">보통</span>
+                    </div>
+                    <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" onclick="setUiScale(1.05)" class="dd-choice-item" role="option">
+                    <div class="dd-name">
+                      <span class="txt">크게</span>
+                    </div>
+                    <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" onclick="setUiScale(1.1)" class="dd-choice-item" role="option">
+                    <div class="dd-name">
+                      <span class="txt">더 크게</span>
+                    </div>
+                    <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
+                  </button>
+                </li>                
+              </ul>
+            </div>
+
+            <!-- 채팅 설정 드롭다운메뉴(다중옵션목록ver) -->
+            <button class="btn-more btn-icon-normal-m" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="header-menu-chat" data-dd-pos="bottom-end">
+                <span class="icon20 icon--more-horiz icon--basic"></span>
+            </button>
+
+            <!-- 사용자게시판 버튼 -->
+            <button class="btn-outline-darkgray-s" type="button">
+              <span class="icon16 icon--board icon--basic"></span>
+              사용자 게시판
+            </button>
+          </div>
+
+        </header>
+        
+
+
+
+
+        <!------ 콘텐츠(채팅) 영역 ------>
+        <section class="layout-main-body" aria-label="채팅/콘텐츠">
+          <div class="chat chat-news">
+            <!-- 채팅 중 화면 -->
+            <div class="thread-area">
+              <div class="chat-thread">
+
+                <!-- 사용자 검색어 영역  -->
+                <div class="msg is-user" aria-label="사용자 검색어">
+                  <div class="msg-row">
+                    <div class="msg-main"> 
+
+                      <!-- 사용자 메시지 -->
+                      <div class="msg-bubble">
+                        <p>경기도 육아지원</p>
+                      </div>
+
+                      <!-- 액션 버튼 영역 : 뉴스 검색에는 표시안함 -->
+                      <div class="msg-actions">
+                        <button type="button" class="btn-msg tip-toggle" aria-label="복사" data-tip-pos="bottom" aria-expanded="true" data-tip-open="복사">
+                          <span class="icon18 icon--select icon--basic"></span>
+                        </button>
+                        <button type="button" class="btn-msg tip-toggle" aria-label="편집" data-tip-pos="bottom" aria-expanded="true" data-tip-open="메시지 편집">
+                          <span class="icon18 icon--edit icon--basic"></span>
+                        </button>
+                        <button type="button" class="btn-msg tip-toggle" aria-label="프롬프트 저장" data-tip-pos="bottom" aria-expanded="true" data-tip-open="프롬프트 저장">
+                          <span class="icon18 icon--library icon--basic"></span>
+                        </button>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                
+                <!-- 검색 결과 영역 -->
+                <div class="msg is-bot" aria-label="검색 결과 영역">
+                  <div class="msg-row">
+                    <div class="msg-main">
+                      
+                      <div class="msg-bubble">
+                        <div class="loading-inline">
+                          <span class="loading-dots">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                          </span>
+                          <p class="bold">뉴스데이터 검색중…<p>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+
+
+
+        
+      </main>
+
+      <!------ 우측 보조패널 : 결과 내 재검색 ------>
+      <aside class="layout-aside refine-panel" aria-label="우측 보조패널">
+
+        <!-- 고정 영역 -->
+        <div class="top-area">
+
+          <!-- 1. 결과 내 재검색 영역 -->
+          <div class="aside-head">
+            <p>결과 내 재검색</p>
+          </div>
+
+          <div class="refine-section">
+            <!-- 키워드 포함 -->
+            <div class="form-field">
+              <label class="form-label">키워드 포함</label>
+              <input type="text" class="form-input" placeholder="">
+            </div>
+
+            <!-- 키워드 제외 -->
+            <div class="form-field">
+              <label class="form-label">키워드 제외</label>
+              <input type="text" class="form-input" placeholder="">
+            </div>
+
+            <!-- 검색 버튼 -->
+            <button type="button" class="btn-solid-primary-l">검색</button>
+
+            <!-- 안내문구 -->
+            <p class="guide-text">단어가 여럿일 경우 ‘,’로 분리하여 입력바랍니다.</p>
+          </div>
+
+
+          <!-- 2. 검색필터 타이틀 -->
+          <div class="aside-head">
+            <p>검색필터</p>
+            <button class="btn-icon-outline-m" type="button" aria-label="전체 초기화" data-reset-type="all">
+              <span class="icon20 icon--forward-media icon--basic"></span>
+            </button>
+          </div>
+        </div>
+
+        <!------ 콘텐츠 스크롤 영역 ------>
+        <div class="aside-body">
+          <!-- 기간 -->
+          <div class="form-field">
+            <p class="form-label">기간</p>
+            <label class="form-checkbox-label">
+              <input type="checkbox" class="form-checkbox" name="period">2025
+            </label>
+          </div>
+
+          <!-- 언론사 -->
+          <div class="form-field">
+            <p class="form-label">언론사</p>
+            <!-- 기본 4개-->
+            <div class="check-list">
+              <label class="form-checkbox-label">
+                <input type="checkbox" class="form-checkbox" name="press">경향신문
+              </label>
+              <label class="form-checkbox-label">
+                <input type="checkbox" class="form-checkbox" name="press">국민일보
+              </label>
+              <label class="form-checkbox-label">
+                <input type="checkbox" class="form-checkbox" name="press">내일신문
+              </label>
+              <label class="form-checkbox-label">
+                <input type="checkbox" class="form-checkbox" name="press">동아일보
+              </label>
+            </div>
+
+            <!-- 숨겨진 추가 항목-->
+            <div class="check-list-more" hidden>
+              <label class="form-checkbox-label">
+                <input type="checkbox" class="form-checkbox" name="press">문화일보
+              </label>
+              <label class="form-checkbox-label">
+                <input type="checkbox" class="form-checkbox" name="press">서울신물
+              </label>
+            </div>
+            
+            <!-- 펼쳐보기 버튼 -->
+            <button type="button" class="btn-solid-gray-m toggle-more">
+              <span class="icon16 icon--add icon--basic"></span>펼쳐보기
+            </button>
+          </div>  
+
+
+          <!-- 통합분류 -->
+          <div class="form-field">
+            <p class="form-label">통합분류</p>
+            <!-- 기본 4개-->
+            <div class="check-list">
+              <label class="form-checkbox-label">
+                <input type="checkbox" class="form-checkbox" name="integrated">정치
+              </label>
+              <label class="form-checkbox-label">
+                <input type="checkbox" class="form-checkbox" name="integrated">경제
+              </label>
+              <label class="form-checkbox-label">
+                <input type="checkbox" class="form-checkbox" name="integrated">사회
+              </label>
+              <label class="form-checkbox-label">
+                <input type="checkbox" class="form-checkbox" name="integrated">문화
+              </label>
+            </div>
+
+            <!-- 숨겨진 추가 항목-->
+            <div class="check-list-more" hidden>
+              <label class="form-checkbox-label">
+                <input type="checkbox" class="form-checkbox" name="integrated">국제
+              </label>
+              <label class="form-checkbox-label">
+                <input type="checkbox" class="form-checkbox" name="integrated">지역
+              </label>
+            </div>
+
+            <!-- 펼쳐보기 버튼 -->
+            <button type="button" class="btn-solid-gray-m">
+              <span class="icon16 icon--add icon--basic toggle-more"></span>펼쳐보기
+            </button>
+          </div>  
+
+          <!-- 사건사고분류 -->
+          <div class="form-field">
+            <p class="form-label">사건사고분류</p>
+            <!-- 기본 4개-->
+            <div class="check-list">
+              <label class="form-checkbox-label">
+                <input type="checkbox" class="form-checkbox" name="incident">범죄
+              </label>
+              <label class="form-checkbox-label">
+                <input type="checkbox" class="form-checkbox" name="incident">사고
+              </label>
+              <label class="form-checkbox-label">
+                <input type="checkbox" class="form-checkbox" name="incident">재해
+              </label>
+              <label class="form-checkbox-label">
+                <input type="checkbox" class="form-checkbox" name="incident">사회
+              </label>
+            </div>
+          </div>  
+
+        </div>        
+      </aside>
+
+    </div>
+
+
+    
+    <!-- 드롭다운 메뉴 : AI 답변 / 다운로드 -->
+    <template id="msg-download">
+      <ul class="dd" role="menu" aria-label="다운로드">
+        <li role="none">
+          <button role="menuitem" class="dd-right-btn">
+            <div>
+              <span class="icon20 icon--docs icon--basic"></span>
+              <span class="dd-name">HWPX</span>
+            </div>
+            <span class="icon18 icon--visibility icon--basic"></span>
+          </button>
+        </li>
+        <li role="none">
+          <button role="menuitem" class="dd-right-btn">
+            <div>
+              <span class="icon20 icon--docs icon--basic"></span>
+              <span class="dd-name">DOC</span>
+            </div>
+            <span class="icon18 icon--visibility icon--basic"></span>
+          </button>
+        </li>
+        <li role="none">
+          <button role="menuitem" class="dd-right-btn">
+            <div>
+              <span class="icon20 icon--docs icon--basic"></span>
+              <span class="dd-name">PDF</span>
+            </div>
+            <span class="icon18 icon--visibility icon--basic"></span>
+          </button>
+        </li>
+      </ul> 
+    </template>
+
+    <!-- 드롭다운 메뉴 : 폴더 설정 -->
+    <template id="menu-folder-head">
+      <ul class="dd" role="menu" aria-label="폴더 설정">      
+        <li role="none">
+          <button role="menuitem">
+            <span class="icon20 icon--edit2 icon--basic"></span>
+            <span class="dd-name">폴더 이름 변경</span>
+          </button>
+        </li>
+        <li role="none">
+          <button role="menuitem" class="danger">
+            <span class="icon20 icon--delete icon--danger"></span>
+            <span class="dd-name">폴더 삭제</span>
+          </button>
+        </li>
+      </ul>
+    </template>
+
+    <!-- 드롭다운 메뉴 : 폴더내 채팅 설정-->
+    <template id="menu-folder-chat">
+      <ul class="dd" role="menu" aria-label="폴더내 채팅 설정">
+        <li role="none">
+          <button role="menuitem">
+            <span class="icon20 icon--keep icon--basic"></span>
+            <span class="dd-name">상단 고정</span>
+          </button>
+        </li>
+        <li role="none">
+          <button role="menuitem">
+            <span class="icon20 icon--edit2 icon--basic"></span>
+            <span class="dd-name">채팅 이름 변경</span>
+          </button>
+        </li>      
+        <li class="has-submenu" role="none" data-submenu="submenu-move" data-dd-pos="right-start">
+          <button role="menuitem" aria-haspopup="menu" aria-expanded="false" class="dd-right-btn">
+            <div>
+              <span class="icon20 icon--folder icon--basic"></span>
+              <span class="dd-name">폴더 이동</span>
+            </div>
+            <span class="icon20 icon--arrow-right icon--basic"></span>
+          </button>
+        </li>
+        <li role="none">
+          <button role="menuitem">
+            <span class="icon20 icon--forward-media icon--basic"></span>
+            <span class="dd-name">폴더에서 제거</span>
+          </button>
+        </li>
+        <li role="none">
+          <button role="menuitem" class="danger">
+            <span class="icon20 icon--delete icon--danger"></span>
+            <span class="dd-name">삭제</span>
+          </button>
+        </li>
+        <li role="none">
+          <span class="dd-date">8월 19일</span>
+        </li>
+      </ul>
+    </template>
+
+    <!-- 드롭다운 메뉴 : 채팅 설정 -->
+    <template id="menu-chat">
+      <ul class="dd" role="menu" aria-label="채팅 설정">
+        <li role="none">
+          <button role="menuitem">
+            <span class="icon20 icon--keep icon--basic"></span>
+            <span class="dd-name">상단 고정</span>
+          </button>
+        </li>
+        <li role="none">
+          <button role="menuitem">
+            <span class="icon20 icon--edit2 icon--basic"></span>
+            <span class="dd-name">채팅 이름 변경</span>
+          </button>
+        </li>      
+        <li class="has-submenu" role="none" data-submenu="submenu-move" data-dd-pos="right-start">
+          <button role="menuitem" aria-haspopup="menu" aria-expanded="false" class="dd-right-btn">
+            <div>
+              <span class="icon20 icon--folder icon--basic"></span>
+              <span class="dd-name">폴더로 이동</span>
+            </div>
+            <span class="icon20 icon--arrow-right icon--basic"></span>
+          </button>
+        </li>
+        <li role="none">
+          <button role="menuitem" class="danger">
+            <span class="icon20 icon--delete icon--danger"></span>
+            <span class="dd-name">삭제</span>
+          </button>
+        </li>
+        <li role="none">
+          <span class="dd-date">8월 19일</span>
+        </li>
+      </ul> 
+    </template>
+
+    <!-- 드롭다운 메뉴 : 채팅중 / 채팅 설정 -->
+    <template id="header-menu-chat">
+      <ul class="dd" role="menu" aria-label="채팅 설정">     
+        <li class="has-submenu" role="none" data-submenu="submenu-move" data-dd-pos="right-start">
+          <button role="menuitem" aria-haspopup="menu" aria-expanded="false" class="dd-right-btn">
+            <div>
+              <span class="icon20 icon--folder icon--basic"></span>
+              <span class="dd-name">폴더에 추가</span>
+            </div>
+            <span class="icon20 icon--arrow-right icon--basic"></span>
+          </button>
+        </li>
+        <li role="none">
+          <button role="menuitem" class="danger">
+            <span class="icon20 icon--delete icon--danger"></span>
+            <span class="dd-name">삭제</span>
+          </button>
+        </li>
+      </ul> 
+    </template>
+
+    <!-- 드롭다운 메뉴 : 폴더 이동 -->
+    <template id="submenu-move">
+      <ul class="dd-sub" role="menu" aria-label="폴더 이동">
+        <li role="none">
+          <button role="menuitem">
+            <span class="icon20 icon--folder-add icon--basic"></span>
+            <span class="dd-name">새 폴더</span>
+          </button>
+        </li>
+        <li role="separator" class="dd-sep"></li>
+        <li role="none">
+          <button role="menuitem">
+            <span class="icon20 icon--folder icon--basic"></span>
+            <span class="dd-name">폴더명</span>
+          </button>
+        </li>
+        <li role="none">
+          <button role="menuitem">
+            <span class="icon20 icon--folder icon--basic"></span>
+            <span class="dd-name">폴더명</span>
+          </button>
+        </li>
+      </ul>
+    </template>
+
+    <!-- 드롭다운 메뉴 : 폴더 더보기 -->
+    <template id="menu-folder-more">
+      <ul class="dd" role="menu" aria-label="폴더 더보기">
+        <li role="none">
+          <button role="menuitem">
+            <span class="icon20 icon--folder icon--basic"></span>
+            <span class="dd-name">숨겨져 있던 폴더</span>
+          </button>
+        </li>
+        <li role="none">
+          <button role="menuitem">
+            <span class="icon20 icon--folder icon--basic"></span>
+            <span class="dd-name">숨겨져 있던 폴더</span>
+          </button>
+        </li>
+      </ul>
+    </template>
+
+    <!-- 드롭다운 메뉴 : 계정 설정 -->
+    <template id="menu-info">
+      <ul class="dd" role="menu" aria-label="계정 설정">
+        <li role="none">
+          <button role="menuitem">
+            <span class="icon20 icon--settings icon--basic"></span>
+            <span class="dd-name">설정</span>
+          </button>
+        </li>
+        <li role="none">
+          <button role="menuitem">
+            <span class="icon20 icon--help icon--basic"></span>
+            <span class="dd-name">도움말</span>
+          </button>
+        </li>
+        <li role="none">
+          <button role="menuitem">
+            <span class="icon20 icon--logout icon--basic"></span>
+            <span class="dd-name">로그아웃</span>
+          </button>
+        </li>
+      </ul>
+    </template>
+
+    </div>
+  </div>
+
+
+  <!-- 공통 JS -->
+  <script src="../assets/js/layout.js"></script>
+  <script src="../assets/js/tooltip.js"></script>
+  <script src="../assets/js/dropdown.js"></script>
+  <script src="../assets/js/dropdown-choice.js"></script>
+
+  <!-- 페이지 전용 JS -->
+  <script src="../assets/js/chat-file-uploader.js"></script>
+  <script src="../assets/js/chat-textarea.js"></script>
+  <script src="../assets/js/chat-bubble-actions.js"></script>
+  <script src="../assets/js/tab-bar.js"></script>
+  <script src="../assets/js/datepicker.js"></script>
+  <script src="../assets/js/news-filter.js"></script>
+
+  
+
+
+</body>
+</html>
