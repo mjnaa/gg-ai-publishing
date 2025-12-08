@@ -1048,6 +1048,9 @@ button {
 .dd-choice-list .dd-choice-item.active > .check {
   visibility: visible;
 }
+.dd-choice-list .dd-choice-item:hover {
+  background: var(--color-background-menu-hover);
+}
 
 
 /* 툴팁 */
