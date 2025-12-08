@@ -194,39 +194,54 @@
               <span class="icon20 icon--dehaze icon--basic"></span>
             </button>
 
-            <!-- LLM 서비스 변경 드롭다운메뉴(단일선택메뉴ver) -->
-            <div class="dd-choice" data-choice="llm">
-              <button type="button" class="dd-choice-toggle" aria-haspopup="listbox" aria-expanded="false">
-                <div class="dd-title">
+            <!-- 모델 선택 드롭다운메뉴(단일선택메뉴ver) -->
+            <div class="dd-choice">
+              <button type="button" class="dd-choice-toggle dd-choice-model" aria-haspopup="listbox" aria-expanded="false">
+                <div class="dd-label">
                   <span class="icon20 icon--llm-01 icon--primary"></span>
-                  <span class="txt">AI 업무지원</span>
+                  <span>AI 업무지원</span>
+                </div>
+                <div class="dd-title">
+                  <span class="txt"></span>
                 </div>
                 <span class="icon22 icon--arrow-down icon--basic"></span>
               </button>
               <ul class="dd-choice-list left" role="listbox">
                 <li>
                   <button type="button" class="dd-choice-item active" role="option">
-                    <div class="dd-name">
-                      <span class="icon20 icon--llm-01 icon--basic"></span>
-                      <span class="txt">AI 업무지원</span>
+                    <div class="dd-info">
+                      <div class="dd-name">
+                        <span class="txt">model v1.0</span>
+                      </div>
+                      <div class="dd-desc">
+                        <span class="txt">모델에 대한 설명 영역</span>
+                      </div>
                     </div>
                     <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
                   </button>
                 </li>
                 <li>
                   <button type="button" class="dd-choice-item" role="option">
-                    <div class="dd-name">
-                      <span class="icon20 icon--llm-02 icon--basic"></span>
-                      <span class="txt">AI 법률</span>
+                    <div class="dd-info">
+                      <div class="dd-name">
+                        <span class="txt">model v2.0</span>
+                      </div>
+                      <div class="dd-desc">
+                        <span class="txt">설명의 길이는 이정도가 적당</span>
+                      </div>
                     </div>
                     <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
                   </button>
                 </li>
                 <li>
                   <button type="button" class="dd-choice-item" role="option">
-                    <div class="dd-name">
-                      <span class="icon20 icon--llm-03 icon--basic"></span>
-                      <span class="txt">AI 행정심판</span>
+                    <div class="dd-info">
+                      <div class="dd-name">
+                        <span class="txt">model v3.0</span>
+                      </div>
+                      <div class="dd-desc">
+                        <span class="txt">모델에 대한 설명설명 영역</span>
+                      </div>
                     </div>
                     <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
                   </button>

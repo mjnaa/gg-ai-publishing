@@ -939,15 +939,20 @@ button {
   align-items: center;
   gap: 1px;
 }
-.dd-choice-toggle > div {
+.dd-choice-toggle .dd-label {
   display: flex;
   align-items: center;
   gap: 6px;
-}
-.dd-choice-toggle .dd-title {
   font-size: 1.8rem;
   font-weight: 600;
   line-height: 150%;
+  margin-right: 6px;
+}
+.dd-choice-toggle .dd-title {
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 150%;
+  color: var(--color-text-muted);
 }
 .dd-choice-toggle .dd-title.xs-size {
   font-size: 1.4rem;
@@ -958,6 +963,12 @@ button {
 .dd-choice-toggle .dd-title >.icon20 {
   background-color: var(--color-icon-primary) !important;  
 }
+.dd-choice-model .dd-title {
+  margin-top: 3px;
+}
+.dd-choice-model .icon--arrow-down{
+  margin-top: 3px;
+}
 .dd-choice-list.left {
   display: none;
   position: absolute;
@@ -967,7 +978,7 @@ button {
   z-index: 1000;     
   pointer-events: auto;
   list-style: none;
-  min-width: 170px;
+  min-width: 210px;
   padding: 6px;
   margin: 0;
   background: var(--color-background-subtle);
@@ -1012,6 +1023,18 @@ button {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+.dd-choice-list .dd-choice-item .dd-info{
+  display: flex;
+  align-items: flex-start;
+  flex-direction:column;
+  gap: 2px;
+}
+.dd-choice-list .dd-choice-item .dd-desc {
+  font-size: 1.3rem;
+  font-weight: 400;
+  line-height: 150%;
+  color: var(--color-text-muted);
 }
 .dd-choice-list .dd-choice-item > .check {
   visibility: hidden;

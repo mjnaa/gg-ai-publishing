@@ -32,11 +32,10 @@
           <!------ 상단 고정 영역 ------>
           <div class="nav-head">
             <div class="nav-title">              
-              <!-- 미니 사이드바일 경우 로고 클릭으로 사이드바 열림 -->
-              <a class="logo tip-toggle" href="#" aria-label="홈으로" data-tip-pos="right" data-tip-when="mini" aria-expanded="true" data-tip-open="사이드바 열기">
+              <a class="logo" href="#" aria-label="홈으로">
                 <img src="../assets/img/logo.png" />
               </a>
-              <button class="btn-nav-toggle btn-icon-normal-m tip-toggle" type="button" aria-label="사이드바 닫기" data-tip-pos="bottom" aria-expanded="true" data-tip-open="사이드바 닫기" >
+              <button class="btn-nav-toggle btn-icon-normal-m tip-toggle" type="button" aria-label="사이드바 닫기" data-tip-pos="right" aria-expanded="true" data-tip-open="사이드바 닫기" data-tip-closed="사이드바 열기">
                 <span class="icon20 icon--thumbnail-bar icon--basic"></span>
               </button>
             </div>
@@ -83,6 +82,7 @@
                     <a href="#"><span class="label">폴더 내 채팅명</span></a>
                     <!-- 채팅 설정 버튼 : 마우스 오버시에만 노출-->
                     <button class="btn-more" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-folder-chat" data-dd-pos="right-start">
+                      <span class="icon20 icon--keep-fill icon--basic"></span>
                       <span class="icon20 icon--more-horiz icon--basic"></span>
                     </button>
                   </li>
@@ -92,6 +92,7 @@
                     <a href="#"><span class="label">폴더 내 채팅명이 길어도 들어갑니다</span></a>
                     <!-- 채팅 설정 버튼 : 마우스 오버시에만 노출-->
                     <button class="btn-more" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-folder-chat" data-dd-pos="right-start">
+                      <span class="icon20 icon--keep-fill icon--basic"></span>
                       <span class="icon20 icon--more-horiz icon--basic"></span>
                     </button>
                   </li>
@@ -103,14 +104,14 @@
               </li>
 
               <!-- 더보기 : 폴더가 6개 이상일 때 노출 -->
-              <!--<li class="folder-item more">
+              <li class="folder-item more">
                 <div class="folder-head">
                   <button class="btn-folder" type="button" aria-haspopup="menu" aria-expanded="false" data-dd="menu-folder-more" data-dd-pos="right-start">
                     <span class="icon20 icon--more-horiz icon--basic"></span>
                     <span class="label">더보기</span>
                   </button>
                 </div>
-              </li>-->
+              </li>
             </ul>
 
             <!-- 채팅 리스트 -->
@@ -118,16 +119,18 @@
               <li class="list-title">
                 <div>
                   <p>채팅</p>
-                  <button class="btn-help" type="button" aria-label="설명 보기">
+                  <button class="btn-help tip-toggle" type="button" aria-label="채팅 삭제 안내" data-tip-pos="right" aria-expanded="true" data-tip-open="채팅 삭제 안내">
                     <span class="icon16 icon--information icon--basic"></span>
                   </button>
                 </div>
               </li>
 
-              <li class="chat-item">
-                <a href="#"><span class="label">채팅명</span></a>
+              <!-- 상단고정된 채팅에 .is-pinned 추가 -->
+              <li class="chat-item is-pinned">
+                <a href="#"><span class="label">상단고정된 채팅명</span></a>
                 <!-- 채팅 설정 버튼 : 마우스 오버시에만 노출-->
                 <button class="btn-more" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-chat" data-dd-pos="right-start">
+                  <span class="icon20 icon--keep-fill icon--basic"></span>
                   <span class="icon20 icon--more-horiz icon--basic"></span>
                 </button>
               </li>
@@ -136,6 +139,7 @@
                 <a href="#"><span class="label">채팅명</span></a>
                 <!-- 채팅 설정 버튼 : 마우스 오버시에만 노출-->
                 <button class="btn-more" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-chat" data-dd-pos="right-start">
+                  <span class="icon20 icon--keep-fill icon--basic"></span>
                   <span class="icon20 icon--more-horiz icon--basic"></span>
                 </button>
               </li>
@@ -168,7 +172,7 @@
           </ul>
           <button class="info-area" aria-label="계정 설정" aria-haspopup="menu" aria-expanded="false" data-dd="menu-info" data-dd-pos="right-end">
             <div class="profile-initial" aria-label="프로필 이미지" aria-hidden="true">
-              <span>김</span>
+              <span>경</span>
             </div>
             <div class="info-text">
               <p class="name">김경기님</p>
@@ -190,39 +194,54 @@
               <span class="icon20 icon--dehaze icon--basic"></span>
             </button>
 
-            <!-- LLM 서비스 변경 드롭다운메뉴(단일선택메뉴ver) -->
-            <div class="dd-choice" data-choice="llm">
-              <button type="button" class="dd-choice-toggle" aria-haspopup="listbox" aria-expanded="false">
-                <div class="dd-title">
+            <!-- 모델 선택 드롭다운메뉴(단일선택메뉴ver) -->
+            <div class="dd-choice">
+              <button type="button" class="dd-choice-toggle dd-choice-model" aria-haspopup="listbox" aria-expanded="false">
+                <div class="dd-label">
                   <span class="icon20 icon--llm-01 icon--primary"></span>
-                  <span class="txt">AI 업무지원</span>
+                  <span>AI 업무지원</span>
+                </div>
+                <div class="dd-title">
+                  <span class="txt"></span>
                 </div>
                 <span class="icon22 icon--arrow-down icon--basic"></span>
               </button>
               <ul class="dd-choice-list left" role="listbox">
                 <li>
                   <button type="button" class="dd-choice-item active" role="option">
-                    <div class="dd-name">
-                      <span class="icon20 icon--llm-01 icon--basic"></span>
-                      <span class="txt">AI 업무지원</span>
+                    <div class="dd-info">
+                      <div class="dd-name">
+                        <span class="txt">model v1.0</span>
+                      </div>
+                      <div class="dd-desc">
+                        <span class="txt">모델에 대한 설명 영역</span>
+                      </div>
                     </div>
                     <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
                   </button>
                 </li>
                 <li>
                   <button type="button" class="dd-choice-item" role="option">
-                    <div class="dd-name">
-                      <span class="icon20 icon--llm-02 icon--basic"></span>
-                      <span class="txt">AI 법률</span>
+                    <div class="dd-info">
+                      <div class="dd-name">
+                        <span class="txt">model v2.0</span>
+                      </div>
+                      <div class="dd-desc">
+                        <span class="txt">설명의 길이는 이정도가 적당</span>
+                      </div>
                     </div>
                     <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
                   </button>
                 </li>
                 <li>
                   <button type="button" class="dd-choice-item" role="option">
-                    <div class="dd-name">
-                      <span class="icon20 icon--llm-03 icon--basic"></span>
-                      <span class="txt">AI 행정심판</span>
+                    <div class="dd-info">
+                      <div class="dd-name">
+                        <span class="txt">model v3.0</span>
+                      </div>
+                      <div class="dd-desc">
+                        <span class="txt">모델에 대한 설명설명 영역</span>
+                      </div>
                     </div>
                     <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
                   </button>
@@ -239,7 +258,7 @@
           <div class="header-actions">
 
             <!-- 폰트크기 설정 드롭다운메뉴(단일선택메뉴ver) -->
-            <div class="dd-choice">
+            <div class="dd-choice" data-choice="ui-scale">
               <button type="button" class="dd-choice-toggle btn-icon-normal-m" aria-haspopup="listbox" aria-expanded="false" aria-label="폰트크기 설정">
                 <span class="icon20 icon--txtsize icon--basic"></span>
               </button>
@@ -282,6 +301,12 @@
             <!-- 채팅 설정 드롭다운메뉴(다중옵션목록ver) -->
             <button class="btn-more btn-icon-normal-m" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="header-menu-chat" data-dd-pos="bottom-end">
                 <span class="icon20 icon--more-horiz icon--basic"></span>
+            </button>
+
+            <!-- 사용자게시판 버튼 -->
+            <button class="btn-outline-darkgray-s" type="button">
+              <span class="icon16 icon--board icon--basic"></span>
+              사용자 게시판
             </button>
           </div>
 
@@ -582,7 +607,8 @@
                     <!-- 우측 영역 -->
                     <div class="right-area">
                       <!-- 텍스트 카운터 -->
-                      <span class="textarea-counter">0/2000</span>
+                      <!-- 최대 글자수 도달 시 <span class="danger"> -->
+                      <span class="textarea-counter"><span>0</span>/2000</span>
 
                       <!-- 전송 버튼-->
                       <button class="btn-icon-solid-m" type="submit" aria-label="전송">

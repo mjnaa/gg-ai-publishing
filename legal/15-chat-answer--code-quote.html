@@ -206,39 +206,54 @@
               <span class="icon20 icon--dehaze icon--basic"></span>
             </button>
 
-            <!-- LLM 서비스 변경 드롭다운메뉴(단일선택메뉴ver) -->
-            <div class="dd-choice" data-choice="llm">
-              <button type="button" class="dd-choice-toggle" aria-haspopup="listbox" aria-expanded="false">
-                <div class="dd-title">
+            <!-- 모델 선택 드롭다운메뉴(단일선택메뉴ver) -->
+            <div class="dd-choice">
+              <button type="button" class="dd-choice-toggle dd-choice-model" aria-haspopup="listbox" aria-expanded="false">
+                <div class="dd-label">
                   <span class="icon20 icon--llm-02 icon--primary"></span>
-                  <span class="txt">AI 법률</span>
+                  <span>AI 법률</span>
+                </div>
+                <div class="dd-title">
+                  <span class="txt"></span>
                 </div>
                 <span class="icon22 icon--arrow-down icon--basic"></span>
               </button>
               <ul class="dd-choice-list left" role="listbox">
                 <li>
-                  <button type="button" class="dd-choice-item" role="option">
-                    <div class="dd-name">
-                      <span class="icon20 icon--llm-01 icon--basic"></span>
-                      <span class="txt">AI 업무지원</span>
-                    </div>
-                    <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
-                  </button>
-                </li>
-                <li>
                   <button type="button" class="dd-choice-item active" role="option">
-                    <div class="dd-name">
-                      <span class="icon20 icon--llm-02 icon--basic"></span>
-                      <span class="txt">AI 법률</span>
+                    <div class="dd-info">
+                      <div class="dd-name">
+                        <span class="txt">model v1.0</span>
+                      </div>
+                      <div class="dd-desc">
+                        <span class="txt">모델에 대한 설명 영역</span>
+                      </div>
                     </div>
                     <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
                   </button>
                 </li>
                 <li>
                   <button type="button" class="dd-choice-item" role="option">
-                    <div class="dd-name">
-                      <span class="icon20 icon--llm-03 icon--basic"></span>
-                      <span class="txt">AI 행정심판</span>
+                    <div class="dd-info">
+                      <div class="dd-name">
+                        <span class="txt">model v2.0</span>
+                      </div>
+                      <div class="dd-desc">
+                        <span class="txt">설명의 길이는 이정도가 적당</span>
+                      </div>
+                    </div>
+                    <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="dd-choice-item" role="option">
+                    <div class="dd-info">
+                      <div class="dd-name">
+                        <span class="txt">model v3.0</span>
+                      </div>
+                      <div class="dd-desc">
+                        <span class="txt">모델에 대한 설명설명 영역</span>
+                      </div>
                     </div>
                     <span class="icon16 icon--check icon--basic check" aria-hidden="true"></span>
                   </button>
@@ -255,7 +270,7 @@
           <div class="header-actions">
 
             <!-- 폰트크기 설정 드롭다운메뉴(단일선택메뉴ver) -->
-            <div class="dd-choice">
+            <div class="dd-choice" data-choice="ui-scale">
               <button type="button" class="dd-choice-toggle btn-icon-normal-m" aria-haspopup="listbox" aria-expanded="false" aria-label="폰트크기 설정">
                 <span class="icon20 icon--txtsize icon--basic"></span>
               </button>
@@ -298,6 +313,12 @@
             <!-- 채팅 설정 드롭다운메뉴(다중옵션목록ver) -->
             <button class="btn-more btn-icon-normal-m" type="button" aria-label="채팅 설정" aria-haspopup="menu" aria-expanded="false" data-dd="header-menu-chat" data-dd-pos="bottom-end">
                 <span class="icon20 icon--more-horiz icon--basic"></span>
+            </button>
+
+            <!-- 사용자게시판 버튼 -->
+            <button class="btn-outline-darkgray-s" type="button">
+              <span class="icon16 icon--board icon--basic"></span>
+              사용자 게시판
             </button>
           </div>
 

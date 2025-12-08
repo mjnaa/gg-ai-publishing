@@ -595,7 +595,7 @@ body.is-dragging-files .layout-main .drag-overlay {
   gap: 26px;
   padding: 0 0 100px 0;
   width: 100%;
-  /* height: 100%;*/
+  height: 100%;
 }
 /* 업무지원 서비스용 */
 .new-chat.work {
