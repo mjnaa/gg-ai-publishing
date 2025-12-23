@@ -3,7 +3,7 @@
  * 채팅 입력 모듈 (자동 높이 + 전송/중지 버튼 상태)
  * 1) 대상
  *    - 입력창: #chat-input (textarea)
- *    - 컨테이너(선택): .chat-m → 2줄 이상 시 .is-multi 토글
+ *    - 컨테이너(선택): .chat-m → 1줄 초과 시 .is-multi 토글 후 잠금
  *    - 전송 버튼: .btn-send (button)
  *    - 아이콘 엘리먼트: .icon20 (icon--near / icon--stop 전환)
  * 2) 기능
@@ -90,16 +90,32 @@
     rafId = requestAnimationFrame(function () {
       var needed = measureNeededHeight();
       var maxH = readMaxH(ta, 280);
-      var nextH = Math.min(needed, maxH);
-      ta.style.height = nextH + 'px';
 
       if (box) {
         var lh = parseFloat(getComputedStyle(ta).lineHeight) || 22;
-        var lines = Math.round(needed / lh);
-        box.classList.toggle('is-multi', lines > 1);
+        var hasNewline = ta.value.indexOf('\n') !== -1;
+        var isVisuallyMulti = needed > (lh * 1.25);
+
+        if (box._lockMulti === undefined) box._lockMulti = false;
+
+        if (!box._lockMulti && (hasNewline || isVisuallyMulti)) box._lockMulti = true;
+        if (box._lockMulti && ta.value.trim().length === 0) box._lockMulti = false;
+
+        var prev = box.classList.contains('is-multi');
+        box.classList.toggle('is-multi', box._lockMulti);
+
+        if (prev !== box._lockMulti) {
+          needed = measureNeededHeight();
+          maxH = readMaxH(ta, 280);
+        }
       }
+
+      var nextH = Math.min(needed, maxH);
+      ta.style.height = nextH + 'px';
     });
   }
+
+
 
   // 이벤트 최소화: 입력/붙여넣기/리사이즈만
   ta.addEventListener('input', updateHeight);

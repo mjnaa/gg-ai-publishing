@@ -2022,6 +2022,7 @@ button {
   min-height: 30px;
   max-height: 280px;
   overflow-y: auto;
+  box-sizing: border-box;
 }
 .chat-textarea::placeholder {
   color: var(--color-text-disabled);
@@ -2846,6 +2847,9 @@ button {
 .msg.is-bot .msg-bubble tr {
   border-bottom: 1px solid var(--color-border-basic);
 }
+.msg.is-bot .msg-bubble thead tr {
+  border-bottom: 1px solid var(--color-border-strong);
+}
 .msg.is-bot .msg-bubble tbody tr:last-child {
   border-bottom: 0px;
 }
@@ -2853,8 +2857,8 @@ button {
   font-size: 1.5rem; 
   line-height: 150%; 
   letter-spacing: 0;
-  font-weight: 500;
-  color: var(--color-text-subtle);
+  font-weight: 600;
+  color: var(--color-text-strong);
   white-space: nowrap; /* 헤더는 줄바꿈 방지 */
 }
 .msg.is-bot .msg-bubble td p,
