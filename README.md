@@ -44,6 +44,7 @@ publishing/
  │  │  ├─ inline-alert.js           # 인라인 알럿
  │  │  ├─ theme-toggle.js           # 테마 변경
  │  │  ├─ file-uploader.js          # 파일 업로드
+ │  │  ├─ chat-guide-manager.js     # 공용 채팅 가이드 매니저
  │  │  ├─ chat-file-uploader.js     # 파일 첨부 칩
  │  │  ├─ chat-smart.js             # 스마트 도우미
  │  │  ├─ chat-textarea.js          # 채팅 입력 모듈 (자동 높이 + 전송 버튼 상태)

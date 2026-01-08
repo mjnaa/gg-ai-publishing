@@ -11,23 +11,39 @@
  *      · 선택 버튼에만 .is-active / aria-pressed="true"
  *      · 안내문구는 #chat-guide 내 p.guide-em에 출력, #chat-input 포커스
  *      · 안내문구 .sub-text 내용(예: 괄호 예시)은 제외
- *      · 안내문구 닫기 버튼 클릭 시 문구 초기화 및 .is-active 해제
+ *    - 안내문구 닫기 버튼 클릭 시 문구 초기화 및 .is-active 해제
  *    - '업무담당자'는 가이드 문구를 '다음 업무담당자를 찾아드립니다 : ' 로 출력
+ *
+ * 3) 주의
+ *    - 프롬프트 라이브러리도 동일한 #chat-guide 영역을 사용하므로,
+ *      공용 매니저(window.ChatGuide)를 통해 서로 덮어쓸 때 상태가 충돌하지 않게 처리
+ *    - chat-guide-manager.js가 먼저 로드되어 있어야 합니다.
  * ============================================================================
  */
-
 
 (function () {
   'use strict';
 
+  /* ===== 공용 가이드 매니저 참조 ===== */
+  function getChatGuide() {
+    return (window.ChatGuide && typeof window.ChatGuide.set === 'function') ? window.ChatGuide : null;
+  }
+
+  var SOURCE = 'smart';
+
   var root         = document.querySelector('.chat-smart') || document;
   var topList      = root.querySelector('.smart-list');
   var subWrap      = root.querySelector('.smart-sub-wrap') || root.querySelector('.smart-sub-container') || root;
-  var guideEl      = document.getElementById('chat-guide');
   var textareaEl   = document.getElementById('chat-input');
-  var subContainer = subWrap || root;
 
-  if (!topList) return; 
+  if (!topList) return;
+
+  function $(sel, ctx) {
+    return (ctx || document).querySelector(sel);
+  }
+
+  /* ===== 공용 가이드 매니저 (스마트도우미/프롬프트 공존) ===== */
+  var guide = getChatGuide();
 
   function closeAllSubs() {
     var subs = root.querySelectorAll('.smart-sub');
@@ -37,7 +53,7 @@
     topBtns.forEach(function (b) { b.setAttribute('aria-expanded', 'false'); });
   }
 
-  // 추가: 모든 하위 버튼의 활성 상태(.is-active/aria-pressed) 전역 초기화
+  // 모든 하위 버튼의 활성 상태(.is-active/aria-pressed) 전역 초기화
   function clearAllActiveSubs() {
     var actives = root.querySelectorAll('.smart-sub-btn.is-active');
     actives.forEach(function (b) {
@@ -46,10 +62,15 @@
     });
   }
 
+  // 공용 가이드가 다른 소스로 덮어쓰기 되거나, X로 닫힐 때 스마트 상태 정리
+  if (guide) guide.registerClearer(SOURCE, function () {
+    clearAllActiveSubs();
+  });
+
   function openSubById(panelId, triggerBtn) {
-    // 항상 전환. 다른 패널 닫고 대상만 표시
     clearAllActiveSubs();
     closeAllSubs();
+
     var panel = panelId ? document.getElementById(panelId) : null;
     if (panel) panel.removeAttribute('hidden');
     if (triggerBtn) triggerBtn.setAttribute('aria-expanded', 'true');
@@ -83,7 +104,7 @@
     return str.replace(/\([^)]*\)\s*$/, '').trim();
   }
 
-  // 추가:: '업무담당자' 카테고리 전용 문구 처리
+  // '업무담당자' 카테고리 전용 문구 처리
   function buildPrompt(label, dataPrompt) {
     if (dataPrompt && dataPrompt.trim()) return dataPrompt.trim();
 
@@ -92,18 +113,6 @@
       return '다음 업무담당자를 찾아드립니다 : ';
     }
     return '다음을 ' + label + '에 맞춰 작성합니다 : ';
-  }
-
-  function renderGuide(str) {
-    if (!guideEl) return;
-    var p = guideEl.querySelector('.guide-em');
-    if (p) p.textContent = str;
-  }
-
-  function clearGuide() {
-    if (!guideEl) return;
-    var p = guideEl.querySelector('.guide-em');
-    if (p) p.textContent = ''; 
   }
 
   function focusTextarea() {
@@ -127,7 +136,8 @@
       var label   = getTopLabelFromCardBtn(btn);
       var custom  = btn.getAttribute('data-prompt');
       var prompt  = buildPrompt(label, custom);
-      renderGuide(prompt);
+
+      if (guide) guide.set(prompt, SOURCE);
       focusTextarea();
       return;
     }
@@ -137,6 +147,7 @@
   });
 
   /* ===== 이벤트: 하위 메뉴 클릭 ===== */
+  var subContainer = subWrap || root;
   subContainer.addEventListener('click', function (e) {
     var subBtn = e.target.closest('.smart-sub-btn');
     if (!subBtn) return;
@@ -148,7 +159,7 @@
     var custom        = subBtn.getAttribute('data-prompt');
     var prompt        = buildPrompt(labelForGuide, custom);
 
-    renderGuide(prompt);
+    if (guide) guide.set(prompt, SOURCE);
     focusTextarea();
   });
 
@@ -164,18 +175,6 @@
 
     targetBtn.classList.add('is-active');
     targetBtn.setAttribute('aria-pressed', 'true');
-  }
-
-  /* ===== 이벤트: 안내문구 닫기(X) 버튼 ===== */
-  if (guideEl) {
-    guideEl.addEventListener('click', function (e) {
-      var btn = e.target.closest('.btn-aside-close');
-      if (!btn) return;
-      e.preventDefault();
-      e.stopPropagation();
-      clearGuide();
-      clearAllActiveSubs();
-    });
   }
 
 })();
