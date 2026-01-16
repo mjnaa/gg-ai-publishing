@@ -1,23 +1,23 @@
 /*
  * ============================================================================
  * 모달 팝업
- * 1) 트리거  
+ * 1) 트리거
  *    - data-modal-target="#modal-id"
- * 2) 닫기 버튼  
+ * 2) 닫기 버튼
  *    - data-modal-close
- * 3) 모달 속성  
- *    - data-modal  
- *      · data-modal-backdrop-close="false" → 백드롭 클릭 시 닫힘 비활성 (기본 true)  
+ * 3) 모달 속성
+ *    - data-modal
+ *      · data-modal-backdrop-close="false" → 백드롭 클릭 시 닫힘 비활성 (기본 true)
  *      · data-modal-esc="false" → ESC 닫기 비활성 (기본 true)
- * 4) 기능  
- *    - ESC 닫기 처리  
- *    - 백드롭/오버레이 클릭 닫기(옵션)  
- *    - 포커스 트랩 및 반환  
- *    - 중첩 모달 관리  
+ * 4) 기능
+ *    - ESC 닫기 처리
+ *    - 백드롭/오버레이 빈영역 클릭 닫기(옵션)  
+ *    - 드래그(다운/업 분리) 오작동 방지 처리 포함
+ *    - 포커스 트랩 및 반환
+ *    - 중첩 모달 관리
  *    - 스크롤 잠금 처리
  * ============================================================================
  */
-
 
 (function () {
   'use strict';
@@ -60,7 +60,7 @@
 
   function getOpts(modalEl){
     return {
-      backdropClose: modalEl.getAttribute('data-modal-backdrop-close') !== 'false', 
+      backdropClose: modalEl.getAttribute('data-modal-backdrop-close') !== 'false',
       escClose:      modalEl.getAttribute('data-modal-esc') !== 'false'
     };
   }
@@ -94,6 +94,44 @@
     modal.__originalNext = null;
   }
 
+  /* ===== 드래그/클릭 구분 ===== */
+  // 드래그 중 클릭으로 오판정하여 닫히는 현상 방지
+  var CLICK_SLOP_PX = 6;
+
+  var downState = {
+    active: false,
+    modal: null,
+    x: 0,
+    y: 0,
+    onBackdrop: false,
+    onOverlayBlank: false,
+    backdropEl: null
+  };
+
+  function getPoint(e){
+    // pointer 이벤트 기준 (touch fallback 포함)
+    var t = (e.touches && e.touches[0]) || e;
+    return { x: t.clientX, y: t.clientY };
+  }
+
+  function movedEnough(p1, p2){
+    var dx = p2.x - p1.x;
+    var dy = p2.y - p1.y;
+    return (dx * dx + dy * dy) > (CLICK_SLOP_PX * CLICK_SLOP_PX);
+  }
+
+  function isBackdropTarget(top, target){
+    return !!(top && top.__backdrop && target === top.__backdrop);
+  }
+
+  function isOverlayBlankTarget(top, target){
+    if (!top) return false;
+    var panel = top.querySelector('[data-modal-panel]') || top;
+    var clickedInsideTopModal = (target.closest && target.closest('[data-modal]')) === top;
+    var clickedInsidePanel = panel.contains(target);
+    return (clickedInsideTopModal && !clickedInsidePanel);
+  }
+
   var Modal = {
     open: function(selectorOrEl){
       var modal = (typeof selectorOrEl === 'string')
@@ -102,7 +140,7 @@
       if (!modal || isOpen(modal)) return;
 
       var panel = modal.querySelector('[data-modal-panel]') || modal;
-    
+
       // 오프너 저장 (닫을 때 포커스 복귀)
       var opener = document.activeElement;
       modal.__opener = (opener instanceof HTMLElement) ? opener : null;
@@ -120,8 +158,8 @@
 
       // 모달 전용 백드롭 생성 (body 하위)
       var backdrop = document.createElement('div');
-      backdrop.className = 'modal-backdrop is-open'; 
-      backdrop.__modal = modal; 
+      backdrop.className = 'modal-backdrop is-open';
+      backdrop.__modal = modal;
       modal.__backdrop = backdrop;
       document.body.appendChild(backdrop);
 
@@ -166,7 +204,7 @@
       // 스크롤 잠금 해제
       unlockScroll();
 
-      // 포커스 복귀 
+      // 포커스 복귀
       var opener = modal.__opener;
       if (opener && openStack.length === 0) {
         setTimeout(function(){ opener.focus && opener.focus({ preventScroll: true }); }, 0);
@@ -181,13 +219,68 @@
     }
   };
 
-  
   window.SimpleModal = Modal;
 
   /* ===== 이벤트 바인딩 ===== */
-  // 클릭: 열기 / 닫기 / 백드롭 / 오버레이 빈영역
+  // 포인터 다운/업: 백드롭/오버레이 빈영역 닫기 (드래그 오판정 방지)
+  document.addEventListener('pointerdown', function(e){
+    var top = topModal();
+    if (!top) return;
+
+    downState.active = true;
+    downState.modal = top;
+
+    var p = getPoint(e);
+    downState.x = p.x;
+    downState.y = p.y;
+
+    downState.onBackdrop = isBackdropTarget(top, e.target);
+    downState.backdropEl = top.__backdrop || null;
+
+    downState.onOverlayBlank = isOverlayBlankTarget(top, e.target);
+  }, true);
+
+  document.addEventListener('pointerup', function(e){
+    if (!downState.active) return;
+
+    var top = topModal();
+    if (!top || downState.modal !== top) {
+      downState.active = false;
+      return;
+    }
+
+    var start = { x: downState.x, y: downState.y };
+    var end = getPoint(e);
+
+    // 드래그(이동)면 닫기 취소
+    if (movedEnough(start, end)) {
+      downState.active = false;
+      return;
+    }
+
+    var opts = getOpts(top);
+
+    // 1) 백드롭 클릭 닫기
+    if (downState.onBackdrop && downState.backdropEl && e.target === downState.backdropEl) {
+      if (opts.backdropClose) Modal.close(top);
+      downState.active = false;
+      return;
+    }
+
+    // 2) 오버레이(모달 컨테이너) 빈 영역 클릭 닫기
+    var upOnOverlayBlank = isOverlayBlankTarget(top, e.target);
+    if (downState.onOverlayBlank && upOnOverlayBlank) {
+      if (opts.backdropClose) Modal.close(top);
+      downState.active = false;
+      return;
+    }
+
+    downState.active = false;
+  }, true);
+
+  // 클릭: 열기 / 닫기
   document.addEventListener('click', function(e){
-    // 1) 열기 
+    // 1) 열기
     var trigger = e.target.closest && e.target.closest('[data-modal-target]');
     if (trigger) {
       var sel = trigger.getAttribute('data-modal-target');
@@ -209,28 +302,6 @@
         Modal.close(hostModal);
       }
       return;
-    }
-
-
-    // 3) 백드롭 클릭
-    if (e.target.classList && e.target.classList.contains('modal-backdrop')) {
-      var modal = e.target.__modal;
-      if (!modal) return;
-      var opts = getOpts(modal);
-      if (opts.backdropClose) Modal.close(modal);
-      return;
-    }
-
-    // 4) 오버레이(모달 컨테이너) 빈 영역 클릭도 닫기
-    var top = topModal();
-    if (top) {
-      var panel = top.querySelector('[data-modal-panel]') || top;
-      var clickedInsideTopModal = (e.target.closest && e.target.closest('[data-modal]')) === top;
-      var clickedInsidePanel = panel.contains(e.target);
-      if (clickedInsideTopModal && !clickedInsidePanel) {
-        var o = getOpts(top);
-        if (o.backdropClose) Modal.close(top);
-      }
     }
   });
 

@@ -371,8 +371,13 @@
                   <!-- 버튼 -->
                   <div class="btn-area">
                     <div class="left-area">
-                      <!-- 파일첨부 버튼 : 실제 file input은 화면에서 숨기고, 버튼으로 트리거 -->
-                      <label for="file-upload" class="btn-icon-solid-m tip-toggle" type="button" aria-label="파일첨부" data-tip-pos="bottom" aria-expanded="true" data-tip-open="파일추가">
+                      <!---------------------------------------------------------
+                        1. 파일첨부 버튼 : 실제 file input은 화면에서 숨기고, 라벨로 트리거
+                        2. 파일첨부 비활성화 시
+                          - input disabled : 실제 업로드 기능 차단
+                          - label disabled : 비활성 UI 스타일/상태 표시
+                      ----------------------------------------------------------->
+                      <label for="file-upload" class="btn-icon-solid-m tip-toggle" aria-label="파일첨부" data-tip-pos="bottom" aria-expanded="true" data-tip-open="파일추가" data-tip-disabled="파일추가불가">
                         <span class="icon20 icon--add icon--basic"></span>
                       </label>
                       <input type="file" id="file-upload" name="attachment" style="display:none;">

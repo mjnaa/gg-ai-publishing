@@ -452,7 +452,8 @@ body.is-aside-open button[aria-label="프롬프트"] > .icon--library {
   background: var(--color-icon-basic);
   opacity: 0.5;
 }
-.btn-icon-solid-m:disabled {
+.btn-icon-solid-m:disabled,
+.btn-icon-solid-m[disabled] {
   background: var(--color-button-disabled);
   color: var(--color-text-disabled);
   cursor: not-allowed;
@@ -840,7 +841,7 @@ button {
 .dd-layer {
   position: fixed;
   inset: 0;
-  pointer-events: none;
+  pointer-events: auto;
   z-index: 9999;
 }
 .dd{
@@ -852,7 +853,7 @@ button {
   margin: 0;
   background: var(--color-background-subtle);
   border: 1px solid var(--color-border-basic);
-  border-radius: 10px;
+  border-radius: 8px;
   color: var(--color-text-basic);
   font-weight: 500;
   line-height: 150%;
@@ -870,7 +871,7 @@ button {
   margin: 0;
   background: var(--color-background-subtle);
   border: 1px solid var(--color-border-basic);
-  border-radius: 10px;
+  border-radius: 8px;
   color: var(--color-text-basic);
   font-weight: 500;
   line-height: 150%;
@@ -880,6 +881,15 @@ button {
   inline-size: max-content; 
   min-inline-size: 170px;
   max-inline-size: calc(100vw - 12px); 
+}
+/* 내부 스크롤 */
+.dd,
+.dd-sub {
+  max-height: 360px; /* 10개 */
+  overflow-y: auto;
+  overscroll-behavior: contain; /* 스크롤 체인 방지(바깥 스크롤로 튀는거 줄임) */
+  scrollbar-gutter: stable; /* 스크롤바 생겨도 폭 흔들림 최소화 */
+  -webkit-overflow-scrolling: touch;
 }
 .dd button,
 .dd-sub button {  
@@ -926,10 +936,22 @@ button {
 .dd .dd-name { 
   overflow-wrap: anywhere;
   padding-right: 10px;
+  max-width: 168px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
 }
 .dd .danger {
   color: var(--color-text-danger);
 }
+.dd::-webkit-scrollbar-thumb,
+.dd-sub::-webkit-scrollbar-thumb,
+.dd-choice-list.left::-webkit-scrollbar-thumb,
+.dd-choice-list.right::-webkit-scrollbar-thumb {
+  background-color: var(--color-border-basic);
+}
+
 
 
 /* 드롭다운메뉴 / 단일선택메뉴 */
@@ -986,7 +1008,7 @@ button {
   margin: 0;
   background: var(--color-background-subtle);
   border: 1px solid var(--color-border-basic);
-  border-radius: 10px;
+  border-radius: 8px;
   color: var(--color-text-basic);
   font-weight: 500;
   line-height: 150%;
@@ -1006,7 +1028,7 @@ button {
   margin: 0;
   background: var(--color-background-subtle);
   border: 1px solid var(--color-border-basic);
-  border-radius: 10px;
+  border-radius: 8px;
   color: var(--color-text-basic);
   font-weight: 500;
   line-height: 150%;

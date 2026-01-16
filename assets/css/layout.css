@@ -101,6 +101,7 @@ body.is-nav-mini .layout-nav {
   min-height: 0;
   flex: 1 1 auto;
   overflow: auto;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -108,6 +109,9 @@ body.is-nav-mini .layout-nav {
   line-height: 150%;
   letter-spacing: 0;
   font-weight: 500; 
+}
+.layout-nav .scroll-area::-webkit-scrollbar-thumb{
+  background-color: var(--color-border-basic);
 }
 .folder-list,
 .chat-list {

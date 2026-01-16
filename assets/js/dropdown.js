@@ -40,7 +40,7 @@
       width: '0',
       height: '0',
       zIndex: '2147483000',
-      pointerEvents: 'none'
+      pointerEvents: 'auto'
     });
     container.appendChild(layer);
   }
@@ -363,6 +363,8 @@
       if (!items.length) return;
       const next = e.key==='ArrowDown' ? (idx+1)%items.length : (idx-1+items.length)%items.length;
       items[next]?.focus();
+
+      items[next]?.scrollIntoView({ block: 'nearest' });
     }
 
     if (e.key === 'ArrowRight'){
@@ -384,6 +386,27 @@
     if (openMenu && openTrigger) placeRoot(openTrigger, openMenu);
     if (openSub && openSubParent) placeSub(openSubParent, openSub);
   }
-  addEventListener('scroll', reflow, true);
+  function isScrollFromMenu(target){
+    if (!target) return false;
+
+    // 메뉴 자체나, 메뉴 안에서 발생한 스크롤이면 reflow 하지 않음
+    if (openMenu && (target === openMenu || openMenu.contains(target))) return true;
+    if (openSub  && (target === openSub  || openSub.contains(target)))  return true;
+
+    return false;
+  }
+
+  /* ===== 리플로우(스크롤/리사이즈) ===== */
+  function reflow(){
+    if (openMenu && openTrigger) placeRoot(openTrigger, openMenu);
+    if (openSub && openSubParent) placeSub(openSubParent, openSub);
+  }
+
+  addEventListener('scroll', function(e){
+    if (isScrollFromMenu(e.target)) return;
+    reflow();
+  }, true);
+
   addEventListener('resize', reflow);
+
 })();

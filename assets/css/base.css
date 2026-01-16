@@ -79,15 +79,20 @@ q::before, q::after { content: ''; }
 
 /* 스크롤바 */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 10px;
+  height: 10px;
 }
 ::-webkit-scrollbar-track {
   background: transparent; 
 }
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
 ::-webkit-scrollbar-thumb {
   background-color: var(--color-background-scroll-bar);
-  border-radius: 3px;
+  background-clip: padding-box;
+  border-radius: 10px;
+  border: 2px solid transparent;
 }
 
 

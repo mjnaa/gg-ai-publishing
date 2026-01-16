@@ -9,11 +9,13 @@
  *    - data-tip-offset-y="숫자" → Y축 오프셋  
  *    - data-tip-open="문구" → 열림 상태 문구  
  *    - data-tip-closed="문구" → 닫힘 상태 문구 (없을 시 open 문구 사용)  
+ *    - data-tip-disabled="문구" → disabled 상태 문구 (없을 시 open 문구 사용)  
  *    - data-tip-when="mini" → body.is-nav-mini 상태에서만 표시  
  *    - data-icon-open / data-icon-closed → 아이콘 교체 클래스
  * 3) 기능  
  *    - hover / focus 시 툴팁 표시  
  *    - click 시 상태 전환 및 aria-label 갱신  
+ *    - disabled 상태면 data-tip-disabled가 있을 때만 해당 문구로 표시  
  *    - 기본 title 속성 제거
  * ============================================================================
  */
@@ -31,7 +33,26 @@
 
   /* ===== 유틸 ===== */
   function $(sel, root){ return (root||document).querySelector(sel); }
+
+  // disabled 판별 
+  function isDisabled(el){
+    if (el && el.hasAttribute && el.hasAttribute('disabled')) return true;
+    const id = el && el.getAttribute ? el.getAttribute('for') : null;
+    if (id) {
+      const input = document.getElementById(id);
+      if (input && input.disabled) return true;
+    }
+    return false;
+  }
+
   function labelOf(el){
+    // disabled일 때, data-tip-disabled가 있는 경우에만 문구 교체
+    if (isDisabled(el)) {
+      const disabledTxt = el.getAttribute('data-tip-disabled');
+      if (disabledTxt) return disabledTxt;
+      // 없으면 기본 문구 로직 그대로
+    }
+
     const expanded = el.getAttribute('aria-expanded');
     const isOpen = expanded === 'true';          // null이면 false
     const open   = el.getAttribute('data-tip-open')   || '';
