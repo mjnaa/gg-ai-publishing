@@ -918,13 +918,12 @@ button {
   gap: 8px;
   white-space: nowrap;
 }
-.dd .dd-sep,
-.dd-sub .dd-sep {
+.dd-sep {
   height: 1px;
   margin: 6px 0;
   background: var(--color-border-strong);
 }
-.dd .dd-date {
+.dd-date {
   display: flex;
   align-items: center;
   text-align: left;
@@ -933,7 +932,7 @@ button {
   font-size: 1.3rem;
   font-weight: 400;
 }
-.dd .dd-name { 
+.dd-name { 
   overflow-wrap: anywhere;
   padding-right: 10px;
   max-width: 168px;
