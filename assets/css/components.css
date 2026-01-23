@@ -1362,8 +1362,13 @@ button {
 
 /* modal-expand-ver2 확장타입 : 문서 작성(AI 법률, 행정심판) */
 .modal-expand-ver2 .modal-panel {
-  width: 680px;
-  max-width: min(90vw, 680px);
+  display: flex;
+  flex-direction: column;
+  width: 900px;
+  max-width: min(90vw, 900px);
+  max-height: min(90vh, 860px); 
+  overflow: hidden;
+
   background: var(--color-background-subtle);
   border-radius: 10px;
   outline: none;
@@ -1425,6 +1430,9 @@ button {
   line-height: 150%; 
   letter-spacing: 0;
   padding: 18px 24px 18px 24px;
+  flex: 1 1 auto;
+  min-height: 0; 
+  overflow: auto; 
 }
 .modal-expand-ver2 .modal-foot {
   display: flex;
@@ -1450,6 +1458,9 @@ button {
   display: flex;
   flex-direction: row;
   gap: 18px;
+}
+.modal-expand-ver2 .form-textarea {
+  min-height: 240px;
 }
 
 /* modal-list 리스트타입 : 설정  */

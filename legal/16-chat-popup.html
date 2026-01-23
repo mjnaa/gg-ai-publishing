@@ -136,8 +136,9 @@
             <label class="form-label">문서 종류</label>
             <select class="form-select">
               <option value="">제정안</option>
-              <option value="">개정안</option>
               <option value="">폐지안</option>
+              <option value="">일부개정안</option>
+              <option value="">전부개정안</option>
             </select>
           </div>
           <div class="form-field">
@@ -149,6 +150,18 @@
             <div class="textarea-wrap">
               <textarea class="form-textarea" placeholder="내용을 입력하세요"></textarea>
               <span class="textarea-counter">0/1000</span>
+            </div>
+          </div>
+          <!-- 일부개정안/전부개정안 일때만 노출해야함 -->
+          <div class="form-field">
+            <label class="form-label">조례안</label>
+            <div class="file-field">
+              <!-- 파일첨부 : 실제 input은 화면에서 숨김 -->
+              <input id="file-upload-a" class="sr-only file-input" type="file" />
+              <label for="file-upload-a" class="file-input-like" role="button" aria-label="파일을 첨부하세요">
+                <span class="file-placeholder">파일을 첨부하세요</span>
+                <span class="icon20 icon--add icon--basic" aria-hidden="true"></span>
+              </label>
             </div>
           </div>
         </div>
@@ -189,6 +202,7 @@
   <!-- JS -->
   <script src="../assets/js/layout.js"></script>
   <script src="../assets/js/modal-popup.js"></script>
+  <script src="../assets/js/file-uploader.js"></script>
 
 </body>
 </html>
