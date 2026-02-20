@@ -117,25 +117,21 @@
 
     const pos = trigger.dataset.ddPos || 'bottom-start';
 
-    let dx, dy;
+    let dy = (t.bottom - c.y) + GAP;
+
+    if (dy + mH > c.h - 8) {
+      dy = (t.top - c.y) - mH - GAP;
+    }
+
+    let dx;
     if (pos === 'bottom-end') {
       dx = (t.right - c.x) - mW;
-      dy = (t.bottom - c.y) + GAP;
-    } else if (pos === 'right-start') {
+    } else if (pos === 'right-start' || pos === 'right-end') {
       dx = (t.right - c.x) + GAP;
-      dy = (t.top   - c.y);
-    } else if (pos === 'right-end') {
-      dx = (t.right - c.x) + GAP;
-      dy = (t.bottom - c.y) - mH;
-    } else if (pos === 'left-start') {
+    } else if (pos === 'left-start' || pos === 'left-end') {
       dx = (t.left - c.x) - GAP - mW;
-      dy = (t.top  - c.y);
-    } else if (pos === 'left-end') {
-      dx = (t.left - c.x) - GAP - mW;
-      dy = (t.bottom - c.y) - mH;
     } else {
       dx = (t.left - c.x);
-      dy = (t.bottom - c.y) + GAP;
     }
 
     const local = toLocal(dx, dy, c);
@@ -144,7 +140,7 @@
 
     if (x + mW > c.w - 8) x = c.w - mW - 8;
     if (x < 8) x = 8;
-    if (y + mH > c.h - 8) y = Math.max(8, c.h - mH - 8);
+    if (y < 8) y = 8; 
 
     menu.style.left = x + 'px';
     menu.style.top  = y + 'px';
