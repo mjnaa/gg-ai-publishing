@@ -387,14 +387,19 @@
                       
                       <!-- AI 답변 -->
                       <div class="msg-bubble">
-                        <div class="loading-inline">
-                          <span class="loading-dots">
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                          </span>
-                          <p class="bold">생각중…</p>
+                        
+                        <!-- 봉공이 캐릭터 + 상태/모델 정보-->
+                        <div class="loading-bonggong">
+                          <div class="bonggong-area">
+                            <img src="../assets/img/bonggong_02.gif" alt="봉공이 캐릭터">
+                          </div>
+
+                          <!-- 로딩시간/상태/모델정보 영역 -->
+                          <div class="loading-text">
+                            <p class="bold loading-think">생각중...</p>
+                          </div>
                         </div>
+
                       </div>
 
                     </div>
@@ -548,7 +553,6 @@
               <span class="icon20 icon--docs icon--basic"></span>
               <span class="dd-name">HWPX</span>
             </div>
-            <span class="icon18 icon--visibility icon--basic"></span>
           </button>
         </li>
         <li role="none">
@@ -557,7 +561,6 @@
               <span class="icon20 icon--docs icon--basic"></span>
               <span class="dd-name">DOC</span>
             </div>
-            <span class="icon18 icon--visibility icon--basic"></span>
           </button>
         </li>
         <li role="none">
@@ -566,7 +569,6 @@
               <span class="icon20 icon--docs icon--basic"></span>
               <span class="dd-name">PDF</span>
             </div>
-            <span class="icon18 icon--visibility icon--basic"></span>
           </button>
         </li>
       </ul> 

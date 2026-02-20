@@ -387,7 +387,55 @@
                       
                       <!-- AI 답변 : 코드블록/인용문 유형 데모 -->
                       <div class="msg-bubble">
-                        <p class="bold">20초동안 생각함 :</p>
+                        
+                        <!-- 봉공이 캐릭터 + 상태/모델 정보-->
+                        <div class="loading-bonggong">
+                          <div class="bonggong-area">
+                            <img src="../assets/img/bonggong_02.gif" alt="봉공이 캐릭터">
+                          </div>
+
+                          <!-- 로딩시간/상태/모델정보 영역 -->
+                          <div class="loading-text">
+                            <p class="bold loading-think">20초동안 생각함 :</p>
+
+                            <!-- 신규 추가 영역 -->
+                            <div class="loading-meta">
+                              <!-------------------------------------------
+                              LLM 표시 아이콘
+                              1. 업무지원
+                              <span class="icon20 icon--llm-01 icon--primary"></span>
+                              2. 법률
+                              <span class="icon20 icon--llm-02 icon--primary"></span>
+                              3. 행정심판
+                              <span class="icon20 icon--llm-03 icon--primary"></span>
+                              --------------------------------------------->
+                              <span class="meta-item meta-llm">
+                                <span class="icon20 icon--llm-01 icon--primary"></span>
+                                <span class="meta-text">Wise LLOA Model</span>
+                              </span>
+
+                              <!-------------------------------------------
+                              스마트도우미 아이콘 
+                              1. 표준문서작성
+                              <span class="icon20 icon--smart-01 icon--blue"></span>
+                              2. 보도자료
+                              <span class="icon20 icon--smart-02 icon--green"></span>
+                              3. 업무담당자
+                              <span class="icon20 icon--smart-03 icon--orange"></span>
+                              4. 요약
+                              <span class="icon20 icon--smart-04 icon--violet"></span>
+                              5. 번역
+                              <span class="icon20 icon--smart-05 icon--red"></span>
+                              --------------------------------------------->
+                              <span class="meta-item meta-assistant">
+                                <span class="icon20 icon--smart-02 icon--green"></span>
+                                <span class="meta-label">보조자료 :</span>
+                                <span class="meta-text">공모보조자료</span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+
                         <p>코드블록/인용문 유형 답변입니다.</p>
                         <hr class="divider" />
 
@@ -475,7 +523,7 @@
                               </div>
                             </div>
 
-                            <!-- 마우스오버시 노출되는 버튼 -->
+                            <!-- 마우스오버시 노출되는 버튼 : 다운로드 -->
                             <div class="source-actions">
                               <button type="button" class="btn-solid-primary-m">
                                 <span class="icon20 icon--download icon--inverse"></span>다운로드
@@ -506,10 +554,10 @@
                               </div>
                             </div>
                             
-                            <!-- 마우스오버시 노출되는 버튼 -->
+                            <!-- 마우스오버시 노출되는 버튼 : 링크열기 -->
                             <div class="source-actions">
                               <button type="button" class="btn-solid-primary-m btn-action">
-                                <span class="icon20 icon--download icon--inverse"></span>다운로드
+                                <span class="icon20 icon--attach-file icon--inverse"></span>링크열기
                               </button>
                             </div>
                           </li>
@@ -674,7 +722,6 @@
               <span class="icon20 icon--docs icon--basic"></span>
               <span class="dd-name">HWPX</span>
             </div>
-            <span class="icon18 icon--visibility icon--basic"></span>
           </button>
         </li>
         <li role="none">
@@ -683,7 +730,6 @@
               <span class="icon20 icon--docs icon--basic"></span>
               <span class="dd-name">DOC</span>
             </div>
-            <span class="icon18 icon--visibility icon--basic"></span>
           </button>
         </li>
         <li role="none">
@@ -692,7 +738,6 @@
               <span class="icon20 icon--docs icon--basic"></span>
               <span class="dd-name">PDF</span>
             </div>
-            <span class="icon18 icon--visibility icon--basic"></span>
           </button>
         </li>
       </ul> 

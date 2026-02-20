@@ -76,6 +76,16 @@
     btn.setAttribute('aria-label', expanded ? openTxt : closedTxt);
   }
 
+  /* ===== (추가) 보조패널 토글 버튼 상태 동기화 (라이브러리 버튼) ===== */
+  function syncAsideToggleButton() {
+    const btn = document.querySelector('.btn-aside-toggle.btn-library');
+    if (!btn) return;
+
+    const isOpen = $body.classList.contains('is-aside-open');
+    btn.classList.toggle('is-active', isOpen);
+    btn.setAttribute('aria-pressed', isOpen ? 'true' : 'false');
+  }
+
   /* ===== 오버레이 제어 ===== */
   function syncOverlay() {
     // 요약: 모바일 네비 열림 OR (보조패널 열림 AND (모바일/태블릿 OR 데스크탑-플로팅)) → is-overlay 추가
@@ -101,6 +111,7 @@
     }
 
     syncOverlay();
+    syncAsideToggleButton();
   }
 
   function toggleAsideDocked() {
@@ -119,6 +130,7 @@
   function closeAside() {
     $body.classList.remove('is-aside-open', 'is-aside-floating');
     syncOverlay();
+    syncAsideToggleButton();
   }
 
   /* ===== 좌측네비 제어 ===== */
@@ -148,26 +160,48 @@
 
   /* ===== 반응형: 뷰포트 전환 시 기본 상태 적용 ===== */
   function applyDefaultsFor(view) {
-    // PC 기본: 열림
+    // PC
     if (view === 'desktop') {
       $body.classList.remove('is-mobile-nav-open');
       $body.classList.remove('is-nav-mini');
+      
       syncOverlay();
-      syncNavToggleTip(); // 리사이즈로 기본 상태 바뀔 때도 동기화
+      syncNavToggleTip();
       return;
     }
-    // Tablet 기본: 미니 
+
+    // Tablet, Mobile
+    const isAsideOpen = $body.classList.contains('is-aside-open');
+    const isAsideFloating = $body.classList.contains('is-aside-floating');
+
     if (view === 'tablet') {
       $body.classList.remove('is-mobile-nav-open');
       $body.classList.add('is-nav-mini');
-      syncOverlay();
-      syncNavToggleTip(); 
-      return;
+      
+      if (isAsideOpen) {
+        if (isAsideFloating) {
+          // 1) 플로팅 상태 : 태블릿에서도 플로팅 유지
+          $body.classList.add('is-aside-floating');
+        } else {
+          // 2) 도킹 상태 : 태블릿 진입 시 패널 닫기
+          closeAside();
+        }
+      }
+    } else if (view === 'mobile') {
+      $body.classList.remove('is-nav-mini');
+      $body.classList.remove('is-mobile-nav-open');
+
+      if (isAsideOpen) {
+        if (isAsideFloating) {
+          // 1) 플로팅 상태 : 모바일에서도 계속 유지
+          $body.classList.add('is-aside-floating');
+        } else {
+          // 2) 도킹 상태 : 모바일 진입 시 패널 닫기
+          closeAside();
+        }
+      }
     }
-    // Mobile 기본: 닫힘
-    $body.classList.remove('is-aside-open', 'is-aside-floating');
-    $body.classList.remove('is-nav-mini');
-    $body.classList.remove('is-mobile-nav-open');
+
     syncOverlay();
     syncNavToggleTip(); 
   }
@@ -302,6 +336,12 @@
     _origSetUiScale(scale);
     try { localStorage.setItem('ui-scale', String(scale)); } catch(e) {}
   };*/
+
+  window.Layout = {
+    setUiScale: setUiScale,
+    openAsideDocked: openAsideDocked, // 플로팅 해제 및 도킹 전환 기능
+    closeAside: closeAside            // 패널 닫기 기능
+  };
 
   /* ===== 초기화 ===== */
   document.addEventListener('DOMContentLoaded', () => {

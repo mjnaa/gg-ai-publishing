@@ -318,9 +318,14 @@
         <!------ 콘텐츠(채팅) 영역 ------>
         <section class="layout-main-body" aria-label="채팅/콘텐츠">
           <!-- 업무지원 서비스에만 class="work" 추가 -->
-          <div class="new-chat work">
+          <div class="new-chat work-demo">
             <h2>안녕하세요. 오늘은 무엇을 도와드릴까요?</h2>
+
             <div class="start-area">
+              <!-- 시연용 : 봉공이 캐릭터 -->
+              <div class="bonggong-img">
+                <img src="../assets/img/bonggong_01.gif" alt="봉공이 캐릭터">
+              </div>
               
               <!-- 채팅창 -->
               <form action="" method="post" enctype="multipart/form-data">
@@ -378,9 +383,10 @@
                       <input type="file" id="file-upload" name="attachment" style="display:none;">
 
                       <!-- 라이브러리 버튼 -->
-                      <button class="btn-aside-toggle btn-solid-gray-m" type="button" aria-label="프롬프트 라이브러리">
+                      <button class="btn-aside-toggle btn-solid-gray-m btn-library" type="button" aria-label="프롬프트 라이브러리">
                         <span class="icon20 icon--library icon--basic"></span>
                         <span>라이브러리</span>
+                        <span class="right-icon icon18 icon--close icon--basic"></span>
                       </button>
 
                       <!-- 뉴스검색 버튼 : 뉴스검색 페이지에서만 .is-active -->
@@ -612,12 +618,12 @@
                   <button type="button" class="btn-chip action-apply">
                     <span class="icon16 icon--library icon--basic"></span>적용
                   </button>
-                  <button type="button" class="btn-chip action-preview">
+                  <button type="button" class="btn-chip action-preview" data-modal-target="#modal-prompt-view">
                     <span class="icon16 icon--visibility icon--basic"></span>보기
                   </button>
                   <button type="button" class="btn-chip action-pin">
                     <!-- 상단고정(.is-pinned)일 때 자동으로 icon--keep-fill로 변경됨 -->
-                    <span class="icon16 icon--keep icon--basic"></span>고정
+                    <span class="icon16 icon--keep icon--basic"></span>해제
                   </button>
                 </div>
               </li>
@@ -631,7 +637,7 @@
                     <span class="icon18 icon--keep-fill icon--basic"></span>
                   </div>
                   <div class="prompt-card-content">
-                    <p class="prompt-card-desc">프롬프트 상세 내용이 들어갑니다. 프롬프트 상세 내용이 들어갑니다.</p>
+                    <p class="prompt-card-desc">오버플로우 수정 121232131144412121212212</p>
                     <!-- 제공범위 칩 : MY 탭에서만 노출 -->
                     <span class="prompt-card-chip">부서</span>
                   </div>
@@ -681,7 +687,7 @@
                   </button>
                   <button type="button" class="btn-chip action-pin">
                     <!-- 상단고정(.is-pinned)일 때 자동으로 icon--keep-fill로 변경됨 -->
-                    <span class="icon16 icon--keep icon--basic"></span>고정
+                    <span class="icon16 icon--keep icon--basic"></span>해제
                   </button>
                 </div>
               </li>
@@ -977,7 +983,7 @@
                   </button>
                   <button type="button" class="btn-chip action-pin">
                     <!-- 상단고정(.is-pinned)일 때 자동으로 icon--keep-fill로 변경됨 -->
-                    <span class="icon16 icon--keep icon--basic"></span>고정
+                    <span class="icon16 icon--keep icon--basic"></span>해제
                   </button>
                 </div>
               </li>
@@ -1012,7 +1018,7 @@
                   </button>
                   <button type="button" class="btn-chip action-pin">
                     <!-- 상단고정(.is-pinned)일 때 자동으로 icon--keep-fill로 변경됨 -->
-                    <span class="icon16 icon--keep icon--basic"></span>고정
+                    <span class="icon16 icon--keep icon--basic"></span>해제
                   </button>
                 </div>
               </li>
@@ -1218,6 +1224,47 @@
       </ul>
     </template>
 
+    <!-- 테스트 모달 -->
+    <div class="modal-expand-ver1" id="modal-prompt-view" role="dialog" aria-modal="true" aria-hidden="true" data-modal>
+      <div class="modal-panel" tabindex="-1" data-modal-panel>
+        <div class="modal-head">
+          <div class="modal-head-info">
+            <div class="modal-head-icon">
+              <span class="icon24 icon--library icon--inverse"></span>
+            </div>
+            <button class="btn-aside-close btn-icon-normal-m" type="button" aria-label="모달 닫기" data-modal-close>
+              <span class="icon20 icon--close icon--basic"></span>
+            </button>
+          </div>
+          <div class="modal-head-text">
+            <h5 class="modal-head-title">프롬프트 상세</h5>
+            <div class="modal-head-meta">
+              <span class="meta-name">김경기님</span>
+              <span class="meta-dept">OOO과</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-body">
+          <div class="form-field">
+            <label class="form-label">프롬프트 제목</label>
+            <input type="text" class="form-input" value="정책 관련 프롬프트" readonly>
+          </div>
+          <div class="form-field">
+            <label class="form-label">프롬프트 상세</label>
+            <div class="textarea-wrap">
+              <textarea class="form-textarea" readonly>정책의 핵심 목표, 추진 배경, 주요 사업 내용 및 관련 수치(예산, 수혜 인원, 일정 등)를 중심으로 요약해줘</textarea>
+              <span class="textarea-counter">0/1000</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-foot">
+          <button class="btn-solid-primary-l" data-modal-close>적용</button>
+        </div>
+      </div>
+    </div>
+
     </div>
   </div>
 
@@ -1228,6 +1275,7 @@
   <script src="../assets/js/dropdown.js"></script>
   <script src="../assets/js/dropdown-choice.js"></script>  
   <script src="../assets/js/theme-toggle.js"></script>
+  <script src="../assets/js/modal-popup.js"></script>
 
   <!-- 페이지 전용 JS -->
   <script src="../assets/js/chat-guide-manager.js"></script>

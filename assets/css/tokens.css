@@ -50,6 +50,7 @@ PRIMITIVES
   /* red */
   --c-red-0: #fdf1f1;
   --c-red-5: #fce5e4;
+  --c-red-7: #f0d9d8;
   --c-red-10: #f9cac8;
   --c-red-20: #f6afac;
   --c-red-30: #f39491;
@@ -123,6 +124,7 @@ MODE
   --color-border-information: var(--c-blue-60);
   --color-border-file-item: var(--c-gray-10);
   --color-border-popup: var(--c-gray-10);
+  --color-border-red: var(--c-red-7);
   --color-text-basic: var(--c-gray-90);
   --color-text-subtle: var(--c-gray-70);
   --color-text-muted: var(--c-gray-50);
@@ -207,6 +209,7 @@ MODE
   --color-border-information: var(--c-blue-20);
   --color-border-file-item: var(--c-gray-80);
   --color-border-popup: var(--c-gray-80);
+  --color-border-red: var(--c-red-7);
   --color-text-basic: var(--c-gray-10);
   --color-text-subtle: var(--c-gray-30);
   --color-text-muted: var(--c-gray-50);

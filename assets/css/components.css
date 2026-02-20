@@ -461,6 +461,28 @@ body.is-aside-open button[aria-label="프롬프트"] > .icon--library {
 .btn-icon-solid-m:disabled .icon20 {
   background: var(--color-icon-disabled);
 }
+
+/* 중지 버튼 상태 */
+.btn-icon-solid-m.is-generating {
+  background: var(--color-icon-red-bg) !important;
+  border: 1px solid var(--color-border-red);
+}
+.btn-icon-solid-m.is-generating:hover {
+  background: var(--color-icon-red-bg) !important;
+}
+.btn-icon-solid-m.is-generating:disabled,
+.btn-icon-solid-m.is-generating[disabled] {
+  background: var(--color-icon-red-bg) !important;
+  cursor: pointer;
+}
+.btn-icon-solid-m.is-generating[disabled] .icon20 {
+  background: var(--color-icon-danger) !important;
+  opacity: 1;
+}
+.btn-icon-solid-m.is-generating .icon20 {
+  background: var(--color-icon-danger) !important;
+}
+
 .btn-icon-normal-m {
   display: flex;
   align-items: center;
@@ -511,6 +533,19 @@ body.is-aside-open button[aria-label="프롬프트"] > .icon--library {
 .btn-newchat:disabled {
   border: 1px solid var(--color-button-outline-darkgray);
   background: var(--color-button-outline-darkgray-bg);
+}
+.btn-library.is-active {
+  padding-right: 8px;
+  color: var(--color-text-primary);
+}
+.btn-library.is-active .icon20{
+  background: var(--color-icon-primary);
+}
+.btn-library.is-active .right-icon {
+  display: block;
+}
+.btn-library .right-icon {
+  display: none;
 }
 button {  
   user-select: none;
@@ -835,6 +870,48 @@ button {
   background: var(--color-background-primary);
   color: var(--color-text-inverse);
 }
+.news-pagination {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 4px 0 8px;
+  white-space: nowrap; 
+}
+.news-pagination .pagination-btn {
+  width: 22px;
+  height: 22px;
+}
+.news-page-input {
+  width: 52px;
+  height: 26px;
+  padding: 0 8px;
+  border: 1px solid var(--color-border-basic);
+  border-radius: 6px;
+  background: var(--color-background-subtle);
+  color: var(--color-text-basic);
+  box-sizing: border-box;
+  outline: none;
+  text-align: center;
+  font-size: 1.3rem;
+  line-height: 150%;
+  font-weight: 400;
+  -moz-appearance: textfield;
+  margin: 0 2px;
+}
+.news-page-input:focus {
+  border: 1px solid var(--color-input-border-focus);
+}
+.news-page-input::-webkit-inner-spin-button,
+.news-page-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.news-page-total{
+  font-size: 1.3rem;
+  line-height: 150%;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  margin: 0 2px 0 4px;
+}
 
 
 /* 드롭다운메뉴 / 다중옵션목록 */
@@ -888,7 +965,6 @@ button {
   max-height: 360px; /* 10개 */
   overflow-y: auto;
   overscroll-behavior: contain; /* 스크롤 체인 방지(바깥 스크롤로 튀는거 줄임) */
-  scrollbar-gutter: stable; /* 스크롤바 생겨도 폭 흔들림 최소화 */
   -webkit-overflow-scrolling: touch;
 }
 .dd button,
@@ -1633,15 +1709,27 @@ button {
 /* ======= 토스트 팝업 ======= */
 .toast-stack{
   position: fixed;
-  left: 50%;
-  top: 16px;
-  transform: translateX(-50%);
   z-index: 9999;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 8px;
   pointer-events: none; 
+}
+/* 상단 중앙 */
+.toast-stack--tc{
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  align-items: center; 
+}
+/* 우측 하단 */
+.toast-stack--br{
+  right: 30px;
+  bottom: 30px;
+  left: auto;
+  top: auto;
+  transform: none;
+  align-items: flex-end;
 }
 .toast-stack .toast-item{
   opacity: 0;
@@ -1884,6 +1972,13 @@ button {
   color: var(--color-text-disabled);
   cursor: default;
 }
+.form-input[readonly] {
+  background: var(--color-input-surface-disabled);
+  color: var(--color-text-muted);
+}
+.form-input[readonly]:focus {
+  border: 1px solid var(--color-input-border);
+}
 
 /* 파일 업로드 : input[type="file"] */
 .sr-only {
@@ -2030,6 +2125,13 @@ button {
   background: var(--color-input-surface-disabled);
   color: var(--color-text-disabled);
   cursor: default;
+}
+.form-textarea[readonly] {
+  background: var(--color-input-surface-disabled);
+  color: var(--color-text-muted);
+}
+.form-textarea[readonly]:focus {
+  border: 1px solid var(--color-input-border);
 }
 .form-textarea::-webkit-scrollbar {
   width: 4px;
@@ -3036,12 +3138,13 @@ button {
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  word-break: break-all;
 }
 .prompt-card-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 2px;
+  gap: 3px;
 }
 .prompt-card-desc {
   font-size: 1.3rem;
@@ -3053,6 +3156,7 @@ button {
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  word-break: break-all;
 }
 .prompt-card-chip {
   font-size: 1.3rem;

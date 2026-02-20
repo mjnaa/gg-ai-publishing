@@ -713,8 +713,8 @@ body.is-dragging-files .layout-main .drag-overlay {
   position: absolute;
   z-index: 0;
   pointer-events: none;
-  top: -180px;
-  left: calc(50% - 408px);
+  top: -152px;
+  left: calc(50% - 382px);
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -722,7 +722,7 @@ body.is-dragging-files .layout-main .drag-overlay {
   -webkit-user-drag: none; 
 }
 .bonggong-img img {
-  width: 220px; 
+  width: 180px; 
   height: auto;
 }
 @media (max-width: 850px) {
@@ -1046,6 +1046,9 @@ body.is-dragging-files .layout-main .drag-overlay {
 .chat-thread .msg.is-user:first-child{ 
   padding-top: 0px;
 }
+.chat-thread .msg.is-bot { 
+  padding-top: 30px;
+}
 .chat-thread .msg-row { 
   display: flex; 
   gap: 8px; 
@@ -1179,7 +1182,7 @@ body.is-dragging-files .layout-main .drag-overlay {
 /* AI 버블 로딩 */
 .loading-inline {
   display: inline-flex;
-  align-items: center;
+  align-items: baseline;
   gap: 8px;
 }
 .loading-dots {
@@ -1220,17 +1223,36 @@ body.is-dragging-files .layout-main .drag-overlay {
 /* AI 버블 로딩 - 봉공이 캐릭터 버전 */
 .loading-bonggong {
   position: relative;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 18px;
+  margin-bottom: 34px;
   height: 60px;
 }
-.loading-bonggong p{
+.loading-bonggong .loading-text {
   position: absolute;
   left: 64px;
   top: 40px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
 }
+.loading-bonggong .loading-think {
+  position: static;
+  margin: 0 !important;
+  line-height: 150%;
+}
+.loading-bonggong .loading-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.loading-bonggong .meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  line-height: 150%;
+}
+/* 봉공이 */
 .bonggong-area {
   position: absolute;
   left: -20px;
@@ -1247,6 +1269,7 @@ body.is-dragging-files .layout-main .drag-overlay {
   width: 100px; 
   height: auto;
 }
+
 
 /* 출처 영역 */
 .msg-sources { 
@@ -1385,7 +1408,7 @@ body.is-dragging-files .layout-main .drag-overlay {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 46px;
+  flex-wrap: wrap;
   border-bottom: 1px solid var(--color-border-strong);
 }
 .news-tab-area .tab-bar-line-area {
@@ -1396,6 +1419,7 @@ body.is-dragging-files .layout-main .drag-overlay {
 }
 .news-tab-area .news-action-area {
   display: flex;
+  align-items: center;
   gap: 0px;
 }
 .msg.is-bot .msg-bubble .news-list { 
@@ -1537,6 +1561,14 @@ body.is-dragging-files .layout-main .drag-overlay {
   padding: 10px 18px;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+  gap: 12px; 
+}
+.news-filter .tab-panel .filter-footer .filter-hint {
+  margin-right: auto;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--color-text-muted);
 }
 
 /* 기간 */
@@ -2396,8 +2428,6 @@ body.is-aside-floating .prompt-list {
 }
 
 
-
-
 /* ======= 태블릿 : 미니가 디폴트, 우측 패널 숨김 ======= */
 @media (min-width:768px) and (max-width:1119.98px) {
   body.is-nav-mini .layout {
@@ -2464,6 +2494,11 @@ body.is-aside-floating .aside-head .aside-title {
 
 
 /* ======= 모바일/태블릿에서 우측 열림 : 고정 슬라이드 ======= */
+@media (max-width: 1119.98px) {
+  body.is-aside-open:not(.is-aside-floating) .layout-aside {
+    display: none !important;
+  }
+}
 @media (max-width:1023.98px) {
   body.is-aside-open .layout-aside {
     position: fixed;

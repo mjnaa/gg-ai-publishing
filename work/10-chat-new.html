@@ -318,9 +318,14 @@
         <!------ 콘텐츠(채팅) 영역 ------>
         <section class="layout-main-body" aria-label="채팅/콘텐츠">
           <!-- 업무지원 서비스에만 class="work" 추가 -->
-          <div class="new-chat work">
+          <div class="new-chat work-demo">
             <h2>안녕하세요. 오늘은 무엇을 도와드릴까요?</h2>
+            
             <div class="start-area">
+              <!-- 시연용 : 봉공이 캐릭터 -->
+              <div class="bonggong-img">
+                <img src="../assets/img/bonggong_01.gif" alt="봉공이 캐릭터">
+              </div>
               
               <!-- 채팅창 -->
               <form action="" method="post" enctype="multipart/form-data">
@@ -383,9 +388,10 @@
                       <input type="file" id="file-upload" name="attachment" style="display:none;">
 
                       <!-- 라이브러리 버튼 -->
-                      <button class="btn-aside-toggle btn-solid-gray-m" type="button" aria-label="프롬프트 라이브러리">
+                      <button class="btn-aside-toggle btn-solid-gray-m btn-library" type="button" aria-label="프롬프트 라이브러리">
                         <span class="icon20 icon--library icon--basic"></span>
                         <span>라이브러리</span>
+                        <span class="right-icon icon18 icon--close icon--basic"></span>
                       </button>
 
                       <!-- 뉴스검색 버튼 : 뉴스검색 페이지에서만 .is-active -->
@@ -568,13 +574,14 @@
       </main>
 
       <!------ 우측 보조패널 ------>
-      <aside class="layout-aside" aria-label="우측 보조패널">
+      <aside class="layout-aside prompt-panel" aria-label="우측 보조패널">
         <div class="top-area">
           <!------ 타이틀 영역 ------>
           <div class="aside-head">
             <div class="aside-title">
               <button class="btn-aside-float btn-icon-normal-m" type="button" aria-label="우측 패널 플로팅">
                 <span class="icon20 icon--arrow-left2 icon--basic"></span>
+                <span class="icon20 icon--arrow-right2 icon--basic"></span>
               </button>
               <p>프롬프트 라이브러리</p>
             </div>
@@ -591,17 +598,15 @@
         </div>
 
         <!------ 콘텐츠 스크롤 영역 ------>
-        <div class="aside-body">
+        <div class="aside-body prompt-body tab-panels">
         </div>
 
         <!------ 하단 버튼 영역 ------>
         <div class="bottom-area">
-          <div class="button-area">
-            <button class="btn-solid-primary-l" type="button">
-              <span class="icon20 icon--add icon--btn-solid"></span>
-              <span class="label">프롬프트 생성</span>
-            </button>
-          </div>
+          <button class="btn-solid-primary-l" type="button">
+            <span class="icon20 icon--add icon--btn-solid"></span>
+            <span class="label">프롬프트 생성</span>
+          </button>
         </div>
       </aside>
     </div>
