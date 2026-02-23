@@ -1241,17 +1241,6 @@ body.is-dragging-files .layout-main .drag-overlay {
   margin: 0 !important;
   line-height: 150%;
 }
-.loading-bonggong .loading-meta {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-}
-.loading-bonggong .meta-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  line-height: 150%;
-}
 /* 봉공이 */
 .bonggong-area {
   position: absolute;
@@ -1318,6 +1307,52 @@ body.is-dragging-files .layout-main .drag-overlay {
   margin: 0 5px 0 4px;
   font-size: 1.2rem;
   color: var(--color-border-strong);
+}
+.chat-meta {
+  position: relative; 
+  width: 100%;
+  max-width: 782px;
+  margin: 0 auto;
+  height: 0;
+}
+.chat-meta-inner {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  right: 0px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 350px;
+  z-index: 10;
+  white-space: nowrap;
+  background: var(--color-background-basic);
+  border: 1px solid var(--color-border-basic);
+  border-radius: 100px;
+  padding: 2px 10px 2px 6px;
+}
+.chat-meta .meta-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  font-size: 1.4rem;
+  line-height: 150%;
+  color: var(--color-text-subtle);
+}
+.chat-meta .meta-item .icon18 {
+  flex-shrink: 0; 
+  min-width: 18px; 
+}
+.chat-meta .meta-text {
+  max-width: 80px;  
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@media (max-width: 1120px ) {
+  .chat-meta {
+    display: none !important;
+  }
 }
 .chat .composer-wrap form {
   width: 100%;
