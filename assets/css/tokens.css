@@ -141,6 +141,7 @@ MODE
   --color-button-solid-primary-hover: var(--c-gray-100);
   --color-button-solid-gray: var(--c-gray-5);
   --color-button-solid-gray-hover: var(--c-gray-5);
+  --color-button-solid-press: var(--c-gray-5);
   --color-button-outline-gray: var(--c-gray-10);
   --color-button-outline-gray-bg: var(--c-gray-0);
   --color-button-outline-gray-hover: var(--c-gray-5);
@@ -209,7 +210,7 @@ MODE
   --color-border-information: var(--c-blue-20);
   --color-border-file-item: var(--c-gray-80);
   --color-border-popup: var(--c-gray-80);
-  --color-border-red: var(--c-red-7);
+  --color-border-red: var(--c-red-40);
   --color-text-basic: var(--c-gray-10);
   --color-text-subtle: var(--c-gray-30);
   --color-text-muted: var(--c-gray-50);
@@ -226,6 +227,7 @@ MODE
   --color-button-solid-primary-hover: var(--c-gray-70);
   --color-button-solid-gray: var(--c-gray-95);
   --color-button-solid-gray-hover: var(--c-gray-95);
+  --color-button-solid-press: var(--c-gray-30);
   --color-button-outline-gray: var(--c-gray-70);
   --color-button-outline-gray-bg: var(--c-gray-90);
   --color-button-outline-gray-hover: var(--c-gray-70);
@@ -294,6 +296,7 @@ MODE
   --color-border-information: var(--c-blue-60);
   --color-border-file-item: var(--c-gray-10);
   --color-border-popup: var(--c-gray-10);
+  --color-border-red: var(--c-red-7);
   --color-text-basic: var(--c-gray-90);
   --color-text-subtle: var(--c-gray-70);
   --color-text-muted: var(--c-gray-50);
@@ -310,6 +313,7 @@ MODE
   --color-button-solid-primary-hover: var(--c-blue-90);
   --color-button-solid-gray: var(--c-gray-5);
   --color-button-solid-gray-hover: var(--c-gray-5);
+  --color-button-solid-press: var(--c-gray-5);
   --color-button-outline-gray: var(--c-gray-10);
   --color-button-outline-gray-bg: var(--c-gray-0);
   --color-button-outline-gray-hover: var(--c-gray-5);
@@ -348,7 +352,7 @@ MODE
   --color-icon-violet: var(--c-blue-40);
   --color-icon-violet-bg: var(--c-blue-0);
   --color-icon-red: var(--c-blue-40);
-  --color-icon-red-bg: var(--c-blue-0);
+  --color-icon-red-bg: var(--c-red-5);
 }
 
 

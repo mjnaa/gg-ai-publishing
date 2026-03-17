@@ -501,7 +501,22 @@
                             
                             <!-- 2. AI 뉴스요약 -->
                             <div class="tab-panel" id="news-summary-tab" aria-label="AI 뉴스요약">
-                              AI 뉴스요약 영역
+                              <pre>
+                                <p>10개의 빅카인즈를 주제별로 요약해드리겠습니다!</p>
+                                <ol>
+                                  <li>스마트 ICT 활용 (3건 참고)
+                                    <ul>
+                                      <li>성남시 로봇·스마트기기로 어르신·아동 돌봄, 6만 명 참여.</li>
+                                      <li>✔ 핵심 키워드: 로봇, ICT, 돌봄.</li>
+                                    </ul>
+                                  </li>
+                                  <li>정치·행정 이슈 (2건 참고)
+                                    <ul>
+                                      <li>성남시 행정 관련 제3자 뇌물죄 의혹, 대통령 방어.</li>
+                                    </ul>
+                                  </li>
+                                </ol>
+                              </pre>
 
 
                               <!-- 하단 고정 영역 -->
@@ -570,12 +585,9 @@
           </div>
 
 
-          <!-- 2. 검색필터 타이틀 -->
+          <!-- 2. 적용된 검색조건 타이틀 -->
           <div class="aside-head">
-            <p>검색필터</p>
-            <button class="btn-icon-outline-m" type="button" aria-label="전체 초기화" data-reset-type="all">
-              <span class="icon20 icon--forward-media icon--basic"></span>
-            </button>
+            <p>적용된 검색조건</p>
           </div>
         </div>
 
@@ -584,9 +596,7 @@
           <!-- 기간 -->
           <div class="form-field">
             <p class="form-label">기간</p>
-            <label class="form-checkbox-label">
-              <input type="checkbox" class="form-checkbox" name="period">2025
-            </label>
+            <p class="refine-label">2025</p>
           </div>
 
           <!-- 언론사 -->
@@ -594,28 +604,16 @@
             <p class="form-label">언론사</p>
             <!-- 기본 4개-->
             <div class="check-list">
-              <label class="form-checkbox-label">
-                <input type="checkbox" class="form-checkbox" name="press">경향신문
-              </label>
-              <label class="form-checkbox-label">
-                <input type="checkbox" class="form-checkbox" name="press">국민일보
-              </label>
-              <label class="form-checkbox-label">
-                <input type="checkbox" class="form-checkbox" name="press">내일신문
-              </label>
-              <label class="form-checkbox-label">
-                <input type="checkbox" class="form-checkbox" name="press">동아일보
-              </label>
+              <p class="refine-label">경향신문</p>
+              <p class="refine-label">국민일보</p>
+              <p class="refine-label">내일신문</p>
+              <p class="refine-label">동아일보</p>
             </div>
 
             <!-- 숨겨진 추가 항목-->
             <div class="check-list-more" hidden>
-              <label class="form-checkbox-label">
-                <input type="checkbox" class="form-checkbox" name="press">문화일보
-              </label>
-              <label class="form-checkbox-label">
-                <input type="checkbox" class="form-checkbox" name="press">서울신물
-              </label>
+              <p class="refine-label">문화일보</p>
+              <p class="refine-label">서울신물</p>
             </div>
             
             <!-- 펼쳐보기 버튼 -->
@@ -630,28 +628,16 @@
             <p class="form-label">통합분류</p>
             <!-- 기본 4개-->
             <div class="check-list">
-              <label class="form-checkbox-label">
-                <input type="checkbox" class="form-checkbox" name="integrated">정치
-              </label>
-              <label class="form-checkbox-label">
-                <input type="checkbox" class="form-checkbox" name="integrated">경제
-              </label>
-              <label class="form-checkbox-label">
-                <input type="checkbox" class="form-checkbox" name="integrated">사회
-              </label>
-              <label class="form-checkbox-label">
-                <input type="checkbox" class="form-checkbox" name="integrated">문화
-              </label>
+              <p class="refine-label">정치</p>
+              <p class="refine-label">경제</p>
+              <p class="refine-label">사회</p>
+              <p class="refine-label">문화</p>
             </div>
 
             <!-- 숨겨진 추가 항목-->
             <div class="check-list-more" hidden>
-              <label class="form-checkbox-label">
-                <input type="checkbox" class="form-checkbox" name="integrated">국제
-              </label>
-              <label class="form-checkbox-label">
-                <input type="checkbox" class="form-checkbox" name="integrated">지역
-              </label>
+              <p class="refine-label">국제</p>
+              <p class="refine-label">지역</p>
             </div>
 
             <!-- 펼쳐보기 버튼 -->
@@ -665,18 +651,10 @@
             <p class="form-label">사건사고분류</p>
             <!-- 기본 4개-->
             <div class="check-list">
-              <label class="form-checkbox-label">
-                <input type="checkbox" class="form-checkbox" name="incident">범죄
-              </label>
-              <label class="form-checkbox-label">
-                <input type="checkbox" class="form-checkbox" name="incident">사고
-              </label>
-              <label class="form-checkbox-label">
-                <input type="checkbox" class="form-checkbox" name="incident">재해
-              </label>
-              <label class="form-checkbox-label">
-                <input type="checkbox" class="form-checkbox" name="incident">사회
-              </label>
+              <p class="refine-label">범죄</p>
+              <p class="refine-label">사고</p>
+              <p class="refine-label">재해</p>
+              <p class="refine-label">사회</p>
             </div>
           </div>  
 

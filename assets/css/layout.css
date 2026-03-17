@@ -1439,6 +1439,14 @@ body.is-dragging-files .layout-main .drag-overlay {
 .news-result .tab-panels {
   padding: 12px 0px;
 }
+.news-result pre {
+  font-size: 1.6rem;
+  line-height: 150%;
+  letter-spacing: 0;
+  white-space: normal;
+  word-break: break-all; 
+  word-wrap: break-word;
+}
 .news-tab-area {
   display: flex;
   justify-content: space-between;
@@ -1567,7 +1575,6 @@ body.is-dragging-files .layout-main .drag-overlay {
   text-align: center;
   margin: 0;
 }
-
 
 /* ======= 뉴스검색 / 상세검색 ======= */
 .news-filter {
@@ -1706,7 +1713,7 @@ body.is-dragging-files .layout-main .drag-overlay {
   height: 36px;
   border-radius: 8px;
   border: 1px solid var(--color-button-outline-gray);
-  background: var(--color-button-solid-gray);
+  background: var(--color-button-solid-press);
   color: var(--color-text-muted);
   font-size: 1.6rem;
   line-height: 150%;
@@ -1721,6 +1728,9 @@ body.is-dragging-files .layout-main .drag-overlay {
 .press-item input[type="checkbox"]:checked + .press-item-label {
   border: 1px solid var(--color-border-primary);
   color: var(--color-text-basic);
+}
+:root[data-theme="dark"] .press-item input[type="checkbox"]:checked + .press-item-label {
+  background: var(--color-background-primary); 
 }
 .press-category input[type="checkbox"]:focus-visible + span,
 .press-item input[type="checkbox"]:focus-visible + .press-item-label {
@@ -2315,6 +2325,14 @@ body.is-dragging-files .layout-main .drag-overlay {
   font-weight: 400; 
   color: var(--color-text-muted);
   text-align: center;
+}
+.layout-aside.refine-panel .refine-label {
+  color: var(--color-text-muted);
+  font-size: 1.5rem; 
+  line-height: 1; 
+  letter-spacing: 0;
+  font-weight: 400;
+  display: inline-flex;
 }
 
 /* 프롬프트 라이브러리 패널 */

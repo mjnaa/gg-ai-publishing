@@ -9,7 +9,6 @@
  * ============================================================================
  */
 
-
 (function () {
   'use strict';
 
@@ -51,7 +50,7 @@
       setPanelImmediately(panel, isOpen);
     });
 
-    /* ===== 이벤트 ===== */
+    /* ===== 내부 이벤트 ===== */
     ROOT.addEventListener('click', function (e) {
       var btn = e.target.closest('.acc-btn');
       if (!btn || !ROOT.contains(btn)) return;
@@ -76,6 +75,56 @@
       var openPanels = ROOT.querySelectorAll('.acc-item.is-open .acc-panel');
       openPanels.forEach(function (panel) { snapOpenHeight(panel); });
     });
+
+    /* ===== 외부 트리거 이벤트 (프롬프트 도움말 등) ===== */
+    document.addEventListener('click', function (e) {
+      var trigger = e.target.closest('[data-help-index]');
+      if (!trigger) return;
+
+      var indexStr = trigger.getAttribute('data-help-index');
+      var targetIdx = parseInt(indexStr, 10) - 1; 
+      if (isNaN(targetIdx)) return;
+
+      var modalTarget = trigger.getAttribute('data-modal-target');
+      if (!modalTarget) return;
+
+      var modal = document.querySelector(modalTarget);
+      if (!modal) return;
+
+      var helpRoot = modal.querySelector('.help-acc');
+      if (!helpRoot) return;
+
+      setTimeout(function () {
+        var items = helpRoot.querySelectorAll('.acc-item');
+        var targetItem = items[targetIdx];
+        if (!targetItem) return;
+
+        var panel = targetItem.querySelector('.acc-panel');
+        var isOpen = targetItem.classList.contains('is-open');
+
+        if (!isOpen) {
+          var openItems = helpRoot.querySelectorAll('.acc-item.is-open');
+          openItems.forEach(function (it) {
+            var btn = it.querySelector('.acc-head .acc-btn');
+            var p = it.querySelector('.acc-panel');
+            it.classList.remove('is-open');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+            setPanelImmediately(p, false);
+          });
+
+          targetItem.classList.add('is-open');
+          var targetBtn = targetItem.querySelector('.acc-head .acc-btn');
+          if (targetBtn) targetBtn.setAttribute('aria-expanded', 'true');
+          setPanelImmediately(panel, true);
+        }
+        
+        setTimeout(function() {
+          scrollToPanel(targetItem, panel, helpRoot, true);
+          try { panel.focus({ preventScroll: true }); } catch (err) {}
+        }, 50);
+
+      }, 50); 
+    });
   }
 
   function onToggle(btn, root) {
@@ -84,9 +133,7 @@
     var isOpen = item ? item.classList.contains('is-open') : false;
     if (!item || !panel) return;
 
-    // 단일 오픈: 다른 항목 닫기
     closeAll(root, item);
-
     setOpen(item, panel, !isOpen, root);
   }
 
@@ -110,8 +157,8 @@
 
     animatePanel(panel, open, function () {
       if (open) {
-        scrollToPanel(panel, root);
-        try { panel.focus(); } catch (e) {}
+        scrollToPanel(item, panel, root, false);
+        try { panel.focus({ preventScroll: true }); } catch (e) {}
       }
     });
   }
@@ -157,7 +204,6 @@
         if (typeof onDone === 'function') onDone();
       });
     } else {
-
       var startClose = panel.scrollHeight;
       panel.style.height = startClose + 'px';
       requestAnimationFrame(function () { panel.style.height = '0px'; });
@@ -181,31 +227,39 @@
     });
   }
 
-  /* ===== 스크롤/포커스 ===== */
-  function scrollToPanel(panel, root) {
+  /* ===== 스크롤/포커스 이동 ===== */
+  function scrollToPanel(item, panel, root, forceScrollTop) {
+    var targetEl = item.querySelector('.acc-head') || item;
     var container = getScrollContainer(root) || document.scrollingElement || document.documentElement;
-    var offset = getScrollOffset(root);
+    
+    var offset = forceScrollTop ? 0 : getScrollOffset(root);
 
     if (container === document.scrollingElement || container === document.documentElement) {
-      var panelTop = panel.getBoundingClientRect().top + window.pageYOffset;
-      var target = Math.max(0, panelTop - offset);
-      window.scrollTo({ top: target, behavior: CONFIG.scrollBehavior });
+      var targetTop = targetEl.getBoundingClientRect().top + window.pageYOffset;
+      var target = Math.max(0, targetTop - offset);
+      window.scrollTo({ top: target, behavior: forceScrollTop ? 'auto' : CONFIG.scrollBehavior });
     } else {
       var cRect = container.getBoundingClientRect();
+      var tRect = targetEl.getBoundingClientRect();
       var pRect = panel.getBoundingClientRect();
       var current = container.scrollTop;
 
-      var targetTop = current + (pRect.top - cRect.top) - offset;
+      var targetTop = current + (tRect.top - cRect.top) - offset;
       var panelBottom = current + (pRect.bottom - cRect.top);
       var viewBottom = container.scrollTop + container.clientHeight;
 
       var next = current;
-      if (pRect.top < cRect.top + offset) {
+      if (forceScrollTop) {
         next = targetTop;
-      } else if (panelBottom > viewBottom) {
-        next = panelBottom - container.clientHeight + offset;
+      } else {
+        if (tRect.top < cRect.top + offset) {
+          next = targetTop;
+        } else if (panelBottom > viewBottom) {
+          next = panelBottom - container.clientHeight + offset;
+          if (next > targetTop) next = targetTop;
+        }
       }
-      container.scrollTo({ top: Math.max(0, next), behavior: CONFIG.scrollBehavior });
+      container.scrollTo({ top: Math.max(0, next), behavior: forceScrollTop ? 'auto' : CONFIG.scrollBehavior });
     }
   }
 
@@ -228,7 +282,6 @@
     return isFinite(n) ? n : CONFIG.defaultOffset;
   }
 
-  
   function createPanelId(item) {
     var siblings = item.parentElement ? item.parentElement.children : [];
     var idx = Array.prototype.indexOf.call(siblings, item);
