@@ -89,7 +89,20 @@ PRIMITIVES
   --c-violet-80: #4319e5;
   --c-violet-90: #2d119c;
   --c-violet-95: #1d0b65;
-  --c-violet-100: #0d052e;
+  /* cyan */
+  --c-cyan-0: #F8FFFF;
+  --c-cyan-5: #DEFAFF;
+  --c-cyan-10: #B5F4FF;
+  --c-cyan-20: #8AEDFF;
+  --c-cyan-30: #57DFF7;
+  --c-cyan-40: #28D0ED;
+  --c-cyan-50: #00BDDE;
+  --c-cyan-60: #0098B2;
+  --c-cyan-70: #006F82;
+  --c-cyan-80: #004854;
+  --c-cyan-90: #00252B;
+  --c-cyan-95: #001D22;
+  --c-cyan-100: #001316;
   
   --icon--keep-fill: url("data:image/svg+xml;utf8,%0A%3Csvg xmlns:ns0%3D%22http://www.w3.org/2000/svg%22 viewBox%3D%220 0 24 24%22 xmlns%3D%22http://www.w3.org/2000/svg%22%3E%3Cns0:path d%3D%22M19.2963 8.5321L15.0344 14.3495L15.3718 16.5374C15.3879 16.6413 15.3834 16.7418 15.3586 16.8388C15.3337 16.9357 15.292 17.0241 15.2334 17.1041L14.9807 17.449C14.8562 17.6189 14.6918 17.7201 14.4875 17.7524C14.2834 17.7849 14.0945 17.7375 13.9208 17.6102L10.8725 15.377L7.68798 19.7238C7.56239 19.8952 7.39913 19.9964 7.1982 20.0273C6.99726 20.0582 6.81109 20.0108 6.63967 19.8852C6.46812 19.7595 6.36691 19.5963 6.33606 19.3956C6.30507 19.1949 6.35237 19.0087 6.47796 18.8373L9.6625 14.4905L6.61426 12.2573C6.44056 12.1301 6.33841 11.9642 6.30781 11.7598C6.27708 11.5553 6.32397 11.368 6.44847 11.1981L6.70112 10.8532C6.75973 10.7732 6.83145 10.7068 6.9163 10.6538C7.00138 10.6009 7.09586 10.5664 7.19976 10.5504L9.3876 10.2125L13.6495 4.39518L13.4479 4.24743C13.2764 4.12184 13.1753 3.95859 13.1444 3.75765C13.1134 3.55662 13.1606 3.3704 13.2862 3.19898C13.4119 3.02742 13.5752 2.92627 13.776 2.89551C13.9768 2.86453 14.1629 2.91183 14.3343 3.03741L20.3844 7.46983C20.5559 7.59542 20.657 7.75868 20.6879 7.95961C20.7189 8.16064 20.6716 8.34687 20.5461 8.51829C20.4204 8.68984 20.2571 8.79099 20.0563 8.82175C19.8555 8.85274 19.6694 8.80544 19.4979 8.67985L19.2963 8.5321Z%22 fill%3D%22%236D7882%22 /%3E%0A%3C/svg%3E");
 }
@@ -181,6 +194,8 @@ MODE
   --color-icon-violet-bg: var(--c-violet-5);
   --color-icon-red: var(--c-red-40);
   --color-icon-red-bg: var(--c-red-5);
+  --color-icon-cyan: var(--c-cyan-50);
+  --color-icon-cyan-bg: var(--c-cyan-5);
 }
 
   /* 다크모드 */
@@ -267,6 +282,8 @@ MODE
   --color-icon-violet-bg: var(--c-gray-80);
   --color-icon-red: var(--c-red-20);
   --color-icon-red-bg: var(--c-gray-80);
+  --color-icon-cyan: var(--c-cyan-20);
+  --color-icon-cyan-bg: var(--c-gray-80);
 }
 
   /* 경기모드 */
@@ -352,7 +369,10 @@ MODE
   --color-icon-violet: var(--c-blue-40);
   --color-icon-violet-bg: var(--c-blue-0);
   --color-icon-red: var(--c-blue-40);
-  --color-icon-red-bg: var(--c-red-5);
+  --color-icon-red-bg: var(--c-blue-0);
+  --color-icon-red-bg2: var(--c-red-5);
+  --color-icon-cyan: var(--c-blue-40);
+  --color-icon-cyan-bg: var(--c-blue-0);
 }
 
 
@@ -376,3 +396,4 @@ MODE
 .icon--orange    { --icon-color: var(--color-icon-orange); }
 .icon--violet    { --icon-color: var(--color-icon-violet); }
 .icon--red       { --icon-color: var(--color-icon-red); }
+.icon--cyan      { --icon-color: var(--color-icon-cyan); }

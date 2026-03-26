@@ -464,8 +464,11 @@ body.is-aside-open button[aria-label="프롬프트"] > .icon--library {
 
 /* 중지 버튼 상태 */
 .btn-icon-solid-m.is-generating {
-  background: var(--color-icon-red-bg) !important;
-  border: 1px solid var(--color-border-red);
+  background: var(--color-icon-red-bg);
+  border: 1px solid var(--color-border-red) !important;
+}
+:root[data-theme="gg"] .btn-icon-solid-m.is-generating  {
+  background: var(--color-icon-red-bg2) !important;
 }
 .btn-icon-solid-m.is-generating:hover {
   background: var(--color-icon-red-bg) !important;
@@ -718,6 +721,9 @@ button {
 }
 .smart-card-btn .smart-icon.red {
   background: var(--color-icon-red-bg);
+}
+.smart-card-btn .smart-icon.cyan {
+  background: var(--color-icon-cyan-bg);
 }
 .smart-card-btn .smart-text {
   display: flex;
